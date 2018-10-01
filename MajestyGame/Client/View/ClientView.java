@@ -19,7 +19,7 @@ public class ClientView{
 		BorderPane loginPage = new BorderPane();
 		Button spielStartB = new Button("Spiel starten");
 		Button loginB = new Button ("Login");
-		Button accountOptionsB = new Button("Registrieren/LÃ¶schen");
+		Button accountOptionsB = new Button("Registrieren/Löschen");
 		Button einstellungenB = new Button("Einstellungen");
 		Button beendenB = new Button("Beenden");
 		VBox startOptionBox = new VBox();
