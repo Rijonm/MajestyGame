@@ -15,7 +15,7 @@ public class ClientController {
 		this.model = model;
 		this.view = view;
 		
-		// ---------------------LOGIN-BUTTON
+		// LOGIN-BUTTON
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
@@ -26,9 +26,9 @@ public class ClientController {
 				
 			}
 		});
-		// ---------------------LOGIN-BUTTON
+		// ---------------------
 		
-		// --------------------- REGISTRIEREN-BUTTON
+		// REGISTRIEREN-BUTTON
 		view.registrierenB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
@@ -36,10 +36,9 @@ public class ClientController {
 				
 			}
 		});
+		// --------------------- 
 		
-		// --------------------- REGISTRIEREN-BUTTON
-		
-		// ---------------------START-BUTTON
+		// START-BUTTON
 		view.startGame.setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
@@ -50,7 +49,7 @@ public class ClientController {
 						
 			}
 		});
-		// ---------------------START-BUTTON
+		// ---------------------
 		
 		
 		

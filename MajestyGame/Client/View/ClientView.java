@@ -27,7 +27,7 @@ public class ClientView{
 		this.primaryStage = primaryStage;
 		this.model = model;
 	
-	// HIER LOGIN-SCENE
+	// LOGIN-SCENE
 		BorderPane loginPage = new BorderPane();
 
 		VBox loginArea = new VBox();
@@ -42,13 +42,14 @@ public class ClientView{
 
 		Button spielStartB = new Button("Spiel starten");
 		Button loginB = new Button ("Login");
-		Button accountOptionsB = new Button("Registrieren/Löschen");
+		Button accountOptionsB = new Button("Registrieren/Lï¿½schen");
 		Button einstellungenB = new Button("Einstellungen");
 		Button beendenB = new Button("Beenden");
 		VBox startOptionBox = new VBox();		
 	}
+	//------------------
 	
-	// HIER SPIELSTARTEN-SCENE
+	// SPIELSTARTEN-SCENE
 	public Scene setSecondScene() {
 		
 		VBox startArea = new VBox();
@@ -57,17 +58,26 @@ public class ClientView{
 		
 		secondScene = new Scene(startArea);
 		return secondScene;
-		
-	}
 	
-	// HIER SPIEL-DESIGN
+	}
+	// -----------------------	
+	
+	// SPIEL-DESIGN
+	
+	/**
+	 * setThirdScene represents the Game Scene
+	 * 
+	 * @Author Rijon Mushkolaj
+	 */
 	public Scene setThirdScene() {
 		
 		
 		
 		return thirdScene;
 	}
+	// -----------------------
 
+	
 	public void start() {
 		
 		primaryStage.show();
