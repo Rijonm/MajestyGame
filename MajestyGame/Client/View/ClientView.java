@@ -29,6 +29,7 @@ public class ClientView{
 	
 	// HIER LOGIN-SCENE
 		BorderPane loginPage = new BorderPane();
+<<<<<<< HEAD
 		VBox loginArea = new VBox();
 		
 		loginArea.getChildren().addAll(usernameTf, passwordTf, loginB, registrierenB);
@@ -38,6 +39,14 @@ public class ClientView{
 		
 		primaryStage.setScene(firstScene); // Login Area
 		
+=======
+		Button spielStartB = new Button("Spiel starten");
+		Button loginB = new Button ("Login");
+		Button accountOptionsB = new Button("Registrieren/Löschen");
+		Button einstellungenB = new Button("Einstellungen");
+		Button beendenB = new Button("Beenden");
+		VBox startOptionBox = new VBox();
+>>>>>>> f9f239b8d9d200a7d8513f7329afcdfbd9cc4f49
 		
 	}
 	
