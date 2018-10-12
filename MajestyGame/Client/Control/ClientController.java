@@ -26,7 +26,7 @@ public class ClientController {
 				
 			}
 		});
-		// ---------------------
+		
 		
 		// REGISTRIEREN-BUTTON
 		view.registrierenB.setOnAction(new EventHandler<ActionEvent> (){
@@ -36,7 +36,15 @@ public class ClientController {
 				
 			}
 		});
-		// --------------------- 
+		 
+		//BACK TO LOGIN SCENE
+		view.backFirstSceneB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+				
+				view.primaryStage.setScene(view.firstScene);
+			}
+		});
 		
 		// START-BUTTON
 		view.startGame.setOnAction(new EventHandler<ActionEvent> (){
@@ -49,18 +57,12 @@ public class ClientController {
 						
 			}
 		});
-		// ---------------------
+	
 		
 		
 		
 		
-//		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
-//			
-//			public void handle(ActionEvent event) {
 		
-//				// ------WRITE HERE WHAT TO HANDLE -------
-//			}
-//		});
 		
 		
 		
