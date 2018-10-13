@@ -20,7 +20,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				
-				view.primaryStage.setScene(view.setSecondScene());
+				view.primaryStage.setScene(view.setThirdScene());
 				view.start();
 				
 				
@@ -33,6 +33,8 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				
+				view.primaryStage.setScene(view.setSecondScene());
+				view.start();
 				
 			}
 		});
@@ -46,22 +48,29 @@ public class ClientController {
 			}
 		});
 		
-		// START-BUTTON
-		view.startGame.setOnAction(new EventHandler<ActionEvent> (){
+		// REGISTRIEREN IM SECOND SCENE
+		view.registrierenBB.setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
 						
-				view.primaryStage.setScene(view.setThirdScene());
-				view.start();
+				//DB 
 						
 						
 			}
 		});
 	
 		
-		
-		
-		
+		// S
+		view.spielstartenB.setOnAction(new EventHandler<ActionEvent> (){
+							
+			public void handle(ActionEvent event) {
+			
+				view.primaryStage.setScene(view.setFifthScene());
+						//DB 
+								
+								
+			}
+		});
 		
 		
 		
