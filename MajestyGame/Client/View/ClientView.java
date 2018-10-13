@@ -13,19 +13,21 @@ public class ClientView{
 	
 	public Stage primaryStage;
 	public ClientModel model;
-	
-	public Scene firstScene; //loginScene ---
+	//loginScene
+	public Scene firstScene; 
+	public BorderPane loginPane;
+	public VBox loginArea;
 	public TextField usernameTf = new TextField("username");
 	public TextField passwordTf = new TextField("password");
 	public Button loginB = new Button ("Login");
 	public Button registrierenB = new Button ("Regsitrieren");
-	
-	public Scene secondScene; // registrierenScene ---
+	// registrierenScene
+	public Scene secondScene; 
 	public VBox registrierenArea;
 	public Button registrierenBB = new Button("Registrieren");
 	public Button backFirstSceneB = new Button ("Back");
-	
-	public Scene thirdScene; //gamestartScene
+	//gamestartScene
+	public Scene thirdScene; 
 	public HBox optionenBox;
 	public BorderPane spielStartenArea;
 	public Button spielstartenB = new Button("Spiel starten");
@@ -33,12 +35,12 @@ public class ClientView{
 	public Button highscoreB = new Button ("Highscore");
 	public Button logoutB = new Button ("Logout");
 	public Button spielanleitungB = new Button ("Spielanleitung");
-	
-	public Scene fourthScene; //EinstellungenScene
-	
-	public Scene fifthScene; //GameScene
-	private BorderPane gameArea;
-	private Button b1, b2, b3, b4, b5, b6;
+	//einstellungenScene
+	public Scene fourthScene; 
+	//gameScene
+	public Scene fifthScene; 
+	public BorderPane gameArea;
+	public Button b1, b2, b3, b4, b5, b6;
 	HBox cardButtonsBox;
 	
 
@@ -46,29 +48,21 @@ public class ClientView{
 		this.primaryStage = primaryStage;
 		this.model = model;
 	
-	// LOGIN-SCENE
-		BorderPane loginPage = new BorderPane();
+	// loginScene
+		loginPane = new BorderPane();
 
-		VBox loginArea = new VBox();
+		loginArea = new VBox();
 		
 		loginArea.getChildren().addAll(usernameTf, passwordTf, loginB, registrierenB);
-		loginPage.setCenter(loginArea);
+		loginPane.setCenter(loginArea);
 		
-		firstScene = new Scene(loginPage);
+		firstScene = new Scene(loginPane);
 		
-		primaryStage.setScene(firstScene); // Login Area
-		
-
-		Button spielStartB = new Button("Spiel starten");
-		Button loginB = new Button ("Login");
-		Button accountOptionsB = new Button("Registrieren/Loeschen");
-		Button einstellungenB = new Button("Einstellungen");
-		Button beendenB = new Button("Beenden");
-		VBox startOptionBox = new VBox();		
+		primaryStage.setScene(firstScene);	
 	}
 	
 	
-	// REGISTRIEREN-Scene
+	// registrierenScene
 	/**
 	 * setSecondScene represents the Register Scene
 	 * 
@@ -86,7 +80,7 @@ public class ClientView{
 	}
 		
 	
-	// SPIEL START-Scene
+	// gameStartScene
 	/**
 	 * setThirdScene represents the StartGameScene
 	 * 
@@ -105,7 +99,7 @@ public class ClientView{
 		return thirdScene;
 	}
 	
-	// EINSTELLUNGEN-Scene
+	// einstellungenScene
 		/**
 		 * setFourthScene represents the Preferences Scene
 		 * 
@@ -117,7 +111,7 @@ public class ClientView{
 		return fourthScene;
 	}
 	
-	// GAME-Scene
+	// gameScene
 		/**
 		 * setFifthScene represents the Game Scene
 		 * 

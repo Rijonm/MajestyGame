@@ -15,7 +15,7 @@ public class ClientController {
 		this.model = model;
 		this.view = view;
 		
-		// LOGIN-BUTTON
+		//loginScene buttons
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
@@ -28,7 +28,7 @@ public class ClientController {
 		});
 		
 		
-		// REGISTRIEREN-BUTTON
+		
 		view.registrierenB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
@@ -38,8 +38,10 @@ public class ClientController {
 				
 			}
 		});
+		
+		//--------------------------
 		 
-		//BACK TO LOGIN SCENE
+		//registrierenScene buttons
 		view.backFirstSceneB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
@@ -48,7 +50,7 @@ public class ClientController {
 			}
 		});
 		
-		// REGISTRIEREN IM SECOND SCENE
+		
 		view.registrierenBB.setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
@@ -58,20 +60,117 @@ public class ClientController {
 						
 			}
 		});
-	
+		//--------------------------
 		
-		// S
+		//spielStartenScene buttons
 		view.spielstartenB.setOnAction(new EventHandler<ActionEvent> (){
 							
 			public void handle(ActionEvent event) {
 			
 				view.primaryStage.setScene(view.setFifthScene());
-						//DB 
+						
 								
 								
 			}
 		});
 		
+		view.einstellungenB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+			
+								
+								
+			}
+		});
+		
+		
+		view.highscoreB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+			
+								
+								
+			}
+		});
+		
+		view.logoutB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+			
+								
+								
+			}
+		});
+		
+		view.spielanleitungB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+			
+								
+								
+			}
+		});
+		
+		//-------------------------
+		
+		//gameScene buttons
+		view.b1.setOnAction(new EventHandler<ActionEvent> (){
+									
+			public void handle(ActionEvent event) {
+				
+				
+				//remove at ordinal 0
+										
+			}
+		});
+				
+		view.b2.setOnAction(new EventHandler<ActionEvent> (){
+					
+			public void handle(ActionEvent event) {
+					
+										
+										
+			}
+		});
+				
+				
+		view.b3.setOnAction(new EventHandler<ActionEvent> (){
+					
+			public void handle(ActionEvent event) {
+					
+										
+										
+			}
+		});
+				
+		view.b4.setOnAction(new EventHandler<ActionEvent> (){
+					
+			public void handle(ActionEvent event) {
+					
+										
+										
+			}
+		});
+				
+		view.b5.setOnAction(new EventHandler<ActionEvent> (){
+					
+			public void handle(ActionEvent event) {
+					
+										
+										
+			}
+		});
+		
+		view.b6.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+					
+										
+										
+			}
+		});
+				
+		//-------------------------
 		
 		
 		
