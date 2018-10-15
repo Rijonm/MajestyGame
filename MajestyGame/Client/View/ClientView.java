@@ -40,7 +40,12 @@ public class ClientView{
 	//gameScene
 	public Scene fifthScene; 
 	public BorderPane gameArea;
-	public Button b1, b2, b3, b4, b5, b6;
+	public Button b1 = new Button("b1");
+	public Button b2 = new Button("b2");
+	public Button b3 = new Button("b3");
+	public Button b4 = new Button("b4");
+	public Button b5 = new Button("b5");
+	public Button b6 = new Button("b6");
 	HBox cardButtonsBox;
 	
 
@@ -120,12 +125,7 @@ public class ClientView{
 	public Scene setFifthScene() {
 		
 		gameArea = new BorderPane();
-		b1 = new Button("b1");
-		b2 = new Button("b2");
-		b3 = new Button("b3");
-		b4 = new Button("b4");
-		b5 = new Button("b5");
-		b6 = new Button("b6");
+		
 		
 		cardButtonsBox = new HBox();
 		cardButtonsBox.getChildren().addAll(b1, b2, b3, b4, b5, b6);

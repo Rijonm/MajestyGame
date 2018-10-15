@@ -117,8 +117,7 @@ public class ClientController {
 		view.b1.setOnAction(new EventHandler<ActionEvent> (){
 									
 			public void handle(ActionEvent event) {
-				
-				
+				System.out.println("b1");
 				//remove at ordinal 0
 										
 			}
@@ -128,7 +127,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 					
-										
+				System.out.println("b2");						
 										
 			}
 		});
@@ -138,7 +137,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 					
-										
+				System.out.println("b3");						
 										
 			}
 		});
@@ -147,7 +146,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 					
-										
+				System.out.println("b4");						
 										
 			}
 		});
@@ -156,7 +155,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 					
-										
+				System.out.println("b5");						
 										
 			}
 		});
@@ -165,7 +164,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 					
-										
+				System.out.println("b6");						
 										
 			}
 		});
