@@ -8,6 +8,4 @@ public class Game implements Serializable {
 	private Player player2;
 	
 	private ArrayList<EnumCard> Deck;
-	
-
 }
