@@ -1,6 +1,6 @@
 package View;
 
-import Model.ServerModel;
+import Model.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class ServerView {
 	
 	public Stage primaryStage;
-	public ServerModel model;
+	public Player model;
 	//ServerStartScene
 	public BorderPane serverStartPane;
 	public Scene serverScene;
@@ -24,7 +24,7 @@ public class ServerView {
 	public BorderPane serverPane;
 	
 
-	public ServerView(Stage primaryStage, ServerModel model) {
+	public ServerView(Stage primaryStage, Player model) {
 		this.primaryStage = primaryStage;
 		this.model = model;
 		

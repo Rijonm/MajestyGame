@@ -5,5 +5,4 @@ public class ClientModel {
 	public ClientModel() {
 		
 	}
-
 }

@@ -1,11 +1,11 @@
 package Control;
 
-import Model.ServerModel;
+import Model.Player;
 import View.ServerView;
 
 public class ServerController {
 	
-	public ServerController(ServerModel model, ServerView view) {
+	public ServerController(Player model, ServerView view) {
 		
 		
 		
