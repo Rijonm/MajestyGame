@@ -21,5 +21,17 @@ public class ServerModel {
 	public void broatcast() {
 		
 	}
+	
+	public void registerUserToDB() {
+		
+	}
+	
+	public void sendCardsToPlayers() {
+		
+	}
+	
+	public void evalWinner() {
+		
+	}
 
 }
