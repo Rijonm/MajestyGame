@@ -7,5 +7,5 @@ public class Game implements Serializable {
 	private Player player1;
 	private Player player2;
 	
-	private ArrayList<EnumCard> Deck;
+	private ArrayList<EnumCard> deck;
 }

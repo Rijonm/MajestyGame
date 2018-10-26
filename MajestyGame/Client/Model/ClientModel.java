@@ -8,7 +8,17 @@ public class ClientModel {
 		
 	}
 	
+	public void registrieren() {
+		
+		
+		
+	}
+	
 	public void connect() {
+		
+	}
+	
+	public void login() {
 		
 	}
 	
@@ -18,6 +28,12 @@ public class ClientModel {
 	
 	public void sendMessage(MessageType type) {
 		
+		//if(type == MessageType.ChatMessage){
+		//
+		//}
+		//if(type == MessageType.LoginMessage){
+		//
+		//}
 	}
 	
 	public void receiveMessage() {

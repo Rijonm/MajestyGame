@@ -1,13 +1,13 @@
 package View;
 
 import Control.ServerController;
-import Model.Player;
+import Model.ServerModel;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Server extends Application{
 	
-	Player model;
+	ServerModel model;
 	ServerView view;
 	ServerController controller;
 	
@@ -19,7 +19,7 @@ public class Server extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		model = new Player();
+		model = new ServerModel();
 		view = new ServerView(primaryStage, model);
 		controller = new ServerController(model, view);
 		

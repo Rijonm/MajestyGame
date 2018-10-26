@@ -12,4 +12,8 @@ public class Player implements Serializable {
     private Hand hand;
     
     private int points;
+    
+    public Player(){
+    	
+    }
 }
