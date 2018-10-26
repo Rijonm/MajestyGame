@@ -1,6 +1,8 @@
 package Model;
 
-import Commons.MessageType;
+import java.net.Socket;
+
+import Commons.Message;
 
 public class ClientModel {
 
@@ -14,10 +16,6 @@ public class ClientModel {
 		
 	}
 	
-	public void connect() {
-		
-	}
-	
 	public void login() {
 		
 	}
@@ -26,17 +24,18 @@ public class ClientModel {
 		
 	}
 	
-	public void sendMessage(MessageType type) {
+	public void sendMessage(Socket s) {
 		
-		//if(type == MessageType.ChatMessage){
-		//
-		//}
-		//if(type == MessageType.LoginMessage){
-		//
-		//}
+		
 	}
 	
-	public void receiveMessage() {
-		
+	public void receiveMessage(Socket s) {
+		Message msg = null;
+		//if(msg == msg.messageType.ChatMessage){
+		//
+		//}
+		//if(msg == msg.messageType.LoginMessage){
+		//
+		//}
 	}
 }
