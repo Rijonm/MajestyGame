@@ -10,13 +10,23 @@ public class ClientModel {
 		
 	}
 	
-	public void registrieren() {
-		
-		
+	public void sendRegistrieren(String username, String passwort) {
 		
 	}
 	
-	public void login() {
+	public void sendLogin(String username, String passwort) {
+		
+	}
+	
+	public void sendGameStart() {
+		
+	}
+	
+	public void sendGetHighscore() {
+		
+	}
+	
+	public void sendPlayMove() {
 		
 	}
 	
@@ -24,13 +34,13 @@ public class ClientModel {
 		
 	}
 	
-	public void sendMessage(Socket s) {
+	public void sendMessage() {
 		
 		
 	}
 	
-	public void receiveMessage(Socket s) {
-		Message msg = null;
+	public void receiveMessage() {
+		
 		//if(msg == msg.messageType.ChatMessage){
 		//
 		//}
