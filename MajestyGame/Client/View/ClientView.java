@@ -13,6 +13,12 @@ public class ClientView{
 	
 	public Stage primaryStage;
 	public ClientModel model;
+	//connectScene
+	public Scene connectScene;
+	public VBox connectPane;
+	public TextField ip;
+	public TextField port;
+	public Button connectB;
 	//loginScene
 	public Scene firstScene; 
 	public BorderPane loginPane;
@@ -52,8 +58,22 @@ public class ClientView{
 	public ClientView(Stage primaryStage, ClientModel model) {
 		this.primaryStage = primaryStage;
 		this.model = model;
+		
+		connectB= new Button("Connect");
+		ip = new TextField("IP");
+		port = new TextField("Port");
+		
+		connectPane = new VBox();
+		
+		connectPane.getChildren().addAll(ip, port, connectB);
+		
+		connectScene = new Scene(connectPane);
+		
+		primaryStage.setScene(connectScene);	
+	}
 	
-	// loginScene
+	public Scene setFirstScene() {
+		
 		loginPane = new BorderPane();
 
 		loginArea = new VBox();
@@ -63,7 +83,7 @@ public class ClientView{
 		
 		firstScene = new Scene(loginPane);
 		
-		primaryStage.setScene(firstScene);	
+		return firstScene;
 	}
 	
 	

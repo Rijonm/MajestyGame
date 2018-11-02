@@ -7,7 +7,7 @@ public class RegistrierenMessage extends Message implements Serializable{
 	private String password;
 
 	public RegistrierenMessage(String username, String password) {
-		super(MessageType.UserRegister);
+		super(MessageType.UserRegistratedMessage);
 		this.username = username;
 		this.password = password;
 	}
@@ -16,16 +16,8 @@ public class RegistrierenMessage extends Message implements Serializable{
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getPassword() {
 		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 }

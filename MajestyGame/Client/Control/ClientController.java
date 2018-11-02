@@ -1,5 +1,7 @@
 package Control;
 
+import Commons.LoginMessage;
+import Commons.Message;
 import Model.ClientModel;
 import View.ClientView;
 import javafx.event.ActionEvent;
@@ -15,10 +17,24 @@ public class ClientController {
 		this.model = model;
 		this.view = view;
 		
-		//loginScene buttons
-		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
+		view.connectB.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
+				
+				view.primaryStage.setScene(view.setFirstScene());
+				model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+				view.start();
+				
+			}
+		});
+		
+		//loginScene buttons
+		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
+				
+			public void handle(ActionEvent event) {
+				Message loginMessage = new LoginMessage(view.usernameTf.getText(), view.passwordTf.getText());
+				
+				Message.send(model.socket, loginMessage);
 				
 				view.primaryStage.setScene(view.setThirdScene());
 				view.start();

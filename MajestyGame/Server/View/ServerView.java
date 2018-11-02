@@ -14,13 +14,14 @@ public class ServerView {
 	public Stage primaryStage;
 	public ServerModel model;
 	//ServerStartScene
+	public Scene serverStartScene;
 	public BorderPane serverStartPane;
-	public Scene serverScene;
-	public TextField ip;
 	public TextField port;
-	public VBox ipAndPort;
 	public Button connectB;
 	//ServerScene
+	public Scene serverScene;
+	public TextField serverLogger;
+	public Button stopServerB;
 	public BorderPane serverPane;
 	
 
@@ -30,22 +31,17 @@ public class ServerView {
 		
 		serverStartPane = new BorderPane();
 		connectB = new Button("Connect");
-		ipAndPort = new VBox();
-		ip = new TextField("IP");
 		port = new TextField("Port");
 		
-		ipAndPort.getChildren().addAll(ip, port);
-		
-		
-		serverStartPane.setCenter(ipAndPort);
+		serverStartPane.setCenter(port);
 		serverStartPane.setBottom(connectB);
 		serverStartPane.setAlignment(connectB, Pos.BOTTOM_RIGHT);
 		
 		
-		serverScene = new Scene(serverStartPane);
+		serverStartScene = new Scene(serverStartPane);
 		
 		primaryStage.setTitle("Server");
-		primaryStage.setScene(serverScene);
+		primaryStage.setScene(serverStartScene);
 		
 	}
 
@@ -53,6 +49,19 @@ public class ServerView {
 		
 		primaryStage.show();
 		
+	}
+	
+	
+	public Scene setServerScene() {
+		
+		serverLogger = new TextField();
+		stopServerB = new Button("Stop Server");
+		serverPane = new BorderPane();
+		serverPane.setCenter(serverLogger);
+		serverPane.setBottom(stopServerB);
+		serverLogger.setDisable(true);
+		serverScene = new Scene(serverPane);
+		return serverScene;
 	}
 
 }
