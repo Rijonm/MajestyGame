@@ -84,7 +84,7 @@
   </class>  
   <enumeration id="10" language="java" name="Commons.MessageType" project="MajestyGame" 
     file="/MajestyGame/Commons/Commons/MessageType.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="869" y="991"/>    
+    <position height="-1" width="-1" x="869" y="923"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="Commons.UserRegistratedMessage" project="MajestyGame" 
     file="/MajestyGame/Commons/Commons/UserRegistratedMessage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1422" y="1268"/>    
+    <position height="-1" width="-1" x="1420" y="1268"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -154,212 +154,337 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="18">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="19" name="hand">        
-        <position height="0" width="0" x="614" y="8"/>      
+  <class id="18" language="java" name="Commons.RegisterSuccessMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/RegisterSuccessMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1645" y="1233"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="Commons.LobbyInformationMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/LobbyInformationMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1864" y="1240"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="Commons.GameStartMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/GameStartMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="996" y="1427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="Commons.FirstSixCardsMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/FirstSixCardsMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1213" y="1430"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="Commons.PlayerMoveMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/PlayerMoveMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1428" y="1449"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="Commons.CardFromServerMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/CardFromServerMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1629" y="1453"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="Commons.EvaluateGameMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/EvaluateGameMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1859" y="1462"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="Commons.ChatMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/ChatMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2062" y="1467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="Commons.HighscoreMessage" project="MajestyGame" 
+    file="/MajestyGame/Commons/Commons/HighscoreMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2222" y="1482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="27">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="28" name="model">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="20" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="614" y="8"/>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="15"/>    
+  <generalization id="30">    
+    <end type="SOURCE" refId="26"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="22">    
+  <association id="31">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="23" name="view">        
+      <attribute id="32" name="controller">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
+      <multiplicity id="33" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="26">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="27" name="clients"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
+  <association id="34">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="35" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="30" name="model">        
+  <association id="37">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="38" name="model">        
         <position height="0" width="0" x="8" y="-19"/>      
       </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
+      <multiplicity id="39" minimum="0" maximum="1">        
         <position height="0" width="0" x="8" y="-19"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="32">    
+  <generalization id="40">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="41">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="33" name="controller">        
+      <attribute id="42" name="controller">        
         <position height="0" width="0" x="16" y="0"/>      
       </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
+      <multiplicity id="43" minimum="0" maximum="1">        
         <position height="0" width="0" x="16" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
+  <generalization id="44">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="46">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="36" name="model">        
-        <position height="0" width="0" x="8" y="-19"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="1">        
-        <position height="0" width="0" x="8" y="-19"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="39" name="view">        
+      <attribute id="47" name="view">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
+      <multiplicity id="48" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="42" name="model">        
-        <position height="0" width="0" x="8" y="-19"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="0" width="0" x="8" y="-19"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="45" name="model">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="48" name="view">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="49" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="51" name="view">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="52" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="54" name="messageType">        
-        <position height="0" width="0" x="5" y="-8"/>      
-      </attribute>      
-      <multiplicity id="55" minimum="0" maximum="1">        
-        <position height="0" width="0" x="5" y="-8"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="57" name="deck">        
+  <association id="49">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="50" name="hand">        
         <position height="0" width="0" x="614" y="8"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="2147483647">        
+      <multiplicity id="51" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="614" y="8"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="60" name="model">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="63" name="model">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="64" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="65">    
-    <end type="SOURCE" refId="16"/>    
+  <generalization id="52">    
+    <end type="SOURCE" refId="25"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="66">    
+  <association id="53">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="54" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="55" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="57">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="58" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="61" name="model">        
+        <position height="0" width="0" x="8" y="-19"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="1">        
+        <position height="0" width="0" x="8" y="-19"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="64" name="messageType">        
+        <position height="0" width="0" x="5" y="-76"/>      
+      </attribute>      
+      <multiplicity id="65" minimum="0" maximum="1">        
+        <position height="0" width="0" x="5" y="-76"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="67">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="68">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="69" name="clients">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="70" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="72" name="model">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="67" name="hand"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
+      <attribute id="75" name="hand">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="70" name="controller">        
+  <association id="77">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="78" name="model">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
+      <multiplicity id="79" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="80">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="82">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="84">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="85" name="deck">        
+        <position height="0" width="0" x="614" y="8"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="614" y="8"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="88" name="model">        
+        <position height="0" width="0" x="8" y="-19"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="1">        
+        <position height="0" width="0" x="8" y="-19"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
