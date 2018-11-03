@@ -1,7 +1,8 @@
 package Control;
 
-import Commons.LoginMessage;
+
 import Commons.Message;
+import Commons.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ public class ClientController {
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
-				Message loginMessage = new LoginMessage(view.usernameTf.getText(), view.passwordTf.getText());
+				Message loginMessage = new UserLoginMessage(view.usernameTf.getText(), view.passwordTf.getText());
 				
 				Message.send(model.socket, loginMessage);
 				

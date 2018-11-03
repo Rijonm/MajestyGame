@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.Socket;
 
-import Commons.LoginMessage;
 import Commons.Message;
 import Commons.MessageType;
+import Commons.UserLoginMessage;
 
 public class Client implements Serializable {
 	
-	private LoginMessage lmsg;
+	private UserLoginMessage lmsg;
 
     private int id;
     
@@ -31,7 +31,7 @@ public class Client implements Serializable {
 						Message msg = Message.receive(socket);
 						
 						if (msg.getMessageType() == MessageType.UserLoginMessage) {
-							lmsg = (LoginMessage) msg;
+							lmsg = (UserLoginMessage) msg;
 							System.out.println(lmsg.getUsername() + " " +lmsg.getPassword());
 						}
 						

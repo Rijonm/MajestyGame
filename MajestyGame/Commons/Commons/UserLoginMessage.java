@@ -1,11 +1,11 @@
 package Commons;
 
-public class LoginMessage extends Message {
+public class UserLoginMessage extends Message {
 	
 	private String username;
 	private String password;
 	
-	public LoginMessage(String username, String password) {
+	public UserLoginMessage(String username, String password) {
 		super(MessageType.UserLoginMessage);
 		this.username = username;
 		this.password = password;
