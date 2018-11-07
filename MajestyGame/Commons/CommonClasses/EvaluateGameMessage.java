@@ -2,9 +2,12 @@ package CommonClasses;
 
 public class EvaluateGameMessage extends Message{
 
-	public EvaluateGameMessage() {
+	private enum EvaluationType {Winner, Loser,  Drawn};
+	private EvaluationType type;
+	
+	public EvaluateGameMessage(EvaluationType type) {
 		super(MessageType.EvaluateGameMessage);
-		// TODO Auto-generated constructor stub
+		this.type = type;
 	}
 	
 	

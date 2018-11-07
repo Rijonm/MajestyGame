@@ -2,9 +2,10 @@ package CommonClasses;
 
 public class FirstSixCardsMessage extends Message{
 
-	public FirstSixCardsMessage() {
+	private int[] firstSixCards;
+	public FirstSixCardsMessage(int ... firstSixCards) {
 		super(MessageType.FirstSixCardsMessage);
-		// TODO Auto-generated constructor stub
+		this.firstSixCards = firstSixCards;
 	}
 
 }
