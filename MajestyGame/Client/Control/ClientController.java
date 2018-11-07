@@ -23,7 +23,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				
 				view.primaryStage.setScene(view.setFirstScene());
-				model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.start();
 				
 			}
@@ -33,7 +33,7 @@ public class ClientController {
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
-				//Message loginMessage = new UserLoginMessage(view.usernameTf.getText(), view.passwordTf.getText());
+				//Message loginMessage = new UserLoginMessage(view.userNameLogin.getText(), view.passwordTf.getText());
 				
 				//Message.send(model.socket, loginMessage);
 				
@@ -95,35 +95,57 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 			
-								
+				view.primaryStage.setScene(view.setFourthScene());								
 								
 			}
 		});
+
+		
+		view.setupSaveB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+			
+				view.primaryStage.setScene(view.setThirdScene());								
+								
+			}
+		});		
 		
 		
 		view.highscoreB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
 			
-								
+				view.primaryStage.setScene(view.setSixthScene());				
 								
 			}
 		});
+		
 		
 		view.logoutB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
 			
-								
+				view.primaryStage.setScene(view.firstScene);
 								
 			}
 		});
 		
+		
 		view.spielanleitungB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-			
+				
+				view.primaryStage.setScene(view.setSeventhScene());			
 								
+			}
+		});
+		
+		
+		view.backToGameScene.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+			
+				view.primaryStage.setScene(view.setThirdScene());				
 								
 			}
 		});
