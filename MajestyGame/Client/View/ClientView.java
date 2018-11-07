@@ -55,6 +55,14 @@ public class ClientView{
 	HBox cardButtonsBox;
 	
 
+	//connectScene
+	/**
+	 * Represents the connection to the server scene
+	 * 
+	 * @param primaryStage
+	 * @param model
+	 */
+	
 	public ClientView(Stage primaryStage, ClientModel model) {
 		this.primaryStage = primaryStage;
 		this.model = model;
@@ -71,6 +79,13 @@ public class ClientView{
 		
 		primaryStage.setScene(connectScene);	
 	}
+	
+	// loginScene
+	/**
+	 * setFirstScene represents the Login Scene
+	 * 
+	 * @return
+	 */
 	
 	public Scene setFirstScene() {
 		
