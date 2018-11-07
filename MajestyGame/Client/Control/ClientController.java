@@ -33,9 +33,9 @@ public class ClientController {
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
-				Message loginMessage = new UserLoginMessage(view.usernameTf.getText(), view.passwordTf.getText());
+				//Message loginMessage = new UserLoginMessage(view.usernameTf.getText(), view.passwordTf.getText());
 				
-				Message.send(model.socket, loginMessage);
+				//Message.send(model.socket, loginMessage);
 				
 				view.primaryStage.setScene(view.setThirdScene());
 				view.start();
