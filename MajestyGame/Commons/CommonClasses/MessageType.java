@@ -1,4 +1,4 @@
-package Commons;
+package CommonClasses;
 
 public enum MessageType {
 	UserLoginMessage, LoginSuccessMessage, UserLogoutMessage, 

@@ -1,4 +1,4 @@
-package Commons;
+package CommonClasses;
 
 public class LobbyInformationMessage extends Message{
 

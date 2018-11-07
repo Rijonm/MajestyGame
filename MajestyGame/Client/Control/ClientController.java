@@ -1,8 +1,8 @@
 package Control;
 
 
-import Commons.Message;
-import Commons.UserLoginMessage;
+import CommonClasses.Message;
+import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
 import javafx.event.ActionEvent;

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import Commons.Message;
+import CommonClasses.Message;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

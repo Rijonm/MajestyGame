@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.Socket;
 
-import Commons.Message;
-import Commons.MessageType;
-import Commons.UserLoginMessage;
+import CommonClasses.Message;
+import CommonClasses.MessageType;
+import CommonClasses.UserLoginMessage;
 
 public class Client implements Serializable {
 	

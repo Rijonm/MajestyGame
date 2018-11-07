@@ -1,4 +1,4 @@
-package Commons;
+package CommonClasses;
 
 import java.io.IOException;
 import java.io.InputStream;

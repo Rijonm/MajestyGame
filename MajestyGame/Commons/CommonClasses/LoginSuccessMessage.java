@@ -1,4 +1,4 @@
-package Commons;
+package CommonClasses;
 
 public class LoginSuccessMessage extends Message{
 

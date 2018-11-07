@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import Commons.Message;
+import CommonClasses.Message;
 
 public class ClientModel {
 	
