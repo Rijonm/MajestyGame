@@ -2,9 +2,15 @@ package CommonClasses;
 
 public class GameStartMessage extends Message{
 
-	public GameStartMessage() {
+	private String playerName;
+	
+	public GameStartMessage(String playerName) {
 		super(MessageType.GameStartMessage);
-		// TODO Auto-generated constructor stub
+		this.playerName = playerName;
 	}
 
+	public String getPlayerName() {
+		return playerName;
+	
+	}
 }

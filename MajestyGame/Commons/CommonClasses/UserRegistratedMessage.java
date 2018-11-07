@@ -10,6 +10,7 @@ public class UserRegistratedMessage extends Message implements Serializable{
 		super(MessageType.UserRegistratedMessage);
 		this.username = username;
 		this.password = password;
+		
 	}
 
 	public String getUsername() {

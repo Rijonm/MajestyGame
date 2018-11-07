@@ -2,9 +2,15 @@ package CommonClasses;
 
 public class PlayerMoveMessage extends Message{
 
-	public PlayerMoveMessage() {
+	private int positionPlayed;
+	
+	public PlayerMoveMessage(int pos) {
 		super(MessageType.PlayerMoveMessage);
-		// TODO Auto-generated constructor stub
+		this.positionPlayed = pos;
+	}
+	
+	public int getPositionPlayed() {
+		return positionPlayed;
 	}
 
 }

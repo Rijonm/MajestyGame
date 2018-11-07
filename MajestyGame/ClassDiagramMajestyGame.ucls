@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="CommonClasses.UserRegistratedMessage" project="MajestyGame" 
     file="/MajestyGame/Commons/CommonClasses/UserRegistratedMessage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1420" y="1268"/>    
+    <position height="-1" width="-1" x="1492" y="1256"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="CommonClasses.LoginSuccessMessage" project="MajestyGame" 
     file="/MajestyGame/Commons/CommonClasses/LoginSuccessMessage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1198" y="1226"/>    
+    <position height="-1" width="-1" x="1250" y="1216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -156,7 +156,7 @@
   </class>  
   <class id="18" language="java" name="CommonClasses.RegisterSuccessMessage" project="MajestyGame" 
     file="/MajestyGame/Commons/CommonClasses/RegisterSuccessMessage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1645" y="1233"/>    
+    <position height="-1" width="-1" x="1793" y="1227"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="CommonClasses.LobbyInformationMessage" project="MajestyGame" 
     file="/MajestyGame/Commons/CommonClasses/LobbyInformationMessage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1864" y="1240"/>    
+    <position height="-1" width="-1" x="2114" y="1248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -228,7 +228,7 @@
   </class>  
   <class id="26" language="java" name="CommonClasses.HighscoreMessage" project="MajestyGame" 
     file="/MajestyGame/Commons/CommonClasses/HighscoreMessage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2222" y="1482"/>    
+    <position height="-1" width="-1" x="2243" y="1450"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

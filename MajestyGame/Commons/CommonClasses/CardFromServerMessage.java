@@ -2,9 +2,11 @@ package CommonClasses;
 
 public class CardFromServerMessage extends Message{
 
-	public CardFromServerMessage() {
+	private int cardID;
+	public CardFromServerMessage(int cardID) {
 		super(MessageType.CardFromServerMessage);
-		// TODO Auto-generated constructor stub
+		
+		this.cardID = cardID;
 	}
 
 }

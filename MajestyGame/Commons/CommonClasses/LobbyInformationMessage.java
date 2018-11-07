@@ -1,10 +1,18 @@
 package CommonClasses;
 
 public class LobbyInformationMessage extends Message{
-
-	public LobbyInformationMessage() {
+	
+	private  enum StatusType {playerLogin, playerLogout };
+	private StatusType state;
+	private String playerName;
+	private int playerID;
+	
+	public LobbyInformationMessage(String playerName, int playerID, StatusType s) {
 		super(MessageType.LobbyInformationMessage);
-		// TODO Auto-generated constructor stub
+		this.playerName = playerName;
+		this.playerID = playerID;
+		this.state = s;
+		
 	}
 	
 	
