@@ -1,9 +1,8 @@
 package CommonClasses;
 
 public enum MessageType {
-	UserLoginMessage, LoginSuccessMessage, UserLogoutMessage, 
+	UserLoginMessage, LoginSuccessMessage, UserLogout, 
 	UserRegisterMessage, RegisterSuccessMessage, LobbyInformationMessage, 
 	GameStartMessage, FirstSixCardsMessage, PlayerMoveMessage, CardFromServerMessage,
-	EvaluateGameMessage, ChatMessage, HighscoreMessage
-
+	EvaluateGameMessage, ChatMessage, HighscoreMessage, LogoutMessage
 }

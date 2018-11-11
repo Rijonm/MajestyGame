@@ -12,8 +12,6 @@ public class RegisterSuccessMessage extends Message{
 	public RegisterSuccessMessage(RegisterMessage message) {
 		super(MessageType.RegisterSuccessMessage);
 		this.message = message;
-		
-		
 	}
 	
 	public String getRegisterMessageString() {

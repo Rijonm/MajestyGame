@@ -3,15 +3,15 @@ package CommonClasses;
 public class LoginSuccessMessage extends Message{
 
 	// livio
-	private enum FailureType{WRONG_USERNAME, WRONG_PASSWORD};
+	public enum LoginState {SUCCESS, COULD_NOT_CONNECT, GENERAL_ERROR, WRONG_LOGIN, WRONG_USERNAME, WRONG_PASSWORD};
 
 	private boolean success;
-	private FailureType failure; // livio
+	private LoginState loginState; // livio
 
-	public LoginSuccessMessage(boolean success, FailureType failure /* livio */) {
+	public LoginSuccessMessage(boolean success, LoginState state /* livio */) {
 		super(MessageType.LoginSuccessMessage);
 		this.success = success;
-		this.failure = failure; // livio
+		this.loginState = state; // livio
 	}
 	
 	public boolean getSuccess() {
@@ -19,8 +19,8 @@ public class LoginSuccessMessage extends Message{
 	}
 	
 	// livio
-	public FailureType getFailure() {
-		return failure;
+	public LoginState getState() {
+		return loginState;
 	}
 
 }

@@ -3,30 +3,45 @@ package api;
 import java.util.List;
 
 import CommonClasses.LoginSuccessMessage;
+import CommonClasses.LogoutMessage;
 import CommonClasses.Player;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
+import CommonClasses.UserLogout;
 import CommonClasses.UserRegisterMessage;
 
 /**
- * 
+ * Application Programming Interface (Schnittstelle)
  * @author livio
  *
  */
 public interface ApiInterface {
 	
-	// registration
-		// check username
-		// registration successful?
+	/**
+	 * Neuen Benutzer registrieren
+	 * @param register Message Objekt mit den gewünschten Benutzerdaten
+	 * @return Message Objekt mit dem Ergebnis des Registrationsversuches
+	 */
 	public RegisterSuccessMessage register(UserRegisterMessage register);
 	
-	// login
-		// username correct?
-		// password correct?
+	/**
+	 * 
+	 * @param login
+	 * @return
+	 */
 	public LoginSuccessMessage login(UserLoginMessage login);
 	
-	// get logged in players
-		// get usernames
+	/**
+	 * 
+	 * @param logout
+	 * @return
+	 */
+	public LogoutMessage logout(UserLogout logout);
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Player> getLoggedInPlayers();
 	
 	
