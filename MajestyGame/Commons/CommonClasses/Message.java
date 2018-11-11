@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.net.Socket;
 
 public abstract class Message implements Serializable {
-	
+ 
 	MessageType messageType;
 	
 	public Message(MessageType messageType) {

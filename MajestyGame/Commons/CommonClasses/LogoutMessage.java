@@ -7,16 +7,16 @@ package CommonClasses;
  */
 public class LogoutMessage extends Message {
 	
-	public enum LogoutState {SUCCESS, FAILURE, COULD_NOT_CONNECT};
+	public enum State {SUCCESS, FAILURE, COULD_NOT_CONNECT};
 	
-	private LogoutState state;
+	private State state;
 
-	public LogoutMessage(LogoutState state) {
+	public LogoutMessage(State state) {
 		super(MessageType.LogoutMessage);
 		this.state = state;
 	}
 	
-	public LogoutState getState() {
+	public State getState() {
 		return state;
 	}
 }

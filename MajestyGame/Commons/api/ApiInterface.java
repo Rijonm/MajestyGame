@@ -2,9 +2,12 @@ package api;
 
 import java.util.List;
 
+import CommonClasses.PlayersMessage;
+import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.LogoutMessage;
 import CommonClasses.Player;
+import CommonClasses.PlayerMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserLogout;
@@ -42,19 +45,28 @@ public interface ApiInterface {
 	 * 
 	 * @return
 	 */
-	public List<Player> getLoggedInPlayers();
+	public LoggedInPlayers getLoggedInPlayers();
 	
+	/**
+	 * 
+	 * @param playerId
+	 * @return
+	 */
+	public PlayerMessage getPlayer(int playerId);
 	
-	// set highscore
-		// score
+	/**
+	 * 
+	 * @param playerId
+	 * @param highscore
+	 * @return
+	 */
+	public PlayerMessage setHighscore(int playerId, int highscore);
 	
-	// get highscore from player
-		// join user on highscore to get name and score
-		// score
-	
-	// get highscore top n
-		// join user on highscore to get name and score
-		// sort highscore
-		// top n
-
+	/**
+	 * 
+	 * @param orderBy Spalte nach der die Benutzer sortiert werden sollen (null für keine Sortierung)
+	 * @param limit Wie viel Benutzer maximal angezeigt werden sollen (-1 für alle) 
+	 * @return
+	 */
+	public PlayersMessage getPlayers(String orderBy, boolean ascending, int limit);
 }

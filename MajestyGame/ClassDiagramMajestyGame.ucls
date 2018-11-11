@@ -229,8 +229,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="CommonClasses.HighscoreMessage" project="MajestyGame" 
-    file="/MajestyGame/MajestyGame/Commons/CommonClasses/HighscoreMessage.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="26" language="java" name="CommonClasses.PlayersMessage" project="MajestyGame" 
+    file="/MajestyGame/MajestyGame/Commons/CommonClasses/PlayersMessage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2243" y="1450"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
