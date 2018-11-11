@@ -12,9 +12,5 @@ public class LobbyInformationMessage extends Message{
 		this.playerName = playerName;
 		this.playerID = playerID;
 		this.state = s;
-		
 	}
-	
-	
-
 }

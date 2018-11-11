@@ -2,12 +2,12 @@ package CommonClasses;
 
 import java.io.Serializable;
 
-public class UserRegistratedMessage extends Message implements Serializable{
+public class UserRegisterMessage extends Message implements Serializable{
 	private String username;
 	private String password;
 
-	public UserRegistratedMessage(String username, String password) {
-		super(MessageType.UserRegistratedMessage);
+	public UserRegisterMessage(String username, String password) {
+		super(MessageType.UserRegisterMessage);
 		this.username = username;
 		this.password = password;
 		

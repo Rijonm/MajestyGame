@@ -2,20 +2,25 @@ package CommonClasses;
 
 public class RegisterSuccessMessage extends Message{
 	
-	private enum RegisterMessage{PasswortCorrect, PasswortIncorrect, UserAllreadyExsists, CouldNotConnectToDB};
-	RegisterMessage failMessage;
+	public enum RegisterMessage {
+		UserAllreadyExsists,
+		Success,
+		CouldNotConnectToDB
+	};
+	RegisterMessage message;
 
-	public RegisterSuccessMessage(RegisterMessage failMessage) {
+	public RegisterSuccessMessage(RegisterMessage message) {
 		super(MessageType.RegisterSuccessMessage);
-		this.failMessage = failMessage;
+		this.message = message;
 		
 		
 	}
 	
-	public String getRegisterMessage() {
-		return failMessage.toString();
+	public String getRegisterMessageString() {
+		return message.toString();
 	}
 	
-	
-
+	public RegisterMessage getRegisterMessageTpye() {
+		return message;
+	}
 }
