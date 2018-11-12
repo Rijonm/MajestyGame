@@ -121,6 +121,14 @@ public class Database implements Api {
 		for (Player player : players) {
 			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
 		}
+		
+		// Highscore setzen
+		Player oldHighscorePlayer = db.setHighscore(1, 100).getPlayer();
+		Player newHighscorePlayer = db.setHighscore(1, 101).getPlayer();
+		Player newestHighscorePlayer = db.setHighscore(1, 99).getPlayer();
+		System.out.println("first highscore 100: " + oldHighscorePlayer.getHighscore());
+		System.out.println("second highscore 101: " + newHighscorePlayer.getHighscore());
+		System.out.println("third highscore 99: " + newestHighscorePlayer.getHighscore());
 	}
 
 	/**
@@ -369,25 +377,32 @@ public class Database implements Api {
 		System.out.println("setHighscore");
 		PlayerMessage message = null;
 		PreparedStatement statement = null;
-		Player player = null;		
+		Player oldPlayer = null;
+		Player player = null;
 		
 		// Verbidungs Test
 		try {
 			getConnection();
 			// insert
 			try {
-				// Query vorbereiten
-				statement = getConnection().prepareStatement(QUERY_SET_HIGHSCORE);
-				statement.setInt(1, highscore);
-				statement.setInt(2, playerId);
-
-				System.out.println(statement.toString()); // loggen des Query
-
-				statement.closeOnCompletion(); // schliessen nach Ausf�hrung
-				statement.executeUpdate(); // ausf�hren
-				
-				player = getPlayer(playerId).getPlayer(); // Benutzer mit aktualisierter Highscore suchen
-				
+				// prüfen, ob neue Highscore höher ist
+				oldPlayer = getPlayer(playerId).getPlayer();
+				if (oldPlayer != null && oldPlayer.getHighscore() < highscore) {				
+					// Query vorbereiten
+					statement = getConnection().prepareStatement(QUERY_SET_HIGHSCORE);
+					statement.setInt(1, highscore);
+					statement.setInt(2, playerId);
+	
+					System.out.println(statement.toString()); // loggen des Query
+	
+					statement.closeOnCompletion(); // schliessen nach Ausf�hrung
+					statement.executeUpdate(); // ausf�hren
+					
+					player = getPlayer(playerId).getPlayer(); // Benutzer mit aktualisierter Highscore suchen
+				} else {
+					// gleiche Highscore wie vorher
+					player = new Player(oldPlayer);
+				}
 				message = new PlayerMessage(player, PlayerMessage.State.SUCCESS); // Highscore erfolgreich gesetzt 
 			} catch (SQLException e) {
 				sqlError(e);
