@@ -15,14 +15,15 @@ import CommonClasses.UserRegisterMessage;
 
 /**
  * Application Programming Interface (Schnittstelle)
+ * 
  * @author livio
  *
  */
-public interface ApiInterface {
+public interface Api {
 	
 	/**
 	 * Neuen Benutzer registrieren
-	 * @param register Message Objekt mit den gewünschten Benutzerdaten
+	 * @param register Message Objekt mit den gewï¿½nschten Benutzerdaten
 	 * @return Message Objekt mit dem Ergebnis des Registrationsversuches
 	 */
 	public RegisterSuccessMessage register(UserRegisterMessage register);
@@ -64,8 +65,8 @@ public interface ApiInterface {
 	
 	/**
 	 * 
-	 * @param orderBy Spalte nach der die Benutzer sortiert werden sollen (null für keine Sortierung)
-	 * @param limit Wie viel Benutzer maximal angezeigt werden sollen (-1 für alle) 
+	 * @param orderBy Spalte nach der die Benutzer sortiert werden sollen (null fï¿½r keine Sortierung)
+	 * @param limit Wie viel Benutzer maximal angezeigt werden sollen (-1 fï¿½r alle) 
 	 * @return
 	 */
 	public PlayersMessage getPlayers(String orderBy, boolean ascending, int limit);
