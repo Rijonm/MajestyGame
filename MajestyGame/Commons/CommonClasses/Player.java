@@ -1,12 +1,26 @@
 package CommonClasses;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
 
 	private int playerId;
 	private String username;
 	private String password;
 	private boolean online;
 	private int highscore;
+	
+	public Player() {
+		// empty constructor
+	}
+	
+	public Player(Player player) {
+		setPlayerId(player.getPlayerId());
+		setUsername(player.getUsername());
+		setPassword(player.getPassword());
+		setOnline(player.isOnline());
+		setHighscore(player.getHighscore());
+	}
 
 	public int getPlayerId() {
 		return playerId;
