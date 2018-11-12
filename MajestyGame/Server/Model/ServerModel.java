@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 
 public class ServerModel {
 	
+	
 	ServerSocket serverSocket;
 	Socket socket;
 	protected ObservableList<Client> clients = FXCollections.observableArrayList();
@@ -18,7 +19,6 @@ public class ServerModel {
 //	private Message actionToPerform;
 	
 	public ServerModel() {
-		
 	}
 	
 	public void serverStart(int port) {
