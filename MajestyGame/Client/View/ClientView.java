@@ -142,7 +142,7 @@ public class ClientView{
 		userPasswordRegister = new TextField("Password");
 		
 
-		registrierenArea.getChildren().addAll(registrierenBB, backFirstSceneB);
+		registrierenArea.getChildren().addAll(userNameRegister,userPasswordRegister,registrierenBB, backFirstSceneB);
 		
 		secondScene = new Scene(registrierenArea);
 		return secondScene;
@@ -212,7 +212,7 @@ public class ClientView{
 	/**
 	 * setSixthScene represents the settings scene
 	 * 
-	 * @return
+	 * @Author Yusuf
 	 */
 	public Scene setSixthScene() {
 		
@@ -230,7 +230,7 @@ public class ClientView{
 	/**
 	 * setSeventhScene represents the rules scene
 	 * 
-	 * @return
+	 * @Author Yusuf
 	 */
 	public Scene setSeventhScene() {
 		

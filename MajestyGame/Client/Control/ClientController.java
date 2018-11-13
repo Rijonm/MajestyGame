@@ -74,7 +74,8 @@ public class ClientController {
 						
 				//DB 
 						
-						
+				view.primaryStage.setScene(view.setThirdScene());
+				view.start();		
 			}
 		});
 		//--------------------------
