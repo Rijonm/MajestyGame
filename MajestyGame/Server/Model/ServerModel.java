@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import CommonClasses.Message;
+import db.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -18,7 +19,7 @@ public class ServerModel {
 //	private Message actionToPerform;
 	
 	public ServerModel() {
-		
+		Database db = new Database();
 	}
 	
 	public void serverStart(int port) {
