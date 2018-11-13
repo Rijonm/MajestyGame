@@ -21,7 +21,6 @@ public class CardSoldier extends Cards{
 		
 	}
 
-	//code by Mert Emek
 	
 	
 	
