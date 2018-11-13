@@ -19,7 +19,7 @@ import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserLogout;
 import CommonClasses.UserRegisterMessage;
-import api.ApiInterface;
+import api.Api;
 
 /**
  * https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-connect-drivermanager.html
@@ -27,11 +27,11 @@ import api.ApiInterface;
  * Falls ein Fehler mit der Zeitzone auftritt: default-time-zone im MySQL Config
  * File setzen
  * 
- * für Windows:
+ * fï¿½r Windows:
  * 
- * folgende Datei öffnen: "C:\ProgramData\MySQL\MySQL Server 5.7\my.ini"
+ * folgende Datei ï¿½ffnen: "C:\ProgramData\MySQL\MySQL Server 5.7\my.ini"
  * 
- * folgendes am Ende der Datei anfügen (Winterzeit: +01:00, Sommerzeit: +02:00):
+ * folgendes am Ende der Datei anfï¿½gen (Winterzeit: +01:00, Sommerzeit: +02:00):
  * default-time-zone='+01:00'
  * 
  * speichern und MySQL Service neu starten
@@ -39,7 +39,7 @@ import api.ApiInterface;
  * @author livio
  *
  */
-public class Database implements ApiInterface {
+public class Database implements Api {
 
 	private static final String DB_NAME = "majesty";
 	private static final String DB_USER = "majesty";
@@ -60,9 +60,9 @@ public class Database implements ApiInterface {
 	// Queries
 	// Registration
 	private static final String QUERY_REGISTER = "insert into " + TABLE_PLAYER // Tabelle 
-			+ " (" + COL_USERNAME + "," + COL_PASSWORD + ") " // zu füllende Felder
-			+ " values (?,?)"; // Werte für Felder
-	// Login prüfen
+			+ " (" + COL_USERNAME + "," + COL_PASSWORD + ") " // zu fï¿½llende Felder
+			+ " values (?,?)"; // Werte fï¿½r Felder
+	// Login prï¿½fen
 	private static final String QUERY_CHECK_LOGIN = "select * from " + TABLE_PLAYER // Tabelle
 			+ " where " + COL_USERNAME + " = ? and " + COL_PASSWORD + " = ?"; // nach Benutzername und Passwort suchen
 	// online setzen
@@ -89,7 +89,7 @@ public class Database implements ApiInterface {
 	private static Connection connection;
 
 	/**
-	 * für das Testen der Klassen Funktionen
+	 * fï¿½r das Testen der Klassen Funktionen
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -121,6 +121,14 @@ public class Database implements ApiInterface {
 		for (Player player : players) {
 			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
 		}
+		
+		// Highscore setzen
+		Player oldHighscorePlayer = db.setHighscore(1, 100).getPlayer();
+		Player newHighscorePlayer = db.setHighscore(1, 101).getPlayer();
+		Player newestHighscorePlayer = db.setHighscore(1, 99).getPlayer();
+		System.out.println("first highscore 100: " + oldHighscorePlayer.getHighscore());
+		System.out.println("second highscore 101: " + newHighscorePlayer.getHighscore());
+		System.out.println("third highscore 99: " + newestHighscorePlayer.getHighscore());
 	}
 
 	/**
@@ -132,22 +140,22 @@ public class Database implements ApiInterface {
 	 * @throws SQLException 
 	 */
 	private static void init() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); // erstellt Instanz von der Library Klasse für den Datenbank Treiber
-		connection = DriverManager.getConnection(CONNECTION_URL); // öffnet Verbindung zur Datenbank über die URL mit dem Benutzer und Passwort
+		Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); // erstellt Instanz von der Library Klasse fï¿½r den Datenbank Treiber
+		connection = DriverManager.getConnection(CONNECTION_URL); // ï¿½ffnet Verbindung zur Datenbank ï¿½ber die URL mit dem Benutzer und Passwort
 		System.out.println("database init");
 	}
 
 	/**
-	 * Falls die Datenbank-Verbindung nicht initialisiert oder geschlossen wurde, wird diese initialisiert und anschliessend zurückgegeben.
+	 * Falls die Datenbank-Verbindung nicht initialisiert oder geschlossen wurde, wird diese initialisiert und anschliessend zurï¿½ckgegeben.
 	 * 
-	 * @return Verbindung für Datenbank Interaktionen
+	 * @return Verbindung fï¿½r Datenbank Interaktionen
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 * @throws ClassNotFoundException
 	 * @throws SQLException Verbindung zur Datenbank konnte nicht hergestellt werden
 	 */
 	public static Connection getConnection() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		// prüfen ob Verbindung schon erstellt (singleton)
+		// prï¿½fen ob Verbindung schon erstellt (singleton)
 		if (connection == null || connection.isClosed()) {
 			init();
 		}
@@ -173,8 +181,8 @@ public class Database implements ApiInterface {
 				
 				System.out.println(statement.toString()); // loggen des Query
 				
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				statement.executeUpdate(); // ausführen 
+				statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+				statement.executeUpdate(); // ausfï¿½hren 
 				
 				message = new RegisterSuccessMessage(RegisterSuccessMessage.State.SUCCESS); // erfolgreich registriert
 			} catch (SQLException e) {
@@ -208,8 +216,8 @@ public class Database implements ApiInterface {
 				
 				System.out.println(statement.toString()); // loggen des Query
 
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				result = statement.executeQuery(); // ausführen
+				statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+				result = statement.executeQuery(); // ausfï¿½hren
 
 				// wurde eine Benutzername/Passwort Kombination gefunden?
 				// gefunden
@@ -223,23 +231,23 @@ public class Database implements ApiInterface {
 
 					System.out.println(statement.toString()); // loggen des Query
 
-					statement.closeOnCompletion(); // schliessen nach Ausführung
-					statement.executeUpdate(); // ausführen
+					statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+					statement.executeUpdate(); // ausfï¿½hren
 					
-					message = new LoginSuccessMessage(true, LoginSuccessMessage.State.SUCCESS); // erfolgreich eingeloggt
+					message = new LoginSuccessMessage(LoginSuccessMessage.State.SUCCESS); // erfolgreich eingeloggt
 				}
 				// nicht gefunden
 				else {
-					message = new LoginSuccessMessage(false, LoginSuccessMessage.State.WRONG_LOGIN); // falsche Login Daten
+					message = new LoginSuccessMessage(LoginSuccessMessage.State.WRONG_LOGIN); // falsche Login Daten
 				}
 			} catch (SQLException e) {
 				sqlError(e);
-				message = new LoginSuccessMessage(false, LoginSuccessMessage.State.FAILURE); // konnte Query nicht ausführen
+				message = new LoginSuccessMessage(LoginSuccessMessage.State.FAILURE); // konnte Query nicht ausfï¿½hren
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} catch (Exception e) {
-			message = new LoginSuccessMessage(false, LoginSuccessMessage.State.COULD_NOT_CONNECT); // Datenbank Verbindung fehlgeschlagen
+			message = new LoginSuccessMessage(LoginSuccessMessage.State.COULD_NOT_CONNECT); // Datenbank Verbindung fehlgeschlagen
 		}
 		return message;
 	}
@@ -262,8 +270,8 @@ public class Database implements ApiInterface {
 
 				System.out.println(statement.toString()); // loggen des Query
 
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				statement.executeUpdate(); // ausführen
+				statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+				statement.executeUpdate(); // ausfï¿½hren
 				
 				message = new LogoutMessage(LogoutMessage.State.SUCCESS); // erfolgreich ausgeloggt
 			} catch (SQLException e) {
@@ -297,8 +305,8 @@ public class Database implements ApiInterface {
 				
 				System.out.println(statement.toString()); // loggen des Query
 
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				result = statement.executeQuery(); // ausführen
+				statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+				result = statement.executeQuery(); // ausfï¿½hren
 				
 				players = resultSetToPlayerList(result); // SQL Resultat zu Benutzer Liste
 				
@@ -336,8 +344,8 @@ public class Database implements ApiInterface {
 				
 				System.out.println(statement.toString()); // loggen des Query
 
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				result = statement.executeQuery(); // ausführen
+				statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+				result = statement.executeQuery(); // ausfï¿½hren
 				
 				// wurde ein Benutzer mit gegebener ID gefunden?
 				// gefunden
@@ -354,7 +362,7 @@ public class Database implements ApiInterface {
 				}
 			} catch (SQLException e) {
 				sqlError(e);
-				message = new PlayerMessage(null, PlayerMessage.State.FAILURE); // konnte Query nicht ausführen
+				message = new PlayerMessage(null, PlayerMessage.State.FAILURE); // konnte Query nicht ausfï¿½hren
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -369,29 +377,36 @@ public class Database implements ApiInterface {
 		System.out.println("setHighscore");
 		PlayerMessage message = null;
 		PreparedStatement statement = null;
-		Player player = null;		
+		Player oldPlayer = null;
+		Player player = null;
 		
 		// Verbidungs Test
 		try {
 			getConnection();
 			// insert
 			try {
-				// Query vorbereiten
-				statement = getConnection().prepareStatement(QUERY_SET_HIGHSCORE);
-				statement.setInt(1, highscore);
-				statement.setInt(2, playerId);
-
-				System.out.println(statement.toString()); // loggen des Query
-
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				statement.executeUpdate(); // ausführen
-				
-				player = getPlayer(playerId).getPlayer(); // Benutzer mit aktualisierter Highscore suchen
-				
+				// prÃ¼fen, ob neue Highscore hÃ¶her ist
+				oldPlayer = getPlayer(playerId).getPlayer();
+				if (oldPlayer != null && oldPlayer.getHighscore() < highscore) {				
+					// Query vorbereiten
+					statement = getConnection().prepareStatement(QUERY_SET_HIGHSCORE);
+					statement.setInt(1, highscore);
+					statement.setInt(2, playerId);
+	
+					System.out.println(statement.toString()); // loggen des Query
+	
+					statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+					statement.executeUpdate(); // ausfï¿½hren
+					
+					player = getPlayer(playerId).getPlayer(); // Benutzer mit aktualisierter Highscore suchen
+				} else {
+					// gleiche Highscore wie vorher
+					player = new Player(oldPlayer);
+				}
 				message = new PlayerMessage(player, PlayerMessage.State.SUCCESS); // Highscore erfolgreich gesetzt 
 			} catch (SQLException e) {
 				sqlError(e);
-				message = new PlayerMessage(null, PlayerMessage.State.FAILURE); // konnte Query nicht ausführen
+				message = new PlayerMessage(null, PlayerMessage.State.FAILURE); // konnte Query nicht ausfï¿½hren
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -427,8 +442,8 @@ public class Database implements ApiInterface {
 
 				System.out.println(statement.toString()); // loggen des Query
 				
-				statement.closeOnCompletion(); // schliessen nach Ausführung
-				result = statement.executeQuery(); // ausführen
+				statement.closeOnCompletion(); // schliessen nach Ausfï¿½hrung
+				result = statement.executeQuery(); // ausfï¿½hren
 				
 				players = resultSetToPlayerList(result); // gefundene Benutzer in Benutzer Liste umwandeln
 				
@@ -437,7 +452,7 @@ public class Database implements ApiInterface {
 				message = new PlayersMessage(players, PlayersMessage.State.SUCCESS); // Benutzer erfolgreich ausgelesen
 			} catch (SQLException e) {
 				
-				message = new PlayersMessage(null, PlayersMessage.State.FAILURE); // konnte Query nicht ausführen
+				message = new PlayersMessage(null, PlayersMessage.State.FAILURE); // konnte Query nicht ausfï¿½hren
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -489,14 +504,13 @@ public class Database implements ApiInterface {
 	 */
 	private List<Player> resultSetToPlayerList(ResultSet result) {
 		List<Player> players = new LinkedList<>();
-		Player player;
 		
 		try {
 			// Kursor vor die erste Zeile setzen
 			result.beforeFirst();
 			// alle Resultate Reihen durchgehen
 			while (result.next()) {				
-				players.add(resultSetToPlayer(result)); // Benutzer der Liste hinzufügen
+				players.add(resultSetToPlayer(result)); // Benutzer der Liste hinzufï¿½gen
 			}
 		} catch (SQLException e) {
 			sqlError(e);

@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="MajestyGame/Client"/>
 	<classpathentry kind="src" path="MajestyGame/Commons"/>
 	<classpathentry kind="src" path="MajestyGame/Server"/>
+	<classpathentry kind="src" path="MajestyGame/Database"/>
+	<classpathentry kind="src" path="MajestyGame/Test"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
