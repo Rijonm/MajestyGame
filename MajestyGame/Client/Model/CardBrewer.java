@@ -2,7 +2,7 @@ package Model;
 
 public class CardBrewer extends Cards{
 	
-	//code by Mert Emek
+	//@author Mert Emek
 
 	public CardBrewer(String CardName) {
 		super(CardName);

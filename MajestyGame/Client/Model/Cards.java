@@ -2,7 +2,7 @@ package Model;
 
 public abstract class Cards {
 	
-	//code by Mert Emek
+	//@author Mert Emek
 	
 	int CardID;
 	String CardName = null;

@@ -2,7 +2,7 @@ package Model;
 
 public class CardQueen extends Cards{
 	
-	//code by Mert Emek
+	//@author Mert Emek
 
 	public CardQueen(String CardName) {
 		super(CardName);

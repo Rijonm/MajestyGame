@@ -2,7 +2,7 @@ package Model;
 
 public class CardDefense extends Cards{
 	
-	//code by Mert Emek
+	//@author Mert Emek
 
 	public CardDefense(String CardName) {
 		super(CardName);

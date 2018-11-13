@@ -2,8 +2,8 @@ package Model;
 
 public class CardFarmer extends Cards{
 	
-	//code by Mert Emek
-
+	//@author Mert Emek
+	
 	public CardFarmer(String CardName) {
 		super(CardName);
 		// TODO Auto-generated constructor stub
