@@ -1,0 +1,61 @@
+.connectPane{
+	-fx-background-color: black
+}
+.connectButton {
+	-fx-background-color: #009933;
+	-fx-text-fill: white;	
+}
+
+.buildingCard{
+	-fx-padding: 137 80;
+	-fx-text-fill: transparent;
+	-fx-background-size: cover;	
+}
+.gameButtons{
+	-fx-padding: 162 100;
+	-fx-text-fill: transparent;
+	-fx-background-size: cover;
+}
+
+.gameButtonFirst{
+	-fx-background-image: url(/images/characterCard_Farmer.jpg);	
+}
+.gameButtonSecond{
+	-fx-background-image: url(/images/characterCard_Brewer.jpg);	
+}
+.gameButtonThird{
+	-fx-background-image: url(/images/characterCard_Queen.jpg);
+}
+.gameButtonFourth{
+	-fx-background-image: url(/images/characterCard_Host.jpg);	
+}
+.gameButtonFifth{
+	-fx-background-image: url(/images/characterCard_Soldier.jpg);	
+}
+.gameButtonSixth{
+	-fx-background-image: url(/images/characterCard_Witch.jpg);	
+}
+.bd1{
+	-fx-background-image: url(/images/bdC1.jpg);		
+}
+.bd2{
+	-fx-background-image: url(/images/bdC2.jpg);		
+}
+.bd3{
+	-fx-background-image: url(/images/bdC3.jpg);		
+}
+.bd4{
+	-fx-background-image: url(/images/bdC4.jpg);		
+}
+.bd5{
+	-fx-background-image: url(/images/bdC5.jpg);		
+}
+.bd6{
+	-fx-background-image: url(/images/bdC6.jpg);		
+}
+.bd7{
+	-fx-background-image: url(/images/bdC7.jpg);		
+}
+.bd8{
+	-fx-background-image: url(/images/bdC8.jpg);		
+}

@@ -94,14 +94,20 @@ public class ClientView{
 		this.model = model;
 		
 		connectB = new Button("Connect");
+		connectB.getStyleClass().add("connectButton");
 		ip = new TextField("IP");
 		port = new TextField("Port");
 		
 		connectPane = new VBox();
 		connectPane.getChildren().addAll(ip, port, connectB);
+		connectPane.getStyleClass().add("connectPane");
+		connectPane.setMinHeight(30.0);
+		connectPane.setMinWidth(30.0);
+
 		connectScene = new Scene(connectPane);
-		
+		connectScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		primaryStage.setScene(connectScene);	
+		
 	}
 	
 	// loginScene
@@ -198,11 +204,61 @@ public class ClientView{
 		
 		gameArea = new BorderPane();
 		cardButtonsBox = new HBox();
-
+		b1.getStyleClass().addAll("gameButtonFirst", "gameButtons");
+		b2.getStyleClass().addAll("gameButtonSecond", "gameButtons");
+		b3.getStyleClass().addAll("gameButtonThird", "gameButtons");
+		b4.getStyleClass().addAll("gameButtonFourth", "gameButtons");
+		b5.getStyleClass().addAll("gameButtonFifth", "gameButtons");
+		b6.getStyleClass().addAll("gameButtonSixth", "gameButtons");
+		
+		HBox buildingsPlayer1 = new HBox(); 
+		Label buildingCard1 = new Label();
+		buildingCard1.getStyleClass().addAll("bd1", "buildingCard");
+		Label buildingCard2 = new Label();
+		buildingCard2.getStyleClass().addAll("bd2", "buildingCard");		
+		Label buildingCard3 = new Label();
+		buildingCard3.getStyleClass().addAll("bd3", "buildingCard");		
+		Label buildingCard4 = new Label();
+		buildingCard4.getStyleClass().addAll("bd4", "buildingCard");
+		Label buildingCard5 = new Label();
+		buildingCard5.getStyleClass().addAll("bd5", "buildingCard");
+		Label buildingCard6 = new Label();
+		buildingCard6.getStyleClass().addAll("bd6", "buildingCard");		
+		Label buildingCard7 = new Label();
+		buildingCard7.getStyleClass().addAll("bd7", "buildingCard");		
+		Label buildingCard8 = new Label();
+		buildingCard8.getStyleClass().addAll("bd8", "buildingCard");		
+		
+		HBox buildingsPlayer2 = new HBox(); 
+		Label buildingCard12 = new Label();
+		buildingCard12.getStyleClass().addAll("bd1", "buildingCard");
+		Label buildingCard22 = new Label();
+		buildingCard22.getStyleClass().addAll("bd2", "buildingCard");		
+		Label buildingCard32 = new Label();
+		buildingCard32.getStyleClass().addAll("bd3", "buildingCard");		
+		Label buildingCard42 = new Label();
+		buildingCard42.getStyleClass().addAll("bd4", "buildingCard");
+		Label buildingCard52 = new Label();
+		buildingCard52.getStyleClass().addAll("bd5", "buildingCard");
+		Label buildingCard62 = new Label();
+		buildingCard62.getStyleClass().addAll("bd6", "buildingCard");		
+		Label buildingCard72 = new Label();
+		buildingCard72.getStyleClass().addAll("bd7", "buildingCard");		
+		Label buildingCard82 = new Label();
+		buildingCard82.getStyleClass().addAll("bd8", "buildingCard");
+		
+		
+		buildingsPlayer1.getChildren().addAll(buildingCard1,buildingCard2,buildingCard3,buildingCard4,buildingCard5,buildingCard6,buildingCard7,buildingCard8);
+		buildingsPlayer2.getChildren().addAll(buildingCard12,buildingCard22,buildingCard32,buildingCard42,buildingCard52,buildingCard62,buildingCard72,buildingCard82);
 		cardButtonsBox.getChildren().addAll(b1, b2, b3, b4, b5, b6);
+		
 		gameArea.setCenter(cardButtonsBox);
+		gameArea.setTop(buildingsPlayer2);
+		gameArea.setBottom(buildingsPlayer1);
+		
 		
 		fifthScene = new Scene(gameArea);
+		fifthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		return fifthScene;
 	}
