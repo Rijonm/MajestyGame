@@ -33,7 +33,7 @@ public class ClientController {
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
-				model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				view.primaryStage.setScene(view.setThirdScene());
 				view.start();
 				
