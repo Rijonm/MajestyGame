@@ -4,14 +4,25 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
 import CommonClasses.MessageType;
+import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
+import CommonClasses.UserRegisterMessage;
 import javafx.application.Platform;
-
+import javafx.beans.property.SimpleStringProperty;
+/**
+ * Die Klasse ClientModel handelt alle eingehenden sowie ausgehenden Messages, die durch den User durch interaktion ausgelöst wurden.
+ * 
+ * @author rijon
+ *
+ */
 public class ClientModel {
 	
 	public Socket socket;
+	public SimpleStringProperty registerSuccessString = new SimpleStringProperty();
+	public SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public ClientModel() {
 		
 	}
@@ -28,14 +39,18 @@ public class ClientModel {
 						try {
 							Message msg = Message.receive(socket);
 							
+							//FERTIG
 							if(msg.getMessageType() == MessageType.RegisterSuccessMessage) {
 								Platform.runLater(() ->{
 								receivedRegisterSuccessMessage(msg);
+								System.out.println("RegisterSuccessMessage");
 								});
 							}
+							//FERTIG
 							if(msg.getMessageType() == MessageType.LoginSuccessMessage) {
 								Platform.runLater(() ->{
 								receivedLoginSuccessMessage(msg);
+								System.out.println("LoginSuccessMessage");
 								});
 							}
 							if(msg.getMessageType() == MessageType.LobbyInformationMessage) {
@@ -112,18 +127,27 @@ public class ClientModel {
 	}
 
 	protected void receivedLoginSuccessMessage(Message msg) {
-		// TODO Auto-generated method stub
+		LoginSuccessMessage lsm =(LoginSuccessMessage) msg;
+		loginSuccessString.set("");
+		loginSuccessString.set(lsm.getState().toString());
+		
 		
 	}
 
 	protected void receivedRegisterSuccessMessage(Message msg) {
-		// TODO Auto-generated method stub
-		
+		RegisterSuccessMessage rsm = (RegisterSuccessMessage) msg;
+		registerSuccessString.set("");
+		registerSuccessString.set((String)rsm.getState().toString());
 	}
-
+	
+	/**
+	*Schickt eine UserRegisterMessage an den Server, nachdem "Registireren" angeklickt wurde.
+	*
+	*@author Rijon
+	*/
 	public void sendUserRegisterMessage(String username, String passwort) {
-		
-		
+		Message registerMessage = new UserRegisterMessage(username, passwort);
+		Message.send(this.socket, registerMessage);
 	}
 	
 	public void sendUserLoginMessage(String username, String passwort) {

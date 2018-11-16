@@ -5,6 +5,9 @@ import CommonClasses.Message;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -29,13 +32,67 @@ public class ClientController {
 			}
 		});
 		
+		/**
+		 * Wird aktiviert, sobald eine registerSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * 
+		 * @author Rijon
+		 */
+		//TODO
+		model.registerSuccessString.addListener(c -> {
+			System.out.println(c);
+			view.registrierenBB.setText(c.toString());
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+			
+			}
+			//REGISTER SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				
+			}
+			//PLAYER ALLREADY EXIST
+			if(c.toString().contains("EXIST")) {
+				
+			}
+		});
+		
+		/**
+		 * Wird aktiviert, sobald eine loginSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * 
+		 * @author Rijon
+		 */
+		
+		model.loginSuccessString.addListener(c -> {
+			System.out.println(c);
+			
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("WRONG")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("FAILURE")) {
+				
+			}
+			//LOGIN SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				view.primaryStage.setScene(view.setThirdScene());
+				view.start();
+			}
+		});
+	
+		
 		//loginScene buttons
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
+				
 				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				
 				view.primaryStage.setScene(view.setThirdScene());
-				view.start();
+				
 				
 				
 			}
@@ -46,9 +103,9 @@ public class ClientController {
 		view.registrierenB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-				
+			
 				view.primaryStage.setScene(view.setSecondScene());
-				view.start();
+				
 				
 			}
 		});
@@ -60,7 +117,8 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				
-				view.primaryStage.setScene(view.firstScene);
+				view.primaryStage.setScene(view.setFirstScene());
+				
 			}
 		});
 		
@@ -69,10 +127,11 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 						
-				//DB 
+				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				
 						
 				view.primaryStage.setScene(view.setThirdScene());
-				view.start();		
+						
 			}
 		});
 		//--------------------------
@@ -123,7 +182,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 			
-				view.primaryStage.setScene(view.firstScene);
+				view.primaryStage.setScene(view.setFirstScene());
 								
 			}
 		});

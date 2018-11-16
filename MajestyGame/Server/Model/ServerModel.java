@@ -5,21 +5,23 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import CommonClasses.Message;
+import db.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class ServerModel {
 	
 	
-	ServerSocket serverSocket;
-	Socket socket;
+	public ServerSocket serverSocket;
+	public Socket socket;
 	protected ObservableList<Client> clients = FXCollections.observableArrayList();
+	public Database db;
 	
 //	private Game game;
 //	private Message actionToPerform;
 	
 	public ServerModel() {
-
+		db = new Database();
 	}
 	
 	public void serverStart(int port) {
