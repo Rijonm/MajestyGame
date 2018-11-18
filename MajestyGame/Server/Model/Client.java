@@ -66,6 +66,7 @@ public class Client implements Serializable {
 							for(PlayerOnline p : model.playeronline)
 								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
 									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
+									break;
 								}
 							model.startGame();
 						}
