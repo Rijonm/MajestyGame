@@ -6,13 +6,15 @@ import java.util.ArrayList;
 public class Game implements Serializable {
 	
 	private ArrayList<PlayerInGame> players;
-	private ArrayList<EnumCard> deck;
+	private Deck deck;
+	private ServerModel model;
 	
-	
+	public Game(ServerModel model) {
+		this.model = model;
+	}
 
 
 	public void evaluate() {
-		
 		
 	
 	}

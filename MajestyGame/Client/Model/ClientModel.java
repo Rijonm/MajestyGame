@@ -4,14 +4,22 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import CommonClasses.ChatMessage;
+import CommonClasses.GameStartMessage;
+import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
 import CommonClasses.MessageType;
+import CommonClasses.Player;
+import CommonClasses.PlayerMoveMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserRegisterMessage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 /**
  * Die Klasse ClientModel handelt alle eingehenden sowie ausgehenden Messages, die durch den User durch interaktion ausgelöst wurden.
  * 
@@ -21,8 +29,12 @@ import javafx.beans.property.SimpleStringProperty;
 public class ClientModel {
 	
 	public Socket socket;
-	public SimpleStringProperty registerSuccessString = new SimpleStringProperty();
-	public SimpleStringProperty loginSuccessString = new SimpleStringProperty();
+	private SimpleStringProperty registerSuccessString = new SimpleStringProperty();
+	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
+	private ObservableList<Player> lobbyPlayers = FXCollections.observableArrayList();
+	private ObservableList<Integer> firstSixCards = FXCollections.observableArrayList();
+	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
+	
 	public ClientModel() {
 		
 	}
@@ -53,9 +65,9 @@ public class ClientModel {
 								System.out.println("LoginSuccessMessage");
 								});
 							}
-							if(msg.getMessageType() == MessageType.LobbyInformationMessage) {
+							if(msg.getMessageType() == MessageType.LoggedInPlayers) {
 								Platform.runLater(() ->{
-								receivedLobbyInformationMessage(msg);
+								receivedLoggedInPlayersMessage(msg);
 								});
 							}
 							if(msg.getMessageType() == MessageType.FirstSixCardsMessage) {
@@ -120,12 +132,28 @@ public class ClientModel {
 		// TODO Auto-generated method stub
 		
 	}
-
-	protected void receivedLobbyInformationMessage(Message msg) {
-		// TODO Auto-generated method stub
+	
+	/*
+	 * Alle Spieler die online sind werden in der ObservableList eingefügt.
+	 * 
+	 * @author Rijon
+	 */
+	protected void receivedLoggedInPlayersMessage(Message msg) {
+		//Leert lobbyPlayers um die Liste zu aktualisieren
+		if(!lobbyPlayers.isEmpty()) 
+			for(Player c : lobbyPlayers) {
+				lobbyPlayers.remove(c);
+		}
+		LoggedInPlayers lip = (LoggedInPlayers) msg;
+		for(Player c : lip.getPlayers()) {
+			lobbyPlayers.add(c);
+		}
 		
 	}
-
+	/**
+	 * Wenn eine RegisterSuccessMessage eintrifft, wird der Status in die ObervableList eingefügt und durch die addlistenermethode im Controller im View dem Client angezeigt.
+	 * @param msg
+	 */
 	protected void receivedLoginSuccessMessage(Message msg) {
 		LoginSuccessMessage lsm =(LoginSuccessMessage) msg;
 		loginSuccessString.set("");
@@ -133,7 +161,10 @@ public class ClientModel {
 		
 		
 	}
-
+	/**
+	 * Wenn eine RegisterSuccessMessage eintrifft, wird der Status in die ObervableList eingefügt und durch die addlistenermethode im Controller im View dem Client angezeigt.
+	 * @param msg
+	 */
 	protected void receivedRegisterSuccessMessage(Message msg) {
 		RegisterSuccessMessage rsm = (RegisterSuccessMessage) msg;
 		registerSuccessString.set("");
@@ -144,30 +175,77 @@ public class ClientModel {
 	*Schickt eine UserRegisterMessage an den Server, nachdem "Registireren" angeklickt wurde.
 	*
 	*@author Rijon
+	*@param username
+	*@param passwort
 	*/
 	public void sendUserRegisterMessage(String username, String passwort) {
 		Message registerMessage = new UserRegisterMessage(username, passwort);
 		Message.send(this.socket, registerMessage);
 	}
-	
+	/**
+	 * Schickt eine UserLoginMessage an den Server, nachdem "Login" angelickt wurde.
+	 * 
+	 * @author Rijon
+	 * @param username
+	 * @param passwort
+	 */
 	public void sendUserLoginMessage(String username, String passwort) {
 		Message loginMessage = new UserLoginMessage(username, passwort);
 		Message.send(this.socket, loginMessage);
 	}
-	
-	public void sendGameStartMessage() {
-		
+	/**
+	 * Schickt eine GameStartMessage an den Server, nachdem der Gegenspieler ausgewählt wurde.
+	 * 
+	 * @author Rijon
+	 * @TODO Mehrere Spieler
+	 * @param name
+	 */
+	public void sendGameStartMessage(String name) {
+		Message gameStartMessage = new GameStartMessage(name);
+		Message.send(this.socket, gameStartMessage);
 	}
 	
-	public void sendPlayerMoveMessage() {
-		
+	/**
+	 * Schickt eine PlayerMoveMessage an den Server, nachdem ein Spielzug getätigt wurde.
+	 * 
+	 * @author Rijon
+	 * @param i
+	 */
+	public void sendPlayerMoveMessage(int i) {
+		Message playerMoveMessage = new PlayerMoveMessage(i);
+		Message.send(this.socket, playerMoveMessage);
 	}
 	
-	public void sendChatMessage() {
-		
+	/**
+	 * Schickt eine ChatMessage an den Server, nachdem jemand im Chat auf "Senden" klickt.
+	 * 
+	 * @author Rijon
+	 * @param name
+	 * @param message
+	 */
+	public void sendChatMessage(String name, String message) {
+		Message chatMessage = new ChatMessage(name, message);
+		Message.send(this.socket, chatMessage);
 	}
 	
 	public void disconnect() {
 		
 	}
+	//Addlistener in controll for lobby
+	public ObservableList<Player> getOnlinePlayers() {
+		return lobbyPlayers;
+	}
+	//Addlistener in controll for game
+	public ObservableList<Integer> getFirstSixCards() {
+		return firstSixCards;
+	}
+	//Addlistner in controll for registerinfo
+	public SimpleStringProperty getRegisterSuccess() {
+		return registerSuccessString;
+	}
+	//Addlistener in contoll for logininfo
+	public SimpleStringProperty getLoginSuccess() {
+		return loginSuccessString;
+	}
+	
 }

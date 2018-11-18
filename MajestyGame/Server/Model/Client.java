@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.Socket;
 
+import CommonClasses.GameStartMessage;
 import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
@@ -24,16 +25,15 @@ import CommonClasses.LoginSuccessMessage.State;
 public class Client implements Serializable {
 	
 	private ServerModel model;
-	private Socket socket;
+	public Socket socket;
 	private UserRegisterMessage registerMessage;
 	private UserLoginMessage loginMessage;
 	private LoggedInPlayers loggedInPlayersMessage;
+	private GameStartMessage gameStartMessage;
 
     private int id;
-    
-    private String userName;
+    private String username;
     private String password;
-    private Hand hand;
     
     private int points;
     
@@ -47,31 +47,42 @@ public class Client implements Serializable {
 					try {
 						
 						Message msg = Message.receive(socket);
-						
+						// REGISTRIEREN
 						if(msg.getMessageType() == MessageType.UserRegisterMessage) {
 							registerMessage = (UserRegisterMessage) msg;
 							registerResponse(registerRequest(registerMessage));
 						}
+						// EINLOGGEN
 						if (msg.getMessageType() == MessageType.UserLoginMessage) {
 							loginMessage = (UserLoginMessage) msg;
 							loginResponse(loginRequest(loginMessage));
 							//Player muss hier instanziiert werden.
 						}
 						
+						// GAME STARTEN
+						if(msg.getMessageType() == MessageType.GameStartMessage) {
+							gameStartMessage = (GameStartMessage) msg;
+							model.playeringame.add(new PlayerInGame(model, socket, id, username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
+							for(PlayerOnline p : model.playeronline)
+								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
+									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
+								}
+							model.startGame();
+						}
+						// IM SPIEL
+						if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
+							
+						}
+						// CHAT
+						if(msg.getMessageType() == MessageType.ChatMessage) {
+							
+						}
 						
+						// AUSLOGGEN
 						if(msg.getMessageType() == MessageType.UserLogout) {
 							loggedInPlayersMessage = (LoggedInPlayers) msg;
 							logoutRequest();
 							logoutResponse();
-						}
-						if(msg.getMessageType() == MessageType.GameStartMessage) {
-							
-						}
-						if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
-							
-						}
-						if(msg.getMessageType() == MessageType.ChatMessage) {
-							
 						}
 						
 						
@@ -89,7 +100,9 @@ public class Client implements Serializable {
 		t.start();
     	
     }
-    /**
+    
+    
+	/**
      * User wird in der DB registriert und gibt einen Status mithilfe der RegisterSuccessMessage zurück.
      */
     protected RegisterSuccessMessage registerRequest(UserRegisterMessage message) {
@@ -101,19 +114,42 @@ public class Client implements Serializable {
 	public void registerResponse(RegisterSuccessMessage message) {
     		Message.send(this.socket, message);
     }
-	
+	/**
+	 * Handelt den eingehenden Loginrequest, indem in der DB nachschaut wird.
+	 * @param message
+	 * @return
+	 */
 	protected LoginSuccessMessage loginRequest(UserLoginMessage message) {
 		return model.db.login(message);
 	}
     
 	/**
 	 * Sendet Login-Antwort an Client.
+	 * Speichert ID, falls Anmeldung erfolgreich war und fügt Spieler in die ObservableList PlayerOnline.
 	 * 
 	 * @author Rijon
 	 * @param message
 	 */
     public void loginResponse(LoginSuccessMessage message) {
-    		Message.send(this.socket, message);
+    		Message.send(this.socket, message);	
+    		if(message.getState() == LoginSuccessMessage.State.SUCCESS) {
+    			id = message.getId();
+    			username = loginMessage.getUsername();
+    			model.playeronline.add(new PlayerOnline(model, socket, id, username));
+    			sendLoggedInPlayers();
+    		}
+    		
+    		
+    }
+    /*
+     * Sendet beim erfolgreichen einloggen die LobbyInofrmationMessage an alle eingeloggten Spieler.
+     * Wird von loginResponse aufgerufen.
+     * 
+     * @author Rijon
+     */
+    public void sendLoggedInPlayers() {
+    		LoggedInPlayers message = model.db.getLoggedInPlayers();
+    		model.broadcastToOnlinePlayers(message);
     }
     
     protected void logoutRequest() {
@@ -125,6 +161,18 @@ public class Client implements Serializable {
 		// TODO Auto-generated method stub
 		
 	}
+    
+    public void send(Message message) {
+    		Message.send(this.socket, message);
+    }
+    
+    public ServerModel getModel() {
+    		return this.model;
+    }
+    
+    public Socket getSocket() {
+    		return this.socket;
+    }
 
 	
 }

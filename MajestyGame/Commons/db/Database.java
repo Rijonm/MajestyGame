@@ -234,7 +234,7 @@ public class Database implements Api {
 					statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 					statement.executeUpdate(); // ausf�hren
 					
-					message = new LoginSuccessMessage(LoginSuccessMessage.State.SUCCESS); // erfolgreich eingeloggt
+					message = new LoginSuccessMessage(LoginSuccessMessage.State.SUCCESS, playerId); // erfolgreich eingeloggt
 				}
 				// nicht gefunden
 				else {
@@ -267,7 +267,7 @@ public class Database implements Api {
 				statement = getConnection().prepareStatement(QUERY_SET_ONLINE);
 				statement.setObject(1, 0, Types.TINYINT);
 				statement.setInt(2, logout.getPlayerId()); // WICHTIG! es kann auch ein nicht existierender (playerId) Benutzer ausgeloggt werden! Kein Fehler!
-
+				
 				System.out.println(statement.toString()); // loggen des Query
 
 				statement.closeOnCompletion(); // schliessen nach Ausf�hrung

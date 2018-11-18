@@ -1,6 +1,9 @@
 package Control;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import CommonClasses.Message;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
@@ -16,17 +19,23 @@ public class ClientController {
 	
 	public ClientModel model;
 	public ClientView view;
-
+	private Map<Integer, String> imgurl = new HashMap();
 	public ClientController(ClientModel model, ClientView view) {
 		this.model = model;
 		this.view = view;
+		imgurl.put(0, "url");
+		imgurl.put(1, "");
+		imgurl.put(2, "");
+		imgurl.put(3, "");
+		imgurl.put(4, "");
+		imgurl.put(5, "");
 		
 		view.connectB.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
 				
+				model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.primaryStage.setScene(view.setFirstScene());
-				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.start();
 				
 			}
@@ -38,7 +47,7 @@ public class ClientController {
 		 * @author Rijon
 		 */
 		//TODO
-		model.registerSuccessString.addListener(c -> {
+		model.getRegisterSuccess().addListener(c -> {
 			System.out.println(c);
 			view.registrierenBB.setText(c.toString());
 			//COULD NOT CONNECT
@@ -55,13 +64,14 @@ public class ClientController {
 			}
 		});
 		
+		
 		/**
 		 * Wird aktiviert, sobald eine loginSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
 		 * 
 		 * @author Rijon
 		 */
 		
-		model.loginSuccessString.addListener(c -> {
+		model.getLoginSuccess().addListener(c -> {
 			System.out.println(c);
 			
 			//COULD NOT CONNECT
@@ -88,7 +98,7 @@ public class ClientController {
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
-				
+				//ACTIVATE
 				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
@@ -140,7 +150,11 @@ public class ClientController {
 		view.spielstartenB.setOnAction(new EventHandler<ActionEvent> (){
 							
 			public void handle(ActionEvent event) {
-			
+				/*
+				 * 
+				 * @Yusuf Lobby muss noch gemacht werden, dann kann spieler wählen mit wem er spielen möchte namen als parameter
+				 */
+				//model.sendGameStartMessage(getName);
 				view.primaryStage.setScene(view.setFifthScene());
 						
 								
