@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.Socket;
 
+import CommonClasses.ChatMessage;
 import CommonClasses.GameStartMessage;
 import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
@@ -30,6 +31,7 @@ public class Client implements Serializable {
 	private UserLoginMessage loginMessage;
 	private LoggedInPlayers loggedInPlayersMessage;
 	private GameStartMessage gameStartMessage;
+	private ChatMessage chatMessage;
 
     private int id;
     private String username;
@@ -76,7 +78,8 @@ public class Client implements Serializable {
 						}
 						// CHAT
 						if(msg.getMessageType() == MessageType.ChatMessage) {
-							
+							chatMessage = (ChatMessage) msg;
+							model.broadcastToOnlinePlayers(chatMessage);
 						}
 						
 						// AUSLOGGEN

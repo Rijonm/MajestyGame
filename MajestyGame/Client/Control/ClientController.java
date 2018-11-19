@@ -34,7 +34,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				
-				model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.primaryStage.setScene(view.setFirstScene());
 				view.start();
 				

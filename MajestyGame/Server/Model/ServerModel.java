@@ -96,6 +96,7 @@ public class ServerModel {
 	
 	public void startGame() {
 		Game game = new Game(ServerModel.this);
+		
 	}
 	
 	/*
