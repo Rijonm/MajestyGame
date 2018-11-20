@@ -1,22 +1,55 @@
 package Model;
 
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *Wenn das Spiel beginnt, wird ein neuer Player instanziiert.
  *
- *@author Rijon
+ *@author Mert
  */
 
 public class PlayerInGame extends PlayerOnline{
 	
-	int[] hand = new int[8];
+	/*
+	 *  oder in int int[] hand = new int[8];
+	 */
+	
+	/* 
+	 * Die ArrayList representiert den Spielerhand mit 
+	 * den gezogenen Karten in den 6 Gebäudekarten
+	 */
+	
+	ArrayList<Hand> playerHand = new ArrayList<Hand>();
+
 	
 	public PlayerInGame(ServerModel model, Socket socket, int id, String username) {
 		super(model, socket, id, username);
 		// TODO Auto-generated constructor stub
 		
 	}
+	
+	/*
+	 * Diese Methode soll bei jedem Zug eines Spielers, die gezogene Hand
+	 * und ensprechend in die Gebäudekarte ablegen. Die Methoden der Karten sollen 
+	 * auch direkt ausgeführt werden.
+	 */
+	public void PlayerChoose(EnumCard a) {
+		switch (a) {
+        case Brewer:
+        case Defense:
+        case Farmer:
+        case Queen:
+        case Soldier:
+        case Witch:
+        case Tavern:
+    }
+    
+
+
+	}
+	
+	
 	
 	
 
