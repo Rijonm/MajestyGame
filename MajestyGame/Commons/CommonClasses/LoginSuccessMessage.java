@@ -20,7 +20,7 @@ public class LoginSuccessMessage extends Message {
 	public LoginSuccessMessage(State state, int id) {
 		super(MessageType.LoginSuccessMessage);
 		this.loginState = state;
-		
+		this.id = id;
 	}
 
 	public State getState() {

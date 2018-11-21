@@ -93,7 +93,11 @@ public class ServerModel {
 			c.send(outMsg);
 		}
 	}
-	
+	/*
+	 * Sobald ein Spieler auf SpielStarten geklickt hat wird ein neues Spiel initalisiert und das Spiel wird gestartet.
+	 * 
+	 * @author Rijon
+	 */
 	public void startGame() {
 		Game game = new Game(ServerModel.this);
 		

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import CommonClasses.Message;
+import CommonClasses.Player;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
@@ -92,7 +93,20 @@ public class ClientController {
 				view.start();
 			}
 		});
-	
+		/**
+		 * Aktualisiert LobbyListe, sobald sich jemand Ein- oder Ausloggt.
+		 * 
+		 * @author Rijon
+		 */
+		model.getLobbyPlayers().addListener((ListChangeListener<Player>) c -> {
+			int a = 0;
+			while (c.next()) {
+				//Solange die liste Spieler hat, aktualisiere die liste
+				c.getList().get(a).getUsername();
+				a++;
+			}
+			
+		});
 		
 		//loginScene buttons
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
@@ -187,7 +201,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 			
 				view.primaryStage.setScene(view.setSixthScene());				
-								
+				//model.getHighscoreList()				
 			}
 		});
 		

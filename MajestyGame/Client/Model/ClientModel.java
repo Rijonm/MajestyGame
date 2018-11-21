@@ -3,8 +3,10 @@ package Model;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Iterator;
 
 import CommonClasses.ChatMessage;
+import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.GameStartMessage;
 import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
@@ -28,11 +30,12 @@ import javafx.collections.ObservableMap;
  */
 public class ClientModel {
 	
+	private int id;
 	public Socket socket;
 	private SimpleStringProperty registerSuccessString = new SimpleStringProperty();
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	private ObservableList<Player> lobbyPlayers = FXCollections.observableArrayList();
-	private ObservableList<Integer> firstSixCards = FXCollections.observableArrayList();
+	private ObservableList<Integer> deck = FXCollections.observableArrayList();
 	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
 	
 	public ClientModel() {
@@ -65,19 +68,21 @@ public class ClientModel {
 								System.out.println("LoginSuccessMessage");
 								});
 							}
+							//FERTIG
 							if(msg.getMessageType() == MessageType.LoggedInPlayers) {
 								Platform.runLater(() ->{
 								receivedLoggedInPlayersMessage(msg);
 								});
 							}
+							//Erst wenn die 6 karten eintreffen muss ein trigger die spielScene starten
 							if(msg.getMessageType() == MessageType.FirstSixCardsMessage) {
 								Platform.runLater(() ->{
 								receivedFirstSixCardsMessage(msg);
 								});
 							}
-							if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
+							if(msg.getMessageType() == MessageType.CardFromServerMessage) {
 								Platform.runLater(() ->{
-								receivedPlayerMoveMessage(msg);
+								receivedCardFromServerMessage(msg);
 								});
 							}
 							if(msg.getMessageType() == MessageType.EvaluateGameMessage) {
@@ -123,14 +128,18 @@ public class ClientModel {
 		
 	}
 
-	protected void receivedPlayerMoveMessage(Message msg) {
+	protected void receivedCardFromServerMessage(Message msg) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	protected void receivedFirstSixCardsMessage(Message msg) {
-		// TODO Auto-generated method stub
+		FirstSixCardsMessage fscm = (FirstSixCardsMessage) msg;
+		Integer[] cards = fscm.getFirstSixCards();
 		
+		//add Cards to ObservableList deck and activate trigger in control
+		for(int i = 0; i<=5; i++)
+		deck.add(i, cards[i].intValue());
 	}
 	
 	/*
@@ -156,6 +165,9 @@ public class ClientModel {
 	 */
 	protected void receivedLoginSuccessMessage(Message msg) {
 		LoginSuccessMessage lsm =(LoginSuccessMessage) msg;
+		if(lsm.getState().equals(LoginSuccessMessage.State.SUCCESS)) {
+		id =lsm.getId();
+		}
 		loginSuccessString.set("");
 		loginSuccessString.set(lsm.getState().toString());
 		
@@ -168,7 +180,7 @@ public class ClientModel {
 	protected void receivedRegisterSuccessMessage(Message msg) {
 		RegisterSuccessMessage rsm = (RegisterSuccessMessage) msg;
 		registerSuccessString.set("");
-		registerSuccessString.set((String)rsm.getState().toString());
+		registerSuccessString.set(rsm.getState().toString());
 	}
 	
 	/**
@@ -232,12 +244,12 @@ public class ClientModel {
 		
 	}
 	//Addlistener in controll for lobby
-	public ObservableList<Player> getOnlinePlayers() {
+	public ObservableList<Player> getLobbyPlayers() {
 		return lobbyPlayers;
 	}
 	//Addlistener in controll for game
 	public ObservableList<Integer> getFirstSixCards() {
-		return firstSixCards;
+		return deck;
 	}
 	//Addlistner in controll for registerinfo
 	public SimpleStringProperty getRegisterSuccess() {
