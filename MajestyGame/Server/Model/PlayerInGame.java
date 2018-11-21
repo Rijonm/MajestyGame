@@ -37,12 +37,27 @@ public class PlayerInGame extends PlayerOnline{
 	public void PlayerChoose(EnumCard a) {
 		switch (a) {
         case Brewer:
+        	Hand.Brewer.add(a);
+        	
+        	break;
         case Defense:
+        	Hand.Defense.add(a);
+        	break;
         case Farmer:
+        	Hand.Farmer.add(a);
+        	break;
         case Queen:
+        	Hand.Queen.add(a);
+        	break;
         case Soldier:
+        	Hand.Soldier.add(a);
+        	break;
         case Witch:
+        	Hand.Witch.add(a);
+        	break;
         case Tavern:
+        	Hand.Tavern.add(a);
+        	break;
     }
 	
     

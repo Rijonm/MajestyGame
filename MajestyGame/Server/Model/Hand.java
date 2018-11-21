@@ -6,13 +6,16 @@ import java.util.ArrayList;
 public class Hand implements Serializable {
 	
 	
-	public ArrayList<EnumCard> Brewer;
-	public ArrayList<EnumCard> Defense;
-	public ArrayList<EnumCard> Farmer;
-	public ArrayList<EnumCard> Queen;
-	public ArrayList<EnumCard> Soldier;
-	public ArrayList<EnumCard> Witch;
-	public ArrayList<EnumCard> Tavern;
+	public static ArrayList<EnumCard> Brewer;
+	public static ArrayList<EnumCard> Defense;
+	public static ArrayList<EnumCard> Farmer;
+	public static ArrayList<EnumCard> Queen;
+	public static ArrayList<EnumCard> Soldier;
+	public static ArrayList<EnumCard> Witch;
+	public static ArrayList<EnumCard> Tavern;
+	
+
+	
 	
 	public ArrayList<EnumCard> getTavern() {
 		return Tavern;
@@ -56,6 +59,7 @@ public class Hand implements Serializable {
 	public void setWitch(ArrayList<EnumCard> witch) {
 		Witch = witch;
 	}
+	
 	
 	
 }

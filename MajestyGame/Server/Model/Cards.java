@@ -9,8 +9,11 @@ public abstract class Cards {
 	int CardQuantity;
 	int CardCoins;
 	
-	public Cards(String CardName) {
+	public Cards(int CardID, String CardName, int CardQuantity, int  CardCoins) {
+		this.CardID = CardID;
 		this.CardName = CardName;
+		this.CardQuantity = CardQuantity;
+		this.CardCoins = CardCoins;
 	}
 	
 	public void setCardID(int c) {
