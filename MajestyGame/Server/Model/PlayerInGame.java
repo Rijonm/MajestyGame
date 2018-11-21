@@ -44,6 +44,7 @@ public class PlayerInGame extends PlayerOnline{
         case Witch:
         case Tavern:
     }
+	
     
 
 

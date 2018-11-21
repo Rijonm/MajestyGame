@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Hand implements Serializable {
+	
+	
 	public ArrayList<EnumCard> Brewer;
 	public ArrayList<EnumCard> Defense;
 	public ArrayList<EnumCard> Farmer;
