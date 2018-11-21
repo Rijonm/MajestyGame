@@ -42,6 +42,8 @@ public class PlayerInGame extends PlayerOnline{
         	break;
         case Defense:
         	Hand.Defense.add(a);
+        	int i = 0;
+        	//i = CardDefense.getCardQuantity();
         	break;
         case Farmer:
         	Hand.Farmer.add(a);
