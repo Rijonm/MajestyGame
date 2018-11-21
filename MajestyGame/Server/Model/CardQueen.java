@@ -4,21 +4,12 @@ public class CardQueen extends Cards{
 	
 	//@author Mert Emek
 
-	public CardQueen(String CardName) {
-		super(CardName);
+
+	public CardQueen(int CardID, String CardName, int CardQuantity, int CardCoins) {
+		super(CardID, CardName, CardQuantity, CardCoins);
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void attack() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void defend() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

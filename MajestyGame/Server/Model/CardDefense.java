@@ -4,21 +4,18 @@ public class CardDefense extends Cards{
 	
 	//@author Mert Emek
 
-	public CardDefense(String CardName) {
-		super(CardName);
+	
+
+	public CardDefense(int CardID, String CardName, int CardQuantity, int CardCoins) {
+		super(CardID, CardName, CardQuantity, CardCoins);
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void attack() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
+	
+	//for defense
 	public void defend() {
-		// TODO Auto-generated method stub
 		
-	}
+	};
 
 }

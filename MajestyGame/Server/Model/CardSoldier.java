@@ -4,22 +4,16 @@ public class CardSoldier extends Cards{
 	
 	//@author Mert Emek
 
-	public CardSoldier(String CardName) {
-		super(CardName);
+
+	public CardSoldier(int CardID, String CardName, int CardQuantity, int CardCoins) {
+		super(CardID, CardName, CardQuantity, CardCoins);
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void attack() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void defend() {
-		// TODO Auto-generated method stub
-		
-	}
+	//for attack players hand
+		public void attack() {
+			
+		};
 
 	
 	

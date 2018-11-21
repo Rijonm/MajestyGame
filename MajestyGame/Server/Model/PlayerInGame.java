@@ -58,6 +58,8 @@ public class PlayerInGame extends PlayerOnline{
         case Tavern:
         	Hand.Tavern.add(a);
         	break;
+        default:
+        	break;
     }
 	
     

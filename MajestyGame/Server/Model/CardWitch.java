@@ -4,21 +4,15 @@ package Model;
 
 public class CardWitch extends Cards{
 
-	public CardWitch(String CardName) {
-		super(CardName);
+
+	public CardWitch(int CardID, String CardName, int CardQuantity, int CardCoins) {
+		super(CardID, CardName, CardQuantity, CardCoins);
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void attack() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void defend() {
-		// TODO Auto-generated method stub
-		
-	}
+	//for healing
+		public void healing() {
+			
+		};
 
 }
