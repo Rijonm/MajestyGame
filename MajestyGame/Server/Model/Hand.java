@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Hand implements Serializable {
 	
+	//Not EnumCard, it should be something else, Hand represent players Building Cards with choosen player Cards
 	
 	public static ArrayList<EnumCard> Brewer;
 	public static ArrayList<EnumCard> Defense;
