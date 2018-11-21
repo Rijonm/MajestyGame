@@ -1,10 +1,44 @@
-.connectPane{
-	-fx-background-color: black
+.panes{
+	-fx-background-image: url(/images/homeBackground.jpg);	
+	-fx-spacing: 20;
 }
-.connectButton {
-	-fx-background-color: #009933;
-	-fx-text-fill: white;	
+.text-field{
+    -fx-min-width: 50;
+    -fx-max-width: 250;
+    -fx-spacing: 20;  
+    -fx-font-size:28;
+	-fx-background-color: #9d8700;
+	-fx-text-fill: #000000;	
+    -fx-border-width: 3;
+	-fx-border-color: #50654f;        	
 }
+
+
+.ipTextField, .portTextField{
+    -fx-min-width: 50;
+    -fx-max-width: 250;
+    -fx-spacing: 20;  
+    -fx-font-size:28;  
+}
+
+
+.button {
+    -fx-min-width: 50;
+    -fx-max-width: 100;	
+	-fx-background-color: #9d8700;
+	-fx-text-fill: #000000;
+    -fx-border-width: 3;
+	-fx-border-color: #50654f;
+	-fx-font-size:18;        		
+}
+/*/
+.TextField{
+	-fx-background-color: #9d8700;
+	-fx-text-fill: #000000;	
+    -fx-border-width: 3;
+	-fx-border-color: #50654f;   	
+}*/
+
 
 .buildingCard{
 	-fx-padding: 137 80;
