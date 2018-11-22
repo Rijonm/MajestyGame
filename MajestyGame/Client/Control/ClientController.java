@@ -50,7 +50,7 @@ public class ClientController {
 		});
 		
 		/**
-		 * Wird aktiviert, sobald eine registerSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * Wird aktiviert, sobald eine registerSuccessMessage eintrifft. Die GUI wird entsprechend veraendert.
 		 * 
 		 * @author Rijon
 		 */

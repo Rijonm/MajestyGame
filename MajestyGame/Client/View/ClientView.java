@@ -27,6 +27,10 @@ public class ClientView{
 	public TextField port;
 	public Button connectB;
 	
+	
+	public Image majestyLogo = new Image(this.getClass().getClassLoader().getResourceAsStream("images/majestyLogo.png"));
+	public ImageView majestyLogoView = new ImageView();
+	
 	//loginScene
 	public Scene firstScene; 
 	public BorderPane loginPane;
@@ -34,6 +38,7 @@ public class ClientView{
 	public TextField userNameLogin, userpasswordLogin;
 	public Button loginB = new Button ("Login");
 	public Button registrierenB = new Button ("Registrieren");
+
 	
 	
 	// registrierenScene
@@ -107,8 +112,7 @@ public class ClientView{
 		port.getStyleClass().addAll("portTextField", "TextField");
 		
 		
-		Image majestyLogo = new Image(this.getClass().getClassLoader().getResourceAsStream("images/majestyLogo.png"));
-		ImageView majestyLogoView = new ImageView();
+		
 		majestyLogoView.setImage(majestyLogo);
 		majestyLogoView.setFitWidth(615);
 		majestyLogoView.setFitHeight(320);
@@ -140,19 +144,21 @@ public class ClientView{
 	public Scene setFirstScene() {
 		
 		loginPane = new BorderPane();
-		
 		loginPane.getStyleClass().add("panes");
+		
 		loginArea = new VBox();
 		loginArea.setAlignment(Pos.CENTER);
+		loginArea.getStyleClass().add("panes");
 		
 		userNameLogin  = new TextField("username");
 		userpasswordLogin = new TextField("password");
 		
-		loginArea.getChildren().addAll(userNameLogin, userpasswordLogin, loginB, registrierenB);
+		loginArea.getChildren().addAll(majestyLogoView, userNameLogin, userpasswordLogin, loginB, registrierenB);
 		loginPane.setCenter(loginArea);
+		registrierenB.getStyleClass().add("registerButton");
 		
 
-		firstScene = new Scene(loginPane);
+		firstScene = new Scene(loginPane, 700, 800);
 		firstScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return firstScene;
 	}

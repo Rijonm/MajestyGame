@@ -38,7 +38,10 @@
     -fx-border-width: 3;
 	-fx-border-color: #50654f;   	
 }*/
-
+.registerButton{
+	-fx-min-width: 150 !important;
+    -fx-max-width: 150 !important;	 	
+}
 
 .buildingCard{
 	-fx-padding: 137 80;
