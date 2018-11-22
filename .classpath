@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="MajestyGame/Client"/>
 	<classpathentry kind="src" path="MajestyGame/Commons"/>
 	<classpathentry kind="src" path="MajestyGame/Server"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

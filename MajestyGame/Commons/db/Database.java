@@ -44,8 +44,10 @@ public class Database implements Api {
 	private static final String DB_NAME = "majesty";
 	private static final String DB_USER = "majesty";
 	private static final String DB_PASSWORD = "majesty2018";
+	private static final String DB_HOST = "localhost";
 	// jdbc:mysql://localhost/majesty?user=majesty&password=majesty2018
-	private static final String CONNECTION_URL = "jdbc:mysql://localhost/" + DB_NAME 
+	private static final String CONNECTION_URL = "jdbc:mysql://" + DB_HOST + "/" 
+			+ DB_NAME 
 			+ "?user=" + DB_USER 
 			+ "&password=" + DB_PASSWORD;
 	
@@ -84,52 +86,59 @@ public class Database implements Api {
 	private static final String QUERY_SET_HIGHSCORE = "update " + TABLE_PLAYER // Tabelle
 			+ " set " + COL_HIGHSCORE + "= ?" // Highscore setzen
 			+ " where " + COL_PLAYER_ID + " = ?"; // nach Benutzer ID suchen
-	
-		
+
 	private static Connection connection;
 
 	/**
 	 * f�r das Testen der Klassen Funktionen
 	 * @param args
 	 */
-//	public static void main(String[] args) {
-//		Database db = new Database();
-//		// testing
-//		
-//		// Registration
-//		System.out.println(db.register(new UserRegisterMessage("tschoban", "gingge")).getState());
-//		
-//		// Login
-//		System.out.println(db.login(new UserLoginMessage("tschoban", "gingge")).getState());
-//		
-//		// Logout
-//		System.out.println(db.logout(new UserLogout(1)).getState());
-//		
-//		// Online Benutzer auslesen
-//		LoggedInPlayers loggedInPlayersMessage = db.getLoggedInPlayers();
-//		List<Player> loggedInPlayers = loggedInPlayersMessage.getPlayers();
-//		for (Player player : loggedInPlayers) {
-//			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
-//		}
-//		
-//		// Benutzer mit ID suchen
-//		System.out.println(db.getPlayer(1).getState());
-//
-//		// Benutzer auslesen
-//		PlayersMessage playersMessage = db.getPlayers(COL_USERNAME, false, 4);
-//		List<Player> players = playersMessage.getPlayers();
-//		for (Player player : players) {
-//			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
-//		}
-//		
-//		// Highscore setzen
-//		Player oldHighscorePlayer = db.setHighscore(1, 100).getPlayer();
-//		Player newHighscorePlayer = db.setHighscore(1, 101).getPlayer();
-//		Player newestHighscorePlayer = db.setHighscore(1, 99).getPlayer();
-//		System.out.println("first highscore 100: " + oldHighscorePlayer.getHighscore());
-//		System.out.println("second highscore 101: " + newHighscorePlayer.getHighscore());
-//		System.out.println("third highscore 99: " + newestHighscorePlayer.getHighscore());
-//	}
+	public static void main(String[] args) {
+		Database db = new Database();
+		// testing
+		
+		// Registration
+		System.out.println(db.register(new UserRegisterMessage("user1", "pw1")).getState());
+		
+		// Login
+		System.out.println(db.login(new UserLoginMessage("user1", "pw1")).getState());
+		
+		// Logout
+		System.out.println(db.logout(new UserLogout(1)).getState());
+		
+		// Online Benutzer auslesen
+		LoggedInPlayers loggedInPlayersMessage = db.getLoggedInPlayers();
+		List<Player> loggedInPlayers = loggedInPlayersMessage.getPlayers();
+		if (loggedInPlayers != null) {
+			for (Player player : loggedInPlayers) {
+				System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
+			}
+		}
+		
+		// Benutzer mit ID suchen
+		System.out.println(db.getPlayer(1).getState());
+
+		// Benutzer auslesen
+		PlayersMessage playersMessage = db.getPlayers(COL_USERNAME, false, 4);
+		List<Player> players = playersMessage.getPlayers();
+		if (players != null) {
+			for (Player player : players) {
+				System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
+			}
+		}
+		
+		// Highscore setzen
+		Player oldHighscorePlayer = db.setHighscore(1, 100).getPlayer();
+		Player newHighscorePlayer = db.setHighscore(1, 101).getPlayer();
+		Player newestHighscorePlayer = db.setHighscore(1, 99).getPlayer();
+		if (oldHighscorePlayer != null 
+				&& newHighscorePlayer != null 
+				&& newestHighscorePlayer != null) {
+			System.out.println("first highscore 100: " + oldHighscorePlayer.getHighscore());
+			System.out.println("second highscore 101: " + newHighscorePlayer.getHighscore());
+			System.out.println("third highscore 99: " + newestHighscorePlayer.getHighscore());
+		}
+	}
 
 	/**
 	 * initialisiert die Datenbank-Verbindung
@@ -140,6 +149,10 @@ public class Database implements Api {
 	 * @throws SQLException 
 	 */
 	private static void init() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		// TODO: Datenbank Verbindungs URL erstellen
+		String connectionUrl = "";
+		
+		
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); // erstellt Instanz von der Library Klasse f�r den Datenbank Treiber
 		connection = DriverManager.getConnection(CONNECTION_URL); // �ffnet Verbindung zur Datenbank �ber die URL mit dem Benutzer und Passwort
 		System.out.println("database init");
@@ -192,6 +205,7 @@ public class Database implements Api {
 				e.printStackTrace();
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			message = new RegisterSuccessMessage(RegisterSuccessMessage.State.COULD_NOT_CONNECT); // Datenbank Verbindung fehlgeschlagen
 		}
 		return message;
