@@ -38,7 +38,7 @@ public class ClientController {
 				
 				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.primaryStage.setScene(view.setFirstScene());
-				view.primaryStage.setFullScreen(true);
+				view.primaryStage.setFullScreen(false);
 				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
 				view.primaryStage.setResizable(false);
 				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
@@ -123,7 +123,7 @@ public class ClientController {
 				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
-				view.primaryStage.setFullScreen(true);
+				view.primaryStage.setFullScreen(false);
 				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
 				view.primaryStage.setResizable(false);
 				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
@@ -184,7 +184,7 @@ public class ClientController {
 				 */
 				//model.sendGameStartMessage(getName);
 				view.primaryStage.setScene(view.setFifthScene());
-				view.primaryStage.setFullScreen(true);
+				view.primaryStage.setFullScreen(false);
 						
 								
 								

@@ -46,7 +46,7 @@ public class ClientView{
 	public VBox registrierenArea;
 	public TextField userNameRegister, userPasswordRegister;
 	public Button registrierenBB = new Button("Registrieren");
-	public Button backFirstSceneB = new Button("Zurück");
+	public Button backFirstSceneB = new Button("Zurï¿½ck");
 	
 	//gamestartScene
 	public Scene thirdScene; 
@@ -90,7 +90,7 @@ public class ClientView{
 	private VBox rulesBox;
 	public Label rulesLabel;
 		
-	public Button backToGameScene = new Button("Zurück");
+	public Button backToGameScene = new Button("Zurï¿½ck");
 
 	//connectScene
 	/**
@@ -125,7 +125,7 @@ public class ClientView{
 		
 		connectScene = new Scene(connectPane, 700, 800);
 		connectScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
-		primaryStage.setFullScreen(true);
+		primaryStage.setFullScreen(false);
 		//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
 		primaryStage.setResizable(false);
 		primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
@@ -168,7 +168,7 @@ public class ClientView{
 	/**
 	 * setSecondScene represents the Register Scene
 	 * 
-	 * @Author Rijon Mushkolaj
+	 * @Author Yusuf
 	 */
 	public Scene setSecondScene() {
 		
@@ -191,7 +191,7 @@ public class ClientView{
 	/**
 	 * setThirdScene represents the StartGameScene
 	 * 
-	 * @Author Rijon Mushkolaj
+	 * @Author Yusuf
 	 */
 	public Scene setThirdScene() {
 		
@@ -210,7 +210,7 @@ public class ClientView{
 		/**
 		 * setFourthScene represents the Preferences Scene
 		 * 
-		 * @Author Rijon Mushkolaj
+		 * @Author Yusuf
 		 */
 	public Scene setFourthScene() {
 		
