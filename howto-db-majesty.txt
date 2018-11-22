@@ -1,12 +1,15 @@
 // download mysql installer
 https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.13.0.msiaj
+
 // install mysql server
-5.7
+mysql server 5.7
 
 // add to end of file: C:\ProgramData\MySQL\MySQL Server 5.7\my.ini
 default-time-zone='+01:00'
 
 // add majesty database and player table
+
+// login to MySQL 5.7 Command Line Client
 // execute following statements in mysql server command line
 CREATE DATABASE `majesty`;
 CREATE TABLE `majesty`.`player` (`playerId` INT NOT NULL AUTO_INCREMENT, `username` VARCHAR(45) NOT NULL, `password` VARCHAR(45) NOT NULL, `online` TINYINT NOT NULL DEFAULT 0, `highscore` INT NULL, PRIMARY KEY (`playerId`), UNIQUE INDEX `username_UNIQUE` (`username` ASC));
