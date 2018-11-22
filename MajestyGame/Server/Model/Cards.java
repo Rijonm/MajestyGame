@@ -4,13 +4,16 @@ public abstract class Cards {
 	
 	//@author Mert Emek
 	
-	int CardID;
-	String CardName = null;
-	int CardQuantity;
-	int CardCoins;
+	protected int CardID;
+	protected String CardName;
+	protected int CardQuantity;
+	protected int CardCoins;
 	
-	public Cards(String CardName) {
+	public Cards(int CardID, String CardName, int CardQuantity, int CardCoins) {
+		this.CardID = CardID;
 		this.CardName = CardName;
+		this.CardQuantity = CardQuantity;
+		this.CardCoins = CardCoins;
 	}
 	
 	public void setCardID(int c) {
@@ -44,10 +47,5 @@ public abstract class Cards {
 	};
 	
 	
-	//for soldier
-	public abstract void attack();
-	
-	//for defense
-	public abstract void defend();
 	
 }

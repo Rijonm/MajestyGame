@@ -1,10 +1,17 @@
 package Control;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import CommonClasses.Message;
+import CommonClasses.Player;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -14,15 +21,22 @@ public class ClientController {
 	
 	public ClientModel model;
 	public ClientView view;
-
+	private Map<Integer, String> imgurl = new HashMap();
 	public ClientController(ClientModel model, ClientView view) {
 		this.model = model;
 		this.view = view;
+		imgurl.put(0, "url");
+		imgurl.put(1, "");
+		imgurl.put(2, "");
+		imgurl.put(3, "");
+		imgurl.put(4, "");
+		imgurl.put(5, "");
 		
 		view.connectB.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
 				
+				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.primaryStage.setScene(view.setFirstScene());
 				view.primaryStage.setFullScreen(true);
 				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
@@ -35,13 +49,78 @@ public class ClientController {
 			}
 		});
 		
+		/**
+		 * Wird aktiviert, sobald eine registerSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * 
+		 * @author Rijon
+		 */
+		//TODO
+		model.getRegisterSuccess().addListener(c -> {
+			System.out.println(c);
+			view.registrierenBB.setText(c.toString());
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+			
+			}
+			//REGISTER SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				
+			}
+			//PLAYER ALLREADY EXIST
+			if(c.toString().contains("EXIST")) {
+				
+			}
+		});
+		
+		
+		/**
+		 * Wird aktiviert, sobald eine loginSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * 
+		 * @author Rijon
+		 */
+		
+		model.getLoginSuccess().addListener(c -> {
+			System.out.println(c);
+			
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("WRONG")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("FAILURE")) {
+				
+			}
+			//LOGIN SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				view.primaryStage.setScene(view.setThirdScene());
+				view.start();
+			}
+		});
+		/**
+		 * Aktualisiert LobbyListe, sobald sich jemand Ein- oder Ausloggt.
+		 * 
+		 * @author Rijon
+		 */
+		model.getLobbyPlayers().addListener((ListChangeListener<Player>) c -> {
+			int a = 0;
+			while (c.next()) {
+				//Solange die liste Spieler hat, aktualisiere die liste
+				c.getList().get(a).getUsername();
+				a++;
+			}
+			
+		});
+		
 		//loginScene buttons
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
 				
 			public void handle(ActionEvent event) {
-				//Message loginMessage = new UserLoginMessage(view.userNameLogin.getText(), view.passwordTf.getText());
-				
-				//Message.send(model.socket, loginMessage);
+				//ACTIVATE
+				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
 				view.primaryStage.setFullScreen(true);
@@ -52,6 +131,7 @@ public class ClientController {
 				view.start();
 				
 				
+				
 			}
 		});
 		
@@ -60,14 +140,10 @@ public class ClientController {
 		view.registrierenB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-				
+			
 				view.primaryStage.setScene(view.setSecondScene());
-				view.primaryStage.setFullScreen(true);
-				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
-				view.primaryStage.setResizable(false);
-				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
-				view.primaryStage.setTitle("Majesty Group");				
 				view.start();
+				
 				
 			}
 		});
@@ -79,7 +155,8 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				
-				view.primaryStage.setScene(view.firstScene);
+				view.primaryStage.setScene(view.setFirstScene());
+				
 			}
 		});
 		
@@ -88,10 +165,11 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 						
-				//DB 
+				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				
 						
 				view.primaryStage.setScene(view.setThirdScene());
-				view.start();		
+						
 			}
 		});
 		//--------------------------
@@ -100,7 +178,11 @@ public class ClientController {
 		view.spielstartenB.setOnAction(new EventHandler<ActionEvent> (){
 							
 			public void handle(ActionEvent event) {
-			
+				/*
+				 * 
+				 * @Yusuf Lobby muss noch gemacht werden, dann kann spieler wählen mit wem er spielen möchte namen als parameter
+				 */
+				//model.sendGameStartMessage(getName);
 				view.primaryStage.setScene(view.setFifthScene());
 				view.primaryStage.setFullScreen(true);
 						
@@ -134,7 +216,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 			
 				view.primaryStage.setScene(view.setSixthScene());				
-								
+				//model.getHighscoreList()				
 			}
 		});
 		
@@ -143,7 +225,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 			
-				view.primaryStage.setScene(view.firstScene);
+				view.primaryStage.setScene(view.setFirstScene());
 								
 			}
 		});

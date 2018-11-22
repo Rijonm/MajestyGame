@@ -92,44 +92,44 @@ public class Database implements Api {
 	 * f�r das Testen der Klassen Funktionen
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		Database db = new Database();
-		// testing
-		
-		// Registration
-		System.out.println(db.register(new UserRegisterMessage("tschoban", "gingge")).getState());
-		
-		// Login
-		System.out.println(db.login(new UserLoginMessage("tschoban", "gingge")).getState());
-		
-		// Logout
-		System.out.println(db.logout(new UserLogout(1)).getState());
-		
-		// Online Benutzer auslesen
-		LoggedInPlayers loggedInPlayersMessage = db.getLoggedInPlayers();
-		List<Player> loggedInPlayers = loggedInPlayersMessage.getPlayers();
-		for (Player player : loggedInPlayers) {
-			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
-		}
-		
-		// Benutzer mit ID suchen
-		System.out.println(db.getPlayer(1).getState());
-
-		// Benutzer auslesen
-		PlayersMessage playersMessage = db.getPlayers(COL_USERNAME, false, 4);
-		List<Player> players = playersMessage.getPlayers();
-		for (Player player : players) {
-			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
-		}
-		
-		// Highscore setzen
-		Player oldHighscorePlayer = db.setHighscore(1, 100).getPlayer();
-		Player newHighscorePlayer = db.setHighscore(1, 101).getPlayer();
-		Player newestHighscorePlayer = db.setHighscore(1, 99).getPlayer();
-		System.out.println("first highscore 100: " + oldHighscorePlayer.getHighscore());
-		System.out.println("second highscore 101: " + newHighscorePlayer.getHighscore());
-		System.out.println("third highscore 99: " + newestHighscorePlayer.getHighscore());
-	}
+//	public static void main(String[] args) {
+//		Database db = new Database();
+//		// testing
+//		
+//		// Registration
+//		System.out.println(db.register(new UserRegisterMessage("tschoban", "gingge")).getState());
+//		
+//		// Login
+//		System.out.println(db.login(new UserLoginMessage("tschoban", "gingge")).getState());
+//		
+//		// Logout
+//		System.out.println(db.logout(new UserLogout(1)).getState());
+//		
+//		// Online Benutzer auslesen
+//		LoggedInPlayers loggedInPlayersMessage = db.getLoggedInPlayers();
+//		List<Player> loggedInPlayers = loggedInPlayersMessage.getPlayers();
+//		for (Player player : loggedInPlayers) {
+//			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
+//		}
+//		
+//		// Benutzer mit ID suchen
+//		System.out.println(db.getPlayer(1).getState());
+//
+//		// Benutzer auslesen
+//		PlayersMessage playersMessage = db.getPlayers(COL_USERNAME, false, 4);
+//		List<Player> players = playersMessage.getPlayers();
+//		for (Player player : players) {
+//			System.out.println(player.getPlayerId()+":"+player.getUsername()+":"+player.getHighscore());
+//		}
+//		
+//		// Highscore setzen
+//		Player oldHighscorePlayer = db.setHighscore(1, 100).getPlayer();
+//		Player newHighscorePlayer = db.setHighscore(1, 101).getPlayer();
+//		Player newestHighscorePlayer = db.setHighscore(1, 99).getPlayer();
+//		System.out.println("first highscore 100: " + oldHighscorePlayer.getHighscore());
+//		System.out.println("second highscore 101: " + newHighscorePlayer.getHighscore());
+//		System.out.println("third highscore 99: " + newestHighscorePlayer.getHighscore());
+//	}
 
 	/**
 	 * initialisiert die Datenbank-Verbindung
@@ -234,7 +234,7 @@ public class Database implements Api {
 					statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 					statement.executeUpdate(); // ausf�hren
 					
-					message = new LoginSuccessMessage(LoginSuccessMessage.State.SUCCESS); // erfolgreich eingeloggt
+					message = new LoginSuccessMessage(LoginSuccessMessage.State.SUCCESS, playerId); // erfolgreich eingeloggt
 				}
 				// nicht gefunden
 				else {
@@ -267,7 +267,7 @@ public class Database implements Api {
 				statement = getConnection().prepareStatement(QUERY_SET_ONLINE);
 				statement.setObject(1, 0, Types.TINYINT);
 				statement.setInt(2, logout.getPlayerId()); // WICHTIG! es kann auch ein nicht existierender (playerId) Benutzer ausgeloggt werden! Kein Fehler!
-
+				
 				System.out.println(statement.toString()); // loggen des Query
 
 				statement.closeOnCompletion(); // schliessen nach Ausf�hrung
