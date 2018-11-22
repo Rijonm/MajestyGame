@@ -27,11 +27,11 @@ import api.Api;
  * Falls ein Fehler mit der Zeitzone auftritt: default-time-zone im MySQL Config
  * File setzen
  * 
- * f�r Windows:
+ * fuer Windows:
  * 
- * folgende Datei �ffnen: "C:\ProgramData\MySQL\MySQL Server 5.7\my.ini"
+ * folgende Datei oeffnen: "C:\ProgramData\MySQL\MySQL Server 5.7\my.ini"
  * 
- * folgendes am Ende der Datei anf�gen (Winterzeit: +01:00, Sommerzeit: +02:00):
+ * folgendes am Ende der Datei anfuegen (Winterzeit: +01:00, Sommerzeit: +02:00):
  * default-time-zone='+01:00'
  * 
  * speichern und MySQL Service neu starten

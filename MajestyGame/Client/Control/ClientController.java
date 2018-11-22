@@ -15,6 +15,7 @@ import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class ClientController {
 	
@@ -37,6 +38,12 @@ public class ClientController {
 				
 				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.primaryStage.setScene(view.setFirstScene());
+				view.primaryStage.setFullScreen(true);
+				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
+				view.primaryStage.setResizable(false);
+				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
+				view.primaryStage.setTitle("Majesty Group");				
+				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.start();
 				
 			}
@@ -116,6 +123,12 @@ public class ClientController {
 				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
+				view.primaryStage.setFullScreen(true);
+				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
+				view.primaryStage.setResizable(false);
+				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
+				view.primaryStage.setTitle("Majesty Group");
+				view.start();
 				
 				
 				
@@ -129,6 +142,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 			
 				view.primaryStage.setScene(view.setSecondScene());
+				view.start();
 				
 				
 			}
@@ -170,6 +184,7 @@ public class ClientController {
 				 */
 				//model.sendGameStartMessage(getName);
 				view.primaryStage.setScene(view.setFifthScene());
+				view.primaryStage.setFullScreen(true);
 						
 								
 								

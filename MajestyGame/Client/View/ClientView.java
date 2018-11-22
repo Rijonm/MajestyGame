@@ -1,15 +1,20 @@
 package View;
 
+
 import Model.ClientModel;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ClientView{
 	public Stage primaryStage;
@@ -29,6 +34,7 @@ public class ClientView{
 	public TextField userNameLogin, userpasswordLogin;
 	public Button loginB = new Button ("Login");
 	public Button registrierenB = new Button ("Registrieren");
+	
 	
 	// registrierenScene
 	public Scene secondScene; 
@@ -92,20 +98,34 @@ public class ClientView{
 	public ClientView(Stage primaryStage, ClientModel model) {
 		this.primaryStage = primaryStage;
 		this.model = model;
-		
+				
 		connectB = new Button("Connect");
 		connectB.getStyleClass().add("connectButton");
 		ip = new TextField("IP");
+		ip.getStyleClass().addAll("ipTextField", "TextField");
 		port = new TextField("Port");
+		port.getStyleClass().addAll("portTextField", "TextField");
 		
+		
+		Image majestyLogo = new Image(this.getClass().getClassLoader().getResourceAsStream("images/majestyLogo.png"));
+		ImageView majestyLogoView = new ImageView();
+		majestyLogoView.setImage(majestyLogo);
+		majestyLogoView.setFitWidth(615);
+		majestyLogoView.setFitHeight(320);
+		
+				
 		connectPane = new VBox();
-		connectPane.getChildren().addAll(ip, port, connectB);
-		connectPane.getStyleClass().add("connectPane");
-		connectPane.setMinHeight(30.0);
-		connectPane.setMinWidth(30.0);
-
-		connectScene = new Scene(connectPane);
+		connectPane.setAlignment(Pos.CENTER);
+		connectPane.getChildren().addAll(majestyLogoView, ip, port, connectB);
+		connectPane.getStyleClass().add("panes");
+		
+		connectScene = new Scene(connectPane, 700, 800);
 		connectScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		primaryStage.setFullScreen(true);
+		//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
+		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
+		primaryStage.setTitle("Majesty Group");
 		primaryStage.setScene(connectScene);	
 		
 	}
@@ -120,7 +140,10 @@ public class ClientView{
 	public Scene setFirstScene() {
 		
 		loginPane = new BorderPane();
+		
+		loginPane.getStyleClass().add("panes");
 		loginArea = new VBox();
+		loginArea.setAlignment(Pos.CENTER);
 		
 		userNameLogin  = new TextField("username");
 		userpasswordLogin = new TextField("password");
@@ -128,8 +151,9 @@ public class ClientView{
 		loginArea.getChildren().addAll(userNameLogin, userpasswordLogin, loginB, registrierenB);
 		loginPane.setCenter(loginArea);
 		
+
 		firstScene = new Scene(loginPane);
-		
+		firstScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return firstScene;
 	}
 	
@@ -143,6 +167,7 @@ public class ClientView{
 	public Scene setSecondScene() {
 		
 		registrierenArea = new VBox();
+		registrierenArea.getStyleClass().add("panes");
 		
 		userNameRegister = new TextField("Username");
 		userPasswordRegister = new TextField("Password");
@@ -151,6 +176,7 @@ public class ClientView{
 		registrierenArea.getChildren().addAll(userNameRegister,userPasswordRegister,registrierenBB, backFirstSceneB);
 		
 		secondScene = new Scene(registrierenArea);
+		secondScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return secondScene;
 	}
 		
@@ -170,6 +196,7 @@ public class ClientView{
 		spielStartenArea.setCenter(optionenBox);
 		
 		thirdScene = new Scene(spielStartenArea);
+		thirdScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return thirdScene;
 	}
 	
@@ -189,6 +216,7 @@ public class ClientView{
 		einstellungenArea.setCenter(setupBox);
 		
 		fourthScene = new Scene(einstellungenArea);
+		fourthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		
 		return fourthScene;
@@ -198,7 +226,7 @@ public class ClientView{
 		/**
 		 * setFifthScene represents the game scene
 		 * 
-		 * @Author Rijon Mushkolaj
+		 * @Author Yusuf Or
 		 */
 	public Scene setFifthScene() {
 		
@@ -229,31 +257,11 @@ public class ClientView{
 		Label buildingCard8 = new Label();
 		buildingCard8.getStyleClass().addAll("bd8", "buildingCard");		
 		
-		HBox buildingsPlayer2 = new HBox(); 
-		Label buildingCard12 = new Label();
-		buildingCard12.getStyleClass().addAll("bd1", "buildingCard");
-		Label buildingCard22 = new Label();
-		buildingCard22.getStyleClass().addAll("bd2", "buildingCard");		
-		Label buildingCard32 = new Label();
-		buildingCard32.getStyleClass().addAll("bd3", "buildingCard");		
-		Label buildingCard42 = new Label();
-		buildingCard42.getStyleClass().addAll("bd4", "buildingCard");
-		Label buildingCard52 = new Label();
-		buildingCard52.getStyleClass().addAll("bd5", "buildingCard");
-		Label buildingCard62 = new Label();
-		buildingCard62.getStyleClass().addAll("bd6", "buildingCard");		
-		Label buildingCard72 = new Label();
-		buildingCard72.getStyleClass().addAll("bd7", "buildingCard");		
-		Label buildingCard82 = new Label();
-		buildingCard82.getStyleClass().addAll("bd8", "buildingCard");
-		
-		
+	
 		buildingsPlayer1.getChildren().addAll(buildingCard1,buildingCard2,buildingCard3,buildingCard4,buildingCard5,buildingCard6,buildingCard7,buildingCard8);
-		buildingsPlayer2.getChildren().addAll(buildingCard12,buildingCard22,buildingCard32,buildingCard42,buildingCard52,buildingCard62,buildingCard72,buildingCard82);
 		cardButtonsBox.getChildren().addAll(b1, b2, b3, b4, b5, b6);
 		
 		gameArea.setCenter(cardButtonsBox);
-		gameArea.setTop(buildingsPlayer2);
 		gameArea.setBottom(buildingsPlayer1);
 		
 		
@@ -278,7 +286,7 @@ public class ClientView{
 		highscoreArea.setBottom(backToGameScene);
 		
 		sixthScene = new Scene(highscoreArea);
-		
+		sixthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return sixthScene;
 	}
 	
@@ -300,7 +308,7 @@ public class ClientView{
 		rulesArea.setBottom(backToGameScene);
 		
 		seventhScene = new Scene(rulesArea);
-		
+		seventhScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return seventhScene;
 	}
 
