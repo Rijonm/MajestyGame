@@ -1,5 +1,5 @@
 // download mysql installer
-https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.13.0.msiaj
+https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.13.0.msi
 
 // install mysql server
 mysql server 5.7
