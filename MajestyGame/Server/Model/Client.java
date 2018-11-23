@@ -10,6 +10,7 @@ import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
 import CommonClasses.MessageType;
+import CommonClasses.PlayerMoveMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserRegisterMessage;
@@ -31,6 +32,7 @@ public class Client implements Serializable {
 	private UserLoginMessage loginMessage;
 	private LoggedInPlayers loggedInPlayersMessage;
 	private GameStartMessage gameStartMessage;
+	private PlayerMoveMessage playerMoveMessage;
 	private ChatMessage chatMessage;
 
     private int id;
@@ -74,6 +76,7 @@ public class Client implements Serializable {
 						}
 						// IM SPIEL
 						if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
+							playerMoveMessage = (PlayerMoveMessage) msg;
 							
 						}
 						// CHAT

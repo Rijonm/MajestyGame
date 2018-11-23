@@ -4,16 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import CommonClasses.FirstSixCardsMessage;
+import javafx.collections.ObservableList;
 
 public class Game implements Serializable {
 	
-	private ArrayList<PlayerInGame> players;
+	private ObservableList<PlayerInGame> players;
 	private Deck deck;
 	private ServerModel model;
 	
 	public Game(ServerModel model) {
 		this.model = model;
-		
+		players = model.playeringame;
 		deck = new Deck();
 		
 		//sendFirstSixCards(deck.getCard(), deck.getCard, deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard());

@@ -21,7 +21,7 @@ public class ServerModel {
 	protected ObservableList<PlayerInGame> playeringame = FXCollections.observableArrayList();
 	public Database db;
 	private final Logger logger = Logger.getLogger("");
-//	private Game game;
+	private Game game;
 //	private Message actionToPerform;
 	
 	public ServerModel() {
@@ -29,7 +29,10 @@ public class ServerModel {
 		
 		playeronline.addListener((ListChangeListener<PlayerOnline>) e ->{
 			
-	});
+		});
+		playeringame.addListener((ListChangeListener<PlayerInGame>) e ->{
+			
+		});
 	}
 	
 	public void serverStart(int port) {
@@ -99,7 +102,7 @@ public class ServerModel {
 	 * @author Rijon
 	 */
 	public void startGame() {
-		Game game = new Game(ServerModel.this);
+		game = new Game(ServerModel.this);
 		
 	}
 	

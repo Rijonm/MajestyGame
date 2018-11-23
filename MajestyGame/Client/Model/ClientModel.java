@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Iterator;
 
+import CommonClasses.CardFromServerMessage;
 import CommonClasses.ChatMessage;
 import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.GameStartMessage;
@@ -129,7 +130,7 @@ public class ClientModel {
 	}
 
 	protected void receivedCardFromServerMessage(Message msg) {
-		// TODO Auto-generated method stub
+		CardFromServerMessage cfsm = (CardFromServerMessage) msg;
 		
 	}
 

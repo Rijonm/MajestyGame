@@ -36,7 +36,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				
-				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+				model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				view.primaryStage.setScene(view.setFirstScene());
 				view.primaryStage.setFullScreen(false);
 				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
@@ -114,6 +114,14 @@ public class ClientController {
 			}
 			
 		});
+		/**
+		 * Aktualisiert Buttons.
+		 * 
+		 * @author Rijon
+		 */
+		model.getFirstSixCards().addListener((ListChangeListener<Integer>) c-> {
+			
+		});
 		
 		//loginScene buttons
 		view.loginB.setOnAction(new EventHandler<ActionEvent> (){
@@ -165,7 +173,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 						
-				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
 				
 						
 				view.primaryStage.setScene(view.setThirdScene());
