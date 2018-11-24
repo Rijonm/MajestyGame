@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,6 +53,7 @@ public class ClientView{
 	public Scene thirdScene; 
 	public HBox optionenBox;
 	public BorderPane spielStartenArea;
+	public TableView lobby = new TableView();
 	public Button spielstartenB = new Button("Starten");
 	public Button einstellungenB = new Button("Einstellungen");
 	public Button highscoreB = new Button("Highscore");
@@ -198,8 +200,11 @@ public class ClientView{
 		spielStartenArea = new BorderPane();
 		optionenBox = new HBox();
 		
+		
 		optionenBox.getChildren().addAll(spielstartenB, einstellungenB, highscoreB, spielanleitungB, logoutB);
+		spielStartenArea.setTop(lobby);
 		spielStartenArea.setCenter(optionenBox);
+		
 		
 		thirdScene = new Scene(spielStartenArea);
 		thirdScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());

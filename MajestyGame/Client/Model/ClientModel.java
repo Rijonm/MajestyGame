@@ -155,14 +155,25 @@ public class ClientModel {
 	 */
 	protected void receivedLoggedInPlayersMessage(Message msg) {
 		//Leert lobbyPlayers um die Liste zu aktualisieren
-		if(!lobbyPlayers.isEmpty()) 
-			for(Player c : lobbyPlayers) {
-				lobbyPlayers.remove(c);
-		}
+//		if(!lobbyPlayers.isEmpty()) 
+//			for(Player c : lobbyPlayers) {
+//				lobbyPlayers.remove(c);
+//		}
 		LoggedInPlayers lip = (LoggedInPlayers) msg;
-			for(Player c : lip.getPlayers()) {
-				lobbyPlayers.add(c);
+		lobbyPlayers.clear();
+		lobbyPlayers.addAll(lip.getPlayers());
+//		if(!lobbyPlayers.isEmpty()) 
+//			for(Player c : lobbyPlayers) {
+//				lobbyPlayers.remove(c);
+//			}
+		for(Player p: lip.getPlayers()) {
+			System.out.println(p.getUsername());
 		}
+//		lobbyPlayers.addAll(lip.getPlayers());
+//			for(Player c : lip.getPlayers()) {
+//				lobbyPlayers.add(c);
+//				System.out.println(c.getUsername());
+//		}
 		
 	}
 	/**

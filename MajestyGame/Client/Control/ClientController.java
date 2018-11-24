@@ -2,6 +2,7 @@ package Control;
 
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import CommonClasses.Message;
@@ -16,6 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.image.Image;
 
 public class ClientController {
@@ -36,15 +39,16 @@ public class ClientController {
 		buttons[0] = view.b1;
 		buttons[1] = view.b2;
 		buttons[2] = view.b3;
-		buttons[4] = view.b4;
-		buttons[5] = view.b5;
-		buttons[6] = view.b6;
+		buttons[3] = view.b4;
+		buttons[4] = view.b5;
+		buttons[5] = view.b6;
 		
 		view.connectB.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
 				
-				model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+				//model.connect("localhost", 1111);
 				view.primaryStage.setScene(view.setFirstScene());
 				view.primaryStage.setFullScreen(false);
 				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
@@ -114,12 +118,19 @@ public class ClientController {
 		 * @author Rijon
 		 */
 		model.getLobbyPlayers().addListener((ListChangeListener<Player>) c -> {
-			int a = 0;
-			while (c.next()) {
+				
+			
+				//view.lobby.getColumns().add(new TableColumn<>(c.getAddedSubList());
+				//view.lobby.refresh();
+				view.lobby.getColumns().clear();
+				for(Player pl : model.getLobbyPlayers()) {
+					view.lobby.getColumns().add(new TableColumn<>(pl.getUsername()));
+				}
+			
 				//Solange die liste Spieler hat, aktualisiere die liste
 				//c.getList().get(a).getUsername();
 				//a++;
-			}
+			
 			
 		});
 		/**
@@ -141,7 +152,7 @@ public class ClientController {
 				
 			public void handle(ActionEvent event) {
 				//ACTIVATE
-				model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
 				view.primaryStage.setFullScreen(false);
@@ -186,7 +197,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 						
-				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
 				
 						
 				view.primaryStage.setScene(view.setThirdScene());
