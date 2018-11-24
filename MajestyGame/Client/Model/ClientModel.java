@@ -1,9 +1,12 @@
 package Model;
 
+
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 import CommonClasses.CardFromServerMessage;
 import CommonClasses.ChatMessage;
@@ -133,14 +136,16 @@ public class ClientModel {
 		CardFromServerMessage cfsm = (CardFromServerMessage) msg;
 		
 	}
-
+	/*
+	 * Aktualisiert deck, trigger in contoller
+	 */
 	protected void receivedFirstSixCardsMessage(Message msg) {
 		FirstSixCardsMessage fscm = (FirstSixCardsMessage) msg;
-		Integer[] cards = fscm.getFirstSixCards();
+		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(fscm.getFirstSixCards()));
 		
-		//add Cards to ObservableList deck and activate trigger in control
-		for(int i = 0; i<=5; i++)
-		deck.add(i, cards[i].intValue());
+		deck = FXCollections.observableArrayList(list);
+		
+		
 	}
 	
 	/*
@@ -155,8 +160,8 @@ public class ClientModel {
 				lobbyPlayers.remove(c);
 		}
 		LoggedInPlayers lip = (LoggedInPlayers) msg;
-		for(Player c : lip.getPlayers()) {
-			lobbyPlayers.add(c);
+			for(Player c : lip.getPlayers()) {
+				lobbyPlayers.add(c);
 		}
 		
 	}

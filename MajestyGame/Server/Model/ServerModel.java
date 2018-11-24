@@ -106,6 +106,10 @@ public class ServerModel {
 		
 	}
 	
+	public Game getGame() {
+		return game;
+	}
+	
 	/*
 	 * Der Gewinner wird evaluiert.
 	 * 

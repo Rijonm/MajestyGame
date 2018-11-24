@@ -60,13 +60,16 @@ public class Client implements Serializable {
 						if (msg.getMessageType() == MessageType.UserLoginMessage) {
 							loginMessage = (UserLoginMessage) msg;
 							loginResponse(loginRequest(loginMessage));
-							//Player muss hier instanziiert werden.
+							//Test ob alle Player die sich einloggen ausgegen werden.
+							for(PlayerOnline p : model.playeronline) {
+							System.out.println(p.getUsername());
+							}
 						}
 						
 						// GAME STARTEN
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
 							gameStartMessage = (GameStartMessage) msg;
-							model.playeringame.add(new PlayerInGame(model, socket, id, username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
+							model.playeringame.add(new PlayerInGame(Client.this.model, Client.this.socket, Client.this.id, Client.this.username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
 							for(PlayerOnline p : model.playeronline)
 								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
 									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
@@ -77,7 +80,7 @@ public class Client implements Serializable {
 						// IM SPIEL
 						if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
 							playerMoveMessage = (PlayerMoveMessage) msg;
-							
+							Client.this.model.getGame().receivedPosFromClient(playerMoveMessage.getPositionPlayed(), Client.this.id);
 						}
 						// CHAT
 						if(msg.getMessageType() == MessageType.ChatMessage) {

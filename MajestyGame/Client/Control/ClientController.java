@@ -15,12 +15,14 @@ import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 public class ClientController {
 	
 	public ClientModel model;
 	public ClientView view;
+	public Button[] buttons = new Button[6];
 	private Map<Integer, String> imgurl = new HashMap();
 	public ClientController(ClientModel model, ClientView view) {
 		this.model = model;
@@ -31,6 +33,12 @@ public class ClientController {
 		imgurl.put(3, "");
 		imgurl.put(4, "");
 		imgurl.put(5, "");
+		buttons[0] = view.b1;
+		buttons[1] = view.b2;
+		buttons[2] = view.b3;
+		buttons[4] = view.b4;
+		buttons[5] = view.b5;
+		buttons[6] = view.b6;
 		
 		view.connectB.setOnAction(new EventHandler<ActionEvent>() {
 			
@@ -109,8 +117,8 @@ public class ClientController {
 			int a = 0;
 			while (c.next()) {
 				//Solange die liste Spieler hat, aktualisiere die liste
-				c.getList().get(a).getUsername();
-				a++;
+				//c.getList().get(a).getUsername();
+				//a++;
 			}
 			
 		});
@@ -120,6 +128,11 @@ public class ClientController {
 		 * @author Rijon
 		 */
 		model.getFirstSixCards().addListener((ListChangeListener<Integer>) c-> {
+			//1)startGameScene
+			//2)Set new Cards
+			for(int i = 0; i<= buttons.length; i++) {
+				buttons[i].setText("" + model.getFirstSixCards().get(i));
+			}
 			
 		});
 		
@@ -128,7 +141,7 @@ public class ClientController {
 				
 			public void handle(ActionEvent event) {
 				//ACTIVATE
-				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
 				view.primaryStage.setFullScreen(false);
@@ -190,7 +203,7 @@ public class ClientController {
 				 * 
 				 * @Yusuf Lobby muss noch gemacht werden, dann kann spieler wählen mit wem er spielen möchte namen als parameter
 				 */
-				//model.sendGameStartMessage(getName);
+				//model.sendGameStartMessage("rijon");
 				view.primaryStage.setScene(view.setFifthScene());
 				view.primaryStage.setFullScreen(false);
 						
