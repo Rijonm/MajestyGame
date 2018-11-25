@@ -240,8 +240,8 @@ public class ClientModel {
 	 * @author Rijon
 	 * @param i
 	 */
-	public void sendPlayerMoveMessage(int i) {
-		Message playerMoveMessage = new PlayerMoveMessage(i);
+	public void sendPlayerMoveMessage(int i, int id) {
+		Message playerMoveMessage = new PlayerMoveMessage(i, id);
 		Message.send(this.socket, playerMoveMessage);
 	}
 	

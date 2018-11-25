@@ -34,6 +34,11 @@ public class Game implements Serializable {
 				//p.setHand(pos, deck.getCard(pos)); <---- muss noch gemacht werden. PlayerInGame set Hand at Position x to anzahl..
 				//cardFromServerMessage(deck.getDeck(), int playerTurnID); <---- füllt cardFromServerMessage mit neuem Deck und mit der player id des spielers, der an der Reihe ist.
 				//model.broatcastToPlayerInGame(cardFromServerMessage); <---- Alle Spieler in Game erhalten neuen Deck
+				//for(PlayerInGame p :players){
+				//
+				//pointsOfPlayer(id, points)
+				//model.broatcastToPlayerInGame(pointsOfPlayer)
+				//}
 			}
 		}
 		
