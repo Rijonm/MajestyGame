@@ -11,7 +11,16 @@ public class CardSoldier extends Cards{
 	}
 
 	//for attack players hand
-		public void attack() {
+		public static void attack() {
+			int DefensOfOtherPlayers = Model.Hand.Defense.size();
+			
+			if(DefensOfOtherPlayers < Model.Hand.Soldier.size()) {
+				
+			}
+			
+			
+			
+		
 			
 		};
 

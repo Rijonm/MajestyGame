@@ -15,6 +15,11 @@ public abstract class Cards {
 		this.CardQuantity = CardQuantity;
 		this.CardCoins = CardCoins;
 	}
+	public Cards(int CardID, String CardName, int CardCoins) {
+		this.CardID = CardID;
+		this.CardName = CardName;
+		this.CardCoins = CardCoins;
+	}
 	
 	public void setCardID(int c) {
 		this.CardID = c;
