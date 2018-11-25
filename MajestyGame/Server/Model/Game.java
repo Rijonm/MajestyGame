@@ -17,11 +17,11 @@ public class Game implements Serializable {
 		players = model.playeringame;
 		deck = new Deck();
 		
-		//sendFirstSixCards(deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard());
+		//sendFirstSixCards(deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), int getTurn());
 	}
 	
-	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f) {
-		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f);
+	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f, int turn) {
+		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f, turn);
 		model.broatcastToPlayerInGame(fscm);
 	}
 	/*
