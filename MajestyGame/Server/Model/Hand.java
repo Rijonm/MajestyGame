@@ -9,14 +9,17 @@ public class Hand implements Serializable {
 	
 	//Not EnumCard, it should be something else, Hand represent players Building Cards with choosen player Cards
 	
-	public static ArrayList<Integer> Brewer = new ArrayList <Integer>();
-	public static ArrayList<Integer> Defense = new ArrayList <Integer>();
-	public static ArrayList<Integer> Farmer = new ArrayList <Integer>();
-	public static ArrayList<Integer> Queen = new ArrayList <Integer>();
-	public static ArrayList<Integer> Soldier = new ArrayList <Integer>();
-	public static ArrayList<Integer> Witch = new ArrayList <Integer>();
-	public static ArrayList<Integer> Tavern = new ArrayList <Integer>();
+	public static ArrayList<Cards> Brewer = new ArrayList <Cards>();
+	public static ArrayList<Cards> Defense = new ArrayList <Cards>();
+	public static ArrayList<Cards> Farmer = new ArrayList <Cards>();
+	public static ArrayList<Cards> Queen = new ArrayList <Cards>();
+	public static ArrayList<Cards> Soldier = new ArrayList <Cards>();
+	public static ArrayList<Cards> Witch = new ArrayList <Cards>();
+	public static ArrayList<Cards> Tavern = new ArrayList <Cards>();
 	
-
+	Cards CardBrewer = new CardBrewer(1, "Brauer", 5, 5);
+	
+	Brewer.add(1, "Brauer", 5, 5);
+	Brewer.add(CardBrewer);
 	
 }

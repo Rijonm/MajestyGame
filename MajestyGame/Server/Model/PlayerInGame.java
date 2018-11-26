@@ -38,7 +38,7 @@ public class PlayerInGame extends PlayerOnline{
 		 
 		switch (CardID) {
         case 1:
-        	Hand.Brewer.add(1);
+        	Hand.Brewer.add(1, "Brauer", 3, 4);
         	break;
         case 2:
         	Hand.Defense.add(1);
