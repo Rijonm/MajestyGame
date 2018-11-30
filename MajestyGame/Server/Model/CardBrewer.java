@@ -1,6 +1,6 @@
 package Model;
 
-public class CardBrewer extends Cards{
+public class CardBrewer extends Card{
 	
 	//@author Mert Emek
 

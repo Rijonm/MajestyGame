@@ -9,15 +9,15 @@ import javafx.collections.ObservableList;
 public class Game implements Serializable {
 	
 	private ObservableList<PlayerInGame> players;
-	private Deck deck;
+	private DeckA deckA;
 	private ServerModel model;
 	
 	public Game(ServerModel model) {
 		this.model = model;
 		players = model.playeringame;
-		deck = new Deck();
+		deckA = new DeckA();
 		
-		//sendFirstSixCards(deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), deck.getCard(), int getTurn());
+		//sendFirstSixCards(deckA.getCard(), deckA.getCard(), deckA.getCard(), deckA.getCard(), deckA.getCard(), deckA.getCard(), int getTurn());
 	}
 	
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f, int turn) {

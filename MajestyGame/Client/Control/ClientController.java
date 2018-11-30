@@ -48,7 +48,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				
 				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
-				//model.connect("localhost", 1111);
+				model.connect("localhost", 1111);
 				view.primaryStage.setScene(view.setFirstScene());
 				view.primaryStage.setFullScreen(false);
 				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
@@ -152,7 +152,7 @@ public class ClientController {
 				
 			public void handle(ActionEvent event) {
 				//ACTIVATE
-				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 				
 				view.primaryStage.setScene(view.setThirdScene());
 				view.primaryStage.setFullScreen(false);
@@ -197,7 +197,7 @@ public class ClientController {
 					
 			public void handle(ActionEvent event) {
 						
-				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
 				
 						
 				view.primaryStage.setScene(view.setThirdScene());

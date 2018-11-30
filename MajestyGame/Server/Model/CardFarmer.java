@@ -1,6 +1,6 @@
 package Model;
 
-public class CardFarmer extends Cards{
+public class CardFarmer extends Card{
 	
 	//@author Mert Emek
 	

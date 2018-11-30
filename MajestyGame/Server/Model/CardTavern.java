@@ -1,10 +1,10 @@
 package Model;
 
-public class CardTavern extends Cards{
+public class CardTavern extends Card{
 
 
-	public CardTavern(int CardID, String CardName, int CardQuantity, int CardCoins) {
-		super(CardID, CardName, CardQuantity, CardCoins);
+	public CardTavern(int cardID, String cardName, int cardQuantity, int cardCoins) {
+		super(cardID, cardName, cardQuantity, cardCoins);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -1,13 +1,13 @@
 package Model;
 
-public class CardDefense extends Cards{
+public class CardDefense extends Card{
 	
 	//@author Mert Emek
 
 	
 
-	public CardDefense(int CardID, String CardName, int CardQuantity, int CardCoins) {
-		super(CardCoins, CardName, CardCoins, CardCoins);
+	public CardDefense(int cardID, String cardName, int cardQuantity, int cardCoins) {
+		super(cardCoins, cardName, cardCoins, cardCoins);
 		// TODO Auto-generated constructor stub
 	}
 	//for defense
@@ -15,7 +15,7 @@ public class CardDefense extends Cards{
 		
 	};
 	public int getCardQuantity() {
-		return this.CardQuantity;
+		return this.cardQuantity;
 	};
 
 }
