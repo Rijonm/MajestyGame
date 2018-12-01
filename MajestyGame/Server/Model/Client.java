@@ -53,11 +53,13 @@ public class Client implements Serializable {
 						Message msg = Message.receive(socket);
 						// REGISTRIEREN
 						if(msg.getMessageType() == MessageType.UserRegisterMessage) {
+							System.out.println("registertmessagereceived");
 							registerMessage = (UserRegisterMessage) msg;
 							registerResponse(registerRequest(registerMessage));
 						}
 						// EINLOGGEN
 						if (msg.getMessageType() == MessageType.UserLoginMessage) {
+							System.out.println("einloggenmessagereceived");
 							loginMessage = (UserLoginMessage) msg;
 							loginResponse(loginRequest(loginMessage));
 							//Test ob alle Player die sich einloggen ausgegen werden.
@@ -68,6 +70,7 @@ public class Client implements Serializable {
 						
 						// GAME STARTEN
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
+							System.out.println("gamestartmessagereceived");
 							gameStartMessage = (GameStartMessage) msg;
 							model.playeringame.add(new PlayerInGame(Client.this.model, Client.this.socket, Client.this.id, Client.this.username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
 							for(PlayerOnline p : model.playeronline)

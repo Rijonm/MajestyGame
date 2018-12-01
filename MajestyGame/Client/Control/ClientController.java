@@ -214,7 +214,7 @@ public class ClientController {
 				 * 
 				 * @Yusuf Lobby muss noch gemacht werden, dann kann spieler wählen mit wem er spielen möchte namen als parameter
 				 */
-				//model.sendGameStartMessage("rijon");
+				model.sendGameStartMessage("rijon");
 				view.primaryStage.setScene(view.setFifthScene());
 				view.primaryStage.setFullScreen(false);
 						

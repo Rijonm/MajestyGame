@@ -34,7 +34,7 @@ public class PlayerInGame extends PlayerOnline{
 	 * und ensprechend in die Gebäudekarte ablegen. Die Methoden der Karten sollen 
 	 * auch direkt ausgeführt werden.
 	 */
-	public void playerChoose(int CardID) {
+	public void playerChoose(int cardID) {
 		 
 //		switch (CardID) {
 //        case 1:
