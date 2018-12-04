@@ -35,32 +35,34 @@ public class PlayerInGame extends PlayerOnline{
 	 * auch direkt ausgeführt werden.
 	 */
 	public void playerChoose(int cardID) {
-		 
-//		switch (CardID) {
-//        case 1:
-//        	Hand.Brewer.add(1, "Brauer", 3, 4);
-//        	break;
-//        case 2:
-//        	Hand.Defense.add(1);
-//        	break;
-//        case 3:
-//        	Hand.Farmer.add(1);
-//        	break;
-//        case 4:
-//        	Hand.Queen.add(1);
-//        	break;
-//        case 5:
-//        	Hand.Soldier.add(1);
-//        	Model.CardSoldier.attack();
-//        	break;
-//        case 6:
-//        	Hand.Witch.add(1);
-//        	break;
-//        case 7:
-//        	Hand.Tavern.add(1);
-//        	break;
-//        default:
-//        	break;
+		
+	/*	int i = cardID;
+		switch (i) {
+        case 1:
+        	Hand.Brewer.add();
+        	break;
+        case 2:
+        	Hand.Defense.add(1);
+        	break;
+        case 3:
+        	Hand.Farmer.add(1);
+        	break;
+        case 4:
+        	Hand.Queen.add(1);
+       	break;
+        case 5:
+        	Hand.Soldier.add(1);
+        	Model.CardSoldier.attack();
+        	break;
+        case 6:
+        	Hand.Witch.add(1);
+        	break;
+        case 7:
+        	Hand.Tavern.add(1);
+        	break;
+        default:
+        	break;
+        	*/
     }
 	
     
