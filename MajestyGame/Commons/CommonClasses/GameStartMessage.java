@@ -1,6 +1,6 @@
 package CommonClasses;
 
-public class GameStartMessage extends Message{
+public class GameStartMessage extends Message {
 
 	private String playerName;
 	

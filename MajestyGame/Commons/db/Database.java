@@ -155,7 +155,7 @@ public class Database implements Api {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); // erstellt Instanz von der Library Klasse f�r den Datenbank Treiber
 		connection = DriverManager.getConnection(CONNECTION_URL); // �ffnet Verbindung zur Datenbank �ber die URL mit dem Benutzer und Passwort
-		System.out.println("database init");
+		//System.out.println("database init");
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class Database implements Api {
 				statement.setString(1, register.getUsername()); // Benutzername
 				statement.setString(2, register.getPassword()); // Passwort
 				
-				System.out.println(statement.toString()); // loggen des Query
+				//System.out.println(statement.toString()); // loggen des Query
 				
 				statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 				statement.executeUpdate(); // ausf�hren 
@@ -213,7 +213,7 @@ public class Database implements Api {
 
 	@Override
 	public LoginSuccessMessage login(UserLoginMessage login) {
-		System.out.println("login");
+		//System.out.println("login");
 		LoginSuccessMessage message = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
@@ -228,7 +228,7 @@ public class Database implements Api {
 				statement.setString(1, login.getUsername()); // Benutzername
 				statement.setString(2, login.getPassword()); // Passwort
 				
-				System.out.println(statement.toString()); // loggen des Query
+				//System.out.println(statement.toString()); // loggen des Query
 
 				statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 				result = statement.executeQuery(); // ausf�hren
@@ -243,7 +243,7 @@ public class Database implements Api {
 					statement.setObject(1, 1, Types.TINYINT);
 					statement.setInt(2, playerId);
 
-					System.out.println(statement.toString()); // loggen des Query
+					//System.out.println(statement.toString()); // loggen des Query
 
 					statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 					statement.executeUpdate(); // ausf�hren
@@ -302,7 +302,7 @@ public class Database implements Api {
 
 	@Override
 	public LoggedInPlayers getLoggedInPlayers() {
-		System.out.println("getLoggedInPlayers");
+		//System.out.println("getLoggedInPlayers");
 		LoggedInPlayers message = null;
 		List<Player> players = null;
 		PreparedStatement statement = null;

@@ -10,7 +10,7 @@ public class DeckA {
 	//Card[] cards2 = new Cards[19]
 	
 	private ArrayList<Card> cards = new ArrayList<>();
-	
+	public ArrayList<Card> openCards = new ArrayList<>();
 	
 	// CardID, Name, Quantity of remaining Cards, Coins
 	Card brewer = new CardBrewer(1, "Brauer", 10, 5);
@@ -33,7 +33,7 @@ public class DeckA {
 	}
 	
 	public int getCard(int a) {
-		
+		openCards.add(cards.get(a));
 		return cards.get(a).getCardID();
 	}
 	/*add more cards (split cards)

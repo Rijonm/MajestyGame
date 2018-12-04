@@ -142,7 +142,7 @@ public class ClientModel {
 	protected void receivedFirstSixCardsMessage(Message msg) {
 		FirstSixCardsMessage fscm = (FirstSixCardsMessage) msg;
 		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(fscm.getFirstSixCards()));
-		
+		System.out.println(list);
 		deck = FXCollections.observableArrayList(list);
 		
 		

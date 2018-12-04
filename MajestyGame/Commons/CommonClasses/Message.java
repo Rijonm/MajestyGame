@@ -23,6 +23,7 @@ public abstract class Message implements Serializable {
 			
 			oops.writeObject(message);
 			oops.flush();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,7 +35,7 @@ public abstract class Message implements Serializable {
 		InputStream ips = socket.getInputStream();
 		ObjectInputStream oips = new ObjectInputStream(ips);
 		Message message = (Message) oips.readObject();
-		
+		System.out.println("message");
 		return message;
 		
 	}
