@@ -1,7 +1,14 @@
 package View;
 
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Model.ClientModel;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,12 +19,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class ClientView{
+public class ClientView {
+	
 	public Stage primaryStage;
 	public ClientModel model;
 	
@@ -71,14 +82,25 @@ public class ClientView{
 	
 	//gameScene
 	public Scene fifthScene; 
+	
 	public BorderPane gameArea;
+	public EnemyArea enemyArea;
+	public DeckArea deckArea;
+	public BuildingsArea buildingsArea;
+	public ChatArea chatArea;
+	public PlayerArea playerArea;
+	public BottomArea bottomArea;
+	
 	public Button b1 = new Button("b1");
 	public Button b2 = new Button("b2");
 	public Button b3 = new Button("b3");
 	public Button b4 = new Button("b4");
 	public Button b5 = new Button("b5");
 	public Button b6 = new Button("b6");
-	HBox cardButtonsBox;
+	public VBox centerVbox, leftVbox, rightVbox;
+	public Label chatContent;
+	public 	TextField chatInput = new TextField();
+	public Button sendButton = new Button("senden");
 	
 	//highscoreScene
 	public Scene sixthScene;
@@ -206,6 +228,7 @@ public class ClientView{
 		spielStartenArea.setCenter(optionenBox);
 		
 		
+		
 		thirdScene = new Scene(spielStartenArea);
 		thirdScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return thirdScene;
@@ -242,39 +265,157 @@ public class ClientView{
 	public Scene setFifthScene() {
 		
 		gameArea = new BorderPane();
-		cardButtonsBox = new HBox();
-		b1.getStyleClass().addAll("gameButtonFirst", "gameButtons");
-		b2.getStyleClass().addAll("gameButtonSecond", "gameButtons");
-		b3.getStyleClass().addAll("gameButtonThird", "gameButtons");
-		b4.getStyleClass().addAll("gameButtonFourth", "gameButtons");
-		b5.getStyleClass().addAll("gameButtonFifth", "gameButtons");
-		b6.getStyleClass().addAll("gameButtonSixth", "gameButtons");
 		
-		HBox buildingsPlayer1 = new HBox(); 
-		Label buildingCard1 = new Label();
-		buildingCard1.getStyleClass().addAll("bd1", "buildingCard");
-		Label buildingCard2 = new Label();
-		buildingCard2.getStyleClass().addAll("bd2", "buildingCard");		
-		Label buildingCard3 = new Label();
-		buildingCard3.getStyleClass().addAll("bd3", "buildingCard");		
-		Label buildingCard4 = new Label();
-		buildingCard4.getStyleClass().addAll("bd4", "buildingCard");
-		Label buildingCard5 = new Label();
-		buildingCard5.getStyleClass().addAll("bd5", "buildingCard");
-		Label buildingCard6 = new Label();
-		buildingCard6.getStyleClass().addAll("bd6", "buildingCard");		
-		Label buildingCard7 = new Label();
-		buildingCard7.getStyleClass().addAll("bd7", "buildingCard");		
-		Label buildingCard8 = new Label();
-		buildingCard8.getStyleClass().addAll("bd8", "buildingCard");		
+		centerVbox = new VBox();
+		leftVbox = new VBox();
+		leftVbox.setId("leftVbox");
+		rightVbox= new VBox();
 		
+		
+		//EnemyDeck
+		int anzahlGegner = 4;
+		
+		HBox enemyArea = new HBox();
+
+		for (int j = 1; j < anzahlGegner; j++) {
+			VBox enemyCounterArea = new VBox();
+			enemyCounterArea.setId("enemyCounterArea");
+			Label enemyDeckImg = new Label();
+			Region spacerEB = new Region();
+			spacerEB.getStyleClass().add("spacerEB");
+			enemyDeckImg.getStyleClass().add("enemyBuildingsImg");
+			enemyDeckImg.setMinHeight(325);
+			
+			for (int h = 1; h < 8; h++) {
+				Label ebCounter = new Label("Anzahl: "+h);
+				Region spacerEBC = new Region();
+				VBox.setVgrow(spacerEB, Priority.ALWAYS);
+				spacerEBC.setMinHeight(35);
+				ebCounter.getStyleClass().add("ebCounter");
+				
+				
+				enemyCounterArea.getChildren().addAll(ebCounter, spacerEBC);
+			}	
+			
+			enemyArea.getChildren().addAll(enemyDeckImg, enemyCounterArea, spacerEB);
+		}
+
+		
+		//PlayerArea
+
+//		Label pNameLbl = new Label("Player: P");
+//		Label coinsLbl = new Label("Coins: 100");
+//		Label meeplesLbl = new Label("Meeples: 5");
+//		
+//		leftVbox.getChildren().addAll(pNameLbl, coinsLbl, meeplesLbl);
+		
+		
+		for (int x = 1; x < 5; x++) {
+			Label lp = new Label("Player: P"+x);
+			Label lc = new Label("Coins: 100");
+			Label lm = new Label("Meeples: 5");
+			Region spacerP = new Region();
+			
+			VBox.setVgrow(spacerP, Priority.ALWAYS);
+			
+			
+			lp.getStyleClass().add("playerAreaLbl");
+			lc.getStyleClass().add("playerAreaLbl");
+			lm.getStyleClass().add("playerAreaLbl");
+			
+			leftVbox.getChildren().addAll(lp, lc, lm, spacerP);
+		}
+		
+			
+		//DeckArea
+		HBox personDeck = new HBox();
+		
+		for (int i = 0; i < 6; i++) {
+			Random r1 = new Random();
+			int rn = r1.nextInt(6);
+			Button b = new Button("b"+rn);
+			b.getStyleClass().addAll("gameButton"+rn ,"gameButtons");
+			b.setMinHeight(324);
+			personDeck.getChildren().add(b);
+		}
+		
+		Label buildingsImage = new Label();
+		buildingsImage.getStyleClass().add("buildingCard");
+		buildingsImage.setMinHeight(238);
+		HBox buildingsCounters = new HBox();
+		for (int i = 0; i < 8; i++) {
+			Random r1 = new Random();
+			int rn = r1.nextInt(6)+1;
+			
+			String rString = String.valueOf(rn);
+			Label counter = new Label(rString);
+			Region spacerC = new Region();
+			spacerC.getStyleClass().add("spacerBuildings");
+			counter.getStyleClass().add("coinCounter");
+			buildingsCounters.getChildren().addAll(counter, spacerC);
+		}
+		
+		
+		//BottomArea
+		HBox bottomArea = new HBox();
+		Label roundCounter = new Label("Gespielte Runden: ");
+		Label cardCounter = new Label("Gespielte Karten: ");
+		Label timeCounter = new Label("Gespielte Zeit: ");
+		bottomArea.getChildren().addAll(roundCounter, cardCounter, timeCounter);
+		bottomArea.setId("bottomArea");
+		
+		//ChatArea
+		VBox chatArea = new VBox();
+		Label chatTitle = new Label("Chat");
+		chatContent = new Label("Yusuf: Hello World");
+		Region spacerC = new Region();
+		spacerC.getStyleClass().add("chatSpacer");
+		chatContent.getStyleClass().add("chatContent");		
+		
+		chatArea.getChildren().addAll(chatTitle, chatContent, spacerC, chatInput, sendButton);
+		
+		
+//		b1.getStyleClass().addAll("gameButtonFirst", "gameButtons");
+//		b2.getStyleClass().addAll("gameButtonSecond", "gameButtons");
+//		b3.getStyleClass().addAll("gameButtonThird", "gameButtons");
+//		b4.getStyleClass().addAll("gameButtonFourth", "gameButtons");
+//		b5.getStyleClass().addAll("gameButtonFifth", "gameButtons");
+//		b6.getStyleClass().addAll("gameButtonSixth", "gameButtons");
+//		
+		
+		
+//		GridPane buildingsPlayer1 = new GridPane();
+//		Label lb1 = new Label("1");
+//		buildingsPlayer1.add(lb1, 0, 0);
+//		Label lb2 = new Label("0");
+//		buildingsPlayer1.add(lb2, 1, 0);
+//		Label lb3 = new Label("1");
+//		buildingsPlayer1.add(lb3, 2, 0);
+//		Label lb4 = new Label("0");
+//		buildingsPlayer1.add(lb4, 3, 0);
+//		Label lb5 = new Label("0");
+//		buildingsPlayer1.add(lb5, 4, 0);
+//		Label lb6 = new Label("5");
+//		buildingsPlayer1.add(lb6, 5, 0);
+//		Label lb7 = new Label("0");
+//		buildingsPlayer1.add(lb7, 6, 0);
+//		Label lb8 = new Label("1");
+//		buildingsPlayer1.add(lb8, 7, 0);
+//		
+//		Label PlayerName = new Label("Player 1");
+//		leftVbox.getChildren().addAll(PlayerName);
+		
+//		Label buildingCards = new Label();
+//		buildingCards.getStyleClass().add("buildingCard");
 	
-		buildingsPlayer1.getChildren().addAll(buildingCard1,buildingCard2,buildingCard3,buildingCard4,buildingCard5,buildingCard6,buildingCard7,buildingCard8);
-		cardButtonsBox.getChildren().addAll(b1, b2, b3, b4, b5, b6);
+//		buildingsPlayer1.add(buildingCards, 0, 1);
 		
-		gameArea.setCenter(cardButtonsBox);
-		gameArea.setBottom(buildingsPlayer1);
-		
+
+		centerVbox.getChildren().addAll(enemyArea, personDeck, buildingsImage, buildingsCounters);
+		gameArea.setLeft(leftVbox);
+		gameArea.setCenter(centerVbox);
+		gameArea.setRight(chatArea);
+		gameArea.setBottom(bottomArea);	
 		
 		fifthScene = new Scene(gameArea);
 		fifthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
