@@ -51,6 +51,19 @@
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/buildingCardsImage.jpg);	
 }
+.sendButton, .chatInputTextField{
+	-fx-border-color: #999999;
+	-fx-background-color: white;
+	-fx-text-fill: black;		
+}
+.chatArea{
+	-fx-background-color: #7d7d7d;
+	-fx-text-fill: #000000;	
+}
+.chatTitle{
+	 -fx-font-size: 18pt;
+	 -fx-font-weight: bold;
+}
 .enemyBuildingsImg{
 	-fx-min-width: 136;
 	-fx-max-width: 136;

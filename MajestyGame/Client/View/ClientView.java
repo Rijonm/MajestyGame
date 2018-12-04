@@ -98,9 +98,14 @@ public class ClientView {
 	public Button b5 = new Button("b5");
 	public Button b6 = new Button("b6");
 	public VBox centerVbox, leftVbox, rightVbox;
+	
+	
+	//ChatArea
 	public Label chatContent;
 	public 	TextField chatInput = new TextField();
 	public Button sendButton = new Button("senden");
+	public Label chatinhalt;
+	
 	
 	//highscoreScene
 	public Scene sixthScene;
@@ -290,7 +295,7 @@ public class ClientView {
 				Label ebCounter = new Label("Anzahl: "+h);
 				Region spacerEBC = new Region();
 				VBox.setVgrow(spacerEB, Priority.ALWAYS);
-				spacerEBC.setMinHeight(35);
+				spacerEBC.setMinHeight(30);
 				ebCounter.getStyleClass().add("ebCounter");
 				
 				
@@ -364,16 +369,19 @@ public class ClientView {
 		bottomArea.getChildren().addAll(roundCounter, cardCounter, timeCounter);
 		bottomArea.setId("bottomArea");
 		
+		
 		//ChatArea
 		VBox chatArea = new VBox();
 		Label chatTitle = new Label("Chat");
+		chatTitle.getStyleClass().add("chatTitle");
 		chatContent = new Label("Yusuf: Hello World");
 		Region spacerC = new Region();
 		spacerC.getStyleClass().add("chatSpacer");
 		chatContent.getStyleClass().add("chatContent");		
-		
+		chatArea.getStyleClass().add("chatArea");
 		chatArea.getChildren().addAll(chatTitle, chatContent, spacerC, chatInput, sendButton);
-		
+		chatInput.getStyleClass().add("chatInputTextField");
+		sendButton.getStyleClass().add("sendButton");
 		
 //		b1.getStyleClass().addAll("gameButtonFirst", "gameButtons");
 //		b2.getStyleClass().addAll("gameButtonSecond", "gameButtons");
@@ -422,7 +430,7 @@ public class ClientView {
 		
 		return fifthScene;
 	}
-	
+
 	
 	//einstellungenScene
 	/**

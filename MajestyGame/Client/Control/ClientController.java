@@ -123,6 +123,19 @@ public class ClientController {
 			}
 		});
 		
+		
+		
+		//chatButton
+		view.sendButton.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+							
+				view.chatContent.setText(view.chatInput.getText());	
+				System.out.println(view.chatInput.getText());
+			}
+		});
+
+		
 		view.einstellungenB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
