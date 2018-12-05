@@ -31,6 +31,15 @@
 	-fx-border-color: #50654f;
 	-fx-font-size:18;        		
 }
+.lobby{
+	-fx-text-fill: #ffffff;
+    -fx-max-width: 750 !important;
+	-fx-background-color: rgba(0, 0, 0, .5);		
+}
+.spielStartenArea {
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/spielStarten.jpg);		
+}
 /*/
 .TextField{
 	-fx-background-color: #9d8700;
@@ -56,8 +65,8 @@
 	-fx-background-color: white;
 	-fx-text-fill: black;		
 }
-.chatArea{
-	-fx-background-color: #7d7d7d;
+.chatArea, #enemyCounterArea, .playerNameArea{
+	-fx-background-color: rgba(125, 125, 125, 0.5);
 	-fx-text-fill: #000000;	
 }
 .chatTitle{
@@ -72,14 +81,18 @@
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/buildingsEnemy.jpg);	
 }
-#enemyCounterArea, #bottomArea{
+#enemyCounterArea {
+	-fx-text-fill: #000000;
+    -fx-border-width: 3;
+	-fx-border-color: #50654f;
+}
+#bottomArea{
 	-fx-background-color: #9d8700;
 	-fx-text-fill: #000000;
     -fx-border-width: 3;
 	-fx-border-color: #50654f;	
 }
  #leftVbox{
- 	-fx-background-color: #999999;
  	-fx-padding: 40;	
  }
 .spacerEB{
@@ -91,29 +104,39 @@
 	-fx-max-width: 145;	
 	-fx-min-width: 145;
 }
+.counterLabel{
+	-fx-background-color: #ffffff;
+	-fx-padding: 15 15;		
+}
 .gameButtons{
 	-fx-min-width: 200;
 	-fx-max-width: 200;
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;
 }
-
-.gameButtonFirst, .gameButton0{
+.gameArea{
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside2.jpg);		
+}
+.gameButtons{
+	-fx-border-color: transparent;	
+}
+.gameButton0{
 	-fx-background-image: url(/images/characterCard_Farmer.jpg);	
 }
-.gameButtonSecond, .gameButton1{
+.gameButton1{
 	-fx-background-image: url(/images/characterCard_Brewer.jpg);	
 }
-.gameButtonThird, .gameButton2{
+.gameButton2{
 	-fx-background-image: url(/images/characterCard_Queen.jpg);
 }
-.gameButtonFourth, .gameButton3{
+.gameButton3{
 	-fx-background-image: url(/images/characterCard_Host.jpg);	
 }
-.gameButtonFifth, .gameButton4{
+.gameButton4{
 	-fx-background-image: url(/images/characterCard_Soldier.jpg);	
 }
-.gameButtonSixth, .gameButton5{
+.gameButton5{
 	-fx-background-image: url(/images/characterCard_Witch.jpg);	
 }
 .bd1{

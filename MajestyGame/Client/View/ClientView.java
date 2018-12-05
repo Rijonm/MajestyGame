@@ -63,6 +63,7 @@ public class ClientView {
 	//gamestartScene
 	public Scene thirdScene; 
 	public HBox optionenBox;
+	public VBox centerStart;
 	public BorderPane spielStartenArea;
 	public TableView lobby = new TableView();
 	public Button spielstartenB = new Button("Starten");
@@ -225,12 +226,20 @@ public class ClientView {
 	public Scene setThirdScene() {
 		
 		spielStartenArea = new BorderPane();
+		centerStart = new VBox();
+		centerStart.setAlignment(Pos.CENTER);
 		optionenBox = new HBox();
+		spielStartenArea.setAlignment(centerStart, Pos.CENTER);
 		
 		
+		lobby.getStyleClass().add("lobby");		
 		optionenBox.getChildren().addAll(spielstartenB, einstellungenB, highscoreB, spielanleitungB, logoutB);
-		spielStartenArea.setTop(lobby);
-		spielStartenArea.setCenter(optionenBox);
+		optionenBox.setAlignment(Pos.CENTER);
+		//spielStartenArea.setTop(lobby);
+		centerStart.getChildren().addAll(lobby, optionenBox);
+		
+		spielStartenArea.setCenter(centerStart);
+		spielStartenArea.getStyleClass().add("spielStartenArea");
 		
 		
 		
@@ -270,6 +279,7 @@ public class ClientView {
 	public Scene setFifthScene() {
 		
 		gameArea = new BorderPane();
+		gameArea.getStyleClass().add("gameArea");
 		
 		centerVbox = new VBox();
 		leftVbox = new VBox();
@@ -304,7 +314,7 @@ public class ClientView {
 			
 			enemyArea.getChildren().addAll(enemyDeckImg, enemyCounterArea, spacerEB);
 		}
-
+		enemyArea.setAlignment(Pos.CENTER);
 		
 		//PlayerArea
 
@@ -329,6 +339,7 @@ public class ClientView {
 			lm.getStyleClass().add("playerAreaLbl");
 			
 			leftVbox.getChildren().addAll(lp, lc, lm, spacerP);
+			leftVbox.getStyleClass().add("playerNameArea");
 		}
 		
 			
@@ -343,17 +354,19 @@ public class ClientView {
 			b.setMinHeight(324);
 			personDeck.getChildren().add(b);
 		}
+		personDeck.setAlignment(Pos.CENTER);
 		
 		Label buildingsImage = new Label();
 		buildingsImage.getStyleClass().add("buildingCard");
 		buildingsImage.setMinHeight(238);
 		HBox buildingsCounters = new HBox();
 		for (int i = 0; i < 8; i++) {
-			Random r1 = new Random();
-			int rn = r1.nextInt(6)+1;
+			Random r1 = new Random();  //useless test
+			int rn = r1.nextInt(6)+1;  //useless test
+			String rString = String.valueOf(rn); //useless test
 			
-			String rString = String.valueOf(rn);
 			Label counter = new Label(rString);
+			counter.getStyleClass().add("counterLabel");
 			Region spacerC = new Region();
 			spacerC.getStyleClass().add("spacerBuildings");
 			counter.getStyleClass().add("coinCounter");
@@ -417,7 +430,7 @@ public class ClientView {
 //		buildingCards.getStyleClass().add("buildingCard");
 	
 //		buildingsPlayer1.add(buildingCards, 0, 1);
-		
+		centerVbox.setAlignment(Pos.CENTER);
 
 		centerVbox.getChildren().addAll(enemyArea, personDeck, buildingsImage, buildingsCounters);
 		gameArea.setLeft(leftVbox);
