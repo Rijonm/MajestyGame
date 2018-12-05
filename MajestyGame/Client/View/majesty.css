@@ -65,7 +65,18 @@
 	-fx-background-color: white;
 	-fx-text-fill: black;		
 }
-.chatArea, #enemyCounterArea, .playerNameArea{
+.ebCounter{
+  /*  -fx-border-width: 2;*/
+	-fx-border-color: #50654f;
+	-fx-background-color: white;
+	/*-fx-font-size: 16pt; */
+	-fx-padding: 0 20;
+	/*-fx-background-color: rgba(125, 125, 125, 0.5);*/
+}
+.chatArea{
+	-fx-padding: 15;
+}
+.chatArea, .playerNameArea{
 	-fx-background-color: rgba(125, 125, 125, 0.5);
 	-fx-text-fill: #000000;	
 }
@@ -79,12 +90,12 @@
 	/*-fx-padding-top: 123;*/
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;
-	-fx-background-image: url(/images/buildingsEnemy.jpg);	
+	-fx-background-image: url(/images/enemyBuildingDeck.png);	
 }
 #enemyCounterArea {
 	-fx-text-fill: #000000;
     -fx-border-width: 3;
-	-fx-border-color: #50654f;
+	/*-fx-border-color: #50654f;*/
 }
 #bottomArea{
 	-fx-background-color: #9d8700;
@@ -101,12 +112,20 @@
 	-fx-max-width: 100;	
 }
 .spacerBuildings{
-	-fx-max-width: 145;	
-	-fx-min-width: 145;
+	-fx-max-width: 115;	
+	-fx-min-width: 115;
 }
 .counterLabel{
 	-fx-background-color: #ffffff;
-	-fx-padding: 15 15;		
+	-fx-padding: 5;
+	-fx-min-width: 150;
+	-fx-max-width: 150;
+	-fx-border-width: 3;
+	-fx-border-color: #50654f;
+}
+
+.buildingsCounters{
+	-fx-padding-left: 15;
 }
 .gameButtons{
 	-fx-min-width: 200;
@@ -119,7 +138,13 @@
 	-fx-background-image: url(/images/inside2.jpg);		
 }
 .gameButtons{
-	-fx-border-color: transparent;	
+	-fx-border-color: #50654f;	
+}
+.gameButtons:hover{
+	-fx-border-color: red;	
+}
+.gameButton0:hover{
+	-fx-border-color: green !important;	
 }
 .gameButton0{
 	-fx-background-image: url(/images/characterCard_Farmer.jpg);	

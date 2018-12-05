@@ -299,17 +299,19 @@ public class ClientView {
 			Region spacerEB = new Region();
 			spacerEB.getStyleClass().add("spacerEB");
 			enemyDeckImg.getStyleClass().add("enemyBuildingsImg");
-			enemyDeckImg.setMinHeight(325);
 			
-			for (int h = 1; h < 8; h++) {
-				Label ebCounter = new Label("Anzahl: "+h);
-				Region spacerEBC = new Region();
-				VBox.setVgrow(spacerEB, Priority.ALWAYS);
-				spacerEBC.setMinHeight(30);
+			enemyDeckImg.setMinHeight(400);
+			
+			for (int h = 1; h < 9; h++) {
+				Label ebCounter = new Label(""+h);
+				ebCounter.setMinHeight(50);
+				//Region spacerEBC = new Region();
+				//VBox.setVgrow(spacerEB, Priority.ALWAYS);
+				//spacerEBC.setMinHeight(9);
+				//spacerEBC.getStyleClass().add("spacerEBC");
 				ebCounter.getStyleClass().add("ebCounter");
 				
-				
-				enemyCounterArea.getChildren().addAll(ebCounter, spacerEBC);
+				enemyCounterArea.getChildren().add(ebCounter);
 			}	
 			
 			enemyArea.getChildren().addAll(enemyDeckImg, enemyCounterArea, spacerEB);
@@ -360,17 +362,20 @@ public class ClientView {
 		buildingsImage.getStyleClass().add("buildingCard");
 		buildingsImage.setMinHeight(238);
 		HBox buildingsCounters = new HBox();
+		buildingsCounters.setAlignment(Pos.CENTER);
+		buildingsCounters.getStyleClass().add("buildingsCounters");
 		for (int i = 0; i < 8; i++) {
 			Random r1 = new Random();  //useless test
 			int rn = r1.nextInt(6)+1;  //useless test
 			String rString = String.valueOf(rn); //useless test
 			
 			Label counter = new Label(rString);
+			counter.setAlignment(Pos.CENTER);
 			counter.getStyleClass().add("counterLabel");
-			Region spacerC = new Region();
-			spacerC.getStyleClass().add("spacerBuildings");
+			//Region spacerC = new Region();
+			//spacerC.getStyleClass().add("spacerBuildings");
 			counter.getStyleClass().add("coinCounter");
-			buildingsCounters.getChildren().addAll(counter, spacerC);
+			buildingsCounters.getChildren().add(counter);
 		}
 		
 		
