@@ -1,6 +1,10 @@
 package Model;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 
@@ -24,10 +28,12 @@ import CommonClasses.LoginSuccessMessage.State;
  * @author Rijon
  *
  */
-public class Client implements Serializable {
+public class Client {
 	
 	private ServerModel model;
 	public Socket socket;
+	private ObjectInputStream oips;
+	private ObjectOutputStream oops;
 	private UserRegisterMessage registerMessage;
 	private UserLoginMessage loginMessage;
 	private LoggedInPlayers loggedInPlayersMessage;
@@ -38,19 +44,29 @@ public class Client implements Serializable {
     private int id;
     private String username;
     private String password;
+    private boolean isOnline;
+    private boolean isInGame;
     
     private int points;
     
     public Client(ServerModel model, Socket socket){
     	this.model = model;
     	this.socket = socket;
+    	try {
+    			oops = new ObjectOutputStream(socket.getOutputStream());
+			oips = new ObjectInputStream(socket.getInputStream());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
     	Runnable r = new Runnable() {
 			@Override
 			public void run() {
 				while(true) {
 					try {
 						
-						Message msg = Message.receive(socket);
+						Message msg = receive();
 						// REGISTRIEREN
 						if(msg.getMessageType() == MessageType.UserRegisterMessage) {
 							System.out.println("registertmessagereceived");
@@ -72,12 +88,13 @@ public class Client implements Serializable {
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
 							System.out.println("gamestartmessagereceived");
 							gameStartMessage = (GameStartMessage) msg;
-							model.playeringame.add(new PlayerInGame(Client.this.model, Client.this.socket, Client.this.id, Client.this.username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
-							for(PlayerOnline p : model.playeronline)
-								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
-									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
-									break;
-								}
+							//model.playeringame.add(new PlayerInGame(Client.this.model, Client.this.socket, Client.this.id, Client.this.username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
+							model.broadcast(gameStartMessage);
+//							for(PlayerOnline p : model.playeronline)
+//								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
+//									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
+//									break;
+//								}
 							model.startGame();
 						}
 						// IM SPIEL
@@ -88,7 +105,7 @@ public class Client implements Serializable {
 						// CHAT
 						if(msg.getMessageType() == MessageType.ChatMessage) {
 							chatMessage = (ChatMessage) msg;
-							model.broadcastToOnlinePlayers(chatMessage);
+							model.broadcast(chatMessage);
 						}
 						
 						// AUSLOGGEN
@@ -125,7 +142,7 @@ public class Client implements Serializable {
      * Dem Client wird ein RegisterSuccessMessage zugesendet.
      */
 	public void registerResponse(RegisterSuccessMessage message) {
-    		Message.send(this.socket, message);
+    		send(message);
     }
 	/**
 	 * Handelt den eingehenden Loginrequest, indem in der DB nachschaut wird.
@@ -144,11 +161,11 @@ public class Client implements Serializable {
 	 * @param message
 	 */
     public void loginResponse(LoginSuccessMessage message) {
-    		Message.send(this.socket, message);	
+    		send(message);	
     		if(message.getState() == LoginSuccessMessage.State.SUCCESS) {
     			id = message.getId();
     			username = loginMessage.getUsername();
-    			model.playeronline.add(new PlayerOnline(model, socket, id, username));
+    			//model.playeronline.add(new PlayerOnline(model, socket, id, username));
     			sendLoggedInPlayers();
     		}
     		
@@ -162,7 +179,7 @@ public class Client implements Serializable {
      */
     public void sendLoggedInPlayers() {
     		LoggedInPlayers message = model.db.getLoggedInPlayers();
-    		model.broadcastToOnlinePlayers(message);
+    		model.broadcast(message);
     }
     
     protected void logoutRequest() {
@@ -175,10 +192,6 @@ public class Client implements Serializable {
 		
 	}
     
-    public void send(Message message) {
-    		Message.send(this.socket, message);
-    }
-    
     public ServerModel getModel() {
     		return this.model;
     }
@@ -186,6 +199,25 @@ public class Client implements Serializable {
     public Socket getSocket() {
     		return this.socket;
     }
+    
+    public void send(Message message) {
+		try {
+			oops.writeObject(message);
+			oops.flush();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public Message receive() throws IOException, ClassNotFoundException {
+		Message message = (Message) oips.readObject();
+		System.out.println("message");
+		return message;
+		
+	}
 
 	
 }

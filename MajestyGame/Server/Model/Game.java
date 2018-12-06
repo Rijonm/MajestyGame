@@ -17,12 +17,12 @@ public class Game implements Serializable {
 		players = model.playeringame;
 		deckA = new DeckA();
 		
-		sendFirstSixCards(deckA.getCard(0), deckA.getCard(1), deckA.getCard(2), deckA.getCard(3), deckA.getCard(4), deckA.getCard(5), players.get(0).getId());
+		sendFirstSixCards(deckA.getCard(0), deckA.getCard(1), deckA.getCard(2), deckA.getCard(3), deckA.getCard(4), deckA.getCard(5), 1);
 	}
 	
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f, int turn) {
 		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f, turn);
-		model.broatcastToPlayerInGame(fscm);
+		model.broadcast(fscm);
 	}
 	/*
 	 * Wenn die Position eintrifft, dann solle in der players Liste geschaut werden, welcher Spieler den entsprechenden Zug gemacht hat.

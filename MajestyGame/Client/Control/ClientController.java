@@ -5,6 +5,7 @@ import CommonClasses.Message;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -98,7 +99,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 						
 
-				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
 				
 				//DB 
 
@@ -113,10 +114,11 @@ public class ClientController {
 		view.spielstartenB.setOnAction(new EventHandler<ActionEvent> (){
 							
 			public void handle(ActionEvent event) {
-			
+				
+				model.sendGameStartMessage();
 				System.out.println("start");
-				view.primaryStage.setScene(view.setFifthScene());
-				view.primaryStage.setFullScreen(false);
+//				view.primaryStage.setScene(view.setFifthScene());
+//				view.primaryStage.setFullScreen(false);
 						
 								
 								
@@ -129,7 +131,7 @@ public class ClientController {
 		view.sendButton.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-							
+				//model.sendChatMessage("rijon", view.chatInput.getText());
 				view.chatContent.setText(view.chatInput.getText());	
 				System.out.println(view.chatInput.getText());
 			}
@@ -254,7 +256,77 @@ public class ClientController {
 		});
 				
 		//-------------------------
+		/**
+		 * Wird aktiviert, sobald eine registerSuccessMessage eintrifft. Die GUI wird entsprechend veraendert.
+		 * 
+		 * @author Rijon
+		 */
+		//TODO
+		model.getRegisterSuccess().addListener(c -> {
+			System.out.println(c);
+			view.registrierenBB.setText(c.toString());
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+			
+			}
+			//REGISTER SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				
+			}
+			//PLAYER ALLREADY EXIST
+			if(c.toString().contains("EXIST")) {
+				
+			}
+		});
 		
+		/**
+		 * Wird aktiviert, sobald eine loginSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * 
+		 * @author Rijon
+		 */
+		model.getLoginSuccess().addListener(c -> {
+			System.out.println(c);
+			
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("WRONG")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("FAILURE")) {
+				
+			}
+			//LOGIN SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				view.primaryStage.setScene(view.setThirdScene());
+				view.start();
+			}
+		});
+		
+		/**
+		 * Aktualisiert Buttons.
+		 * 
+		 * @author Rijon
+		 */
+		model.deck.addListener((ListChangeListener<Integer>) c-> {
+			//1)startGameScene
+		//view.primaryStage.setScene(view.setFifthScene());
+		//view.primaryStage.setFullScreen(false);
+			//2)Set new Cards
+//			for(int i = 0; i<= buttons.length; i++) {
+//				buttons[i].setText("" + model.getFirstSixCards().get(i));
+//			}
+			
+		});
+		
+		model.newestMessage.addListener( (o, oldValue, newValue) -> {
+			if (!newValue.isEmpty()) // Ignore empty messages
+				view.chatContent.appendText(newValue + "\n");
+			
+		} );
 		
 		
 	}

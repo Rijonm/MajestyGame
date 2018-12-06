@@ -317,7 +317,7 @@ public class Database implements Api {
 				statement = getConnection().prepareStatement(QUERY_GET_ONLINE_PLAYERS);
 				statement.setObject(1, 1, Types.TINYINT); // online
 				
-				System.out.println(statement.toString()); // loggen des Query
+				//System.out.println(statement.toString()); // loggen des Query
 
 				statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 				result = statement.executeQuery(); // ausf�hren
@@ -356,7 +356,7 @@ public class Database implements Api {
 				statement = getConnection().prepareStatement(QUERY_GET_PLAYER);
 				statement.setInt(1, playerId);
 				
-				System.out.println(statement.toString()); // loggen des Query
+				//System.out.println(statement.toString()); // loggen des Query
 
 				statement.closeOnCompletion(); // schliessen nach Ausf�hrung
 				result = statement.executeQuery(); // ausf�hren

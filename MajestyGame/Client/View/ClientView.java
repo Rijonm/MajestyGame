@@ -102,7 +102,7 @@ public class ClientView {
 	
 	
 	//ChatArea
-	public Label chatContent;
+	public TextField chatContent;
 	public 	TextField chatInput = new TextField();
 	public Button sendButton = new Button("senden");
 	public Label chatinhalt;
@@ -392,7 +392,7 @@ public class ClientView {
 		VBox chatArea = new VBox();
 		Label chatTitle = new Label("Chat");
 		chatTitle.getStyleClass().add("chatTitle");
-		chatContent = new Label("Yusuf: Hello World");
+		chatContent = new TextField("Yusuf: Hello World");
 		Region spacerC = new Region();
 		spacerC.getStyleClass().add("chatSpacer");
 		chatContent.getStyleClass().add("chatContent");		

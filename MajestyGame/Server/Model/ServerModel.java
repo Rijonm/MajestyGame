@@ -73,7 +73,12 @@ public class ServerModel {
 		
 	}
 	
-	
+	public void broadcast(Message outMsg) {
+		logger.info("Broadcasting message to players online");
+		for (Client c : clients) {
+			c.send(outMsg);
+		}
+	}
 	/*
 	 * Schickt eine Message an alle Spieler die Online sind.
 	 * 
