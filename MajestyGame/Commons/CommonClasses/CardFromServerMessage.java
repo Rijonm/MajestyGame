@@ -2,11 +2,13 @@ package CommonClasses;
 
 public class CardFromServerMessage extends Message{
 
-	private int cardID;
-	public CardFromServerMessage(int cardID) {
+	private int[] openCards;
+	private int[] meeples;
+	public CardFromServerMessage(int[] openCards, int[] meeples) {
 		super(MessageType.CardFromServerMessage);
 		
-		this.cardID = cardID;
+		this.openCards = openCards;
+		this.meeples = meeples;
 	}
 
 }

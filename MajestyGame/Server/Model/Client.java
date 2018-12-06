@@ -44,8 +44,13 @@ public class Client {
     private int id;
     private String username;
     private String password;
+    private int highscore; //noch nicht definiert
     private boolean isOnline;
     private boolean isInGame;
+    private int[] gezogeneKarten = new int[8];
+    private int coins = 0;
+    private int meeples = 5;
+    
     
     private int points;
     
@@ -88,8 +93,15 @@ public class Client {
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
 							System.out.println("gamestartmessagereceived");
 							gameStartMessage = (GameStartMessage) msg;
+							isInGame = true; //defines, that this player is in game
+//							for(Client c : model.clients) {
+//								if(c.username.equals("rijon")) {
+//									c.isInGame = true;
+//								};
+//							}	
+							
 							//model.playeringame.add(new PlayerInGame(Client.this.model, Client.this.socket, Client.this.id, Client.this.username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
-							model.broadcast(gameStartMessage);
+						//model.broadcast(gameStartMessage);
 //							for(PlayerOnline p : model.playeronline)
 //								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
 //									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
@@ -100,12 +112,12 @@ public class Client {
 						// IM SPIEL
 						if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
 							playerMoveMessage = (PlayerMoveMessage) msg;
-							Client.this.model.getGame().receivedPosFromClient(playerMoveMessage.getPositionPlayed(), Client.this.id);
+							model.getGame().receivedPosFromClient(playerMoveMessage.getPositionPlayed(), Client.this.id);
 						}
 						// CHAT
 						if(msg.getMessageType() == MessageType.ChatMessage) {
 							chatMessage = (ChatMessage) msg;
-							model.broadcast(chatMessage);
+							model.broatcastToPlayerInGame(chatMessage);
 						}
 						
 						// AUSLOGGEN
@@ -165,6 +177,7 @@ public class Client {
     		if(message.getState() == LoginSuccessMessage.State.SUCCESS) {
     			id = message.getId();
     			username = loginMessage.getUsername();
+    			isOnline = true;
     			//model.playeronline.add(new PlayerOnline(model, socket, id, username));
     			sendLoggedInPlayers();
     		}
@@ -179,7 +192,7 @@ public class Client {
      */
     public void sendLoggedInPlayers() {
     		LoggedInPlayers message = model.db.getLoggedInPlayers();
-    		model.broadcast(message);
+    		model.broadcastToOnlinePlayers(message);
     }
     
     protected void logoutRequest() {
@@ -198,6 +211,18 @@ public class Client {
     
     public Socket getSocket() {
     		return this.socket;
+    }
+    
+    public boolean isOnline() {
+    		return isOnline;
+    }
+    
+    public boolean isInGame() {
+    		return isInGame;
+    }
+    
+    public int getId() {
+    		return id;
     }
     
     public void send(Message message) {

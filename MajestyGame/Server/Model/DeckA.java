@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 public class DeckA {
@@ -11,7 +12,7 @@ public class DeckA {
 	
 	private ArrayList<Card> cards = new ArrayList<>();
 	public ArrayList<Card> openCards = new ArrayList<>();
-	
+	public int[] openCardsID = new int[6];
 	// CardID, Name, Quantity of remaining Cards, Coins
 	Card brewer = new CardBrewer(1, "Brauer", 10, 5);
 	Card defense = new CardBrewer(2, "Verteidigung", 10, 5);
@@ -35,6 +36,18 @@ public class DeckA {
 	public int getCard(int a) {
 		openCards.add(cards.get(a));
 		return cards.get(a).getCardID();
+	}
+	
+	
+	
+	public int[] getOpenCards() {
+		int a = 0;
+		for(Card c : openCards) { //Holt sich die CardID von openCards und fügt die ID in openCardsID
+			openCardsID[a] = c.cardID;
+			a++;
+		}
+		
+		return openCardsID;
 	}
 	/*add more cards (split cards)
 	 * 

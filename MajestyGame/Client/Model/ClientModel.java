@@ -38,14 +38,14 @@ import javafx.collections.ObservableMap;
  */
 public class ClientModel {
 	
-	private int id;
+	private int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich der id in der DB.
 	public Socket socket;
 	private ObjectInputStream oips;
 	private ObjectOutputStream oops;
 	private SimpleStringProperty registerSuccessString = new SimpleStringProperty();
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
-	private ObservableList<Player> lobbyPlayers = FXCollections.observableArrayList();
+	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
 	
@@ -87,6 +87,7 @@ public class ClientModel {
 								});
 							}
 							//Erst wenn die 6 karten eintreffen muss ein trigger die spielScene starten
+							//FERTIG
 							if(msg.getMessageType() == MessageType.FirstSixCardsMessage) {
 								Platform.runLater(() ->{
 								receivedFirstSixCardsMessage(msg);
@@ -102,6 +103,7 @@ public class ClientModel {
 								receivedEvaluateGameMessage(msg);
 								});
 							}
+							//FERTIG
 							if(msg.getMessageType() == MessageType.ChatMessage) {
 								Platform.runLater(() ->{
 								receivedChatMessage(msg);
@@ -172,13 +174,13 @@ public class ClientModel {
 //		}
 		LoggedInPlayers lip = (LoggedInPlayers) msg;
 		lobbyPlayers.clear();
-		lobbyPlayers.addAll(lip.getPlayers());
+		//lobbyPlayers.addAll(lip.getPlayers());
 //		if(!lobbyPlayers.isEmpty()) 
 //			for(Player c : lobbyPlayers) {
 //				lobbyPlayers.remove(c);
 //			}
 		for(Player p: lip.getPlayers()) {
-			System.out.println(p.getUsername());
+			lobbyPlayers.add(p.getUsername());
 		}
 //		lobbyPlayers.addAll(lip.getPlayers());
 //			for(Player c : lip.getPlayers()) {
@@ -273,7 +275,7 @@ public class ClientModel {
 		
 	}
 	//Addlistener in controll for lobby
-	public ObservableList<Player> getLobbyPlayers() {
+	public ObservableList<String> getLobbyPlayers() {
 		return lobbyPlayers;
 	}
 	

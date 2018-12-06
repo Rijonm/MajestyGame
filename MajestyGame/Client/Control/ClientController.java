@@ -1,14 +1,20 @@
 package Control;
 
 
+import java.util.ArrayList;
+
 import CommonClasses.Message;
+import CommonClasses.Player;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
 
 public class ClientController {
@@ -26,7 +32,7 @@ public class ClientController {
 				
 
 				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
-				//model.connect("localhost", 1111);
+				model.connect("localhost", 1111);
 
 				view.primaryStage.setScene(view.setFirstScene());
 				view.primaryStage.setFullScreen(false);  /// muss true gesetzt werden
@@ -46,7 +52,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 
 				//ACTIVATE
-				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 
 				//Message loginMessage = new UserLoginMessage(view.userNameLogin.getText(), view.passwordTf.getText());
 				
@@ -204,7 +210,7 @@ public class ClientController {
 									
 			public void handle(ActionEvent event) {
 				System.out.println("b1");
-				//remove at ordinal 0
+				//model.sendPlayerMoveMessage(0);
 										
 			}
 		});
@@ -214,7 +220,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b2");						
-										
+				//model.sendPlayerMoveMessage(1);						
 			}
 		});
 				
@@ -224,7 +230,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b3");						
-										
+				//model.sendPlayerMoveMessage(2);						
 			}
 		});
 				
@@ -233,7 +239,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b4");						
-										
+				//model.sendPlayerMoveMessage(3);						
 			}
 		});
 				
@@ -242,7 +248,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b5");						
-										
+				//model.sendPlayerMoveMessage(4);						
 			}
 		});
 		
@@ -251,7 +257,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b6");						
-										
+				//model.sendPlayerMoveMessage(5);						
 			}
 		});
 				
@@ -306,6 +312,21 @@ public class ClientController {
 			}
 		});
 		
+		model.getLobbyPlayers().addListener((ListChangeListener<String>) c -> {
+			
+			//view.lobby.getColumns().add(new TableColumn<>(c.getAddedSubList());
+			//view.lobby.refresh();
+			//view.lobby.getColumns().clear();
+			
+//			view.lobby = new ListView(model.getLobbyPlayers()) ;
+//			view.lobby.refresh();
+			//Solange die liste Spieler hat, aktualisiere die liste
+			//c.getList().get(a).getUsername();
+			//a++;
+		
+		
+		});
+		
 		/**
 		 * Aktualisiert Buttons.
 		 * 
@@ -313,8 +334,8 @@ public class ClientController {
 		 */
 		model.deck.addListener((ListChangeListener<Integer>) c-> {
 			//1)startGameScene
-		//view.primaryStage.setScene(view.setFifthScene());
-		//view.primaryStage.setFullScreen(false);
+		view.primaryStage.setScene(view.setFifthScene());
+		view.primaryStage.setFullScreen(false);
 			//2)Set new Cards
 //			for(int i = 0; i<= buttons.length; i++) {
 //				buttons[i].setText("" + model.getFirstSixCards().get(i));
@@ -327,6 +348,7 @@ public class ClientController {
 				view.chatContent.appendText(newValue + "\n");
 			
 		} );
+		
 		
 		
 	}
