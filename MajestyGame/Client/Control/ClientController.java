@@ -1,13 +1,20 @@
 package Control;
 
 
+import java.util.ArrayList;
+
 import CommonClasses.Message;
+import CommonClasses.Player;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
 
 public class ClientController {
@@ -45,7 +52,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 
 				//ACTIVATE
-				//model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
+				model.sendUserLoginMessage(view.userNameLogin.getText(), view.userpasswordLogin.getText());
 
 				//Message loginMessage = new UserLoginMessage(view.userNameLogin.getText(), view.passwordTf.getText());
 				
@@ -98,7 +105,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 						
 
-				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
+				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
 				
 				//DB 
 
@@ -113,10 +120,11 @@ public class ClientController {
 		view.spielstartenB.setOnAction(new EventHandler<ActionEvent> (){
 							
 			public void handle(ActionEvent event) {
-			
+				
+				model.sendGameStartMessage();
 				System.out.println("start");
-				view.primaryStage.setScene(view.setFifthScene());
-				view.primaryStage.setFullScreen(false);
+//				view.primaryStage.setScene(view.setFifthScene());
+//				view.primaryStage.setFullScreen(false);
 						
 								
 								
@@ -129,7 +137,7 @@ public class ClientController {
 		view.sendButton.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-							
+				model.sendChatMessage("rijon", view.chatInput.getText());
 				view.chatContent.setText(view.chatInput.getText());	
 				System.out.println(view.chatInput.getText());
 			}
@@ -202,7 +210,7 @@ public class ClientController {
 									
 			public void handle(ActionEvent event) {
 				System.out.println("b1");
-				//remove at ordinal 0
+				//model.sendPlayerMoveMessage(0);
 										
 			}
 		});
@@ -212,7 +220,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b2");						
-										
+				//model.sendPlayerMoveMessage(1);						
 			}
 		});
 				
@@ -222,7 +230,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b3");						
-										
+				//model.sendPlayerMoveMessage(2);						
 			}
 		});
 				
@@ -231,7 +239,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b4");						
-										
+				//model.sendPlayerMoveMessage(3);						
 			}
 		});
 				
@@ -240,7 +248,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b5");						
-										
+				//model.sendPlayerMoveMessage(4);						
 			}
 		});
 		
@@ -249,11 +257,97 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b6");						
-										
+				//model.sendPlayerMoveMessage(5);						
 			}
 		});
 				
 		//-------------------------
+		/**
+		 * Wird aktiviert, sobald eine registerSuccessMessage eintrifft. Die GUI wird entsprechend veraendert.
+		 * 
+		 * @author Rijon
+		 */
+		//TODO
+		model.getRegisterSuccess().addListener(c -> {
+			System.out.println(c);
+			view.registrierenBB.setText(c.toString());
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+			
+			}
+			//REGISTER SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				
+			}
+			//PLAYER ALLREADY EXIST
+			if(c.toString().contains("EXIST")) {
+				
+			}
+		});
+		
+		/**
+		 * Wird aktiviert, sobald eine loginSuccessMessage eintrifft. Die GUI wird entsprechend verändert.
+		 * 
+		 * @author Rijon
+		 */
+		model.getLoginSuccess().addListener(c -> {
+			System.out.println(c);
+			
+			//COULD NOT CONNECT
+			if(c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("WRONG")) {
+				
+			}
+			//WRONG LOGIN
+			if(c.toString().contains("FAILURE")) {
+				
+			}
+			//LOGIN SUCCESS
+			if(c.toString().contains("SUCCESS")) {
+				view.primaryStage.setScene(view.setThirdScene());
+				view.start();
+			}
+		});
+		
+		model.getLobbyPlayers().addListener((ListChangeListener<String>) c -> {
+			
+			//view.lobby.getColumns().add(new TableColumn<>(c.getAddedSubList());
+			//view.lobby.refresh();
+			//view.lobby.getColumns().clear();
+			
+//			view.lobby = new ListView(model.getLobbyPlayers()) ;
+//			view.lobby.refresh();
+			//Solange die liste Spieler hat, aktualisiere die liste
+			//c.getList().get(a).getUsername();
+			//a++;
+		
+		
+		});
+		
+		/**
+		 * Aktualisiert Buttons.
+		 * 
+		 * @author Rijon
+		 */
+		model.deck.addListener((ListChangeListener<Integer>) c-> {
+			//1)startGameScene
+		view.primaryStage.setScene(view.setFifthScene());
+		view.primaryStage.setFullScreen(false);
+			//2)Set new Cards
+//			for(int i = 0; i<= buttons.length; i++) {
+//				buttons[i].setText("" + model.getFirstSixCards().get(i));
+//			}
+			
+		});
+		
+		model.newestMessage.addListener( (o, oldValue, newValue) -> {
+			if (!newValue.isEmpty()) // Ignore empty messages
+				view.chatContent.appendText(newValue + "\n");
+			
+		} );
 		
 		
 		

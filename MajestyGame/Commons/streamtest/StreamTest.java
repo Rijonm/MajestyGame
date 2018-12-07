@@ -23,7 +23,7 @@ class StreamTest {
 			c1.send("it's been a long time");
 			c2.send("no.");
 			
-			c1.send(new GameStartMessage(c1.name));
+			//c1.send(new GameStartMessage(c1.name));
 
 		} catch (Exception e) {
 			e.printStackTrace();

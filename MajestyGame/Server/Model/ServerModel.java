@@ -73,7 +73,12 @@ public class ServerModel {
 		
 	}
 	
-	
+	public void broadcast(Message outMsg) {
+		logger.info("Broadcasting message to players online");
+		for (Client c : clients) {
+			c.send(outMsg);
+		}
+	}
 	/*
 	 * Schickt eine Message an alle Spieler die Online sind.
 	 * 
@@ -81,8 +86,10 @@ public class ServerModel {
 	 */
 	public void broadcastToOnlinePlayers(Message outMsg) {
 		logger.info("Broadcasting message to players online");
-		for (PlayerOnline c : playeronline) {
-			c.send(outMsg);
+		for (Client c : clients) {
+			if(c.isOnline()==true) {
+				c.send(outMsg);
+			}
 		}
 	}
 	/*
@@ -91,9 +98,11 @@ public class ServerModel {
 	 * @author Rijon
 	 */
 	public void broatcastToPlayerInGame(Message outMsg) {
-		logger.info("Broatcasting message to players in game.");
-		for(PlayerInGame c : playeringame) {
-			c.send(outMsg);
+		logger.info("Broadcasting message to players in game");
+		for (Client c : clients) {
+			if(c.isInGame()==true) {
+				c.send(outMsg);
+			}
 		}
 	}
 	/*

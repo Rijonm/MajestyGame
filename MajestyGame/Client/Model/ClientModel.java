@@ -2,6 +2,10 @@ package Model;
 
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -34,12 +38,15 @@ import javafx.collections.ObservableMap;
  */
 public class ClientModel {
 	
-	private int id;
+	private int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich der id in der DB.
 	public Socket socket;
+	private ObjectInputStream oips;
+	private ObjectOutputStream oops;
 	private SimpleStringProperty registerSuccessString = new SimpleStringProperty();
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
-	private ObservableList<Player> lobbyPlayers = FXCollections.observableArrayList();
-	private ObservableList<Integer> deck = FXCollections.observableArrayList();
+	public SimpleStringProperty newestMessage = new SimpleStringProperty();
+	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
+	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
 	
 	public ClientModel() {
@@ -49,14 +56,15 @@ public class ClientModel {
 	public void connect(String ip, int port) {
 		try {
 			socket = new Socket(ip, port);
-			
+			oops = new ObjectOutputStream(socket.getOutputStream());
+			oips = new ObjectInputStream(socket.getInputStream());
 			Runnable r = new Runnable() {
 				@Override
 				public void run() {
 					while (true) {
 						
 						try {
-							Message msg = Message.receive(socket);
+							Message msg = receive();
 							
 							//FERTIG
 							if(msg.getMessageType() == MessageType.RegisterSuccessMessage) {
@@ -79,6 +87,7 @@ public class ClientModel {
 								});
 							}
 							//Erst wenn die 6 karten eintreffen muss ein trigger die spielScene starten
+							//FERTIG
 							if(msg.getMessageType() == MessageType.FirstSixCardsMessage) {
 								Platform.runLater(() ->{
 								receivedFirstSixCardsMessage(msg);
@@ -94,6 +103,7 @@ public class ClientModel {
 								receivedEvaluateGameMessage(msg);
 								});
 							}
+							//FERTIG
 							if(msg.getMessageType() == MessageType.ChatMessage) {
 								Platform.runLater(() ->{
 								receivedChatMessage(msg);
@@ -122,8 +132,10 @@ public class ClientModel {
 		
 	}
 	
+	//RECEIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Start-------------
 	protected void receivedChatMessage(Message msg) {
-		// TODO Auto-generated method stub
+		ChatMessage cm = (ChatMessage) msg;
+		newestMessage.set(cm.getMessage());
 		
 	}
 
@@ -143,8 +155,9 @@ public class ClientModel {
 		FirstSixCardsMessage fscm = (FirstSixCardsMessage) msg;
 		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(fscm.getFirstSixCards()));
 		System.out.println(list);
-		deck = FXCollections.observableArrayList(list);
-		
+		System.out.println(fscm.getTurn());
+		deck.addAll(list);
+		System.out.println("OK");
 		
 	}
 	
@@ -161,13 +174,13 @@ public class ClientModel {
 //		}
 		LoggedInPlayers lip = (LoggedInPlayers) msg;
 		lobbyPlayers.clear();
-		lobbyPlayers.addAll(lip.getPlayers());
+		//lobbyPlayers.addAll(lip.getPlayers());
 //		if(!lobbyPlayers.isEmpty()) 
 //			for(Player c : lobbyPlayers) {
 //				lobbyPlayers.remove(c);
 //			}
 		for(Player p: lip.getPlayers()) {
-			System.out.println(p.getUsername());
+			lobbyPlayers.add(p.getUsername());
 		}
 //		lobbyPlayers.addAll(lip.getPlayers());
 //			for(Player c : lip.getPlayers()) {
@@ -199,6 +212,7 @@ public class ClientModel {
 		registerSuccessString.set("");
 		registerSuccessString.set(rsm.getState().toString());
 	}
+	//RECEIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE END-------------
 	
 	/**
 	*Schickt eine UserRegisterMessage an den Server, nachdem "Registireren" angeklickt wurde.
@@ -209,7 +223,7 @@ public class ClientModel {
 	*/
 	public void sendUserRegisterMessage(String username, String passwort) {
 		Message registerMessage = new UserRegisterMessage(username, passwort);
-		Message.send(this.socket, registerMessage);
+		send(registerMessage);
 	}
 	/**
 	 * Schickt eine UserLoginMessage an den Server, nachdem "Login" angelickt wurde.
@@ -220,7 +234,7 @@ public class ClientModel {
 	 */
 	public void sendUserLoginMessage(String username, String passwort) {
 		Message loginMessage = new UserLoginMessage(username, passwort);
-		Message.send(this.socket, loginMessage);
+		send(loginMessage);
 	}
 	/**
 	 * Schickt eine GameStartMessage an den Server, nachdem der Gegenspieler ausgewählt wurde.
@@ -229,9 +243,9 @@ public class ClientModel {
 	 * @TODO Mehrere Spieler
 	 * @param name
 	 */
-	public void sendGameStartMessage(String name) {
-		Message gameStartMessage = new GameStartMessage(name);
-		Message.send(this.socket, gameStartMessage);
+	public void sendGameStartMessage() {
+		Message gameStartMessage = new GameStartMessage();
+		send(gameStartMessage);
 	}
 	
 	/**
@@ -240,9 +254,9 @@ public class ClientModel {
 	 * @author Rijon
 	 * @param i
 	 */
-	public void sendPlayerMoveMessage(int i, int id) {
+	public void sendPlayerMoveMessage(int i) {
 		Message playerMoveMessage = new PlayerMoveMessage(i, id);
-		Message.send(this.socket, playerMoveMessage);
+		send(playerMoveMessage);
 	}
 	
 	/**
@@ -254,20 +268,17 @@ public class ClientModel {
 	 */
 	public void sendChatMessage(String name, String message) {
 		Message chatMessage = new ChatMessage(name, message);
-		Message.send(this.socket, chatMessage);
+		send(chatMessage);
 	}
 	
 	public void disconnect() {
 		
 	}
 	//Addlistener in controll for lobby
-	public ObservableList<Player> getLobbyPlayers() {
+	public ObservableList<String> getLobbyPlayers() {
 		return lobbyPlayers;
 	}
-	//Addlistener in controll for game
-	public ObservableList<Integer> getFirstSixCards() {
-		return deck;
-	}
+	
 	//Addlistner in controll for registerinfo
 	public SimpleStringProperty getRegisterSuccess() {
 		return registerSuccessString;
@@ -275,6 +286,27 @@ public class ClientModel {
 	//Addlistener in contoll for logininfo
 	public SimpleStringProperty getLoginSuccess() {
 		return loginSuccessString;
+	}
+	
+	public void send(Message message) {
+		try {
+			
+			oops.writeObject(message);
+			oops.flush();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public Message receive() throws IOException, ClassNotFoundException {
+		
+		Message message = (Message) oips.readObject();
+		System.out.println("message");
+		return message;
+		
 	}
 	
 }
