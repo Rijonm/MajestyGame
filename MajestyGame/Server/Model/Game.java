@@ -9,10 +9,11 @@ import javafx.collections.ObservableList;
 
 public class Game implements Serializable {
 	
-	private ObservableList<Client> players; //Holds PlayerInGame
+	int players = 0;
+	int playedCards = 0;
 	private DeckA deckA;
 	private int[] meeples = new int[6];
-	int runde = 0;
+	int round = 0;
 	private ServerModel model;
 	
 	public Game(ServerModel model) {
@@ -21,6 +22,11 @@ public class Game implements Serializable {
 //			if(c.isInGame()==true)
 //			players.add(c);
 //		}
+		for(Client c : model.clients) {
+			if(c.isInGame()==true) {
+				players++;
+			}
+		}
 		deckA = new DeckA();
 		
 		sendFirstSixCards(deckA.getCard(0), deckA.getCard(1), deckA.getCard(2), deckA.getCard(3), deckA.getCard(4), deckA.getCard(5), 1);
@@ -35,8 +41,15 @@ public class Game implements Serializable {
 	 * 
 	 */
 	public void receivedPosFromClient(int pos, int id) {
-		runde++;
-		for (Client p : players){ //handelt die Hand des Clients, der gespielt hat.
+		playedCards++;
+		if(playedCards!=0 && players!= 0) { //check die Rundenanzahl ab
+			int a = playedCards/players;
+			round = a;
+		}
+		
+		
+		
+		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
 				
 				

@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
@@ -206,57 +207,57 @@ public class ClientController {
 		//-------------------------
 		
 		//gameScene buttons
-		view.b1.setOnAction(new EventHandler<ActionEvent> (){
+		view.buttons[0].setOnAction(new EventHandler<ActionEvent> (){
 									
 			public void handle(ActionEvent event) {
-				System.out.println("b1");
+				System.out.println("b0");
 				//model.sendPlayerMoveMessage(0);
 										
 			}
 		});
 				
-		view.b2.setOnAction(new EventHandler<ActionEvent> (){
+		view.buttons[1].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
 					
-				System.out.println("b2");						
+				System.out.println("b1");						
 				//model.sendPlayerMoveMessage(1);						
 			}
 		});
 				
 				
-		view.b3.setOnAction(new EventHandler<ActionEvent> (){
+		view.buttons[2].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
 					
-				System.out.println("b3");						
+				System.out.println("b2");						
 				//model.sendPlayerMoveMessage(2);						
 			}
 		});
 				
-		view.b4.setOnAction(new EventHandler<ActionEvent> (){
+		view.buttons[3].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
 					
-				System.out.println("b4");						
+				System.out.println("b3");						
 				//model.sendPlayerMoveMessage(3);						
 			}
 		});
 				
-		view.b5.setOnAction(new EventHandler<ActionEvent> (){
+		view.buttons[4].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
 					
-				System.out.println("b5");						
+				System.out.println("b4");						
 				//model.sendPlayerMoveMessage(4);						
 			}
 		});
 		
-		view.b6.setOnAction(new EventHandler<ActionEvent> (){
+		view.buttons[5].setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
 					
-				System.out.println("b6");						
+				System.out.println("b5");						
 				//model.sendPlayerMoveMessage(5);						
 			}
 		});
@@ -333,9 +334,14 @@ public class ClientController {
 		 * @author Rijon
 		 */
 		model.deck.addListener((ListChangeListener<Integer>) c-> {
-			//1)startGameScene
-		view.primaryStage.setScene(view.setFifthScene());
-		view.primaryStage.setFullScreen(false);
+			view.primaryStage.setScene(view.setFifthScene());
+			view.primaryStage.setFullScreen(false);
+			int i = 0;
+			for(Button b : view.buttons) {
+				b.getStyleClass().addAll("gameButton"+model.deck.get(i) ,"gameButtons");
+				i++;
+			}
+		
 			//2)Set new Cards
 //			for(int i = 0; i<= buttons.length; i++) {
 //				buttons[i].setText("" + model.getFirstSixCards().get(i));

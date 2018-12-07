@@ -91,13 +91,13 @@ public class ClientView {
 	public ChatArea chatArea;
 	public PlayerArea playerArea;
 	public BottomArea bottomArea;
-	
-	public Button b1 = new Button("b1");
-	public Button b2 = new Button("b2");
-	public Button b3 = new Button("b3");
-	public Button b4 = new Button("b4");
-	public Button b5 = new Button("b5");
-	public Button b6 = new Button("b6");
+	public Button[] buttons = new Button[6];
+//	public Button b1 = new Button("b1");
+//	public Button b2 = new Button("b2");
+//	public Button b3 = new Button("b3");
+//	public Button b4 = new Button("b4");
+//	public Button b5 = new Button("b5");
+//	public Button b6 = new Button("b6");
 	public VBox centerVbox, leftVbox, rightVbox;
 	
 	
@@ -141,8 +141,12 @@ public class ClientView {
 		port = new TextField("Port");
 		port.getStyleClass().addAll("portTextField", "TextField");
 		
-		
-		
+		for (int i = 0; i < 6; i++) {
+//			Random r1 = new Random();
+//			int rn = r1.nextInt(6);
+			Button b = new Button("b"+i);
+			buttons[i] = b;
+		}
 		majestyLogoView.setImage(majestyLogo);
 		majestyLogoView.setFitWidth(615);
 		majestyLogoView.setFitHeight(320);
@@ -344,10 +348,10 @@ public class ClientView {
 		HBox personDeck = new HBox();
 		
 		for (int i = 0; i < 6; i++) {
-			Random r1 = new Random();
-			int rn = r1.nextInt(6);
-			Button b = new Button("b"+rn);
-			b.getStyleClass().addAll("gameButton"+rn ,"gameButtons");
+//			Random r1 = new Random();
+//			int rn = r1.nextInt(6);
+//			Button b = new Button("b"+i);
+			Button b = buttons[i];
 			b.setMinHeight(324);
 			personDeck.getChildren().add(b);
 		}
