@@ -25,7 +25,7 @@ public class ClientController {
 				
 
 				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
-				//model.connect("localhost", 1111);
+				model.connect("localhost", 1111);
 
 				view.primaryStage.setScene(view.setFirstScene());
 				view.primaryStage.setFullScreen(false);  /// muss true gesetzt werden
