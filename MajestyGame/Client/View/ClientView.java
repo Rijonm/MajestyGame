@@ -288,23 +288,24 @@ public class ClientView {
 		
 		
 		//EnemyDeck
-		int anzahlGegner = 4;
+		final int ANZAHL_GEGNER = 4;
 		
 		HBox enemyArea = new HBox();
 
-		for (int j = 1; j < anzahlGegner; j++) {
+		for (int j = 1; j < ANZAHL_GEGNER; j++) {
 			VBox enemyCounterArea = new VBox();
 			enemyCounterArea.setId("enemyCounterArea");
 			Label enemyDeckImg = new Label();
-			Region spacerEB = new Region();
-			spacerEB.getStyleClass().add("spacerEB");
 			enemyDeckImg.getStyleClass().add("enemyBuildingsImg");
+			enemyDeckImg.setMinHeight(296);
 			
-			enemyDeckImg.setMinHeight(400);
-			
+			//while (j < (ANZAHL_GEGNER-1)) {
+				Region spacerEB = new Region();
+				spacerEB.getStyleClass().add("spacerEB");		
+			//}
 			for (int h = 1; h < 9; h++) {
 				Label ebCounter = new Label(""+h);
-				ebCounter.setMinHeight(50);
+				ebCounter.setMinHeight(37);
 				//Region spacerEBC = new Region();
 				//VBox.setVgrow(spacerEB, Priority.ALWAYS);
 				//spacerEBC.setMinHeight(9);
@@ -317,17 +318,11 @@ public class ClientView {
 			enemyArea.getChildren().addAll(enemyDeckImg, enemyCounterArea, spacerEB);
 		}
 		enemyArea.setAlignment(Pos.CENTER);
+		enemyArea.getStyleClass().add("enemyArea");
 		
-		//PlayerArea
-
-//		Label pNameLbl = new Label("Player: P");
-//		Label coinsLbl = new Label("Coins: 100");
-//		Label meeplesLbl = new Label("Meeples: 5");
-//		
-//		leftVbox.getChildren().addAll(pNameLbl, coinsLbl, meeplesLbl);
-		
-		
-		for (int x = 1; x < 5; x++) {
+		//PlayerArea / LeftArea
+		int playerN = ANZAHL_GEGNER+1;
+		for (int x = 1; x < playerN; x++) {
 			Label lp = new Label("Player: P"+x);
 			Label lc = new Label("Coins: 100");
 			Label lm = new Label("Meeples: 5");
@@ -357,7 +352,10 @@ public class ClientView {
 			personDeck.getChildren().add(b);
 		}
 		personDeck.setAlignment(Pos.CENTER);
+		personDeck.getStyleClass().add("personDeck");
 		
+		
+		//BuildingArea
 		Label buildingsImage = new Label();
 		buildingsImage.getStyleClass().add("buildingCard");
 		buildingsImage.setMinHeight(238);

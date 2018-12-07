@@ -55,7 +55,6 @@
 .buildingCard{
 	-fx-min-width: 1200;
 	-fx-max-width: 1200;
-	/*-fx-padding-top: 123;*/
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/buildingCardsImage.jpg);	
@@ -85,8 +84,8 @@
 	 -fx-font-weight: bold;
 }
 .enemyBuildingsImg{
-	-fx-min-width: 136;
-	-fx-max-width: 136;
+	-fx-min-width: 102;
+	-fx-max-width: 102;
 	/*-fx-padding-top: 123;*/
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;
@@ -136,6 +135,9 @@
 .gameArea{
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/inside2.jpg);		
+}
+.personDeck{
+	-fx-padding: 20 0;
 }
 .gameButtons{
 	-fx-border-color: #50654f;	
