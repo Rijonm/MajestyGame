@@ -323,7 +323,7 @@ public class ClientView {
 		//PlayerArea / LeftArea
 		int playerN = ANZAHL_GEGNER+1;
 		for (int x = 1; x < playerN; x++) {
-			Label lp = new Label("Player: P"+x);
+			Label lp = new Label("Player: Benutzer"+x);
 			Label lc = new Label("Coins: 100");
 			Label lm = new Label("Meeples: 5");
 			Region spacerP = new Region();
