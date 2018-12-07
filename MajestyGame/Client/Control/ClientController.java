@@ -315,6 +315,7 @@ public class ClientController {
 		
 		model.getLobbyPlayers().addListener((ListChangeListener<String>) c -> {
 			
+			//view.lobby = new ListView<>(model.getLobbyPlayers());
 			//view.lobby.getColumns().add(new TableColumn<>(c.getAddedSubList());
 			//view.lobby.refresh();
 			//view.lobby.getColumns().clear();

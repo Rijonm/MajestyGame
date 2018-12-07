@@ -192,7 +192,7 @@ public class Client {
      */
     public void sendLoggedInPlayers() {
     		LoggedInPlayers message = model.db.getLoggedInPlayers();
-    		model.broadcastToOnlinePlayers(message);
+    		model.broadcast(message);
     }
     
     protected void logoutRequest() {

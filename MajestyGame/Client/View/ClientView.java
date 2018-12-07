@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -65,7 +66,7 @@ public class ClientView {
 	public HBox optionenBox;
 	public VBox centerStart;
 	public BorderPane spielStartenArea;
-	public TableView lobby = new TableView();
+	public ListView<String> lobby;
 	public Button spielstartenB = new Button("Starten");
 	public Button einstellungenB = new Button("Einstellungen");
 	public Button highscoreB = new Button("Highscore");
@@ -236,9 +237,10 @@ public class ClientView {
 		spielStartenArea.setAlignment(centerStart, Pos.CENTER);
 		
 		
-		lobby.getStyleClass().add("lobby");		
+		lobby = new ListView<>(model.getLobbyPlayers());
 		optionenBox.getChildren().addAll(spielstartenB, einstellungenB, highscoreB, spielanleitungB, logoutB);
 		optionenBox.setAlignment(Pos.CENTER);
+		lobby.getStyleClass().add("lobby");
 		//spielStartenArea.setTop(lobby);
 		centerStart.getChildren().addAll(lobby, optionenBox);
 		
