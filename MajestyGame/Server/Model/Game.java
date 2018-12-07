@@ -17,10 +17,10 @@ public class Game implements Serializable {
 	
 	public Game(ServerModel model) {
 		this.model = model;
-		for(Client c : model.clients) {//Adds online players to ObservableList players
-			if(c.isInGame()==true)
-			players.add(c);
-		}
+//		for(Client c : model.clients) {//Adds online players to ObservableList players
+//			if(c.isInGame()==true)
+//			players.add(c);
+//		}
 		deckA = new DeckA();
 		
 		sendFirstSixCards(deckA.getCard(0), deckA.getCard(1), deckA.getCard(2), deckA.getCard(3), deckA.getCard(4), deckA.getCard(5), 1);

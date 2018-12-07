@@ -111,7 +111,7 @@ public class ServerModel {
 	 * @author Rijon
 	 */
 	public void startGame() {
-		Game game = new Game(this);
+		game = new Game(ServerModel.this);
 		
 	}
 	

@@ -137,7 +137,7 @@ public class ClientController {
 		view.sendButton.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-				//model.sendChatMessage("rijon", view.chatInput.getText());
+				model.sendChatMessage("rijon", view.chatInput.getText());
 				view.chatContent.setText(view.chatInput.getText());	
 				System.out.println(view.chatInput.getText());
 			}
