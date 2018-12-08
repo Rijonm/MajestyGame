@@ -10,33 +10,48 @@ public class DeckA {
 	
 	//Card[] cards2 = new Cards[19]
 	
-	private ArrayList<Card> cards = new ArrayList<>();
+	//private ArrayList<Card> card = new ArrayList<>();
 	public ArrayList<Card> openCards = new ArrayList<>();
 	public int[] openCardsID = new int[6];
+	
+	public int[] cards = {11, 6, 11, 6, 5, 6, 4};
+	
+	// 0 Brown Brewer
+	// 1 Blue Defense
+	// 2 Orange Farmer
+	// 3 Violet Queen
+	// 4 Red Soldier
+	// 5 Yellow Host
+	// 6 Green Witch
+	
+	
+	
 	// CardID, Name, Quantity of remaining Cards, Coins
-	Card brewer = new CardBrewer(1, "Brauer", 10, 5);
-	Card defense = new CardBrewer(2, "Verteidigung", 10, 5);
-	Card farmer = new CardBrewer(3, "Bauer", 10, 5);
-	Card queen = new CardBrewer(4, "Königin", 10, 5);
-	Card soldier = new CardBrewer(5, "Soldat", 10, 5);
-	Card tavern = new CardBrewer(6, "Taverne", 10, 5);
-	Card witch = new CardBrewer(7, "Hexe", 10, 5);
+//	Card brewer = new CardBrewer(1, "Brauer", 10, 5);
+//	Card defense = new CardDefense(2, "Verteidigung", 2, 5);
+//	Card farmer = new CardFarmer(3, "Bauer", 7, 5);
+//	Card queen = new CardQueen(4, "Königin", 10, 5);
+//	Card soldier = new CardSoldier(5, "Soldat", 3, 5);
+//	Card tavern = new CardTavern(6, "Taverne", 4, 5);
+//	Card witch = new CardWitch(7, "Hexe", 3, 5);
 	
-	public DeckA() {
-		cards.add(brewer);
-		cards.add(defense);
-		cards.add(farmer);
-		cards.add(queen);
-		cards.add(soldier);
-		cards.add(tavern);
-		cards.add(witch);
-		Collections.shuffle(cards);
-	}
 	
-	public int getCard(int a) {
-		openCards.add(cards.get(a));
-		return cards.get(a).getCardID();
-	}
+	
+//	public DeckA() {
+//		cards.add(brewer);
+//		cards.add(defense);
+//		cards.add(farmer);
+//		cards.add(queen);
+//		cards.add(soldier);
+//		cards.add(tavern);
+//		cards.add(witch);
+//		Collections.shuffle(cards);
+//	}
+	
+//	public int getCard(int a) {
+//		openCards.add(cards.get(a));
+//		return cards.get(a).getCardID();
+//	}
 	
 	
 	

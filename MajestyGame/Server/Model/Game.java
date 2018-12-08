@@ -2,6 +2,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 import CommonClasses.CardFromServerMessage;
 import CommonClasses.FirstSixCardsMessage;
@@ -15,6 +16,13 @@ public class Game implements Serializable {
 	private int[] meeples = new int[6];
 	int round = 0;
 	private ServerModel model;
+	Random r = new Random();
+	int zerro = r.nextInt(7);
+	int two = r.nextInt(7);
+	int three = r.nextInt(7);
+	int four =r.nextInt(7);
+	int five =r.nextInt(7);
+	int six =r.nextInt(7);
 	
 	public Game(ServerModel model) {
 		this.model = model;
@@ -28,8 +36,8 @@ public class Game implements Serializable {
 			}
 		}
 		deckA = new DeckA();
-		
-		sendFirstSixCards(deckA.getCard(0), deckA.getCard(1), deckA.getCard(2), deckA.getCard(3), deckA.getCard(4), deckA.getCard(5), 1);
+		sendFirstSixCards(deckA.cards[zerro], deckA.cards[two], deckA.cards[three], deckA.cards[four], deckA.cards[five], deckA.cards[six], 1);
+		//sendFirstSixCards(deckA.getCard(0), deckA.getCard(1), deckA.getCard(2), deckA.getCard(3), deckA.getCard(4), deckA.getCard(5), 1);
 	}
 	
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f, int turn) {
