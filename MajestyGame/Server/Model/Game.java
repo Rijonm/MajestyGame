@@ -55,11 +55,10 @@ public class Game implements Serializable {
 			round = a;
 		}
 		
-		
-		
 		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
 				
+				p.getHand().playerChoose(pos);
 				
 			}
 			CardFromServerMessage cfsm = new CardFromServerMessage(deckA.getOpenCards(), meeples);

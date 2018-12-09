@@ -47,8 +47,9 @@ public class Client {
     private int highscore; //noch nicht definiert
     private boolean isOnline;
     private boolean isInGame;
-    private int[] gezogeneKarten = new int[8];
-    private int coins = 0;
+    private Hand hand;
+
+	private int coins = 0;
     private int meeples = 5;
     
     
@@ -224,6 +225,10 @@ public class Client {
     public int getId() {
     		return id;
     }
+    
+    public Hand getHand() {
+		return hand;
+	}
     
     public void send(Message message) {
 		try {
