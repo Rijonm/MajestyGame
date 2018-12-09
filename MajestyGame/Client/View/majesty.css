@@ -84,8 +84,8 @@
 	 -fx-font-weight: bold;
 }
 .enemyBuildingsImg{
-	-fx-min-width: 102;
-	-fx-max-width: 102;
+	-fx-min-width: 170;
+	-fx-max-width: 170;
 	/*-fx-padding-top: 123;*/
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;
@@ -169,6 +169,43 @@
 .gameButton6{
 	-fx-background-image: url(/images/characterCard_Witch.jpg);	
 }
+.gameButton7{
+	-fx-background-image: url(/images/OrangeBrown.jpg);	
+}
+.gameButton8{
+	-fx-background-image: url(/images/OrangeRed.jpg);		
+}
+.gameButton9{
+	-fx-background-image: url(/images/BrownGreen.jpg);		
+}
+.gameButton10{
+	-fx-background-image: url(/images/BrownRed.jpg);		
+}
+.gameButton11{
+	-fx-background-image: url(/images/GreenBlue.jpg);		
+}
+.gameButton12{
+	-fx-background-image: url(/images/GreenYellow.jpg);		
+}
+.gameButton13{
+	-fx-background-image: url(/images/GreenViolet.jpg);		
+}
+.gameButton14{
+	-fx-background-image: url(/images/BlueRed.jpg);		
+}
+.gameButton15{
+	-fx-background-image: url(/images/BlueYellow.jpg);		
+}
+.gameButton16{
+	-fx-background-image: url(/images/BlueViolet.jpg);		
+}
+.gameButton17{
+	-fx-background-image: url(/images/RedYellow.jpg);		
+}
+.gameButton18{
+	-fx-background-image: url(/images/YellowViolet.jpg);		
+}
+
 .bd1{
 	-fx-background-image: url(/images/bdC1.jpg);		
 }

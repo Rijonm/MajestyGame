@@ -89,10 +89,15 @@ public class ClientView {
 	public EnemyArea enemyArea;
 	public DeckArea deckArea;
 	public BuildingsArea buildingsArea;
+	public Label[] buildingAry = new Label[8];
+	public Label[] enemyBCarray = new Label[8];
 	public ChatArea chatArea;
 	public PlayerArea playerArea;
 	public BottomArea bottomArea;
 	public Button[] buttons = new Button[6];
+	public Label buildingCounter;
+	public Label ebCounter;
+	public int labelCounter = 0;
 //	public Button b1 = new Button("b1");
 //	public Button b2 = new Button("b2");
 //	public Button b3 = new Button("b3");
@@ -100,6 +105,10 @@ public class ClientView {
 //	public Button b5 = new Button("b5");
 //	public Button b6 = new Button("b6");
 	public VBox centerVbox, leftVbox, rightVbox;
+	
+	
+	//enemyDeck
+	public final int ANZAHL_GEGNER = 4;
 	
 	
 	//ChatArea
@@ -148,6 +157,20 @@ public class ClientView {
 			Button b = new Button("b"+i);
 			buttons[i] = b;
 		}
+		for (int j = 0; j < 8; j++) {
+			String s = Integer.toString(labelCounter);
+			buildingCounter = new Label(s);
+			buildingAry[j] = buildingCounter;
+
+		}
+		
+		for (int k = 1; k < ANZAHL_GEGNER; k++) {
+			for (int l = 0; l < 8; l++) {
+				ebCounter = new Label("0");
+				enemyBCarray[l] = ebCounter;
+			}
+		}
+		
 		majestyLogoView.setImage(majestyLogo);
 		majestyLogoView.setFitWidth(615);
 		majestyLogoView.setFitHeight(320);
@@ -293,9 +316,7 @@ public class ClientView {
 		rightVbox= new VBox();
 		
 		
-		//EnemyDeck
-		final int ANZAHL_GEGNER = 4;
-		
+		//EnemyDeck		
 		HBox enemyArea = new HBox();
 
 		for (int j = 1; j < ANZAHL_GEGNER; j++) {
@@ -310,7 +331,7 @@ public class ClientView {
 				spacerEB.getStyleClass().add("spacerEB");		
 			//}
 			for (int h = 1; h < 9; h++) {
-				Label ebCounter = new Label(""+h);
+				ebCounter = new Label(""+h);
 				ebCounter.setMinHeight(37);
 				//Region spacerEBC = new Region();
 				//VBox.setVgrow(spacerEB, Priority.ALWAYS);
@@ -369,17 +390,16 @@ public class ClientView {
 		buildingsCounters.setAlignment(Pos.CENTER);
 		buildingsCounters.getStyleClass().add("buildingsCounters");
 		for (int i = 0; i < 8; i++) {
-			Random r1 = new Random();  //useless test
-			int rn = r1.nextInt(6)+1;  //useless test
-			String rString = String.valueOf(rn); //useless test
 			
-			Label counter = new Label(rString);
-			counter.setAlignment(Pos.CENTER);
-			counter.getStyleClass().add("counterLabel");
+			buildingCounter = buildingAry[i];			
+//			Label counter = new Label(rString);
+			
+			buildingCounter.setAlignment(Pos.CENTER);
+			buildingCounter.getStyleClass().add("counterLabel");
 			//Region spacerC = new Region();
 			//spacerC.getStyleClass().add("spacerBuildings");
-			counter.getStyleClass().add("coinCounter");
-			buildingsCounters.getChildren().add(counter);
+			buildingCounter.getStyleClass().add("coinCounter");
+			buildingsCounters.getChildren().add(buildingCounter);
 		}
 		
 		
