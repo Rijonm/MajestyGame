@@ -47,7 +47,7 @@ public class Client {
     private int highscore; //noch nicht definiert
     private boolean isOnline; //wird auf true gesetzt, falls der Login erfolgreich war
     private boolean isInGame; //wird auf true gesetzt, bei allen spielern in der Lobby(max 4), nachdem der einte Spieler auf SpielStarten klickt
-    private Hand hand; //Jeder Player hat eine Hand, die beim Spielstart erzeugt wird. Startwerte 0,0,0,0,0,0,0,0
+    private Hand hand = new Hand();; //Jeder Player hat eine Hand, die beim Spielstart erzeugt wird. Startwerte 0,0,0,0,0,0,0,0
 
 	private int coins = 0;
     private int meeples = 5;
@@ -94,7 +94,6 @@ public class Client {
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
 							System.out.println("gamestartmessagereceived");
 							gameStartMessage = (GameStartMessage) msg;
-							hand = new Hand();
 //							for(Client c : model.clients) {
 //								if(c.username.equals("rijon")) {
 //									c.isInGame = true;
