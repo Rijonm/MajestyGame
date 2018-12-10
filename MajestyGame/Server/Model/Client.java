@@ -245,7 +245,6 @@ public class Client {
 	
 	public Message receive() throws IOException, ClassNotFoundException {
 		Message message = (Message) oips.readObject();
-		System.out.println("message");
 		return message;
 		
 	}

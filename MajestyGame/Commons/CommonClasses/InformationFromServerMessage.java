@@ -1,17 +1,19 @@
 package CommonClasses;
 
-import java.util.ArrayList;
-
 public class InformationFromServerMessage extends Message{
 
-	private ArrayList<Integer> openCards;
+	private Integer[] openCards;
 	private int[] meeples;
 	
-	public InformationFromServerMessage(ArrayList<Integer> openCards) {
+	public InformationFromServerMessage(Integer[] openCards) {
 		super(MessageType.InformationFromServerMessage);
 		
 		this.openCards = openCards;
 		this.meeples = meeples;
 	}
 
+	public Integer[] getOpenCards() {
+		return openCards;
+	}
+	
 }

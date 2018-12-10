@@ -35,7 +35,6 @@ public class DeckA {
 	public int getCard() {
 		Random rand = new Random();
 		int cardID = rand.nextInt(18);
-		System.out.println(cardID);
 		int contain;
 		contain = cards[cardID]; //Speicher Anzahl der vorhandenen Karten am ensprechenden Index(cardID).
 		if(contain==0) { // Schaut ob an der ensprechenden Stelle noch Karten vorhanden sind. Wenn nicht dann nächstmögliche Karte zurück.
@@ -47,15 +46,18 @@ public class DeckA {
 			}
 		}
 		cards[cardID] = cards[cardID]-1; //Nachdem Karte gewählt wird, wird 1 Karte abgezogen.
-		if(openCards.size()<=5) { // Die ArrayList openCards muss zuerst gefüllt werden, dies geschieht beim ziehen der ersten 6 Karten
-		openCards.add(cardID);
-		}
 		return cardID;
 	}
 	//openCards muss jedesmal bei einem SpielerZug entsprechend angepasst werden
 	public void playerMove(int pos) {
 		openCards.remove(pos); //Löscht gezogene Karte aus openCards
 		openCards.add(getCard()); // Fügt eine neue ein
+	}
+	
+	public int getFirstSixCards() {
+		int card = getCard();
+		openCards.add(card);
+		return card;
 	}
 	
 	

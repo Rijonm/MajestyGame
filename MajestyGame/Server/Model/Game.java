@@ -26,7 +26,7 @@ public class Game  {
 			}
 		}
 		deckA = new DeckA();
-		sendFirstSixCards(deckA.getCard(), deckA.getCard(), deckA.getCard(), deckA.getCard(), deckA.getCard(), deckA.getCard(), 1);
+		sendFirstSixCards(deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), 1);
 	}
 	
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f, int turn) {
@@ -47,14 +47,16 @@ public class Game  {
 		deckA.playerMove(pos);
 		
 		
-		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
-			if(p.getId()==id) {
-				
-			}
-			InformationFromServerMessage cfsm = new InformationFromServerMessage(deckA.openCards);
-			model.broatcastToPlayerInGame(cfsm);
-			
-		}
+//		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
+//			if(p.getId()==id) {
+//				
+//			}
+//		}
+		System.out.println(deckA.openCards);
+		InformationFromServerMessage ifsm = new InformationFromServerMessage(deckA.openCards.toArray(new Integer[deckA.openCards.size()]));
+		System.out.println(ifsm.getOpenCards());
+		model.broadcastToOnlinePlayers(ifsm);
+		
 		
 	}
 	

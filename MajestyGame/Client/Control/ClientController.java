@@ -627,21 +627,6 @@ public class ClientController {
 			}
 		});
 		
-		model.getLobbyPlayers().addListener((ListChangeListener<String>) c -> {
-			
-			//view.lobby = new ListView<>(model.getLobbyPlayers());
-			//view.lobby.getColumns().add(new TableColumn<>(c.getAddedSubList());
-			//view.lobby.refresh();
-			//view.lobby.getColumns().clear();
-			
-//			view.lobby = new ListView(model.getLobbyPlayers()) ;
-//			view.lobby.refresh();
-			//Solange die liste Spieler hat, aktualisiere die liste
-			//c.getList().get(a).getUsername();
-			//a++;
-		
-		
-		});
 		
 		/**
 		 * Aktualisiert Buttons.
@@ -652,6 +637,7 @@ public class ClientController {
 			if(!view.primaryStage.getScene().equals(view.fifthScene)) { //setzt nur das erste mal die Fünfte Scene
 			view.primaryStage.setScene(view.setFifthScene());
 			view.primaryStage.setFullScreen(false);
+			System.out.println(c.getList()); System.out.println("newList");
 			}
 			Platform.runLater(() ->{
 			int i = 0;

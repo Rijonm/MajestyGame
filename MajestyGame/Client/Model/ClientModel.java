@@ -95,7 +95,7 @@ public class ClientModel {
 							}
 							if(msg.getMessageType() == MessageType.InformationFromServerMessage) {
 								Platform.runLater(() ->{
-								receivedCardFromServerMessage(msg);
+								receivedInformationFromServerMessage(msg);
 								});
 							}
 							if(msg.getMessageType() == MessageType.EvaluateGameMessage) {
@@ -144,9 +144,12 @@ public class ClientModel {
 		
 	}
 
-	protected void receivedCardFromServerMessage(Message msg) {
-		InformationFromServerMessage cfsm = (InformationFromServerMessage) msg;
-		
+	protected void receivedInformationFromServerMessage(Message msg) {
+		InformationFromServerMessage ifsm = (InformationFromServerMessage) msg;
+		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(ifsm.getOpenCards()));
+		System.out.println(list + "NewCards");
+		deck.clear();
+		deck.addAll(list);
 	}
 	/*
 	 * Aktualisiert deck, trigger in contoller
@@ -154,11 +157,9 @@ public class ClientModel {
 	protected void receivedFirstSixCardsMessage(Message msg) {
 		FirstSixCardsMessage fscm = (FirstSixCardsMessage) msg;
 		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(fscm.getFirstSixCards()));
-		System.out.println(list);
-		System.out.println(fscm.getTurn());
+		System.out.println(list + "FirstSixCards");
 		deck.clear();
 		deck.addAll(list);
-		System.out.println("OK");
 		
 	}
 	
@@ -305,7 +306,6 @@ public class ClientModel {
 	public Message receive() throws IOException, ClassNotFoundException {
 		
 		Message message = (Message) oips.readObject();
-		System.out.println("message");
 		return message;
 		
 	}
