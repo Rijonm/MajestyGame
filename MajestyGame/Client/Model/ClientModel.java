@@ -156,6 +156,7 @@ public class ClientModel {
 		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(fscm.getFirstSixCards()));
 		System.out.println(list);
 		System.out.println(fscm.getTurn());
+		deck.clear();
 		deck.addAll(list);
 		System.out.println("OK");
 		

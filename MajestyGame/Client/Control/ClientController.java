@@ -8,6 +8,7 @@ import CommonClasses.Player;
 import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -212,7 +213,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				System.out.println("b0");
 				//view.buildingCounter.setText(Integer.toString(model.deck.get(1)));
-				//model.sendPlayerMoveMessage(model.deck.get(0));
+				model.sendPlayerMoveMessage(0);
 				
 				
 				if(model.deck.get(0) <= 6) {
@@ -274,7 +275,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b1");						
-				//model.sendPlayerMoveMessage(1);
+				model.sendPlayerMoveMessage(1);
 				
 				
 				if(model.deck.get(1) <= 6) {
@@ -335,7 +336,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b2");						
-				//model.sendPlayerMoveMessage(2);		
+				model.sendPlayerMoveMessage(2);		
 				//view.buildingAry[model.deck.get(2)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
 				
 				if(model.deck.get(2) <= 6) {
@@ -396,7 +397,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b3");						
-				//model.sendPlayerMoveMessage(3);	
+				model.sendPlayerMoveMessage(3);	
 				//view.buildingAry[model.deck.get(3)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
 			
 				if(model.deck.get(3) <= 6) {
@@ -457,7 +458,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b4");						
-				//model.sendPlayerMoveMessage(4);		
+				model.sendPlayerMoveMessage(4);		
 				
 				//view.buildingAry[model.deck.get(4)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
 				
@@ -518,7 +519,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b5");						
-				//model.sendPlayerMoveMessage(5);	
+				model.sendPlayerMoveMessage(5);	
 				
 				//view.buildingAry[model.deck.get(5)].setText(Integer.toString(view.labelCounter+1));  //in setText kommt Array-Nachricht vom Server rein
 			
@@ -648,13 +649,21 @@ public class ClientController {
 		 * @author Rijon
 		 */
 		model.deck.addListener((ListChangeListener<Integer>) c-> {
+			if(!view.primaryStage.getScene().equals(view.fifthScene)) { //setzt nur das erste mal die Fünfte Scene
 			view.primaryStage.setScene(view.setFifthScene());
 			view.primaryStage.setFullScreen(false);
+			}
+			Platform.runLater(() ->{
 			int i = 0;
 			for(Button b : view.buttons) {
-				b.getStyleClass().addAll("gameButton"+model.deck.get(i) ,"gameButtons");
+				b.getStyleClass().clear();
+				b.getStyleClass().addAll("gameButton"+c.getList().get(i) ,"gameButtons");
+//				b.getStyleClass().removeAll("gameButton"+model.deck.get(i) ,"gameButtons");
+//				b.getStyleClass().addAll("gameButton"+model.deck.get(i) ,"gameButtons");
+				
 				i++;
 			}
+			});
 		
 			//2)Set new Cards
 //			for(int i = 0; i<= buttons.length; i++) {
