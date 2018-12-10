@@ -94,7 +94,6 @@ public class Client {
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
 							System.out.println("gamestartmessagereceived");
 							gameStartMessage = (GameStartMessage) msg;
-							isInGame = true; //defines, that this player is in game
 							hand = new Hand();
 //							for(Client c : model.clients) {
 //								if(c.username.equals("rijon")) {
@@ -221,6 +220,13 @@ public class Client {
     
     public boolean isInGame() {
     		return isInGame;
+    }
+    public void setIsOnline(boolean b) {
+    		isOnline = b;
+    }
+    
+    public void setIsInGame(boolean b) {
+    		isInGame = b;
     }
     
     public int getId() {

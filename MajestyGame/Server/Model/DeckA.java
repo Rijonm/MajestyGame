@@ -51,7 +51,7 @@ public class DeckA {
 	//openCards muss jedesmal bei einem SpielerZug entsprechend angepasst werden
 	public void playerMove(int pos) {
 		openCards.remove(pos); //Löscht gezogene Karte aus openCards
-		openCards.add(getCard()); // Fügt eine neue ein
+		openCards.add(getCard()); // Fügt eine neue Karte ein.
 	}
 	
 	public int getFirstSixCards() {
@@ -128,51 +128,5 @@ public class DeckA {
 	allCards[17] = 1; //Red/Yellow
 	allCards[18] = 1; //Yellow/Violet
 	*/
-	public void playerChoose(int cardID) {
-		int i = cardID;
-		
-//		switch (i) {
-//        case 1:
-//        	Brewer.add(cardBrewer);
-//        	break;
-//        case 2:
-//        	Defense.add(cardDefense);
-//        	break;
-//        case 3:
-//        	Farmer.add(cardFarmer);
-//        	break;
-//        case 4:
-//        	Queen.add(cardQueen);
-//        	break;
-//        case 5:
-//        	Soldier.add(cardSoldier);
-//        	// Verteidung der Gegner ueberpruefen
-//        	// Gegner mit weniger Verteidiger als unser anzahl Soldaten, werrden angefriffen.
-//        	break;
-//        case 6:
-//        	Witch.add(cardWitch);
-//        	int s = Lazarett.size()-1;
-//        	Card c = Lazarett.get(s);
-//        	Lazarett.remove(s);
-//        	int id = c.getCardID();
-//        	if(id == 1)
-//        		Brewer.add(cardBrewer);
-//        	if(id == 2)
-//        		Defense.add(cardDefense);
-//        	if(id == 3)
-//        		Farmer.add(cardFarmer);
-//        	if(id == 4)
-//        		Queen.add(cardQueen);
-//        	if(id == 5)
-//        		Soldier.add(cardSoldier);
-//        	if(id == 6)
-//        		Witch.add(cardWitch);
-//        	break;
-//        case 7:
-//        	Tavern.add(cardTavern);
-//        	break;   
-//    }
-		
-		//
-	}
+	
 }

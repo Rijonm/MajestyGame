@@ -5,8 +5,9 @@ import java.util.ArrayList;
 
 public class Hand {
 	
-	int[] handSize = new int[8];
-	int[] hand = new int[8];
+	int[] handSize = new int[8]; 
+	int[] hand = new int[8]; //!
+	int coins; //!
 	
 	
 	public static ArrayList<CardBrewer> Brewer = new ArrayList <>();
@@ -22,6 +23,7 @@ public class Hand {
 		for(int i = 0; i<hand.length; i++) { // Punktezahl 0,0,0,0,0,0,0,0
 			hand[i] = 0;
 		}
+		coins = 0;
 	}
 	
 	public int[] getPlayerCards() {
@@ -34,6 +36,54 @@ public class Hand {
 	handSize[6]	= Tavern.size();
 	handSize[7] = Lazarett.size();	
 	return handSize;
+	}
+	
+	public void playerChoose(int cardID) {
+		int i = cardID;
+		
+//		switch (i) {
+//        case 1:
+//        	Brewer.add(cardBrewer);
+//        	break;
+//        case 2:
+//        	Defense.add(cardDefense);
+//        	break;
+//        case 3:
+//        	Farmer.add(cardFarmer);
+//        	break;
+//        case 4:
+//        	Queen.add(cardQueen);
+//        	break;
+//        case 5:
+//        	Soldier.add(cardSoldier);
+//        	// Verteidung der Gegner ueberpruefen
+//        	// Gegner mit weniger Verteidiger als unser anzahl Soldaten, werrden angefriffen.
+//        	break;
+//        case 6:
+//        	Witch.add(cardWitch);
+//        	int s = Lazarett.size()-1;
+//        	Card c = Lazarett.get(s);
+//        	Lazarett.remove(s);
+//        	int id = c.getCardID();
+//        	if(id == 1)
+//        		Brewer.add(cardBrewer);
+//        	if(id == 2)
+//        		Defense.add(cardDefense);
+//        	if(id == 3)
+//        		Farmer.add(cardFarmer);
+//        	if(id == 4)
+//        		Queen.add(cardQueen);
+//        	if(id == 5)
+//        		Soldier.add(cardSoldier);
+//        	if(id == 6)
+//        		Witch.add(cardWitch);
+//        	break;
+//        case 7:
+//        	Tavern.add(cardTavern);
+//        	break;   
+//    }
+		
+		//
 	}
 	
 }
