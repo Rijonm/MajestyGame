@@ -20,7 +20,7 @@ public class TestClient implements TestReceiver {
 			case LoginSuccessMessage:
 				loginResponse((LoginSuccessMessage) response);
 				break;
-			case CardFromServerMessage:
+			case InformationFromServerMessage:
 				break;
 			case ChatMessage:
 				break;

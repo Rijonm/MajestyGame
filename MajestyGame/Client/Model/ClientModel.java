@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-import CommonClasses.CardFromServerMessage;
 import CommonClasses.ChatMessage;
 import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.GameStartMessage;
+import CommonClasses.InformationFromServerMessage;
 import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
@@ -93,7 +93,7 @@ public class ClientModel {
 								receivedFirstSixCardsMessage(msg);
 								});
 							}
-							if(msg.getMessageType() == MessageType.CardFromServerMessage) {
+							if(msg.getMessageType() == MessageType.InformationFromServerMessage) {
 								Platform.runLater(() ->{
 								receivedCardFromServerMessage(msg);
 								});
@@ -145,7 +145,7 @@ public class ClientModel {
 	}
 
 	protected void receivedCardFromServerMessage(Message msg) {
-		CardFromServerMessage cfsm = (CardFromServerMessage) msg;
+		InformationFromServerMessage cfsm = (InformationFromServerMessage) msg;
 		
 	}
 	/*

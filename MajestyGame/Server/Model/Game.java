@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-import CommonClasses.CardFromServerMessage;
 import CommonClasses.FirstSixCardsMessage;
+import CommonClasses.InformationFromServerMessage;
 import javafx.collections.ObservableList;
 
 public class Game  {
@@ -45,14 +45,14 @@ public class Game  {
 		}
 		
 		deckA.playerMove(pos);
-		sendFirstSixCards(deckA.openCards.get(0), deckA.openCards.get(1), deckA.openCards.get(2), deckA.openCards.get(3), deckA.openCards.get(4), deckA.openCards.get(5), 1);
+		
 		
 		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
 				
 			}
-			//CardFromServerMessage cfsm = new CardFromServerMessage(deckA.getOpenCards(), meeples);
-			//model.broatcastToPlayerInGame(cfsm);
+			InformationFromServerMessage cfsm = new InformationFromServerMessage(deckA.openCards);
+			model.broatcastToPlayerInGame(cfsm);
 			
 		}
 		

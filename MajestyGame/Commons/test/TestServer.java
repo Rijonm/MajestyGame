@@ -32,7 +32,7 @@ public class TestServer implements TestReceiver {
 	public void receive(Message request) {
 		if (request != null) {
 			switch (request.getMessageType()) {
-			case CardFromServerMessage:
+			case InformationFromServerMessage:
 				break;
 			case ChatMessage:
 				break;
