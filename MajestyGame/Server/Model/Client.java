@@ -112,7 +112,7 @@ public class Client {
 						// IM SPIEL
 						if(msg.getMessageType() == MessageType.PlayerMoveMessage) {
 							playerMoveMessage = (PlayerMoveMessage) msg;
-							model.getGame().receivedPosFromClient(playerMoveMessage.getPositionPlayed(), Client.this.id);
+							model.getGame().receivedPosFromClient(playerMoveMessage.getPositionPlayed(), playerMoveMessage.getCardID(), Client.this.id);
 						}
 						// CHAT
 						if(msg.getMessageType() == MessageType.ChatMessage) {

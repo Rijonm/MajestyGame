@@ -46,6 +46,7 @@ public class ClientModel {
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
+	private ObservableList<Player> playersInGame = FXCollections.observableArrayList();
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
 	
@@ -256,8 +257,8 @@ public class ClientModel {
 	 * @author Rijon
 	 * @param i
 	 */
-	public void sendPlayerMoveMessage(int i) {
-		Message playerMoveMessage = new PlayerMoveMessage(i, id);
+	public void sendPlayerMoveMessage(int pos, int cardid) {
+		Message playerMoveMessage = new PlayerMoveMessage(pos, cardid, id);
 		send(playerMoveMessage);
 	}
 	
