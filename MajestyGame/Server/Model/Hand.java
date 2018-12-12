@@ -9,13 +9,13 @@ public class Hand {
 	Integer[] hand = new Integer[8]; //!
 	int coins; //!
 	
-	Card cardBrewer = new CardBrewer(coins, null);
-	Card cardDefense = new CardDefense(coins, null);
-	Card cardFarmer = new CardFarmer(coins, null);
-	Card cardQueen = new CardQueen(coins, null);
-	Card cardSoldier = new CardSoldier(coins, null);
-	Card cardWitch = new CardWitch(coins, null);
-	Card cardTavern = new CardTavern(coins, null);
+	Card cardBrewer = new CardBrewer();
+	Card cardDefense = new CardDefense();
+	Card cardFarmer = new CardFarmer();
+	Card cardQueen = new CardQueen();
+	Card cardSoldier = new CardSoldier();
+	Card cardWitch = new CardWitch();
+	Card cardTavern = new CardTavern();
 	
 	
 	

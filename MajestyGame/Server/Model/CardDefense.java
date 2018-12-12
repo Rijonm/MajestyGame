@@ -2,8 +2,8 @@ package Model;
 
 public class CardDefense extends Card{
 
-	public CardDefense(int cardID, String cardName) {
-		super(cardID, cardName);
+	public CardDefense() {
+		super(1, "Defense");
 		// TODO Auto-generated constructor stub
 	}
 	

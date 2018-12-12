@@ -4,8 +4,8 @@ package Model;
 
 public class CardWitch extends Card{
 
-	public CardWitch(int cardID, String cardName) {
-		super(cardID, cardName);
+	public CardWitch() {
+		super(5, "Witch");
 		// TODO Auto-generated constructor stub
 	}
 

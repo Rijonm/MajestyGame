@@ -2,8 +2,8 @@ package Model;
 
 public class CardFarmer extends Card{
 
-	public CardFarmer(int cardID, String cardName) {
-		super(cardID, cardName);
+	public CardFarmer() {
+		super(2, "Farmer");
 		// TODO Auto-generated constructor stub
 	}
 	

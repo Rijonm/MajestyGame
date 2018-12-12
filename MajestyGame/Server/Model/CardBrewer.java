@@ -2,8 +2,8 @@ package Model;
 
 public class CardBrewer extends Card{
 
-	public CardBrewer(int cardID, String cardName) {
-		super(cardID, cardName);
+	public CardBrewer() {
+		super(0, "brewer");
 		// TODO Auto-generated constructor stub
 	}
 	
