@@ -7,6 +7,10 @@ public class CardSoldier extends Card{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public void attack() {
+		
+	}
+	
 	//@author Mert Emek
 
 
