@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Hand {
 	
 	int[] handSize = new int[8]; 
-	Integer[] hand = new Integer[8]; //!
+	static Integer[] hand = new Integer[8]; //!
 	int coins; //!
 	
 	Card cardBrewer = new CardBrewer();
@@ -105,7 +105,13 @@ public class Hand {
         	hand[6] = tavernSize;
         	break;   
 		}
-		
+		coins = coins + Card.distriputeCoins(cardID);
 	}
+	public static int getHandSize(int cardID) {
+		int actuallHandSize = hand[cardID];
+		return actuallHandSize;
+	}
+	
+
 	
 }
