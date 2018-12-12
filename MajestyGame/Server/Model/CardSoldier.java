@@ -6,7 +6,7 @@ public class CardSoldier extends Card{
 
 
 	public CardSoldier(int cardID, String cardName, int cardQuantity, int cardCoins) {
-		super(cardID, cardName, cardQuantity, cardCoins);
+		super(cardID, cardName);
 		// TODO Auto-generated constructor stub
 	}
 

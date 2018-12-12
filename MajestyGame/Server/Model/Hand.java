@@ -9,14 +9,23 @@ public class Hand {
 	Integer[] hand = new Integer[8]; //!
 	int coins; //!
 	
+	Card cardBrewer = new CardBrewer(coins, null, 0, 0);
+	Card cardDefense = new CardDefense(coins, null, 0, 0);
+	Card cardFarmer = new CardFarmer(coins, null, 0 ,0);
+	Card cardQueen = new CardQueen(coins, null, 0 ,0);
+	Card cardSoldier = new CardSoldier(coins, null,0 ,0);
+	Card cardWitch = new CardWitch(coins, null,0 ,0);
+	Card cardTavern = new CardTavern(coins, null,0 ,0);
 	
-	public static ArrayList<CardBrewer> Brewer = new ArrayList <>();
-	public static ArrayList<CardDefense> Defense = new ArrayList <>();
-	public static ArrayList<CardFarmer> Farmer = new ArrayList <>();
-	public static ArrayList<CardQueen> Queen = new ArrayList <>();
-	public static ArrayList<CardSoldier> Soldier = new ArrayList <>();
-	public static ArrayList<CardWitch> Witch = new ArrayList <>();
-	public static ArrayList<CardTavern> Tavern = new ArrayList <>();
+	
+	
+	public static ArrayList<Card> Brewer = new ArrayList <>();
+	public static ArrayList<Card> Defense = new ArrayList <>();
+	public static ArrayList<Card> Farmer = new ArrayList <>();
+	public static ArrayList<Card> Queen = new ArrayList <>();
+	public static ArrayList<Card> Soldier = new ArrayList <>();
+	public static ArrayList<Card> Witch = new ArrayList <>();
+	public static ArrayList<Card> Tavern = new ArrayList <>();
 	public static ArrayList<Card> Lazarett = new ArrayList <>();
 	
 	public Hand() {
@@ -40,50 +49,63 @@ public class Hand {
 	
 	public void playerChoose(int cardID) {
 		int i = cardID;
+
+		switch (i) {
+        case 0:
+        	Brewer.add(cardBrewer);
+        	int brewerSize = hand[0]+1; 
+        	hand[0] = brewerSize;
+        	break;
+        case 1:
+        	Defense.add(cardDefense);
+        	int defenseSize = hand[1]+1; 
+        	hand[1] = defenseSize;
+        	break;
+        case 2:
+        	Farmer.add(cardFarmer);
+        	int farmerSize = hand[2]+1; 
+        	hand[2] = farmerSize;
+        	break;
+        case 3:
+        	Queen.add(cardQueen);
+        	int queenSize = hand[3]+1; 
+        	hand[3] = queenSize;
+        	break;
+        case 4:
+        	Soldier.add(cardSoldier);
+        	int soldierSize = hand[4]+1; 
+        	hand[4] = soldierSize;
+        	// Verteidung der Gegner ueberpruefen
+        	// Gegner mit weniger Verteidiger als unser anzahl Soldaten, werrden angefriffen.
+        	break;
+        case 5:
+        	Witch.add(cardWitch);
+        	int witchSize = hand[5]+1; 
+        	hand[5] = witchSize;
+        	int s = Lazarett.size()-1;
+        	Card c = Lazarett.get(s);
+        	Lazarett.remove(s);
+        	int id = c.getCardID();
+        	if(id == 0)
+        		Brewer.add(cardBrewer);
+        	if(id == 1)
+        		Defense.add(cardDefense);
+        	if(id == 2)
+        		Farmer.add(cardFarmer);
+        	if(id == 3)
+        		Queen.add(cardQueen);
+        	if(id == 4)
+        		Soldier.add(cardSoldier);
+        	if(id == 5)
+        		Witch.add(cardWitch);
+        	break;
+        case 6:
+        	Tavern.add(cardTavern);
+        	int tavernSize = hand[6]+1; 
+        	hand[6] = tavernSize;
+        	break;   
+		}
 		
-//		switch (i) {
-//        case 1:
-//        	Brewer.add(cardBrewer);
-//        	break;
-//        case 2:
-//        	Defense.add(cardDefense);
-//        	break;
-//        case 3:
-//        	Farmer.add(cardFarmer);
-//        	break;
-//        case 4:
-//        	Queen.add(cardQueen);
-//        	break;
-//        case 5:
-//        	Soldier.add(cardSoldier);
-//        	// Verteidung der Gegner ueberpruefen
-//        	// Gegner mit weniger Verteidiger als unser anzahl Soldaten, werrden angefriffen.
-//        	break;
-//        case 6:
-//        	Witch.add(cardWitch);
-//        	int s = Lazarett.size()-1;
-//        	Card c = Lazarett.get(s);
-//        	Lazarett.remove(s);
-//        	int id = c.getCardID();
-//        	if(id == 1)
-//        		Brewer.add(cardBrewer);
-//        	if(id == 2)
-//        		Defense.add(cardDefense);
-//        	if(id == 3)
-//        		Farmer.add(cardFarmer);
-//        	if(id == 4)
-//        		Queen.add(cardQueen);
-//        	if(id == 5)
-//        		Soldier.add(cardSoldier);
-//        	if(id == 6)
-//        		Witch.add(cardWitch);
-//        	break;
-//        case 7:
-//        	Tavern.add(cardTavern);
-//        	break;   
-//    }
-		
-		//
 	}
 	
 }

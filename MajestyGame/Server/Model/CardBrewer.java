@@ -7,7 +7,7 @@ public class CardBrewer extends Card{
 	String CardName = "Brauer";
 
 	public CardBrewer(int CardID, String CardName, int CardQuantity, int CardCoins) {
-		super(CardID, CardName, CardQuantity, CardCoins);
+		super(CardID, CardName);
 		
 		// TODO Auto-generated constructor stub
 	}
