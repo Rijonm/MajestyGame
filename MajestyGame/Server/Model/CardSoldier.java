@@ -1,19 +1,16 @@
 package Model;
 
 public class CardSoldier extends Card{
+
+	public CardSoldier(int cardID, String cardName) {
+		super(cardID, cardName);
+		// TODO Auto-generated constructor stub
+	}
 	
 	//@author Mert Emek
 
 
-	public CardSoldier(int cardID, String cardName, int cardQuantity, int cardCoins) {
-		super(cardID, cardName);
-		// TODO Auto-generated constructor stub
-	}
-
-	//for attack players hand
-		public static void attack() {
-			
-		};
+	
 
 	
 	

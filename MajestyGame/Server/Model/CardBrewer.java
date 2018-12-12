@@ -1,16 +1,15 @@
 package Model;
 
 public class CardBrewer extends Card{
+
+	public CardBrewer(int cardID, String cardName) {
+		super(cardID, cardName);
+		// TODO Auto-generated constructor stub
+	}
 	
 	//@author Mert Emek
 
-	String CardName = "Brauer";
-
-	public CardBrewer(int CardID, String CardName, int CardQuantity, int CardCoins) {
-		super(CardID, CardName);
-		
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	
 
