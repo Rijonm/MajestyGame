@@ -30,9 +30,9 @@ public abstract class Card {
 		return this.cardName;
 	};
 	
-	public static int distriputeCoins(int cardID) {
+	public static int distributeCoins(int cardID) {
 		int handSize = Hand.getHandSize(cardID);
-		int disCoins = 0;
+		int disCoins = 0; // coins which will distribute 
 		
 		switch (cardID) {
         case 0:

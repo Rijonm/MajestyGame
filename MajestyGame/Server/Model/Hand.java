@@ -105,7 +105,7 @@ public class Hand {
         	hand[6] = tavernSize;
         	break;   
 		}
-		coins = coins + Card.distriputeCoins(cardID);
+		coins = coins + Card.distributeCoins(cardID);
 	}
 	public static int getHandSize(int cardID) {
 		int actuallHandSize = hand[cardID];
