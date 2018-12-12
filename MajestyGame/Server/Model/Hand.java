@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Hand {
 	
 	int[] handSize = new int[8]; 
-	int[] hand = new int[8]; //!
+	Integer[] hand = new Integer[8]; //!
 	int coins; //!
 	
 	

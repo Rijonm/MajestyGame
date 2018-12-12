@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 
 import CommonClasses.ChatMessage;
 import CommonClasses.FirstSixCardsMessage;
@@ -20,12 +20,14 @@ import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
 import CommonClasses.MessageType;
+import CommonClasses.OpponentPlayerMessage;
 import CommonClasses.Player;
 import CommonClasses.PlayerMoveMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserRegisterMessage;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,7 +48,7 @@ public class ClientModel {
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
-	private ObservableList<Player> playersInGame = FXCollections.observableArrayList();
+	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents id name hand meeples
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
 	
@@ -85,6 +87,11 @@ public class ClientModel {
 							if(msg.getMessageType() == MessageType.LoggedInPlayers) {
 								Platform.runLater(() ->{
 								receivedLoggedInPlayersMessage(msg);
+								});
+							}
+							if(msg.getMessageType() == MessageType.OpponentPlayerMessage) {
+								Platform.runLater(() ->{
+								receivedOpponentPlayers(msg);
 								});
 							}
 							//Erst wenn die 6 karten eintreffen muss ein trigger die spielScene starten
@@ -161,6 +168,17 @@ public class ClientModel {
 		System.out.println(list + "FirstSixCards");
 		deck.clear();
 		deck.addAll(list);
+		
+	}
+	/*
+	 * Gets every opponent from the server
+	 */
+	protected void receivedOpponentPlayers(Message msg) {
+		OpponentPlayerMessage opm = (OpponentPlayerMessage) msg;
+		if(opm.getId()!=this.id) { //Da server immer die ganze Spieler Array durchgeht und allen sendet, muss analysiert werden ob es sich dabei um die eigene ID handelt, falls nicht dann als Oppenent einfügen.
+			Opponent opponent = new Opponent(opm.getId(), opm.getUsername(), opm.getHand(), opm.getMeeples());
+			opponentPlayers.add(opponent);
+		}
 		
 	}
 	
@@ -311,4 +329,22 @@ public class ClientModel {
 		
 	}
 	
+	public class Opponent{
+		SimpleIntegerProperty id = new SimpleIntegerProperty();
+		SimpleStringProperty name = new SimpleStringProperty();
+		SimpleIntegerProperty meeples = new SimpleIntegerProperty();
+		ObservableList<Integer> hand = FXCollections.observableArrayList();
+		SimpleStringProperty wonOrLose = new SimpleStringProperty();
+		
+		public Opponent(int id, String name, Integer hand[], int meeples) {
+			this.id.set(id);
+			this.name.set(name);
+			this.meeples.set(meeples);
+			this.hand.setAll(Arrays.asList(hand));
+			
+		}
+		
+	}
+	
 }
+

@@ -232,9 +232,17 @@ public class Client {
     		return id;
     }
     
+    public String getUsername() {
+    		return username;
+    }
+    
     public Hand getHand() {
 		return hand;
 	}
+    
+    public int getMeeples() {
+    		return meeples;
+    }
     
     public void send(Message message) {
 		try {

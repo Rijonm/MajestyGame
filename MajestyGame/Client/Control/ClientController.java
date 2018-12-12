@@ -639,6 +639,7 @@ public class ClientController {
 		 */
 		model.deck.addListener((ListChangeListener<Integer>) c-> {
 			if(!view.primaryStage.getScene().equals(view.fifthScene)) { //setzt nur das erste mal die Fünfte Scene
+			view.ANZAHL_GEGNER = model.opponentPlayers.size() + 1;
 			view.primaryStage.setScene(view.setFifthScene());
 			view.primaryStage.setFullScreen(false);
 			System.out.println(c.getList()); System.out.println("newList");

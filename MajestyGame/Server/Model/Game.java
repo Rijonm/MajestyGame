@@ -2,10 +2,13 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.InformationFromServerMessage;
+import CommonClasses.OpponentPlayerMessage;
 import javafx.collections.ObservableList;
 
 public class Game  {
@@ -28,7 +31,16 @@ public class Game  {
 				players++;
 			}
 		}
-		System.out.println();
+		
+		for(Client c : model.clients) { // Sendet jedem Spieler die informartionen jedes Spielers/Gegeners
+			if(c.isInGame()== true) {
+				for(Client o : model.clients) {
+					System.out.println(o.getId() + o.getUsername() + o.getHand().hand.toString() + o.getMeeples());
+				OpponentPlayerMessage opm = new OpponentPlayerMessage(o.getId(), o.getUsername(), o.getHand().hand, o.getMeeples());
+				c.send(opm);
+				}
+			}
+		}
 		
 		for(int i = 0; i<meeples.length; i++) { // Meeples 0,0,0,0,0,0
 			meeples[i] = 0;

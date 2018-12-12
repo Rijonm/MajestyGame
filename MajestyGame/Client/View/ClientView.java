@@ -108,7 +108,7 @@ public class ClientView {
 	
 	
 	//enemyDeck
-	public final int ANZAHL_GEGNER = 4;
+	public int ANZAHL_GEGNER = 0;
 	
 	
 	//ChatArea
