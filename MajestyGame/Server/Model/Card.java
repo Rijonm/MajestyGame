@@ -33,10 +33,12 @@ public abstract class Card {
 	public static int distributeCoins(int cardID) {
 		int handSize = Hand.getHandSize(cardID);
 		int disCoins = 0; // coins which will distribute 
-		
+		int disMeeples;
 		switch (cardID) {
         case 0:
         	disCoins = handSize*2;
+        	disMeeples = handSize;
+        	Hand.meeples = Hand.meeples+disMeeples;
         	break;
         case 1:
         	if(Hand.hand[1]>=1 && Hand.hand[4]>=1 && Hand.hand[6]>=1) {
@@ -48,6 +50,8 @@ public abstract class Card {
         	break;
         case 3:
         	disCoins = handSize*5;
+        	disMeeples = handSize;
+        	Hand.meeples = Hand.meeples+disMeeples;
         	break;
         case 4:
         	disCoins = handSize*3;

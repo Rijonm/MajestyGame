@@ -7,7 +7,8 @@ public class Hand {
 	
 	int[] handSize = new int[8]; 
 	static Integer[] hand = new Integer[8]; //!
-	int coins; //!
+	int coins;
+	static int meeples = 5; //!
 	
 	Card cardBrewer = new CardBrewer();
 	Card cardDefense = new CardDefense();
@@ -106,11 +107,49 @@ public class Hand {
         	break;   
 		}
 		coins = coins + Card.distributeCoins(cardID);
+		actualMeeples();
 	}
+	
 	public static int getHandSize(int cardID) {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
+	public int actualMeeples() {
+		switch (meeples) {
+        case 6:
+        	coins = coins +1;
+        	meeples = meeples-1;
+        	break;
+        case 7:
+        	coins = coins +2;
+        	meeples = meeples-2;
+        	break;
+        case 8:
+        	coins = coins +3;
+        	meeples = meeples-3;
+        	break;
+        case 9:
+        	coins = coins +4;
+        	meeples = meeples-4;
+        	break;
+        case 10:
+        	coins = coins +5;
+        	meeples = meeples-5;
+        	break;
+        case 11:
+        	coins = coins +6;
+        	meeples = meeples-6;
+        	break;
+        case 12:
+        	coins = coins +7;
+        	meeples = meeples-7;
+        	break;
+        default:
+		meeples = meeples;
+	}
+		return meeples;
+	}
+	
 	
 
 	
