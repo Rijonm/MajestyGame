@@ -30,6 +30,7 @@ public abstract class Card {
 		return this.cardName;
 	};
 	
+	// Verteilt die Coins bei gezogener Karte
 	public static int distributeCoinsCardA(int cardID) {
 		int handSize = Hand.getHandSize(cardID);
 		int disCoins = 0; // coins which will distribute 

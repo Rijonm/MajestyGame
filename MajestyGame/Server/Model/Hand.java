@@ -19,7 +19,7 @@ public class Hand {
 	Card cardTavern = new CardTavern();
 	
 	
-	
+	// Gebaude Karten
 	public static ArrayList<Card> Brewer = new ArrayList <>();
 	public static ArrayList<Card> Defense = new ArrayList <>();
 	public static ArrayList<Card> Farmer = new ArrayList <>();
@@ -36,6 +36,7 @@ public class Hand {
 		coins = 0;
 	}
 	
+	// Mit dieser Methode erhaelt mann die Karten anzahl im Hand
 	public int[] getPlayerCards() {
 	handSize[0] = Brewer.size();
 	handSize[1] = Defense.size();
@@ -48,6 +49,7 @@ public class Hand {
 	return handSize;
 	}
 	
+	// Diese Methode wird ausgeführt, wenn der Spieler auf ein Button im Deck klickt
 	public void playerChoose(int cardID) {
 		int i = cardID;
 
@@ -110,10 +112,12 @@ public class Hand {
 		actuallMeeples();
 	}
 	
+	// Aktuele Handgroesse eines Gebaude 
 	public static int getHandSize(int cardID) {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
+	// Aktualisiert die Meeples
 	public void actuallMeeples() {
 		switch (meeples) {
         case 6:
