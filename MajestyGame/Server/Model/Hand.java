@@ -6,9 +6,9 @@ import java.util.ArrayList;
 public class Hand {
 	
 	int[] handSize = new int[8]; 
-	static Integer[] hand = new Integer[8]; //!
-	int coins;
-	static int meeples = 5; //!
+	Integer[] hand = new Integer[8]; //!
+	public int coins;
+	public int meeples = 5; //!
 	
 	Card cardBrewer = new CardBrewer();
 	Card cardDefense = new CardDefense();
@@ -108,12 +108,12 @@ public class Hand {
         	hand[6] = tavernSize;
         	break;   
 		}
-		coins = coins + Card.distributeCoinsCardA(cardID);
+		coins = coins + distributeCoinsCardA(cardID);
 		actuallMeeples();
 	}
 	
 	// Aktuele Handgroesse eines Gebaude 
-	public static int getHandSize(int cardID) {
+	public int getHandSize(int cardID) {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
@@ -154,6 +154,46 @@ public class Hand {
 	}
 		
 	}
+	// Verteilt die Coins bei gezogener Karte
+		public  int distributeCoinsCardA(int cardID) {
+			int handSize = getHandSize(cardID);
+			int disCoins = 0; // coins which will distribute 
+			int disMeeples;
+			switch (cardID) {
+	        case 0:
+	        	disCoins = handSize*2;
+	        	disMeeples = handSize;
+	        	meeples = meeples+disMeeples;
+	        	break;
+	        case 1:
+	        	if(hand[1]>=1 && hand[4]>=1 && hand[6]>=1) {
+	        		disCoins = 2;
+	        	}
+	        	break;
+	        case 2:
+	        	disCoins = handSize*2;
+	        	break;
+	        case 3:
+	        	disCoins = handSize*5;
+	        	disMeeples = handSize;
+	        	meeples = meeples+disMeeples;
+	        	break;
+	        case 4:
+	        	disCoins = handSize*3;
+	        	break;
+	        case 5:
+	        	int farmer = hand[2];
+	        	int brewer = hand[0];
+	        	int witch = hand[5];
+	        		disCoins = (farmer+brewer+witch)*2;
+	        	break;
+	        case 6:
+	        	disCoins = handSize*4;
+	        	break;
+		}
+			return disCoins;
+		
+		}
 	
 	
 
