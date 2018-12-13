@@ -114,7 +114,7 @@ public class Hand {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
-	public int actuallMeeples() {
+	public void actuallMeeples() {
 		switch (meeples) {
         case 6:
         	coins = coins +1;
@@ -147,7 +147,7 @@ public class Hand {
         default:
 		meeples = meeples;
 	}
-		return meeples;
+		
 	}
 	
 	
