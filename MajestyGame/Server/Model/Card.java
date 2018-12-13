@@ -30,7 +30,7 @@ public abstract class Card {
 		return this.cardName;
 	};
 	
-	public static int distributeCoins(int cardID) {
+	public static int distributeCoinsCardA(int cardID) {
 		int handSize = Hand.getHandSize(cardID);
 		int disCoins = 0; // coins which will distribute 
 		int disMeeples;
@@ -65,7 +65,6 @@ public abstract class Card {
         case 6:
         	disCoins = handSize*4;
         	break;
-		
 	}
 		return handSize;
 	

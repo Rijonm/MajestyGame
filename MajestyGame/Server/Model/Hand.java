@@ -106,15 +106,15 @@ public class Hand {
         	hand[6] = tavernSize;
         	break;   
 		}
-		coins = coins + Card.distributeCoins(cardID);
-		actualMeeples();
+		coins = coins + Card.distributeCoinsCardA(cardID);
+		actuallMeeples();
 	}
 	
 	public static int getHandSize(int cardID) {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
-	public int actualMeeples() {
+	public int actuallMeeples() {
 		switch (meeples) {
         case 6:
         	coins = coins +1;
