@@ -117,7 +117,8 @@ public class Hand {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
-	// Aktualisiert die Meeples
+	// falls der Spieler mehr als Meeples hat, setzt es zurueck auf 5 meeples und verteilt dementsprechen Coins
+	// 1 Meeple = 1 Coin
 	public void actuallMeeples() {
 		switch (meeples) {
         case 6:

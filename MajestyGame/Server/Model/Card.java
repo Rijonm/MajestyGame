@@ -67,7 +67,7 @@ public abstract class Card {
         	disCoins = handSize*4;
         	break;
 	}
-		return handSize;
+		return disCoins;
 	
 	}
 }
