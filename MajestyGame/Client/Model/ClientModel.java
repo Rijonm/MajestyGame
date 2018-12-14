@@ -176,7 +176,7 @@ public class ClientModel {
 	protected void receivedOpponentPlayers(Message msg) {
 		OpponentPlayerMessage opm = (OpponentPlayerMessage) msg;
 		if(opm.getId()!=this.id) { //Da server immer die ganze Spieler Array durchgeht und allen sendet, muss analysiert werden ob es sich dabei um die eigene ID handelt, falls nicht dann als Oppenent einfügen.
-			Opponent opponent = new Opponent(opm.getId(), opm.getUsername(), opm.getHand(), opm.getMeeples());
+			Opponent opponent = new Opponent(opm.getId(), opm.getUsername(), opm.getHand(), opm.getMeeples(), opm.getCoins());
 			opponentPlayers.add(opponent);
 		}
 		
@@ -330,17 +330,19 @@ public class ClientModel {
 	}
 	
 	public class Opponent{
-		SimpleIntegerProperty id = new SimpleIntegerProperty();
-		SimpleStringProperty name = new SimpleStringProperty();
-		SimpleIntegerProperty meeples = new SimpleIntegerProperty();
-		ObservableList<Integer> hand = FXCollections.observableArrayList();
-		SimpleStringProperty wonOrLose = new SimpleStringProperty();
+		public SimpleIntegerProperty id = new SimpleIntegerProperty();
+		public SimpleStringProperty name = new SimpleStringProperty();
+		public SimpleIntegerProperty coins = new SimpleIntegerProperty();
+		public SimpleIntegerProperty meeples = new SimpleIntegerProperty();
+		public ObservableList<Integer> hand = FXCollections.observableArrayList();
+		public SimpleStringProperty wonOrLose = new SimpleStringProperty();
 		
-		public Opponent(int id, String name, Integer hand[], int meeples) {
+		public Opponent(int id, String name, Integer hand[], int meeples, int coins) {
 			this.id.set(id);
 			this.name.set(name);
 			this.meeples.set(meeples);
 			this.hand.setAll(Arrays.asList(hand));
+			this.coins.setValue(coins); //Nicht sicher ob set oder setValue
 			
 		}
 		

@@ -38,7 +38,7 @@ public class Game  {
 			if(c.isInGame()== true) {
 				for(Client o : model.clients) {
 					System.out.println(o.getId() + o.getUsername() + o.getHand().hand.toString() + o.getMeeples());
-				OpponentPlayerMessage opm = new OpponentPlayerMessage(o.getId(), o.getUsername(), o.getHand().hand, o.getMeeples());
+				OpponentPlayerMessage opm = new OpponentPlayerMessage(o.getId(), o.getUsername(), o.getHand().hand, o.getMeeples(), o.getHand().coins);
 				c.send(opm);
 				}
 			}

@@ -8,13 +8,15 @@ public class OpponentPlayerMessage extends Message{
 	String username;
 	Integer[] hand;
 	int meeples;
+	int coins;
 
-	public OpponentPlayerMessage(int id, String username, Integer[] hand, int meeples) {
+	public OpponentPlayerMessage(int id, String username, Integer[] hand, int meeples, int coins) {
 		super(MessageType.OpponentPlayerMessage);
 		this.id = id;
 		this.username = username;
 		this.hand = hand;
 		this.meeples = meeples;
+		this.coins = coins;
 	}
 
 	public int getId() {
@@ -32,6 +34,10 @@ public class OpponentPlayerMessage extends Message{
 	public int getMeeples() {
 		return meeples;
 	}
+	
+	public int getCoins() {
+		return coins;
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -48,5 +54,7 @@ public class OpponentPlayerMessage extends Message{
 	public void setMeeples(int meeples) {
 		this.meeples = meeples;
 	}
+
+	
 
 }
