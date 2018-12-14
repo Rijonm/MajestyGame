@@ -11,6 +11,8 @@ import CommonClasses.InformationFromServerMessage;
 import CommonClasses.OpponentPlayerMessage;
 import javafx.collections.ObservableList;
 
+//@ Mert Emek
+
 public class Game  {
 	
 	int players = 0;
@@ -90,24 +92,19 @@ public class Game  {
 		
 		//EVALUATION NACH 12 RUNDEN
 		if(round == 12) {
-			evaluate();
+			//evaluate();
 		}
 		
 	}
 
-	public void evaluate() {
-		/*for(Client c : model.client)
-		 * for(size.hand)
-		 * c.getHand
-		 * c.setTotalPoints
-		 * 
-		 * for(Client c : model.client)
-		 * Hands der Clients vergleichen und winner definieren
-		 * Client winner uf 1 setzten
-		 * 
-		 * 
-		 * 
-		 */
 	
-	}
+	//public void evaluate() {
+		//for(Client c : model.client)
+		//  for(c.)
+		   
+		 
+		  // for(Client c : model.client)
+		 // Hands der Clients vergleichen und winner definieren
+		//  Client winner uf 1 setzte 
+	//}
 }

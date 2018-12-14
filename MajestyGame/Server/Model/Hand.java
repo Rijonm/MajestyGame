@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
+//@ Mert Emek
 
 public class Hand {
 	

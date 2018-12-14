@@ -22,6 +22,9 @@ import java.util.Random;
 	// 15 Blue/Violet 
 	// 16 Red/Yeelow
 	// 17 Yellow/Violet
+
+//@ Mert Emek
+
 public class DeckA {
 	
 	public int[] cards = {6, 5, 9, 5, 3, 4, 5, 3, 2, 3, 1, 3, 1, 2, 1, 1, 3, 2};
@@ -31,13 +34,13 @@ public class DeckA {
 		
 	}
 	
-	//Immer wenn getCard aufgerufen wird, wird eine zahl zwischen 0-17 randomly erzeugt und dient dann als ID für den Deck
+	//Immer wenn getCard aufgerufen wird, wird eine zahl zwischen 0-17 randomly erzeugt und dient dann als ID fuer den Deck
 	public int getCard() {
 		Random rand = new Random();
 		int cardID = rand.nextInt(18);
 		int contain;
 		contain = cards[cardID]; //Speicher Anzahl der vorhandenen Karten am ensprechenden Index(cardID).
-		if(contain==0) { // Schaut ob an der ensprechenden Stelle noch Karten vorhanden sind. Wenn nicht dann nächstmögliche Karte zurück.
+		if(contain==0) { // Schaut ob an der ensprechenden Stelle noch Karten vorhanden sind. Wenn nicht dann nächstmögliche Karte zurueck.
 			for(int b = 0; b < cards.length; b++) {
 				if(cards[b]!=0) {
 					cardID = b;
