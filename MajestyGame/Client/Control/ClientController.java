@@ -213,7 +213,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				System.out.println("b0");
 				//view.buildingCounter.setText(Integer.toString(model.deck.get(1)));
-				model.sendPlayerMoveMessage(0, -1);
+				model.sendPlayerMoveMessage(0, 0);
 				
 				
 				if(model.deck.get(0) <= 6) {
@@ -279,7 +279,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b1");						
-				model.sendPlayerMoveMessage(1, -1);
+				model.sendPlayerMoveMessage(1, 1);
 				
 				
 				if(model.deck.get(1) <= 6) {
@@ -340,7 +340,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b2");						
-				model.sendPlayerMoveMessage(2, -1);		
+				model.sendPlayerMoveMessage(2, 2);		
 				//view.buildingAry[model.deck.get(2)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
 				
 				if(model.deck.get(2) <= 6) {
@@ -401,7 +401,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b3");						
-				model.sendPlayerMoveMessage(3, -1);	
+				model.sendPlayerMoveMessage(3, 3);	
 				//view.buildingAry[model.deck.get(3)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
 			
 				if(model.deck.get(3) <= 6) {
@@ -462,7 +462,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b4");						
-				model.sendPlayerMoveMessage(4, -1);		
+				model.sendPlayerMoveMessage(4, 4);		
 				
 				//view.buildingAry[model.deck.get(4)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
 				
@@ -523,7 +523,7 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 					
 				System.out.println("b5");						
-				model.sendPlayerMoveMessage(5, -1);	 //pos, cardID
+				model.sendPlayerMoveMessage(5, 5);	 //pos, cardID
 				
 				//view.buildingAry[model.deck.get(5)].setText(Integer.toString(view.labelCounter+1));  //in setText kommt Array-Nachricht vom Server rein
 			

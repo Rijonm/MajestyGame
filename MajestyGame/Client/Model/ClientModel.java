@@ -23,6 +23,7 @@ import CommonClasses.MessageType;
 import CommonClasses.OpponentPlayerMessage;
 import CommonClasses.Player;
 import CommonClasses.PlayerMoveMessage;
+import CommonClasses.PlayerStatesMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserRegisterMessage;
@@ -30,6 +31,7 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableIntegerArray;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 /**
@@ -41,10 +43,10 @@ import javafx.collections.ObservableMap;
 public class ClientModel {
 	
 	private int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich der id in der DB.
-	private String myName;
-	private int myCoins;
-	private int myMeeples;
-	private Integer myHand[];
+	public SimpleStringProperty myName;
+	public SimpleIntegerProperty myCoins;
+	public SimpleIntegerProperty myMeeples;
+	public ObservableIntegerArray myHand = FXCollections.observableIntegerArray();
 	public Socket socket;
 	private ObjectInputStream oips;
 	private ObjectOutputStream oops;
@@ -110,6 +112,11 @@ public class ClientModel {
 								receivedInformationFromServerMessage(msg);
 								});
 							}
+							if(msg.getMessageType() == MessageType.PlayerStatesMessage) {
+								Platform.runLater(() ->{
+									receivedPlayerStatesMessage(msg);
+								});
+							}
 							if(msg.getMessageType() == MessageType.EvaluateGameMessage) {
 								Platform.runLater(() ->{
 								receivedEvaluateGameMessage(msg);
@@ -130,6 +137,8 @@ public class ClientModel {
 						
 					}
 				}
+
+				
 			};
 			Thread t = new Thread(r);
 			t.start();
@@ -153,6 +162,21 @@ public class ClientModel {
 
 	protected void receivedEvaluateGameMessage(Message msg) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	protected void receivedPlayerStatesMessage(Message msg) {
+		PlayerStatesMessage psm = (PlayerStatesMessage) msg;
+		if(psm.getId() == this.id) {
+			int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
+			myHand.setAll(intHand);
+			myCoins.set(psm.getCoins());
+			myMeeples.set(psm.getMeeples());
+			
+		}else {
+			
+		}
+		
 		
 	}
 
@@ -338,14 +362,15 @@ public class ClientModel {
 		public SimpleStringProperty name = new SimpleStringProperty();
 		public SimpleIntegerProperty coins = new SimpleIntegerProperty();
 		public SimpleIntegerProperty meeples = new SimpleIntegerProperty();
-		public ObservableList<Integer> hand = FXCollections.observableArrayList();
+		public ObservableIntegerArray hand = FXCollections.observableIntegerArray();
 		public SimpleStringProperty wonOrLose = new SimpleStringProperty();
 		
 		public Opponent(int id, String name, Integer hand[], int meeples, int coins) {
 			this.id.set(id);
 			this.name.set(name);
 			this.meeples.set(meeples);
-			this.hand.setAll(Arrays.asList(hand));
+			int[] intHand = Arrays.stream(hand).mapToInt(Integer::intValue).toArray();
+			this.hand.setAll(intHand);
 			this.coins.setValue(coins); //Nicht sicher ob set oder setValue
 			
 		}

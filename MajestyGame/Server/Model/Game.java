@@ -9,6 +9,7 @@ import java.util.Random;
 import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.InformationFromServerMessage;
 import CommonClasses.OpponentPlayerMessage;
+import CommonClasses.PlayerStatesMessage;
 import javafx.collections.ObservableList;
 import jdk.nashorn.internal.objects.annotations.Where;
 
@@ -82,7 +83,7 @@ public class Game  {
 					for(Client c : model.clients)
 						if(c.getId() == id) {
 							if(o.getHand().hand[1] < c.getHand().hand[4]) { //Falls Gegenspieler weniger Verteidigung als Spieler der gezogen hat...
-										//...dann erste Karte von Links ins Lazarett
+								System.out.println("Angriff");		//...dann erste Karte von Links ins Lazarett
 						}
 					}
 				}
@@ -91,10 +92,11 @@ public class Game  {
 		
 		//SEND UPDATED INFORMATIONS
 		for(int playerId : playersId) {
-			//Integer[] playerHandArray = model.clients.get(playerId).getHand().getHandArray();
-			//int coins = model.clients.get(playerId).getHand.getCoins();
-			//PlayerStatesMesage psm = new PlayerSatesMessage(id, playerHandArray, coins);
-			//model.broatcatToPlayerInGame(psm)
+			Integer[] playerHandArray = model.clients.get(playerId).getHand().hand;
+			int coins = model.clients.get(playerId).getHand().coins;
+			int meeples = model.clients.get(playerId).getHand().meeples;
+			PlayerStatesMessage psm = new PlayerStatesMessage(id, playerHandArray, coins, meeples);
+			model.broatcastToPlayerInGame(psm);
 		}
 		
 		//DECK AND MEEPLES HANDLING  
