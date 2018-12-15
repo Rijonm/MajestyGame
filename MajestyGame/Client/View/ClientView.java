@@ -349,8 +349,8 @@ public class ClientView {
 		
 		//PlayerArea / LeftArea
 		int playerN = ANZAHL_GEGNER+1;
-		for (int x = 1; x < playerN; x++) {
-			Label lp = new Label("Player: Benutzer"+x);
+		for (int x = 1; x < playerN-1; x++) { //-1 da nur Gegner Links @@@
+			Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x-1).name.getValue());
 			Label lc = new Label("Coins: 100");
 			Label lm = new Label("Meeples: 5");
 			Region spacerP = new Region();

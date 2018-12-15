@@ -41,6 +41,10 @@ import javafx.collections.ObservableMap;
 public class ClientModel {
 	
 	private int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich der id in der DB.
+	private String myName;
+	private int myCoins;
+	private int myMeeples;
+	private Integer myHand[];
 	public Socket socket;
 	private ObjectInputStream oips;
 	private ObjectOutputStream oops;
@@ -48,7 +52,7 @@ public class ClientModel {
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
-	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents id name hand meeples
+	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name, coins,  meeples, hand, wonOrLose
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
 	

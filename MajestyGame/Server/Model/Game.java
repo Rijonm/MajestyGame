@@ -10,6 +10,7 @@ import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.InformationFromServerMessage;
 import CommonClasses.OpponentPlayerMessage;
 import javafx.collections.ObservableList;
+import jdk.nashorn.internal.objects.annotations.Where;
 
 //@ Mert Emek
 
@@ -26,7 +27,7 @@ public class Game  {
 	public Game(ServerModel model) {
 		this.model = model;
 		
-		for(Client c : model.clients) { // Setzt ale Spieler in der Lobby als isInGame und zählt die SpielerAnzahl hoch, ausserdem wird die ID der Spieler in der ArrayList playersId gespeichert
+		for(Client c : model.clients) { // Setzt ale Spieler in der Lobby als isInGame und zählt die SpielerAnzahl hoch, ausserdem wird die ID der Spieler in der ArrayList playersId gespeichert, welche sich in der Lobby befinden.
 			if(c.isOnline()==true) {
 				c.setIsInGame(true);
 				playersId.add(c.getId());
@@ -69,12 +70,25 @@ public class Game  {
 			round = a;
 		}
 		
-		//UPDATE HAND AND COINS OF PLAYER PLAYED
+		//UPDATE HAND AND COINS OF PLAYERS		
 		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
 				p.getHand().playerChoose(cardID); //übergibt die id der gewählten Karte beim jeweiligen spieler
 			}
 		}
+		if(cardID == 4) { //Falls ein Angriff dann
+			for(Client o : model.clients) {
+				if(o.isInGame() && o.getId()!= id) { //Chek nur Gegenspieler ab
+					for(Client c : model.clients)
+						if(c.getId() == id) {
+							if(o.getHand().hand[1] < c.getHand().hand[4]) { //Falls Gegenspieler weniger Verteidigung als Spieler der gezogen hat...
+										//...dann erste Karte von Links ins Lazarett
+						}
+					}
+				}
+			}
+		}
+		
 		//SEND UPDATED INFORMATIONS
 		for(int playerId : playersId) {
 			//Integer[] playerHandArray = model.clients.get(playerId).getHand().getHandArray();
