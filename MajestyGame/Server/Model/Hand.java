@@ -88,6 +88,7 @@ public class Hand {
         	hand[5] = witchSize;
         	int s = Lazarett.size()-1;
         	Card c = Lazarett.get(s);
+        	if(s>0) {
         	Lazarett.remove(s);
         	int id = c.getCardID();
         	if(id == 0)
@@ -102,6 +103,8 @@ public class Hand {
         		Soldier.add(cardSoldier);
         	if(id == 5)
         		Witch.add(cardWitch);
+        	}
+     
         	break;
         case 6:
         	Tavern.add(cardTavern);
