@@ -15,43 +15,20 @@ import java.util.Random;
 	// 4 Red Soldier
 	// 5 Yellow Host
 	// 6 Violet Queen
-	// 7 AUFPASSEN ! Lazarett Keine SpielKarte, den Ordinal im GUI nicht vergeben
-	// 8 Orange/Brown
-	// 9 Orange/Red
-	// 10 Brown/Green
-	// 11 Brown/Red
-	// 12 Green/Blue
-	// 13 Green/Yellow
-	// 14 Blue/Red
-	// 15 Green/Violet
-	// 15 Blue/Yellow
-	// 16 Blue/Red
-	// 17 Blue/Yellow
-	// Blue/Violet
-	// Red/Yellow
-	// Yellow/Violet
-
-
-
-	// 0 Brown Brewer
-	// 1 Blue Defense
-	// 2 Orange Farmer
-	// 3 Violet Queen
-	// 4 Red Soldier
-	// 5 Yellow Host
-	// 6 Green Witch
-
 	// 7 Orange/Brown
 	// 8 Orange/Red
 	// 9 Brown/Green
 	// 10 Brown/Red
 	// 11 Green/Blue
 	// 12 Green/Yellow
-	// 13 Blue/Red
-	// 14 Blue/Yellow
-	// 15 Blue/Violet 
-	// 16 Red/Yeelow
-	// 17 Yellow/Violet
+	// 13 Green/Violet
+	// 14 Blue/Red
+	// 15 Blue/Yellow
+	// 16 Blue/Violet
+	// 17 Red/Yellow
+	// 18 Yellow/Violet
+
+
 
 //@ Mert Emek
 
