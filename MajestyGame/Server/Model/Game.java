@@ -40,7 +40,7 @@ public class Game  {
 			if(c.isInGame()== true) {
 				for(Client o : model.clients) {
 					System.out.println(o.getId() + o.getUsername() + o.getHand().hand.toString() + o.getMeeples());
-				OpponentPlayerMessage opm = new OpponentPlayerMessage(o.getId(), o.getUsername(), o.getHand().hand, o.getMeeples(), o.getHand().coins);
+				OpponentPlayerMessage opm = new OpponentPlayerMessage(o.getId(), o.getUsername(), o.getHand().hand, o.getHand().meeples, o.getHand().coins);
 				c.send(opm);
 				}
 			}
@@ -83,7 +83,15 @@ public class Game  {
 					for(Client c : model.clients)
 						if(c.getId() == id) {
 							if(o.getHand().hand[1] < c.getHand().hand[4]) { //Falls Gegenspieler weniger Verteidigung als Spieler der gezogen hat...
-								System.out.println("Angriff");		//...dann erste Karte von Links ins Lazarett
+								for(int i = 0; i<7; i++) {
+									if(o.getHand().hand[i] > 0) {
+										o.getHand().hand[i] = o.getHand().hand[i]-1;
+										switch(i) {
+										
+										}
+										break;
+									}
+								}
 						}
 					}
 				}
