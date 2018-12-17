@@ -43,9 +43,9 @@ import javafx.collections.ObservableMap;
 public class ClientModel {
 	
 	private int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich der id in der DB.
-	public SimpleStringProperty myName;
-	public SimpleIntegerProperty myCoins;
-	public SimpleIntegerProperty myMeeples;
+	public SimpleStringProperty myName = new SimpleStringProperty();
+	public SimpleIntegerProperty myCoins = new SimpleIntegerProperty();
+	public SimpleIntegerProperty myMeeples = new SimpleIntegerProperty();
 	public ObservableIntegerArray myHand = FXCollections.observableIntegerArray();
 	public Socket socket;
 	private ObjectInputStream oips;
@@ -172,7 +172,7 @@ public class ClientModel {
 			myHand.setAll(intHand);
 			myCoins.set(psm.getCoins());
 			myMeeples.set(psm.getMeeples());
-			
+			System.out.println(Arrays.toString(intHand));
 		}else {
 			
 		}
@@ -193,7 +193,6 @@ public class ClientModel {
 	protected void receivedFirstSixCardsMessage(Message msg) {
 		FirstSixCardsMessage fscm = (FirstSixCardsMessage) msg;
 		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(fscm.getFirstSixCards()));
-		System.out.println(list + "FirstSixCards");
 		deck.clear();
 		deck.addAll(list);
 		

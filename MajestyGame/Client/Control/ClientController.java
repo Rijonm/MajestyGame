@@ -642,7 +642,6 @@ public class ClientController {
 			view.ANZAHL_GEGNER = model.opponentPlayers.size() + 1;
 			view.primaryStage.setScene(view.setFifthScene());
 			view.primaryStage.setFullScreen(false);
-			System.out.println(c.getList()); System.out.println("newList");
 			}
 			Platform.runLater(() ->{
 			int i = 0;

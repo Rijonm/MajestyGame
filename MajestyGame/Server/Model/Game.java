@@ -13,7 +13,6 @@ import CommonClasses.PlayerStatesMessage;
 import javafx.collections.ObservableList;
 import jdk.nashorn.internal.objects.annotations.Where;
 
-//@ Mert Emek
 
 public class Game  {
 	
@@ -39,7 +38,6 @@ public class Game  {
 		for(Client c : model.clients) { // Sendet jedem Spieler die informartionen jedes Spielers/Gegeners
 			if(c.isInGame()== true) {
 				for(Client o : model.clients) {
-					System.out.println(o.getId() + o.getUsername() + o.getHand().hand.toString() + o.getMeeples());
 				OpponentPlayerMessage opm = new OpponentPlayerMessage(o.getId(), o.getUsername(), o.getHand().hand, o.getHand().meeples, o.getHand().coins);
 				c.send(opm);
 				}
@@ -96,20 +94,19 @@ public class Game  {
 			}
 		}
 		
-		//SEND UPDATED INFORMATIONS
-		for(int playerId : playersId) {
-			Integer[] playerHandArray = model.clients.get(playerId).getHand().hand;
-			int coins = model.clients.get(playerId).getHand().coins;
-			int meeples = model.clients.get(playerId).getHand().meeples;
+		//SEND UPDATED INFORMATIONS from the Client which made the move to all Clients
+		for(Client c : model.clients) {
+			Integer[] playerHandArray = c.getHand().hand;
+			int coins = c.getHand().coins;
+			int meeples = c.getHand().meeples;
 			PlayerStatesMessage psm = new PlayerStatesMessage(id, playerHandArray, coins, meeples);
-			model.broatcastToPlayerInGame(psm);
+			c.send(psm);
 		}
 		
 		//DECK AND MEEPLES HANDLING  
 		deckA.playerMove(pos);
 		Integer[] openCardsArray = deckA.openCards.toArray(new Integer[deckA.openCards.size()]);
 		InformationFromServerMessage ifsm = new InformationFromServerMessage(openCardsArray);
-		System.out.println(ifsm.getOpenCards());
 		model.broatcastToPlayerInGame(ifsm);
 		
 		//EVALUATION NACH 12 RUNDEN
