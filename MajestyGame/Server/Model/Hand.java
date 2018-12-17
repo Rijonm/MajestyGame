@@ -133,32 +133,32 @@ public class Hand {
 	public void actuallMeeples() {
 		switch (this.meeples) {
         case 6:
-        	coins = coins +1;
-        	meeples = meeples-1;
+        	this.coins = coins +1;
+        	this.meeples = meeples-1;
         	break;
         case 7:
-        	coins = coins +2;
-        	meeples = meeples-2;
+        	this.coins = coins +2;
+        	this.meeples = meeples-2;
         	break;
         case 8:
-        	coins = coins +3;
-        	meeples = meeples-3;
+        	this.coins = coins +3;
+        	this.meeples = meeples-3;
         	break;
         case 9:
-        	coins = coins +4;
-        	meeples = meeples-4;
+        	this.coins = coins +4;
+        	this.meeples = meeples-4;
         	break;
         case 10:
-        	coins = coins +5;
-        	meeples = meeples-5;
+        	this.coins = coins +5;
+        	this.meeples = meeples-5;
         	break;
         case 11:
-        	coins = coins +6;
-        	meeples = meeples-6;
+        	this.coins = coins +6;
+        	this.meeples = meeples-6;
         	break;
         case 12:
-        	coins = coins +7;
-        	meeples = meeples-7;
+        	this.coins = coins +7;
+        	this.meeples = meeples-7;
         	break;
         default:
 		meeples = meeples;
