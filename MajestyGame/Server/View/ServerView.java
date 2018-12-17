@@ -20,8 +20,8 @@ public class ServerView {
 	public Button connectB;
 	//ServerScene
 	public Scene serverScene;
-	public TextField serverLogger;
-	public Button stopServerB;
+	public TextField serverLogger = new TextField();
+	public Button stopServerB = new Button("Stop Server");
 	public BorderPane serverPane;
 	
 
@@ -40,6 +40,8 @@ public class ServerView {
 		
 		serverStartScene = new Scene(serverStartPane);
 		
+		primaryStage.setHeight(120);
+		primaryStage.setWidth(220);
 		primaryStage.setTitle("Server");
 		primaryStage.setScene(serverStartScene);
 		
@@ -54,8 +56,6 @@ public class ServerView {
 	
 	public Scene setServerScene() {
 		
-		serverLogger = new TextField();
-		stopServerB = new Button("Stop Server");
 		serverPane = new BorderPane();
 		serverPane.setCenter(serverLogger);
 		serverPane.setBottom(stopServerB);

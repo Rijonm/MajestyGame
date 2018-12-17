@@ -1,5 +1,7 @@
 package Control;
 
+import java.io.IOException;
+
 import Model.Client;
 import Model.ServerModel;
 import View.ServerView;
@@ -36,9 +38,18 @@ public class ServerController {
 			public void handle(ActionEvent event) {
 			
 			model.serverStart(Integer.parseInt((view.port.getText())));
+			view.serverLogger.setText("Server started on port: " + view.port.getText());
 			view.primaryStage.setScene(view.setServerScene());
 			view.start();
 						
+						
+			}
+		});
+		
+		view.stopServerB.setOnAction(new EventHandler<ActionEvent> (){
+			
+			public void handle(ActionEvent event) {
+//				model.stopServer();
 						
 			}
 		});

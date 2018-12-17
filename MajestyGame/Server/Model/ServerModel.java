@@ -17,8 +17,7 @@ public class ServerModel {
 	public ServerSocket serverSocket;
 	public Socket socket;
 	protected ObservableList<Client> clients = FXCollections.observableArrayList();
-	protected ObservableList<PlayerOnline> playeronline = FXCollections.observableArrayList();
-	protected ObservableList<PlayerInGame> playeringame = FXCollections.observableArrayList();
+	//private volatile boolean stop = false;
 	public Database db;
 	private final Logger logger = Logger.getLogger("");
 	private Game game;
@@ -26,17 +25,10 @@ public class ServerModel {
 	
 	public ServerModel() {
 		db = new Database();
-		
-		playeronline.addListener((ListChangeListener<PlayerOnline>) e ->{
-			
-		});
-		playeringame.addListener((ListChangeListener<PlayerInGame>) e ->{
-			
-		});
 	}
 	
 	public void serverStart(int port) {
-		System.out.println(port);
+		System.out.println("Server started on port: " + port);
 		
 		try {
 			serverSocket = new ServerSocket(port);
@@ -119,13 +111,19 @@ public class ServerModel {
 		return game;
 	}
 	
-	/*
-	 * Der Gewinner wird evaluiert.
-	 * 
-	 * @author Rijon
-	 */
-	public void evalWinner() {
-		
-	}
+//	public void stopServer() {
+//		logger.info("Stop all clients");
+//		for (Client c : clients) c.stop();
+//
+//		logger.info("Stop server");
+//		stop = true;
+//		if (serverSocket != null) {
+//			try {
+//				serverSocket.close();
+//			} catch (IOException e) {
+//				// Uninteresting
+//			}
+//		}
+//	}
 
 }

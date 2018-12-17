@@ -84,10 +84,7 @@ public class Client {
 							System.out.println("einloggenmessagereceived");
 							loginMessage = (UserLoginMessage) msg;
 							loginResponse(loginRequest(loginMessage));
-							//Test ob alle Player die sich einloggen ausgegen werden.
-							for(PlayerOnline p : model.playeronline) {
-							System.out.println(p.getUsername());
-							}
+							
 						}
 						
 						// GAME STARTEN
@@ -261,6 +258,16 @@ public class Client {
 		return message;
 		
 	}
+
+
+//	public void stop() {
+//		try {
+//			socket.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//	}
 
 	
 }
