@@ -198,6 +198,40 @@ public class Hand {
 			return disCoins;
 		
 		}
+		
+		public void setToLazarett(int Ordinal) {
+			switch (Ordinal) {
+	        case 0:
+	        	Lazarett.add(cardBrewer);
+	        	
+	        	break;
+	        case 1:
+	        	Lazarett.add(cardDefense);
+	        	
+	        	break;
+	        case 2:
+	        	Lazarett.add(cardFarmer);
+	        	
+	        	break;
+	        case 3:
+	        	Lazarett.add(cardQueen);
+	        	
+	        	break;
+	        case 4:
+	        	Lazarett.add(cardSoldier);
+	        	
+	        	break;
+	        case 5:
+	        	Lazarett.add(cardWitch);
+	        	break;
+	        case 6:
+	        	Lazarett.add(cardTavern);
+	        	
+	        	break;   
+			}
+			
+		}
+		
 	
 	
 

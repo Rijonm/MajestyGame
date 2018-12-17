@@ -86,9 +86,7 @@ public class Game  {
 								for(int i = 0; i<7; i++) {
 									if(o.getHand().hand[i] > 0) {
 										o.getHand().hand[i] = o.getHand().hand[i]-1;
-										switch(i) {
-										
-										}
+										o.getHand().setToLazarett(i);
 										break;
 									}
 								}
