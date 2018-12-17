@@ -199,6 +199,8 @@ public class Hand {
 		
 		}
 		
+		// falls ein Spieler angegriffen wird, die 1. von Links ins Lazarett abgelegt, falls 1. 0 sein sollte, wird 
+		// 2. in Lazarett abgelegt usw.
 		public void setToLazarett(int Ordinal) {
 			switch (Ordinal) {
 	        case 0:
