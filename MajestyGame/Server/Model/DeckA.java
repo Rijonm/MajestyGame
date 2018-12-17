@@ -4,6 +4,32 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
+
+
+	// Neue Reihenfolge
+
+	// 0 Orange Farmer
+	// 1 Brown Brewer
+	// 2 Green Witch
+	// 3 Blue Defense
+	// 4 Red Soldier
+	// 5 Yellow Host
+	// 6 Violet Queen
+	// 7 Lazarett Keine SpielKarte
+	// 8 Orange/Brown
+	// 9 Orange/Red
+	// 10 Brown/Green
+	// 11 Brown/Red
+	// 12 Green/Blue
+	// 13 Green/Yellow
+	// 14 Blue/Red
+	// 15 Blue/Yellow
+	// 16 Blue/Violet 
+	// 17 Red/Yeelow
+	// 18 Yellow/Violet
+
+
+
 	// 0 Brown Brewer
 	// 1 Blue Defense
 	// 2 Orange Farmer
@@ -11,6 +37,7 @@ import java.util.Random;
 	// 4 Red Soldier
 	// 5 Yellow Host
 	// 6 Green Witch
+
 	// 7 Orange/Brown
 	// 8 Orange/Red
 	// 9 Brown/Green
@@ -27,7 +54,7 @@ import java.util.Random;
 
 public class DeckA {
 	
-	public int[] cards = {6, 5, 9, 5, 3, 4, 5, 3, 2, 3, 1, 3, 1, 2, 1, 1, 3, 2};
+	public int[] cards = {11, 9, 5, 6, 5, 6, 6, 3, 2, 3, 1, 3, 1, 2, 1, 1, 3, 2};
 	public ArrayList<Integer> openCards = new ArrayList<>();
 	
 	public DeckA() {

@@ -82,7 +82,7 @@ public class Game  {
 				if(o.isInGame() && o.getId()!= id) { //Chek nur Gegenspieler ab
 					for(Client c : model.clients)
 						if(c.getId() == id) {
-							if(o.getHand().hand[1] < c.getHand().hand[4]) { //Falls Gegenspieler weniger Verteidigung als Spieler der gezogen hat...
+							if(o.getHand().hand[3] < c.getHand().hand[4]) { //Falls Gegenspieler weniger Verteidigung als Spieler der gezogen hat...
 								for(int i = 0; i<7; i++) {
 									if(o.getHand().hand[i] > 0) {
 										o.getHand().hand[i] = o.getHand().hand[i]-1;

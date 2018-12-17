@@ -5,7 +5,7 @@ package Model;
 public class CardWitch extends Card{
 
 	public CardWitch() {
-		super(5, "Witch");
+		super(2, "Witch");
 		// TODO Auto-generated constructor stub
 	}
 

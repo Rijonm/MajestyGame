@@ -39,13 +39,13 @@ public class Hand {
 	
 	// Mit dieser Methode erhaelt mann die Karten anzahl im Hand
 	public int[] getPlayerCards() {
-	handSize[0] = Brewer.size();
-	handSize[1] = Defense.size();
-	handSize[2] = Farmer.size();
-	handSize[3] = Queen.size();
+	handSize[0] = Farmer.size();
+	handSize[1] = Brewer.size();
+	handSize[2] = Witch.size();
+	handSize[3] = Defense.size();
 	handSize[4] = Soldier.size();
-	handSize[5] = Witch.size();
-	handSize[6]	= Tavern.size();
+	handSize[5] = Tavern.size();
+	handSize[6]	= Queen.size();
 	handSize[7] = Lazarett.size();	
 	return handSize;
 	}
@@ -56,25 +56,49 @@ public class Hand {
 
 		switch (i) {
         case 0:
-        	Brewer.add(cardBrewer);
-        	int brewerSize = hand[0]+1; 
-        	hand[0] = brewerSize;
+        	Farmer.add(cardFarmer);
+        	int farmerSize = hand[0]+1; 
+        	hand[0] = farmerSize;
         	break;
         case 1:
-        	Defense.add(cardDefense);
-        	int defenseSize = hand[1]+1; 
-        	hand[1] = defenseSize;
+        	Brewer.add(cardBrewer);
+        	int brewerSize = hand[1]+1; 
+        	hand[1] = brewerSize;
         	break;
+        	
         case 2:
-        	Farmer.add(cardFarmer);
-        	int farmerSize = hand[2]+1; 
-        	hand[2] = farmerSize;
+        	Witch.add(cardWitch);
+        	int witchSize = hand[2]+1; 
+        	hand[2] = witchSize;
+        	int s = Lazarett.size()-1;
+        	Card c = Lazarett.get(s);
+        	if(s>0) {
+        	Lazarett.remove(s);
+        	int id = c.getCardID();
+        	if(id == 0)
+        		Farmer.add(cardFarmer);
+        	if(id == 1)
+        		Brewer.add(cardBrewer);
+        	if(id == 2)
+        		Witch.add(cardWitch);
+        	if(id == 3)
+        		Defense.add(cardDefense);
+        	if(id == 4)
+        		Soldier.add(cardSoldier);
+        	if(id == 5)
+        		Witch.add(cardWitch);
+        	if(id == 6)
+        		Queen.add(cardQueen);
+        	}
+     
         	break;
+        	
         case 3:
-        	Queen.add(cardQueen);
-        	int queenSize = hand[3]+1; 
-        	hand[3] = queenSize;
+        	Defense.add(cardDefense);
+        	int defenseSize = hand[3]+1; 
+        	hand[3] = defenseSize;
         	break;
+        	
         case 4:
         	Soldier.add(cardSoldier);
         	int soldierSize = hand[4]+1; 
@@ -83,34 +107,17 @@ public class Hand {
         	// Gegner mit weniger Verteidiger als unser anzahl Soldaten, werrden angefriffen.
         	break;
         case 5:
-        	Witch.add(cardWitch);
-        	int witchSize = hand[5]+1; 
-        	hand[5] = witchSize;
-        	int s = Lazarett.size()-1;
-        	Card c = Lazarett.get(s);
-        	if(s>0) {
-        	Lazarett.remove(s);
-        	int id = c.getCardID();
-        	if(id == 0)
-        		Brewer.add(cardBrewer);
-        	if(id == 1)
-        		Defense.add(cardDefense);
-        	if(id == 2)
-        		Farmer.add(cardFarmer);
-        	if(id == 3)
-        		Queen.add(cardQueen);
-        	if(id == 4)
-        		Soldier.add(cardSoldier);
-        	if(id == 5)
-        		Witch.add(cardWitch);
-        	}
-     
-        	break;
-        case 6:
         	Tavern.add(cardTavern);
-        	int tavernSize = hand[6]+1; 
-        	hand[6] = tavernSize;
-        	break;   
+        	int tavernSize = hand[5]+1; 
+        	hand[5] = tavernSize;
+        	break;  
+        	
+        case 6:
+        	Queen.add(cardQueen);
+        	int queenSize = hand[6]+1; 
+        	hand[6] = queenSize;
+        	break;
+        	 
 		}
 		coins = coins + distributeCoinsCardA(cardID);
 		actuallMeeples();
@@ -205,30 +212,24 @@ public class Hand {
 			switch (Ordinal) {
 	        case 0:
 	        	Lazarett.add(cardBrewer);
-	        	
 	        	break;
 	        case 1:
-	        	Lazarett.add(cardDefense);
-	        	
+	        	Lazarett.add(cardDefense);	
 	        	break;
 	        case 2:
 	        	Lazarett.add(cardFarmer);
-	        	
 	        	break;
 	        case 3:
 	        	Lazarett.add(cardQueen);
-	        	
 	        	break;
 	        case 4:
 	        	Lazarett.add(cardSoldier);
-	        	
 	        	break;
 	        case 5:
 	        	Lazarett.add(cardWitch);
 	        	break;
 	        case 6:
 	        	Lazarett.add(cardTavern);
-	        	
 	        	break;   
 			}
 			

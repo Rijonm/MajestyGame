@@ -3,7 +3,7 @@ package Model;
 public class CardDefense extends Card{
 
 	public CardDefense() {
-		super(1, "Defense");
+		super(3, "Defense");
 		// TODO Auto-generated constructor stub
 	}
 	
