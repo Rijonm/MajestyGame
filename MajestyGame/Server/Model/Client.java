@@ -17,6 +17,7 @@ import CommonClasses.MessageType;
 import CommonClasses.PlayerMoveMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
+import CommonClasses.UserLogout;
 import CommonClasses.UserRegisterMessage;
 import CommonClasses.LoginSuccessMessage.State;
 /**
@@ -40,6 +41,7 @@ public class Client {
 	private GameStartMessage gameStartMessage;
 	private PlayerMoveMessage playerMoveMessage;
 	private ChatMessage chatMessage;
+	private UserLogout logoutMessage;
 
     private int id;
     private String username;
@@ -91,19 +93,6 @@ public class Client {
 						if(msg.getMessageType() == MessageType.GameStartMessage) {
 							System.out.println("gamestartmessagereceived");
 							gameStartMessage = (GameStartMessage) msg;
-//							for(Client c : model.clients) {
-//								if(c.username.equals("rijon")) {
-//									c.isInGame = true;
-//								};
-//							}	
-							
-							//model.playeringame.add(new PlayerInGame(Client.this.model, Client.this.socket, Client.this.id, Client.this.username)); //Der Spieler der GameStart angeklickt hat wird eingefügt.
-						//model.broadcast(gameStartMessage);
-//							for(PlayerOnline p : model.playeronline)
-//								if(p.getUsername().equals(gameStartMessage.getPlayerName())) {
-//									model.playeringame.add(new PlayerInGame(p.getModel(), p.getSocket(), p.getId(), p.getUsername())); //Der Gegner wird in PlayerInGame eingefügt
-//									break;
-//								}
 							model.startGame();
 						}
 						// IM SPIEL
@@ -119,9 +108,9 @@ public class Client {
 						
 						// AUSLOGGEN
 						if(msg.getMessageType() == MessageType.UserLogout) {
-							loggedInPlayersMessage = (LoggedInPlayers) msg;
-							logoutRequest();
-							logoutResponse();
+							logoutMessage = (UserLogout) msg;
+							model.db.logout(logoutMessage);
+							sendLoggedInPlayers();
 						}
 						
 						
@@ -191,16 +180,6 @@ public class Client {
     		LoggedInPlayers message = model.db.getLoggedInPlayers();
     		model.broadcast(message);
     }
-    
-    protected void logoutRequest() {
-		// TODO Auto-generated method stub
-		
-	}
-    
-    protected void logoutResponse() {
-		// TODO Auto-generated method stub
-		
-	}
     
     public ServerModel getModel() {
     		return this.model;

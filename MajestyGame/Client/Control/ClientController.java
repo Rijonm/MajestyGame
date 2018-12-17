@@ -1,6 +1,7 @@
 package Control;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import CommonClasses.Message;
@@ -668,8 +669,11 @@ public class ClientController {
 			
 		} );
 		
-		
-		
+		view.primaryStage.setOnCloseRequest(event -> {
+		    System.out.println("Stage is closing");
+		    model.sendLogoutMessage();
+		   
+		});
 	}
 	
 	

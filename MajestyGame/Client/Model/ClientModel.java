@@ -26,6 +26,7 @@ import CommonClasses.PlayerMoveMessage;
 import CommonClasses.PlayerStatesMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
+import CommonClasses.UserLogout;
 import CommonClasses.UserRegisterMessage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -48,8 +49,8 @@ public class ClientModel {
 	public SimpleIntegerProperty myMeeples = new SimpleIntegerProperty();
 	public ObservableIntegerArray myHand = FXCollections.observableIntegerArray();
 	public Socket socket;
-	private ObjectInputStream oips;
-	private ObjectOutputStream oops;
+	public ObjectInputStream oips;
+	public ObjectOutputStream oops;
 	private SimpleStringProperty registerSuccessString = new SimpleStringProperty();
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
@@ -319,8 +320,9 @@ public class ClientModel {
 		send(chatMessage);
 	}
 	
-	public void disconnect() {
-		
+	public void sendLogoutMessage() {
+		Message logoutMessage = new UserLogout(id);
+		send(logoutMessage);
 	}
 	//Addlistener in controll for lobby
 	public ObservableList<String> getLobbyPlayers() {
@@ -375,6 +377,8 @@ public class ClientModel {
 		}
 		
 	}
+
+	
 	
 }
 
