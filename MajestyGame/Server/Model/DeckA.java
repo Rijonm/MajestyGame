@@ -15,7 +15,7 @@ import java.util.Random;
 	// 4 Red Soldier
 	// 5 Yellow Host
 	// 6 Violet Queen
-	// 7 Lazarett Keine SpielKarte
+	// 7 AUFPASSEN ! Lazarett Keine SpielKarte, den Ordinal im GUI nicht vergeben
 	// 8 Orange/Brown
 	// 9 Orange/Red
 	// 10 Brown/Green
@@ -23,10 +23,13 @@ import java.util.Random;
 	// 12 Green/Blue
 	// 13 Green/Yellow
 	// 14 Blue/Red
+	// 15 Green/Violet
 	// 15 Blue/Yellow
-	// 16 Blue/Violet 
-	// 17 Red/Yeelow
-	// 18 Yellow/Violet
+	// 16 Blue/Red
+	// 17 Blue/Yellow
+	// Blue/Violet
+	// Red/Yellow
+	// Yellow/Violet
 
 
 
@@ -54,7 +57,8 @@ import java.util.Random;
 
 public class DeckA {
 	
-	public int[] cards = {11, 9, 5, 6, 5, 6, 6, 3, 2, 3, 1, 3, 1, 2, 1, 1, 3, 2};
+	public int[] cards = {9, 6, 5, 5, 3, 4, 5, 3, 2, 3, 1, 3, 1, 1, 2, 1, 1, 3,2};
+	
 	public ArrayList<Integer> openCards = new ArrayList<>();
 	
 	public DeckA() {

@@ -131,7 +131,7 @@ public class Hand {
 	// falls der Spieler mehr als Meeples hat, setzt es zurueck auf 5 meeples und verteilt dementsprechen Coins
 	// 1 Meeple = 1 Coin
 	public void actuallMeeples() {
-		switch (meeples) {
+		switch (this.meeples) {
         case 6:
         	coins = coins +1;
         	meeples = meeples-1;
@@ -163,7 +163,7 @@ public class Hand {
         default:
 		meeples = meeples;
 	}
-		
+		this.meeples = meeples;
 	}
 	// Verteilt die Coins bei gezogener Karte
 		public  int distributeCoinsCardA(int cardID) {
@@ -173,34 +173,52 @@ public class Hand {
 			switch (cardID) {
 	        case 0:
 	        	disCoins = handSize*2;
-	        	disMeeples = handSize;
-	        	meeples = meeples+disMeeples;
 	        	break;
 	        case 1:
-	        	if(hand[1]>=1 && hand[4]>=1 && hand[6]>=1) {
-	        		disCoins = 2;
-	        	}
-	        	break;
-	        case 2:
 	        	disCoins = handSize*2;
-	        	break;
-	        case 3:
-	        	disCoins = handSize*5;
 	        	disMeeples = handSize;
 	        	meeples = meeples+disMeeples;
 	        	break;
+	        	
+	        case 2:
+	        	if(hand[0]==1 && hand[1]==1 && hand[2]==1) {
+	        		disCoins = 2;
+	        	}
+	        	if(hand[0]==2 && hand[1]==2 && hand[2]==2) {
+	        		disCoins = 4;
+	        	}
+	        	if(hand[0]==3 && hand[1]==3 && hand[2]==3) {
+	        		disCoins = 6;
+	        	}
+	        	break;
+	        	
+	        case 3:
+	        	if(hand[3]==1 && hand[4]==1 && hand[5]==1) {
+	        		disCoins = 2;
+	        	}
+	        	if(hand[3]==2 && hand[4]==2 && hand[5]==2) {
+	        		disCoins = 4;
+	        	}
+	        	if(hand[3]==3 && hand[4]==3 && hand[5]==3) {
+	        		disCoins = 6;
+	        	}
+	        	
+	        	
+	        	break;
+	        	
 	        case 4:
 	        	disCoins = handSize*3;
 	        	break;
 	        case 5:
-	        	int farmer = hand[2];
-	        	int brewer = hand[0];
-	        	int witch = hand[5];
-	        		disCoins = (farmer+brewer+witch)*2;
-	        	break;
-	        case 6:
 	        	disCoins = handSize*4;
 	        	break;
+	        	
+	        case 6:
+	        	disCoins = handSize*5;
+	        	disMeeples = handSize;
+	        	meeples = meeples+disMeeples;
+	        	break;
+	        	
 		}
 			return disCoins;
 		
@@ -211,25 +229,25 @@ public class Hand {
 		public void setToLazarett(int Ordinal) {
 			switch (Ordinal) {
 	        case 0:
-	        	Lazarett.add(cardBrewer);
-	        	break;
-	        case 1:
-	        	Lazarett.add(cardDefense);	
-	        	break;
-	        case 2:
 	        	Lazarett.add(cardFarmer);
 	        	break;
+	        case 1:
+	        	Lazarett.add(cardBrewer);	
+	        	break;
+	        case 2:
+	        	Lazarett.add(cardWitch);
+	        	break;
 	        case 3:
-	        	Lazarett.add(cardQueen);
+	        	Lazarett.add(cardDefense);
 	        	break;
 	        case 4:
 	        	Lazarett.add(cardSoldier);
 	        	break;
 	        case 5:
-	        	Lazarett.add(cardWitch);
+	        	Lazarett.add(cardTavern);
 	        	break;
 	        case 6:
-	        	Lazarett.add(cardTavern);
+	        	Lazarett.add(cardQueen);
 	        	break;   
 			}
 			
