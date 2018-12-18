@@ -169,13 +169,27 @@ public class Game  {
 	}
 
 	
-	//public void evaluate() {
-		//for(Client c : model.client)
-		//  for(c.)
-		   
-		 
-		  // for(Client c : model.client)
-		 // Hands der Clients vergleichen und winner definieren
-		//  Client winner uf 1 setzte 
-	//}
+	public void evaluate() {
+	for(Client c : model.clients) {
+		
+		for(int i = 0; i<=7; i++) {
+		c.getHand().getHandSize(i);
+		}	
+	// 0 Farmer 10 Coins
+	// 1 Brewer 11 Coins
+	// 2 Witch 12 Coins
+	// 3 Defense 13 Coins
+	// 4 Soldier 14 Coins
+	// 5 Tavern 15 Coins
+	// 6 Queen 16 Coins
+	// 7 Lazarett pro Karte -1 Coins
+	
+	
+		// for(Client c : model.client)
+		// for(c.)
+		// for(Client c : model.client)
+		// Hands der Clients vergleichen und winner definieren
+		// Client winner uf 1 setzte 
+	}
+}
 }

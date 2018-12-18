@@ -121,8 +121,7 @@ public class Hand {
         	Soldier.add(cardSoldier);
         	int soldierSize = hand[4]+1; 
         	hand[4] = soldierSize;
-        	// Verteidung der Gegner ueberpruefen
-        	// Gegner mit weniger Verteidiger als unser anzahl Soldaten, werrden angefriffen.
+        	
         	break;
         case 5:
         	Tavern.add(cardTavern);
