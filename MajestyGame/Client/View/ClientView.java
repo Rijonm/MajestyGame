@@ -164,7 +164,7 @@ public class ClientView {
 
 		}
 		
-		for (int k = 1; k < ANZAHL_GEGNER; k++) {
+		for (int k = 0; k < ANZAHL_GEGNER; k++) {
 			for (int l = 0; l < 8; l++) {
 				ebCounter = new Label("0");
 				enemyBCarray[l] = ebCounter;
@@ -330,13 +330,9 @@ public class ClientView {
 				Region spacerEB = new Region();
 				spacerEB.getStyleClass().add("spacerEB");		
 			//}
-			for (int h = 1; h < 9; h++) {
+			for (int h = 0; h < 8; h++) {
 				ebCounter = new Label(""+h);
 				ebCounter.setMinHeight(37);
-				//Region spacerEBC = new Region();
-				//VBox.setVgrow(spacerEB, Priority.ALWAYS);
-				//spacerEBC.setMinHeight(9);
-				//spacerEBC.getStyleClass().add("spacerEBC");
 				ebCounter.getStyleClass().add("ebCounter");
 				
 				enemyCounterArea.getChildren().add(ebCounter);
@@ -348,8 +344,7 @@ public class ClientView {
 		enemyArea.getStyleClass().add("enemyArea");
 		
 		//PlayerArea / LeftArea
-		int playerN = ANZAHL_GEGNER+1;
-		for (int x = 1; x < playerN-1; x++) { //-1 da nur Gegner Links @@@
+		for (int x = 1; x < ANZAHL_GEGNER; x++) { //-1 da nur Gegner Links @@@
 			Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x-1).name.getValue());
 			Label lc = new Label("Coins: 100");
 			Label lm = new Label("Meeples: 5");
@@ -371,9 +366,6 @@ public class ClientView {
 		HBox personDeck = new HBox();
 		
 		for (int i = 0; i < 6; i++) {
-//			Random r1 = new Random();
-//			int rn = r1.nextInt(6);
-//			Button b = new Button("b"+i);
 			Button b = buttons[i];
 			b.setMinHeight(324);
 			personDeck.getChildren().add(b);
@@ -425,40 +417,7 @@ public class ClientView {
 		chatInput.getStyleClass().add("chatInputTextField");
 		sendButton.getStyleClass().add("sendButton");
 		
-//		b1.getStyleClass().addAll("gameButtonFirst", "gameButtons");
-//		b2.getStyleClass().addAll("gameButtonSecond", "gameButtons");
-//		b3.getStyleClass().addAll("gameButtonThird", "gameButtons");
-//		b4.getStyleClass().addAll("gameButtonFourth", "gameButtons");
-//		b5.getStyleClass().addAll("gameButtonFifth", "gameButtons");
-//		b6.getStyleClass().addAll("gameButtonSixth", "gameButtons");
-//		
-		
-		
-//		GridPane buildingsPlayer1 = new GridPane();
-//		Label lb1 = new Label("1");
-//		buildingsPlayer1.add(lb1, 0, 0);
-//		Label lb2 = new Label("0");
-//		buildingsPlayer1.add(lb2, 1, 0);
-//		Label lb3 = new Label("1");
-//		buildingsPlayer1.add(lb3, 2, 0);
-//		Label lb4 = new Label("0");
-//		buildingsPlayer1.add(lb4, 3, 0);
-//		Label lb5 = new Label("0");
-//		buildingsPlayer1.add(lb5, 4, 0);
-//		Label lb6 = new Label("5");
-//		buildingsPlayer1.add(lb6, 5, 0);
-//		Label lb7 = new Label("0");
-//		buildingsPlayer1.add(lb7, 6, 0);
-//		Label lb8 = new Label("1");
-//		buildingsPlayer1.add(lb8, 7, 0);
-//		
-//		Label PlayerName = new Label("Player 1");
-//		leftVbox.getChildren().addAll(PlayerName);
-		
-//		Label buildingCards = new Label();
-//		buildingCards.getStyleClass().add("buildingCard");
-	
-//		buildingsPlayer1.add(buildingCards, 0, 1);
+
 		centerVbox.setAlignment(Pos.CENTER);
 
 		centerVbox.getChildren().addAll(enemyArea, personDeck, buildingsImage, buildingsCounters);
