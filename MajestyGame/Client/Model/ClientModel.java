@@ -1,6 +1,7 @@
 package Model;
 
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -150,6 +151,8 @@ public class ClientModel {
 		} catch (IOException e) {
 			
 			e.printStackTrace();
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 	}
@@ -168,23 +171,26 @@ public class ClientModel {
 	
 	protected void receivedPlayerStatesMessage(Message msg) {
 		PlayerStatesMessage psm = (PlayerStatesMessage) msg;
+		int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
 		if(psm.getId() == this.id) {
-			int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
+			System.out.println(psm.getId() + "ICH");
 			myHand.setAll(intHand);
 			myCoins.set(psm.getCoins());
 			myMeeples.set(psm.getMeeples());
-			System.out.println(Arrays.toString(intHand));
+			System.out.println(Arrays.toString(psm.getHand()));
+			System.out.println(psm.getCoins());
+			System.out.println(psm.getMeeples());
 		}else {
-			
+			System.out.println(psm.getId() + "ER");
+			System.out.println(Arrays.toString(psm.getHand()));
 		}
-		
 		
 	}
 
 	protected void receivedInformationFromServerMessage(Message msg) {
 		InformationFromServerMessage ifsm = (InformationFromServerMessage) msg;
+		System.out.println(Arrays.toString(ifsm.getOpenCards())+ "OPEN CARDS");
 		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(ifsm.getOpenCards()));
-		System.out.println(list + "NewCards");
 		deck.clear();
 		deck.addAll(list);
 	}
@@ -351,7 +357,7 @@ public class ClientModel {
 		
 	}
 	
-	public Message receive() throws IOException, ClassNotFoundException {
+	public Message receive() throws IOException, ClassNotFoundException, EOFException {
 		
 		Message message = (Message) oips.readObject();
 		return message;

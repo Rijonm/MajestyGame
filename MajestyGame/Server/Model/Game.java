@@ -68,13 +68,16 @@ public class Game  {
 			int a = playedCards/players;
 			round = a;
 		}
-		
+		System.out.println(cardID + " IDDDD");
 		//UPDATE HAND AND COINS OF PLAYERS		
 		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
 				p.getHand().playerChoose(cardID); //übergibt die id der gewählten Karte beim jeweiligen spieler
+				System.out.println(Arrays.toString(p.getHand().hand) + " HAAAND");
 			}
 		}
+		
+		
 		if(cardID == 4) { //Falls ein Angriff dann
 			for(Client o : model.clients) {
 				if(o.isInGame() && o.getId()!= id) { //Chek nur Gegenspieler ab
@@ -96,11 +99,13 @@ public class Game  {
 		
 		//SEND UPDATED INFORMATIONS from the Client which made the move to all Clients
 		for(Client c : model.clients) {
+			int idc = c.getId();
 			Integer[] playerHandArray = c.getHand().hand;
 			int coins = c.getHand().coins;
 			int meeples = c.getHand().meeples;
-			PlayerStatesMessage psm = new PlayerStatesMessage(id, playerHandArray, coins, meeples);
-			c.send(psm);
+			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, coins, meeples);
+			System.out.println(Arrays.toString(playerHandArray));
+			model.broatcastToPlayerInGame(psm);
 		}
 		
 		//DECK AND MEEPLES HANDLING  
