@@ -149,16 +149,16 @@
 	-fx-border-color: green !important;	
 }
 .gameButton0{
-	-fx-background-image: url(/images/characterCard_Brewer.jpg);	
+	-fx-background-image: url(/images/characterCard_Farmer.jpg);	
 }
 .gameButton1{
-	-fx-background-image: url(/images/characterCard_Defense.jpg);	
+	-fx-background-image: url(/images/characterCard_Brewer.jpg);	
 }
 .gameButton2{
-	-fx-background-image: url(/images/characterCard_Farmer.jpg);
+	-fx-background-image: url(/images/characterCard_Witch.jpg);
 }
 .gameButton3{
-	-fx-background-image: url(/images/characterCard_Queen.jpg);	
+	-fx-background-image: url(/images/characterCard_Defense.jpg);	
 }
 .gameButton4{
 	-fx-background-image: url(/images/characterCard_Soldier.jpg);	
@@ -167,7 +167,7 @@
 	-fx-background-image: url(/images/characterCard_Host.jpg);	
 }
 .gameButton6{
-	-fx-background-image: url(/images/characterCard_Witch.jpg);	
+	-fx-background-image: url(/images/characterCard_Queen.jpg);	
 }
 .gameButton7{
 	-fx-background-image: url(/images/OrangeBrown.jpg);	
