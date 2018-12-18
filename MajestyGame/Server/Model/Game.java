@@ -20,7 +20,7 @@ public class Game  {
 	ArrayList<Integer> playersId = new ArrayList<Integer>(); // Hier sind die ID's der Spieler  die im Spiel sind zu finden
 	int playedCards = 0;
 	private DeckA deckA;
-	private int[] meeples = new int[6];
+	private Integer[] meeples = new Integer[6];
 	int round = 0;
 	private ServerModel model;
 	
@@ -61,6 +61,53 @@ public class Game  {
 	 * 
 	 */
 	public void receivedPosFromClient(int pos, int cardID, int id) {
+		
+		if(meeples[pos] > 0) { //Schaut zuerst wieviele meeples sich unter der angelickten Karte befinden, falls über 0...
+			for(Client c : model.clients) { 
+				if(c.getId()== id) {	 //...dann sucht er denn spieler der den Zug ausgeführt hat
+					c.getHand().meeples = c.getHand().meeples + meeples[pos];// ...und fügt die Meeples in seiner "Hand" ein, die sich unter der Karte befinden.
+					c.getHand().actuallMeeples();
+				}
+			}
+		}
+		
+		switch(pos) {
+		case 0:
+			meeples[0] = 0;
+			break;
+		case 1:
+			meeples[0] = meeples[0] + 1;
+			meeples[1] = 0;
+			break;
+		case 2:
+			meeples[0] = meeples[0] + 1;
+			meeples[1] = meeples[1] + 1;
+			meeples[2] = 0;
+			break;
+		case 3:
+			meeples[0] = meeples[0] + 1;
+			meeples[1] = meeples[1] + 1;
+			meeples[2] = meeples[2] + 1;
+			meeples[3] = 0;
+			break;
+		case 4:
+			meeples[0] = meeples[0] + 1;
+			meeples[1] = meeples[1] + 1;
+			meeples[2] = meeples[2] + 1;
+			meeples[3] = meeples[3] + 1;
+			meeples[4] = 0;
+			break;
+		case 5:
+			meeples[0] = meeples[0] + 1;
+			meeples[1] = meeples[1] + 1;
+			meeples[2] = meeples[2] + 1;
+			meeples[3] = meeples[3] + 1;
+			meeples[4] = meeples[4] + 1;
+			meeples[2] = 0;
+			break;
+			
+		}
+		System.out.println(Arrays.toString(meeples) + "MEEPLES SERVER");
 		
 		//RUNDE
 		playedCards++;
@@ -111,7 +158,7 @@ public class Game  {
 		//DECK AND MEEPLES HANDLING  
 		deckA.playerMove(pos);
 		Integer[] openCardsArray = deckA.openCards.toArray(new Integer[deckA.openCards.size()]);
-		InformationFromServerMessage ifsm = new InformationFromServerMessage(openCardsArray);
+		InformationFromServerMessage ifsm = new InformationFromServerMessage(openCardsArray, meeples);
 		model.broatcastToPlayerInGame(ifsm);
 		
 		//EVALUATION NACH 12 RUNDEN

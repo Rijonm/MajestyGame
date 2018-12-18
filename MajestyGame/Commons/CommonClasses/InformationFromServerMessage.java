@@ -3,9 +3,9 @@ package CommonClasses;
 public class InformationFromServerMessage extends Message{
 
 	private Integer[] openCards;
-	private int[] meeples;
+	private Integer[] meeples;
 	
-	public InformationFromServerMessage(Integer[] openCards) {
+	public InformationFromServerMessage(Integer[] openCards, Integer[] meeples) {
 		super(MessageType.InformationFromServerMessage);
 		
 		this.openCards = openCards;
@@ -14,6 +14,10 @@ public class InformationFromServerMessage extends Message{
 
 	public Integer[] getOpenCards() {
 		return openCards;
+	}
+
+	public Integer[] getMeeples() {
+		return meeples;
 	}
 	
 }

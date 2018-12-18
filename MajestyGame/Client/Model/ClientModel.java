@@ -58,7 +58,7 @@ public class ClientModel {
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
 	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name, coins,  meeples, hand, wonOrLose
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
-	private ObservableMap<String, Integer> map = FXCollections.observableHashMap();
+	public ObservableList<Integer> meeples = FXCollections.observableArrayList();
 	
 	public ClientModel() {
 		
@@ -173,7 +173,7 @@ public class ClientModel {
 		PlayerStatesMessage psm = (PlayerStatesMessage) msg;
 		int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
 		if(psm.getId() == this.id) {
-			System.out.println(psm.getId() + "ICH");
+			System.out.println(psm.getId() + " : ICH");
 			myHand.setAll(intHand);
 			myCoins.set(psm.getCoins());
 			myMeeples.set(psm.getMeeples());
@@ -181,7 +181,12 @@ public class ClientModel {
 			System.out.println(psm.getCoins());
 			System.out.println(psm.getMeeples());
 		}else {
-			System.out.println(psm.getId() + "ER");
+			for(Opponent o : opponentPlayers) {
+				if(o.getId().getValue() == psm.getId()) {
+					
+				}
+			}
+			System.out.println(psm.getId() + " : ER");
 			System.out.println(Arrays.toString(psm.getHand()));
 		}
 		
@@ -189,10 +194,13 @@ public class ClientModel {
 
 	protected void receivedInformationFromServerMessage(Message msg) {
 		InformationFromServerMessage ifsm = (InformationFromServerMessage) msg;
-		System.out.println(Arrays.toString(ifsm.getOpenCards())+ "OPEN CARDS");
-		ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(ifsm.getOpenCards()));
+		ArrayList<Integer> deckOpen = new ArrayList<Integer>(Arrays.asList(ifsm.getOpenCards()));
+		ArrayList<Integer> meeplesOpen = new ArrayList<Integer>(Arrays.asList(ifsm.getMeeples()));
 		deck.clear();
-		deck.addAll(list);
+		deck.addAll(deckOpen);
+		meeples.clear();
+		meeples.addAll(meeplesOpen);
+		System.out.println(Arrays.toString(meeplesOpen.toArray()) + " MEEEPLES UNTER DECK");
 	}
 	/*
 	 * Aktualisiert deck, trigger in contoller
@@ -380,6 +388,54 @@ public class ClientModel {
 			this.hand.setAll(intHand);
 			this.coins.setValue(coins); //Nicht sicher ob set oder setValue
 			
+		}
+
+		public SimpleIntegerProperty getId() {
+			return id;
+		}
+
+		public SimpleStringProperty getName() {
+			return name;
+		}
+
+		public SimpleIntegerProperty getCoins() {
+			return coins;
+		}
+
+		public SimpleIntegerProperty getMeeples() {
+			return meeples;
+		}
+
+		public ObservableIntegerArray getHand() {
+			return hand;
+		}
+
+		public SimpleStringProperty getWonOrLose() {
+			return wonOrLose;
+		}
+
+		public void setId(SimpleIntegerProperty id) {
+			this.id = id;
+		}
+
+		public void setName(SimpleStringProperty name) {
+			this.name = name;
+		}
+
+		public void setCoins(SimpleIntegerProperty coins) {
+			this.coins = coins;
+		}
+
+		public void setMeeples(SimpleIntegerProperty meeples) {
+			this.meeples = meeples;
+		}
+
+		public void setHand(ObservableIntegerArray hand) {
+			this.hand = hand;
+		}
+
+		public void setWonOrLose(SimpleStringProperty wonOrLose) {
+			this.wonOrLose = wonOrLose;
 		}
 		
 	}

@@ -70,26 +70,44 @@ public class Hand {
         	Witch.add(cardWitch);
         	int witchSize = hand[2]+1; 
         	hand[2] = witchSize;
-        	int s = Lazarett.size()-1;
-        	Card c = Lazarett.get(s);
+        	if(Lazarett.size()>0) {
+        	int s = Lazarett.size();
+        	Card c = Lazarett.get(s-1);
+        	System.out.println(c.cardName + c.cardID + "HIIIIER");
         	if(s>0) {
-        	Lazarett.remove(s);
+        	this.hand[7] = 	hand[7]-1;
+        	Lazarett.remove(Lazarett.size()-1);
         	int id = c.getCardID();
-        	if(id == 0)
+        	if(id == 0) {
         		Farmer.add(cardFarmer);
-        	if(id == 1)
-        		Brewer.add(cardBrewer);
-        	if(id == 2)
-        		Witch.add(cardWitch);
-        	if(id == 3)
-        		Defense.add(cardDefense);
-        	if(id == 4)
-        		Soldier.add(cardSoldier);
-        	if(id == 5)
-        		Witch.add(cardWitch);
-        	if(id == 6)
-        		Queen.add(cardQueen);
+        	this.hand[0] = 	hand[0]+1;
         	}
+        	if(id == 1) {
+        		Brewer.add(cardBrewer);
+        	this.hand[1] = 	hand[1]+1;
+        	}
+        	if(id == 2) {
+        		Witch.add(cardWitch);
+        	this.hand[2] = 	hand[2]+1;
+        	}
+        	if(id == 3) {
+        		Defense.add(cardDefense);
+        	this.hand[3] = 	hand[3]+1;
+        	}
+        	if(id == 4) {
+        		Soldier.add(cardSoldier);
+        	this.hand[4] = 	hand[4]+1;
+        	}
+        	if(id == 5) {
+        		Witch.add(cardWitch);
+        	this.hand[5] = 	hand[5]+1;
+        	}
+        	if(id == 6) {
+        		Queen.add(cardQueen);
+        	this.hand[6] = 	hand[6]+1;
+        	}
+        	}
+        	}	
      
         	break;
         	
@@ -230,24 +248,31 @@ public class Hand {
 			switch (Ordinal) {
 	        case 0:
 	        	Lazarett.add(cardFarmer);
+	        this.hand[7] = 	hand[7]+1;
 	        	break;
 	        case 1:
-	        	Lazarett.add(cardBrewer);	
+	        	Lazarett.add(cardBrewer);
+	        this.hand[7] = 	hand[7]+1;
 	        	break;
 	        case 2:
 	        	Lazarett.add(cardWitch);
+	        	this.hand[7] = 	hand[7]+1;
 	        	break;
 	        case 3:
 	        	Lazarett.add(cardDefense);
+	        	this.hand[7] = 	hand[7]+1;
 	        	break;
 	        case 4:
 	        	Lazarett.add(cardSoldier);
+	        	this.hand[7] = 	hand[7]+1;
 	        	break;
 	        case 5:
 	        	Lazarett.add(cardTavern);
+	        	this.hand[7] = 	hand[7]+1;
 	        	break;
 	        case 6:
 	        	Lazarett.add(cardQueen);
+	        	this.hand[7] = 	hand[7]+1;
 	        	break;   
 			}
 			
