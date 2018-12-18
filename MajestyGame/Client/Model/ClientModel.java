@@ -183,7 +183,9 @@ public class ClientModel {
 		}else {
 			for(Opponent o : opponentPlayers) {
 				if(o.getId().getValue() == psm.getId()) {
-					
+					o.hand.setAll(intHand);
+					o.coins.set(psm.getCoins());
+					o.meeples.set(psm.getMeeples());
 				}
 			}
 			System.out.println(psm.getId() + " : ER");
