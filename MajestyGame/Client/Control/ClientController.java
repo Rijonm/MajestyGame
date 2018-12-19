@@ -1545,6 +1545,10 @@ public class ClientController {
 		view.primaryStage.setOnCloseRequest(event -> {
 			System.out.println("Stage is closing");
 			model.sendLogoutMessage();
+
+			Platform.setImplicitExit(false);
+            Platform.exit();
+            System.exit(0);
 		});
 	}
 

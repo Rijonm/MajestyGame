@@ -131,7 +131,8 @@ public class Client {
 						if (msg.getMessageType() == MessageType.GetHighScoresMessage) {
 							// get top 10 playes sorted by highscore
 							PlayersMessage playersMessage = model.db.getPlayers("highscore", false, 10);
-							HighscoreListMessage highscoreListMessage = new HighscoreListMessage(playersMessage.getPlayers());
+							HighscoreListMessage highscoreListMessage = new HighscoreListMessage(
+									playersMessage.getPlayers());
 							sendHighscoreListMessage(highscoreListMessage);
 						}
 
@@ -213,7 +214,7 @@ public class Client {
 	public void sendOtherPlayerLoggedOut(OtherPlayerLoggedOutMessage msg) {
 		model.broadcast(msg);
 	}
-	
+
 	public void sendHighscoreListMessage(HighscoreListMessage msg) {
 		System.out.println("server/client sendHighscoreListMessage");
 		send(msg);
@@ -261,9 +262,12 @@ public class Client {
 
 	public void send(Message message) {
 		try {
-			oops.writeObject(message);
-			oops.flush();
-
+			if (!socket.isClosed()) {
+				oops.writeObject(message);
+				oops.flush();
+			} else {
+				System.out.println("socket: " + socket.toString() + " is closed");
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
