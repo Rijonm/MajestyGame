@@ -8,8 +8,6 @@ public class CardWitch extends Card{
 		super(2, "Witch");
 		// TODO Auto-generated constructor stub
 	}
-
-
 	
 
 }

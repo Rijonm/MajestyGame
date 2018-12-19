@@ -31,7 +31,7 @@ public class Hand {
 	public static ArrayList<Card> Lazarett = new ArrayList <>();
 	
 	public Hand() {
-		for(int i = 0; i<hand.length; i++) { // Punktezahl 0,0,0,0,0,0,0,0
+		for(int i = 0; i<hand.length; i++) { // Bei Gebäudekarten über all 0,0,0,0,0,0,0,0
 			hand[i] = 0;
 		}
 		coins = 0;
@@ -70,45 +70,9 @@ public class Hand {
         	Witch.add(cardWitch);
         	int witchSize = hand[2]+1; 
         	hand[2] = witchSize;
-        	if(Lazarett.size()>0) {
-        	int s = Lazarett.size();
-        	Card c = Lazarett.get(s-1);
-        	System.out.println(c.cardName + c.cardID + "HIIIIER");
-        	if(s>0) {
-        	this.hand[7] = 	hand[7]-1;
-        	Lazarett.remove(Lazarett.size()-1);
-        	int id = c.getCardID();
-        	if(id == 0) {
-        		Farmer.add(cardFarmer);
-        	this.hand[0] = 	hand[0]+1;
-        	}
-        	if(id == 1) {
-        		Brewer.add(cardBrewer);
-        	this.hand[1] = 	hand[1]+1;
-        	}
-        	if(id == 2) {
-        		Witch.add(cardWitch);
-        	this.hand[2] = 	hand[2]+1;
-        	}
-        	if(id == 3) {
-        		Defense.add(cardDefense);
-        	this.hand[3] = 	hand[3]+1;
-        	}
-        	if(id == 4) {
-        		Soldier.add(cardSoldier);
-        	this.hand[4] = 	hand[4]+1;
-        	}
-        	if(id == 5) {
-        		Witch.add(cardWitch);
-        	this.hand[5] = 	hand[5]+1;
-        	}
-        	if(id == 6) {
-        		Queen.add(cardQueen);
-        	this.hand[6] = 	hand[6]+1;
-        	}
-        	}
+        	if(hand[7]>0) {
+        		healingLazarett();
         	}	
-     
         	break;
         	
         case 3:
@@ -219,8 +183,6 @@ public class Hand {
 	        	if(hand[3]==3 && hand[4]==3 && hand[5]==3) {
 	        		disCoins = 6;
 	        	}
-	        	
-	        	
 	        	break;
 	        	
 	        case 4:
@@ -234,11 +196,9 @@ public class Hand {
 	        	disCoins = handSize*5;
 	        	disMeeples = handSize;
 	        	meeples = meeples+disMeeples;
-	        	break;
-	        	
+	        	break;  	
 		}
 			return disCoins;
-		
 		}
 		
 		// falls ein Spieler angegriffen wird, die 1. von Links ins Lazarett abgelegt, falls 1. 0 sein sollte, wird 
@@ -274,11 +234,46 @@ public class Hand {
 	        	this.hand[7] = 	hand[7]+1;
 	        	break;   
 			}
-			
 		}
 		
-	
-	
+// Falls Hexe gezogen und Karte im Lazarett vorhanden wird die Karte vom Lazarett zurpck zur Gebäudekarte gelegt		
+		public void healingLazarett() {
+        	int s = hand[7];      	//!!!!!!!!!!!!!!!!!!!!!! Falls im Spiel Lazarett -1, mit diesem Code probieren und unten int s löschen
+//        	int s = Lazarett.size();
+        	Card c = Lazarett.get(s-1);
+//        //	System.out.println(c.cardName + c.cardID + "HIIIIER");
+        	this.hand[7] = 	hand[7]-1;
+        	Lazarett.remove(Lazarett.size()-1);
+        	int id = c.getCardID();
+        	if(id == 0) {
+        		Farmer.add(cardFarmer);
+        	this.hand[0] = 	hand[0]+1;
+        	}
+        	if(id == 1) {
+        		Brewer.add(cardBrewer);
+        	this.hand[1] = 	hand[1]+1;
+        	}
+        	if(id == 2) {
+        		Witch.add(cardWitch);
+        	this.hand[2] = 	hand[2]+1;
+        	}
+        	if(id == 3) {
+        		Defense.add(cardDefense);
+        	this.hand[3] = 	hand[3]+1;
+        	}
+        	if(id == 4) {
+        		Soldier.add(cardSoldier);
+        	this.hand[4] = 	hand[4]+1;
+        	}
+        	if(id == 5) {
+        		Witch.add(cardWitch);
+        	this.hand[5] = 	hand[5]+1;
+        	}
+        	if(id == 6) {
+        		Queen.add(cardQueen);
+        	this.hand[6] = 	hand[6]+1;
+        	}
+        	
+	}
 
-	
 }
