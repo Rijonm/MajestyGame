@@ -167,8 +167,10 @@ public class Game  {
 		
 		//EVALUATION NACH 12 RUNDEN
 		if(round == 12) {
-			//evaluate();
-			//evaluateLazarett()
+			varietyCard();
+			evaluateLazarett();
+			evaluate();
+			
 		}
 		
 	}
@@ -197,7 +199,7 @@ public class Game  {
 		
 	
 	}
-	
+	//@ Mert Emek
 	public void evaluateLazarett() {
 		for(Client c : model.clients) {
 			int minusPoints = 0;
@@ -206,7 +208,7 @@ public class Game  {
 		}
 	}
 
-	
+	//@ Rijon & Mert
 	public void evaluate() {
 	
 	//Farmer evaluation -------------------
