@@ -3,6 +3,7 @@ package View;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -86,17 +87,20 @@ public class ClientView {
 	public Scene fifthScene; 
 	
 	public BorderPane gameArea;
-	public EnemyArea enemyArea;
+	public OpponentView opponentView;
 	public DeckArea deckArea;
 	public BuildingsArea buildingsArea;
 	public Label[] buildingAry = new Label[8];
 	public Label[] enemyBCarray = new Label[8];
+	
+	public ArrayList<OpponentView> opponentArrayList = new ArrayList<>();
+	
 	public ChatArea chatArea;
 	public PlayerArea playerArea;
 	public BottomArea bottomArea;
 	public Button[] buttons = new Button[6];
 	public Label buildingCounter;
-	public Label ebCounter;
+	//public Label ebCounter;
 	public int labelCounter = 0;
 //	public Button b1 = new Button("b1");
 //	public Button b2 = new Button("b2");
@@ -109,7 +113,7 @@ public class ClientView {
 	
 	//enemyDeck
 	public int ANZAHL_GEGNER = 0;
-	
+	public HBox enemyArea = new HBox();
 	
 	//ChatArea
 	public TextField chatContent;
@@ -154,22 +158,26 @@ public class ClientView {
 		for (int i = 0; i < 6; i++) {
 //			Random r1 = new Random();
 //			int rn = r1.nextInt(6);
+			
 			Button b = new Button("b"+i);
 			buttons[i] = b;
 		}
 		for (int j = 0; j < 8; j++) {
+
 			String s = Integer.toString(labelCounter);
 			buildingCounter = new Label(s);
 			buildingAry[j] = buildingCounter;
 
 		}
 		
-		for (int k = 0; k < ANZAHL_GEGNER; k++) {
+		//for (int k = 0; k < ANZAHL_GEGNER; k++) {
+			
 			for (int l = 0; l < 8; l++) {
-				ebCounter = new Label("0");
+				System.out.println("TESTEFIRSTFORSCHLEIFE EBCOUNTER" +l);				
+				Label ebCounter = new Label("0");
 				enemyBCarray[l] = ebCounter;
 			}
-		}
+		//}
 		
 		majestyLogoView.setImage(majestyLogo);
 		majestyLogoView.setFitWidth(615);
@@ -315,37 +323,60 @@ public class ClientView {
 		leftVbox.setId("leftVbox");
 		rightVbox= new VBox();
 		
+//*********************************EnemyDeck***********************************//
 		
 		//EnemyDeck		
-		HBox enemyArea = new HBox();
+		
+		for(int i = 0; i < ANZAHL_GEGNER; i++) {
+			
+			OpponentView ov = new OpponentView();
+			for(int j = 0; j < 8; j++) {
+				//	ov.lAr[j].setText(""+model.opponentPlayers.get(i).hand.get(j));
+					ov.lAr[j].setText("DU HS");
+				}
+			opponentArrayList.add(ov);
+			enemyArea.getChildren().add(ov);
+			
+		}
+		
+		
+		
 
-		for (int j = 1; j < ANZAHL_GEGNER; j++) {
-			VBox enemyCounterArea = new VBox();
-			enemyCounterArea.setId("enemyCounterArea");
-			Label enemyDeckImg = new Label();
-			enemyDeckImg.getStyleClass().add("enemyBuildingsImg");
-			enemyDeckImg.setMinHeight(296);
+		//for (int j = 0; j < ANZAHL_GEGNER; j++) {
+		//	System.out.println(ANZAHL_GEGNER);
+		
+			//VBox enemyCounterArea = new VBox();
+		//	ov.setId("enemyCounterArea");
+			//Label enemyDeckImg = new Label();
+			//enemyDeckImg.getStyleClass().add("enemyBuildingsImg");
+			//enemyDeckImg.setMinHeight(296);
 			
 			//while (j < (ANZAHL_GEGNER-1)) {
-				Region spacerEB = new Region();
-				spacerEB.getStyleClass().add("spacerEB");		
+			//	Region spacerEB = new Region();
+			//	spacerEB.getStyleClass().add("spacerEB");		
 			//}
-			for (int h = 0; h < 8; h++) {
-				ebCounter = new Label(""+h);
-				ebCounter.setMinHeight(37);
-				ebCounter.getStyleClass().add("ebCounter");
 				
-				enemyCounterArea.getChildren().add(ebCounter);
-			}	
+			// for (int h = 0; h < 8; h++) {
+			//	System.out.println("TESTEEEEE");
+			//	Label ebCounter = enemyBCarray[h];
+				//ebCounter.setMinHeight(37);
+				//ebCounter.getStyleClass().add("ebCounter");
+				
+				//enemyCounterArea.getChildren().add(ebCounter);
+			//}	
 			
-			enemyArea.getChildren().addAll(enemyDeckImg, enemyCounterArea, spacerEB);
-		}
-		enemyArea.setAlignment(Pos.CENTER);
-		enemyArea.getStyleClass().add("enemyArea");
+		//	enemyArea.getChildren().addAll(enemyCounterArea, spacerEB);
+		//}
+		//enemyArea.setAlignment(Pos.CENTER);
+		//enemyArea.getStyleClass().add("enemyArea");
 		
+//*********************************EnemyDeck***********************************//
+								
+				
+				
 		//PlayerArea / LeftArea
-		for (int x = 1; x < ANZAHL_GEGNER; x++) { //-1 da nur Gegner Links @@@
-			Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x-1).name.getValue());
+		for (int x = 0; x < ANZAHL_GEGNER; x++) { //-1 da nur Gegner Links @@@
+			Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x).name.getValue());
 			Label lc = new Label("Coins: 100");
 			Label lm = new Label("Meeples: 5");
 			Region spacerP = new Region();
