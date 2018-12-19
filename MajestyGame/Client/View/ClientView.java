@@ -101,7 +101,6 @@ public class ClientView {
 	public Button[] buttons = new Button[6];
 	public Label buildingCounter;
 	//public Label ebCounter;
-	public int labelCounter = 0;
 //	public Button b1 = new Button("b1");
 //	public Button b2 = new Button("b2");
 //	public Button b3 = new Button("b3");
@@ -163,9 +162,7 @@ public class ClientView {
 			buttons[i] = b;
 		}
 		for (int j = 0; j < 8; j++) {
-
-			String s = Integer.toString(labelCounter);
-			buildingCounter = new Label(s);
+			buildingCounter = new Label("0");
 			buildingAry[j] = buildingCounter;
 
 		}

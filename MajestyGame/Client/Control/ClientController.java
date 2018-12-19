@@ -214,56 +214,61 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				System.out.println("b0");
 				//view.buildingCounter.setText(Integer.toString(model.deck.get(1)));
-				model.sendPlayerMoveMessage(0, 0);
+				int getIdOfButton = model.deck.get(0);
 				
+				String contentLabel = view.buildingCounter.getText();
+				int labelContent = Integer.parseInt(contentLabel);
 				
-				if(model.deck.get(0) <= 6) {
-					view.buildingAry[model.deck.get(0)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+				if(getIdOfButton <= 6) {
+					model.sendPlayerMoveMessage(0, getIdOfButton);
+					
+					view.buildingAry[model.deck.get(0)].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein
 				} else {
 					
 					System.out.println("Split Card");
 					
-					int zahl = model.deck.get(0);
-					switch(zahl) {
+					switch(getIdOfButton) {
 						case 7:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							
+							
 							//Popup mit 2 Buttons
 							//
 							//....return getChoose
 							//model.sendPlayerMoveMessage(0, 2);
 							break;
 						case 8:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 9:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 10:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 11:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 12:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 13:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 14:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 15:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 17:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 18:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
@@ -278,13 +283,16 @@ public class ClientController {
 		view.buttons[1].setOnAction(new EventHandler<ActionEvent> (){
 		
 			public void handle(ActionEvent event) {
-					
+				int getIdOfButton = model.deck.get(1);	
 				System.out.println("b1");						
-				model.sendPlayerMoveMessage(1, 1);
 				
+				String contentLabel = view.buildingCounter.getText();
+				int labelContent = Integer.parseInt(contentLabel);
 				
 				if(model.deck.get(1) <= 6) {
-					view.buildingAry[model.deck.get(1)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+					model.sendPlayerMoveMessage(1, getIdOfButton);
+					
+					view.buildingAry[getIdOfButton].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein
 				} else {
 					
 					System.out.println("Split Card");
@@ -292,40 +300,40 @@ public class ClientController {
 					int zahl = model.deck.get(1);
 					switch(zahl) {
 						case 7:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 8:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 9:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 10:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 11:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 12:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 13:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 14:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 15:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 17:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 18:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
@@ -339,13 +347,16 @@ public class ClientController {
 		view.buttons[2].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
+				int getIdOfButton = model.deck.get(2);	
 					
-				System.out.println("b2");						
-				model.sendPlayerMoveMessage(2, 2);		
-				//view.buildingAry[model.deck.get(2)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+				String contentLabel = view.buildingCounter.getText();
+				int labelContent = Integer.parseInt(contentLabel);
 				
-				if(model.deck.get(2) <= 6) {
-					view.buildingAry[model.deck.get(2)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+				System.out.println("b2");						
+				if(getIdOfButton <= 6) {
+					model.sendPlayerMoveMessage(2, getIdOfButton);
+					
+					view.buildingAry[getIdOfButton].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein
 				} else {
 					
 					System.out.println("Split Card");
@@ -353,40 +364,40 @@ public class ClientController {
 					int zahl = model.deck.get(2);
 					switch(zahl) {
 						case 7:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 8:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 9:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 10:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 11:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 12:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 13:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 14:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 15:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 17:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 18:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
@@ -400,54 +411,56 @@ public class ClientController {
 		view.buttons[3].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
+				int getIdOfButton = model.deck.get(3);	
 					
+				String contentLabel = view.buildingCounter.getText();
+				int labelContent = Integer.parseInt(contentLabel);
+				
 				System.out.println("b3");						
-				model.sendPlayerMoveMessage(3, 3);	
-				//view.buildingAry[model.deck.get(3)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
-			
-				if(model.deck.get(3) <= 6) {
-					view.buildingAry[model.deck.get(3)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+				if(getIdOfButton <= 6) {
+					view.buildingAry[getIdOfButton].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein
+					
+					model.sendPlayerMoveMessage(3, getIdOfButton);
 				} else {
 					
 					System.out.println("Split Card");
 					
-					int zahl = model.deck.get(3);
-					switch(zahl) {
+					switch(getIdOfButton) {
 						case 7:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 8:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 9:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 10:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 11:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 12:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 13:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 14:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 15:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 17:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 18:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
@@ -461,55 +474,60 @@ public class ClientController {
 		view.buttons[4].setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
-					
+				int getIdOfButton = model.deck.get(4);	
+				
+				String contentLabel = view.buildingCounter.getText();
+				int labelContent = Integer.parseInt(contentLabel);	
+				
+				
+				
 				System.out.println("b4");						
 				model.sendPlayerMoveMessage(4, 4);		
 				
-				//view.buildingAry[model.deck.get(4)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
-				
-				if(model.deck.get(4) <= 6) {
-					view.buildingAry[model.deck.get(4)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+				if(getIdOfButton <= 6) {
+					view.buildingAry[getIdOfButton].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein   TEST
+					
+					model.sendPlayerMoveMessage(3, getIdOfButton);
 				} else {
 					
 					System.out.println("Split Card");
 					
-					int zahl = model.deck.get(4);
-					switch(zahl) {
+					switch(getIdOfButton) {
 						case 7:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 8:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 9:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 10:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 11:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 12:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 13:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 14:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 15:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 17:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 18:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
@@ -522,56 +540,59 @@ public class ClientController {
 		view.buttons[5].setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
+				int getIdOfButton = model.deck.get(5);	
+				
+				String contentLabel = view.buildingCounter.getText();
+				int labelContent = Integer.parseInt(contentLabel);
 					
 				System.out.println("b5");						
-				model.sendPlayerMoveMessage(5, 5);	 //pos, cardID
+				model.sendPlayerMoveMessage(5, getIdOfButton);	 //pos, cardID
 				
-				//view.buildingAry[model.deck.get(5)].setText(Integer.toString(view.labelCounter+1));  //in setText kommt Array-Nachricht vom Server rein
 			
-			
-				if(model.deck.get(5) <= 6) {
-					view.buildingAry[model.deck.get(5)].setText(Integer.toString(view.labelCounter+1)); //in setText kommt Array-Nachricht vom Server rein
+				if(getIdOfButton <= 6) {
+					view.buildingAry[model.deck.get(5)].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein
+					
+					model.sendPlayerMoveMessage(5, getIdOfButton);	 //pos, cardID
 				} else {
 					
 					System.out.println("Split Card");
 					
-					int zahl = model.deck.get(5);
-					switch(zahl) {
+					switch(getIdOfButton) {
 						case 7:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 8:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 9:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 10:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 11:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 12:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 13:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 14:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 15:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 17:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						case 18:
-							view.buildingAry[2].setText(Integer.toString(view.labelCounter+1));
+							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
