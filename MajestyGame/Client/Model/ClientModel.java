@@ -173,22 +173,22 @@ public class ClientModel {
 		PlayerStatesMessage psm = (PlayerStatesMessage) msg;
 		int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
 		if(psm.getId() == this.id) {
-			System.out.println(psm.getId() + " : ICH");
+			System.out.print(psm.getId() + " : ICH : ");
 			myHand.setAll(intHand);
 			myCoins.set(psm.getCoins());
 			myMeeples.set(psm.getMeeples());
 			System.out.println(Arrays.toString(psm.getHand()));
-			System.out.println(psm.getCoins());
-			System.out.println(psm.getMeeples());
 		}else {
 			for(Opponent o : opponentPlayers) {
 				if(o.getId().getValue() == psm.getId()) {
-					o.hand.setAll(intHand);
+					o.hand.clear();
+					o.hand.addAll(intHand);
+					System.out.println(o.hand + "Hand of opponent");
 					o.coins.set(psm.getCoins());
 					o.meeples.set(psm.getMeeples());
 				}
 			}
-			System.out.println(psm.getId() + " : ER");
+			System.out.print(psm.getId() + " : ER : " );
 			System.out.println(Arrays.toString(psm.getHand()));
 		}
 		
@@ -389,7 +389,6 @@ public class ClientModel {
 			int[] intHand = Arrays.stream(hand).mapToInt(Integer::intValue).toArray();
 			this.hand.setAll(intHand);
 			this.coins.setValue(coins); //Nicht sicher ob set oder setValue
-			
 		}
 
 		public SimpleIntegerProperty getId() {
