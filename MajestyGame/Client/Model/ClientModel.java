@@ -9,10 +9,13 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import CommonClasses.ChatMessage;
 import CommonClasses.FirstSixCardsMessage;
 import CommonClasses.GameStartMessage;
+import CommonClasses.GetHighscoresMessage;
+import CommonClasses.HighscoreListMessage;
 import CommonClasses.InformationFromServerMessage;
 import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
@@ -25,12 +28,11 @@ import CommonClasses.PlayerMoveMessage;
 import CommonClasses.PlayerStatesMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
-import CommonClasses.UserLogout;
 import CommonClasses.UserRegisterMessage;
-import db.Database;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableStringValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableIntegerArray;
 import javafx.collections.ObservableList;
@@ -56,6 +58,7 @@ public class ClientModel {
 	private SimpleStringProperty registerSuccessString = new SimpleStringProperty();
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
+	public SimpleStringProperty highscoreList = new SimpleStringProperty();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
 	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name,
 																							// coins, meeples, hand,
@@ -137,6 +140,12 @@ public class ClientModel {
 								receivedOtherPlayerLoggedOut(msg);
 							});
 						}
+						if (msg.getMessageType() == MessageType.HighscoreListMessage) {
+							Platform.runLater(() -> {
+								receivedHighscoreListMessage(msg);
+							});
+						}
+						
 						
 					}
 				} catch (SocketException e) {
@@ -299,6 +308,27 @@ public class ClientModel {
 		// TODO rijon: check if opponent is player of logged out message "oplo.getPlayerId();"
 		// TODO rijon: end game if the player which logged out is opponent
 	}
+	
+	protected void receivedHighscoreListMessage(Message msg) {
+		System.out.println("clientModel receivedHighscoreListMessage");
+		List<Player> players = ((HighscoreListMessage) msg).getPlayers();
+		StringBuilder list = new StringBuilder();
+		// convert list to array
+		Player[] playersArray = new Player[players.size()];
+		playersArray = players.toArray(playersArray);
+		/** iterate over array and create highscore list:
+		 * 1: user -> 1234
+		 * 2: lol -> 252
+		 * 3: bla -> 123
+		 */
+		for (int i = 0; i < playersArray.length; i++) {
+			Player player = playersArray[i];
+			list.append(i+1 + ": " + player.getUsername() + " -> " + player.getHighscore() + "\r\n");
+		}
+		highscoreList.set(list.toString());
+	}
+	
+	
 	// RECEIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE END-------------
 
 	/**
@@ -368,6 +398,12 @@ public class ClientModel {
 		Message logoutMessage = new OtherPlayerLoggedOutMessage(this.id);
 		send(logoutMessage);
 	}
+	
+	public void sendGetHighscoresMessage() {
+		System.out.println("clientModel sendGetHighscoresMessage");
+		Message highscoresMessage = new GetHighscoresMessage();
+		send(highscoresMessage);
+	}
 
 	// Addlistener in controll for lobby
 	public ObservableList<String> getLobbyPlayers() {
@@ -382,6 +418,10 @@ public class ClientModel {
 	// Addlistener in contoll for logininfo
 	public SimpleStringProperty getLoginSuccess() {
 		return loginSuccessString;
+	}
+	
+	public SimpleStringProperty getHighscoreList() {
+		return highscoreList;
 	}
 
 	public void send(Message message) {

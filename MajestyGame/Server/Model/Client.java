@@ -8,6 +8,7 @@ import java.net.SocketException;
 
 import CommonClasses.ChatMessage;
 import CommonClasses.GameStartMessage;
+import CommonClasses.HighscoreListMessage;
 import CommonClasses.LoggedInPlayers;
 import CommonClasses.LoginSuccessMessage;
 import CommonClasses.Message;
@@ -15,6 +16,7 @@ import CommonClasses.MessageType;
 import CommonClasses.OtherPlayerLoggedOutMessage;
 import CommonClasses.PlayerMessage;
 import CommonClasses.PlayerMoveMessage;
+import CommonClasses.PlayersMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserLogout;
@@ -125,6 +127,13 @@ public class Client {
 								sendOtherPlayerLoggedOut(otherPlayerLoggedOutMessage);
 							});
 						}
+						// highscores requested
+						if (msg.getMessageType() == MessageType.GetHighScoresMessage) {
+							// get top 10 playes sorted by highscore
+							PlayersMessage playersMessage = model.db.getPlayers("highscore", false, 10);
+							HighscoreListMessage highscoreListMessage = new HighscoreListMessage(playersMessage.getPlayers());
+							sendHighscoreListMessage(highscoreListMessage);
+						}
 
 					}
 				} catch (SocketException e) {
@@ -203,6 +212,11 @@ public class Client {
 
 	public void sendOtherPlayerLoggedOut(OtherPlayerLoggedOutMessage msg) {
 		model.broadcast(msg);
+	}
+	
+	public void sendHighscoreListMessage(HighscoreListMessage msg) {
+		System.out.println("server/client sendHighscoreListMessage");
+		send(msg);
 	}
 
 	public ServerModel getModel() {

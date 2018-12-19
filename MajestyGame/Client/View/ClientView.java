@@ -1,35 +1,23 @@
 package View;
 
 
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import Model.ClientModel;
-import javafx.animation.Timeline;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 
 public class ClientView {
 	
@@ -62,7 +50,7 @@ public class ClientView {
 	public VBox registrierenArea;
 	public TextField userNameRegister, userPasswordRegister;
 	public Button registrierenBB = new Button("Registrieren");
-	public Button backFirstSceneB = new Button("Zur�ck");
+	public Button backFirstSceneB = new Button("Zurück");
 	
 	//gamestartScene
 	public Scene thirdScene; 
@@ -135,7 +123,7 @@ public class ClientView {
 	private VBox rulesBox;
 	public Label rulesLabel;
 		
-	public Button backToGameScene = new Button("Zur�ck");
+	public Button backToGameScene = new Button("Zurück");
 
 	
 	//PopUp for SplitCards 
@@ -513,7 +501,7 @@ public class ClientView {
 	public Scene setSixthScene() {
 		
 		highscoreArea = new BorderPane();
-		highscoreListLabel = new Label("Highscore");
+		highscoreListLabel = new Label("placeholder");
 		highscoreArea.setCenter(highscoreListLabel);
 		highscoreArea.setBottom(backToGameScene);
 		
