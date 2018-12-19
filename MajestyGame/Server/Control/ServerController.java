@@ -49,8 +49,7 @@ public class ServerController {
 		view.stopServerB.setOnAction(new EventHandler<ActionEvent> (){
 			
 			public void handle(ActionEvent event) {
-//				model.stopServer();
-						
+				model.serverStop();
 			}
 		});
 		

@@ -2,23 +2,19 @@ package Control;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.net.ConnectException;
+import java.net.UnknownHostException;
 
-import CommonClasses.Message;
-import CommonClasses.Player;
-import CommonClasses.UserLoginMessage;
 import Model.ClientModel;
 import View.ClientView;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 public class ClientController {
 	
@@ -35,17 +31,23 @@ public class ClientController {
 				
 
 				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
-				model.connect("localhost", 1111);
-
-				view.primaryStage.setScene(view.setFirstScene());
-				view.primaryStage.setFullScreen(false);  /// muss true gesetzt werden
-				//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
-				view.primaryStage.setResizable(true); // muss false gesetz werden
-				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
-				view.primaryStage.setTitle("Majesty Group");				
-				//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
-				view.start();
-				
+				try {
+					model.connect("localhost", 1111);
+					view.primaryStage.setScene(view.setFirstScene());
+					view.primaryStage.setFullScreen(false);  /// muss true gesetzt werden
+					//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
+					view.primaryStage.setResizable(true); // muss false gesetz werden
+					view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
+					view.primaryStage.setTitle("Majesty Group");				
+					//model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
+					view.start();
+				} catch (ConnectException e) {
+					System.out.println("server not started");
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}				
 			}
 		});
 		
@@ -1640,7 +1642,6 @@ public class ClientController {
 		view.primaryStage.setOnCloseRequest(event -> {
 		    System.out.println("Stage is closing");
 		    model.sendLogoutMessage();
-		   
 		});
 	}
 	

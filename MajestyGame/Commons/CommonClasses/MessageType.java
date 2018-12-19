@@ -5,5 +5,5 @@ public enum MessageType {
 	UserRegisterMessage, RegisterSuccessMessage, LobbyInformationMessage, 
 	GameStartMessage, FirstSixCardsMessage, PlayerMoveMessage, InformationFromServerMessage,
 	EvaluateGameMessage, ChatMessage, LogoutMessage, LoggedInPlayers, PlayersMessage,
-	PlayerMessage, OpponentPlayerMessage, PlayerStatesMessage
+	PlayerMessage, OpponentPlayerMessage, PlayerStatesMessage, OtherPlayerLoggedOutMessage;
 }

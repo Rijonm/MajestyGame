@@ -10,6 +10,7 @@ import java.util.TimerTask;
 
 import Model.ClientModel;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ClientView {
 	
@@ -60,7 +62,7 @@ public class ClientView {
 	public VBox registrierenArea;
 	public TextField userNameRegister, userPasswordRegister;
 	public Button registrierenBB = new Button("Registrieren");
-	public Button backFirstSceneB = new Button("Zurück");
+	public Button backFirstSceneB = new Button("Zurï¿½ck");
 	
 	//gamestartScene
 	public Scene thirdScene; 
@@ -133,7 +135,7 @@ public class ClientView {
 	private VBox rulesBox;
 	public Label rulesLabel;
 		
-	public Button backToGameScene = new Button("Zurück");
+	public Button backToGameScene = new Button("Zurï¿½ck");
 
 	
 	//PopUp for SplitCards 
@@ -199,12 +201,12 @@ public class ClientView {
 		
 		connectScene = new Scene(connectPane, 700, 800);
 		connectScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
-		primaryStage.setFullScreen(false);
+		this.primaryStage.setFullScreen(false);
 		//primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); 	//User Information Text after going fullscreen
-		primaryStage.setResizable(false);
-		primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
-		primaryStage.setTitle("Majesty Group");
-		primaryStage.setScene(connectScene);	
+		this.primaryStage.setResizable(false);
+		this.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
+		this.primaryStage.setTitle("Majesty Group");
+		this.primaryStage.setScene(connectScene);
 		
 	}
 	
@@ -470,8 +472,7 @@ public class ClientView {
 		gameArea.setLeft(leftVbox);
 		gameArea.setCenter(centerVbox);
 		gameArea.setRight(chatArea);
-		gameArea.setBottom(bottomArea);	
-		
+		gameArea.setBottom(bottomArea);
 		fifthScene = new Scene(gameArea);
 		fifthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
@@ -545,9 +546,9 @@ public class ClientView {
 
 	
 	public void start() {
-		
 		primaryStage.show();
-		
 	}
+	
+	
 
 }
