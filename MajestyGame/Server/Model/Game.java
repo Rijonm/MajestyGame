@@ -147,6 +147,12 @@ public class Game  {
 				}
 			}
 		}
+		if(cardID == 1)
+			coinsBrewerDistributeAll();
+		if(cardID == 5)
+			coinsTavernDistributeAll();
+			
+			
 		
 		//SEND UPDATED INFORMATIONS from the Client which made the move to all Clients
 		for(Client c : model.clients) {

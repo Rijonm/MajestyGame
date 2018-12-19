@@ -68,7 +68,6 @@ public class Hand {
         	int brewerSize = hand[1]+1; 
         	hand[1] = brewerSize;
         	
-        	
         	break;
         case 2:
         	Witch.add(cardWitch);
