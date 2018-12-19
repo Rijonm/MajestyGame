@@ -11,6 +11,7 @@ public class Hand {
 	public int coins;
 	public int meeples = 5; //!
 	
+	
 	Card cardBrewer = new CardBrewer();
 	Card cardDefense = new CardDefense();
 	Card cardFarmer = new CardFarmer();
@@ -50,6 +51,8 @@ public class Hand {
 	return handSize;
 	}
 	
+	
+	
 	// Diese Methode wird ausgeführt, wenn der Spieler auf ein Button im Deck klickt
 	public void playerChoose(int cardID) {
 		int i = cardID;
@@ -64,8 +67,9 @@ public class Hand {
         	Brewer.add(cardBrewer);
         	int brewerSize = hand[1]+1; 
         	hand[1] = brewerSize;
-        	break;
         	
+        	
+        	break;
         case 2:
         	Witch.add(cardWitch);
         	int witchSize = hand[2]+1; 

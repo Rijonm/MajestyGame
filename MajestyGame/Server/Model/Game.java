@@ -174,6 +174,20 @@ public class Game  {
 		}
 		
 	}
+	
+	public void coinsBrewerDistributeAll() {
+		for(Client c : model.clients) {
+			if(c.getHand().hand[0] > 0)
+				c.getHand().coins = c.getHand().coins +2;
+		}
+	}
+	public void coinsTavernDistributeAll() {
+		for(Client c : model.clients) {
+			if(c.getHand().hand[1] > 0)
+				c.getHand().coins = c.getHand().coins +2;
+		}
+	}	
+	
 	//@ Mert Emek
 	// Bei Spielende die Punkte für unterschiedliche Personen
 	public void varietyCard() {
