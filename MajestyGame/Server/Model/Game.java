@@ -181,12 +181,14 @@ public class Game  {
 		
 	}
 	
+	//@ Mert Emek
 	public void coinsBrewerDistributeAll() {
 		for(Client c : model.clients) {
 			if(c.getHand().hand[0] > 0)
 				c.getHand().coins = c.getHand().coins +2;
 		}
 	}
+	//@ Mert Emek
 	public void coinsTavernDistributeAll() {
 		for(Client c : model.clients) {
 			if(c.getHand().hand[1] > 0)
