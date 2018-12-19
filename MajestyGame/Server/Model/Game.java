@@ -170,8 +170,21 @@ public class Game  {
 
 	
 	public void evaluate() {
-	for(Client c : model.clients) {
 		
+	for(int i = 0; i<players;i++) {
+		for(Client o : model.clients) {
+			
+		}
+	}
+	for(Client c : model.clients) { //Schauet zuerst alle Clients
+		if(c.isInGame()) { //..die im Spiel sind...
+			for(Client o : model.clients) { 
+				if(c.isInGame() && !(c.getId()==o.getId())) { //..und vergleicht sie mit den Gegnern...
+					
+				}
+			}
+			
+		}
 		for(int i = 0; i<=7; i++) {
 		c.getHand().getHandSize(i);
 		}	
