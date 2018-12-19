@@ -71,9 +71,10 @@ public class Hand {
         	int witchSize = hand[2]+1; 
         	hand[2] = witchSize;
         	if(Lazarett.size()>0) {
+        //	int s = hand[7];      	//!!!!!!!!!!!!!!!!!!!!!! Falls im Spiel Lazarett -1, mit diesem Code probieren und unten int s löschen
         	int s = Lazarett.size();
         	Card c = Lazarett.get(s-1);
-        	System.out.println(c.cardName + c.cardID + "HIIIIER");
+        //	System.out.println(c.cardName + c.cardID + "HIIIIER");
         	if(s>0) {
         	this.hand[7] = 	hand[7]-1;
         	Lazarett.remove(Lazarett.size()-1);
