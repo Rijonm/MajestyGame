@@ -31,7 +31,7 @@ public class ServerView {
 		
 		serverStartPane = new BorderPane();
 		connectB = new Button("Connect");
-		port = new TextField("Port");
+		port = new TextField("1111");
 		
 		serverStartPane.setCenter(port);
 		serverStartPane.setBottom(connectB);

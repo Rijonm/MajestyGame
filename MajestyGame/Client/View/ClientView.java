@@ -135,6 +135,18 @@ public class ClientView {
 		
 	public Button backToGameScene = new Button("Zur�ck");
 
+	
+	//PopUp for SplitCards 
+	/**
+	 * @author ozanf
+	 * 
+	 */
+	
+	public Stage popUpStage;
+	public Scene popUpScene;
+	public VBox popUpBox;
+	public Button pb1, pb2;
+	
 	//connectScene
 	/**
 	 * Represents the connection to the server scene
@@ -460,6 +472,30 @@ public class ClientView {
 		return fifthScene;
 	}
 
+	
+	//PopUpStage and PopupScene
+	/**
+	 * 
+	 * @author ozanf
+	 * 
+	 */
+	public Stage popUpStage() {
+		popUpStage = new Stage();
+		popUpBox = new VBox();
+		pb1 = new Button("1");
+		pb2 = new Button("2");
+		popUpBox.getChildren().addAll(pb1, pb2);
+		popUpScene = new Scene(popUpBox,100,100);
+		popUpScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		popUpStage.setScene(popUpScene);
+		popUpStage.show();
+		return popUpStage;
+		
+		
+		
+	}
+	
+	
 	
 	//einstellungenScene
 	/**

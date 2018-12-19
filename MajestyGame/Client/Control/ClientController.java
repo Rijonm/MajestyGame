@@ -208,7 +208,10 @@ public class ClientController {
 		
 		//-------------------------
 		
-		//gameScene buttons
+		//gameScene buttons 
+		//@author Yusuf Or & Ozan Firat
+		
+		
 		view.buttons[0].setOnAction(new EventHandler<ActionEvent> (){
 									
 			public void handle(ActionEvent event) {
@@ -226,9 +229,28 @@ public class ClientController {
 				} else {
 					
 					System.out.println("Split Card");
+					view.popUpStage();
+					
+					
 					
 					switch(getIdOfButton) {
 						case 7:
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 0);
+								view.popUpStage.close();
+								
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton1");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
 							
 							
@@ -239,41 +261,176 @@ public class ClientController {
 							break;
 						case 8:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 9:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton2");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 2);
+								view.popUpStage.close();
+							});
 							break;
 						case 10:
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 11:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton3");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 3);
+								view.popUpStage.close();
+							});
 							break;
 						case 12:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 13:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 14:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 15:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 16:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 17:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton4");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 4);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 18:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton5");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 5);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(0, 6);
+								view.popUpStage.close();
+							});
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
+							
 							break;
 					}
+				
 				}
 				
 				
@@ -296,56 +453,215 @@ public class ClientController {
 				} else {
 					
 					System.out.println("Split Card");
+					view.popUpStage();
 					
-					int zahl = model.deck.get(1);
-					switch(zahl) {
+					
+					
+					switch(getIdOfButton) {
 						case 7:
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton1");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							
+							
+							//Popup mit 2 Buttons
+							//
+							//....return getChoose
+							//model.sendPlayerMoveMessage(0, 2);
 							break;
 						case 8:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 9:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton2");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 2);
+								view.popUpStage.close();
+							});
 							break;
 						case 10:
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 11:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton3");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 3);
+								view.popUpStage.close();
+							});
 							break;
 						case 12:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 13:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 14:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 15:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 16:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 17:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton4");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 4);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 18:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton5");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 5);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(1, 6);
+								view.popUpStage.close();
+							});
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
 							break;
 					}
+					
 				}
+				
+				
 			}
 		});
-				
-				
+		
+		
 		view.buttons[2].setOnAction(new EventHandler<ActionEvent> (){
-					
+			
 			public void handle(ActionEvent event) {
 				int getIdOfButton = model.deck.get(2);	
 					
@@ -354,59 +670,217 @@ public class ClientController {
 				
 				System.out.println("b2");						
 				if(getIdOfButton <= 6) {
-					model.sendPlayerMoveMessage(2, getIdOfButton);
-					
 					view.buildingAry[getIdOfButton].setText(Integer.toString(labelContent+1)); //in setText kommt Array-Nachricht vom Server rein
+					
+					model.sendPlayerMoveMessage(2, getIdOfButton);
 				} else {
-					
 					System.out.println("Split Card");
+					view.popUpStage();
 					
-					int zahl = model.deck.get(2);
-					switch(zahl) {
+					
+					
+					switch(getIdOfButton) {
 						case 7:
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton1");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							
+							
+							//Popup mit 2 Buttons
+							//
+							//....return getChoose
+							//model.sendPlayerMoveMessage(0, 2);
 							break;
 						case 8:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 9:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton2");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 2);
+								view.popUpStage.close();
+							});
 							break;
 						case 10:
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 11:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton3");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 3);
+								view.popUpStage.close();
+							});
 							break;
 						case 12:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 13:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 14:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 15:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 16:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 17:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton4");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 4);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 18:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton5");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 5);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(2, 6);
+								view.popUpStage.close();
+							});
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
 							break;
 					}
+					
 				}
+				
 				
 			}
 		});
+		
 				
 		view.buttons[3].setOnAction(new EventHandler<ActionEvent> (){
 					
@@ -422,51 +896,209 @@ public class ClientController {
 					
 					model.sendPlayerMoveMessage(3, getIdOfButton);
 				} else {
-					
 					System.out.println("Split Card");
+					view.popUpStage();
+					
+					
 					
 					switch(getIdOfButton) {
 						case 7:
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton1");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							
+							
+							//Popup mit 2 Buttons
+							//
+							//....return getChoose
+							//model.sendPlayerMoveMessage(0, 2);
 							break;
 						case 8:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 9:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton2");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 2);
+								view.popUpStage.close();
+							});
 							break;
 						case 10:
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 11:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton3");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 3);
+								view.popUpStage.close();
+							});
 							break;
 						case 12:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 13:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 14:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 15:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 16:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 17:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton4");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 4);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 18:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton5");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 5);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(3, 6);
+								view.popUpStage.close();
+							});
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
 							break;
 					}
+					
 				}
+				
 				
 			}
 		});
@@ -491,49 +1123,210 @@ public class ClientController {
 				} else {
 					
 					System.out.println("Split Card");
+					view.popUpStage();
+					
+					
 					
 					switch(getIdOfButton) {
 						case 7:
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton1");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							
+							
+							//Popup mit 2 Buttons
+							//
+							//....return getChoose
+							//model.sendPlayerMoveMessage(0, 2);
 							break;
 						case 8:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 9:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton2");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 2);
+								view.popUpStage.close();
+							});
 							break;
 						case 10:
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 11:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton3");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 3);
+								view.popUpStage.close();
+							});
 							break;
 						case 12:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 13:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 14:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 15:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 5);
+								view.popUpStage.close();
+							});
+					
 							break;
 						case 16:
-							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+//							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 3);
+								view.popUpStage.close();
+								
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 17:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton4");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 4);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 18:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton5");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 5);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(4, 6);
+								view.popUpStage.close();
+							});
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
 							break;
 					}
+					
 				}
+				
 			}
 		});
 		
@@ -556,49 +1349,209 @@ public class ClientController {
 				} else {
 					
 					System.out.println("Split Card");
+					view.popUpStage();
+					
+					
 					
 					switch(getIdOfButton) {
 						case 7:
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton1");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							
+							
+							//Popup mit 2 Buttons
+							//
+							//....return getChoose
+							//model.sendPlayerMoveMessage(5, 2);
 							break;
 						case 8:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton0");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 0);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 9:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton2");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 2);
+								view.popUpStage.close();
+							});
 							break;
 						case 10:
+							
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton1");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 1);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 11:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton3");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 3);
+								view.popUpStage.close();
+							});
 							break;
 						case 12:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 13:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton2");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 2);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 14:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton4");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 4);
+								view.popUpStage.close();
+							});
 							break;
 						case 15:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 3);
+								view.popUpStage.close();
+								
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 16:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton3");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 3);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 6);
+								view.popUpStage.close();
+							});
 							break;
 						case 17:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton4");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 4);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton5");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 5);
+								view.popUpStage.close();
+							});
 							break;
 						case 18:
 							view.buildingAry[2].setText(Integer.toString(labelContent+1));
+							view.pb1.getStyleClass().add("gameButton5");
+							view.pb1.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 5);
+								view.popUpStage.close();
+							});
+							
+							
+							view.pb2.getStyleClass().add("gameButton6");
+							view.pb2.setOnAction(e->{
+								model.sendPlayerMoveMessage(5, 6);
+								view.popUpStage.close();
+							});
 							break;
 						default:
 							System.out.println("FAILURE CARD INDEX NOD FOUND!");
 							break;
 					}
+					
 				}
+				
 			}
 		});
 				
