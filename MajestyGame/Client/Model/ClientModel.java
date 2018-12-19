@@ -181,8 +181,16 @@ public class ClientModel {
 		}else {
 			for(Opponent o : opponentPlayers) {
 				if(o.getId().getValue() == psm.getId()) {
-					o.hand.clear();
-					o.hand.addAll(intHand);
+//					o.hand.clear();
+//					o.hand.addAll(intHand);
+					o.h0.set(intHand[0]);
+					o.h1.set(intHand[1]);
+					o.h2.set(intHand[2]);
+					o.h3.set(intHand[3]);
+					o.h4.set(intHand[4]);
+					o.h5.set(intHand[5]);
+					o.h6.set(intHand[6]);
+					o.h7.set(intHand[7]);
 					System.out.println(o.hand + "Hand of opponent");
 					o.coins.set(psm.getCoins());
 					o.meeples.set(psm.getMeeples());
@@ -379,15 +387,32 @@ public class ClientModel {
 		public SimpleStringProperty name = new SimpleStringProperty();
 		public SimpleIntegerProperty coins = new SimpleIntegerProperty();
 		public SimpleIntegerProperty meeples = new SimpleIntegerProperty();
-		public ObservableIntegerArray hand = FXCollections.observableIntegerArray();
+		public ObservableList<SimpleIntegerProperty> hand = FXCollections.observableArrayList();
+		public SimpleIntegerProperty h0 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h1 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h2 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h3 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h4 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h5 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h6 = new SimpleIntegerProperty();
+		public SimpleIntegerProperty h7 = new SimpleIntegerProperty();
 		public SimpleStringProperty wonOrLose = new SimpleStringProperty();
 		
 		public Opponent(int id, String name, Integer hand[], int meeples, int coins) {
 			this.id.set(id);
 			this.name.set(name);
 			this.meeples.set(meeples);
-			int[] intHand = Arrays.stream(hand).mapToInt(Integer::intValue).toArray();
-			this.hand.setAll(intHand);
+			//int[] intHand = Arrays.stream(hand).mapToInt(Integer::intValue).toArray();
+			h0.set(hand[0]);
+			h1.set(hand[1]);
+			h2.set(hand[2]);
+			h3.set(hand[3]);
+			h4.set(hand[4]);
+			h5.set(hand[5]);
+			h6.set(hand[6]);
+			h7.set(hand[7]);
+			this.hand.addAll(h0, h1, h2, h3, h4, h5, h6 ,h7);
+			//this.hand.setAll(intHand);
 			this.coins.setValue(coins); //Nicht sicher ob set oder setValue
 		}
 
@@ -407,9 +432,9 @@ public class ClientModel {
 			return meeples;
 		}
 
-		public ObservableIntegerArray getHand() {
-			return hand;
-		}
+//		public ObservableIntegerArray getHand() {
+//			return hand;
+//		}
 
 		public SimpleStringProperty getWonOrLose() {
 			return wonOrLose;
@@ -431,9 +456,9 @@ public class ClientModel {
 			this.meeples = meeples;
 		}
 
-		public void setHand(ObservableIntegerArray hand) {
-			this.hand = hand;
-		}
+//		public void setHand(ObservableIntegerArray hand) {
+//			this.hand = hand;
+//		}
 
 		public void setWonOrLose(SimpleStringProperty wonOrLose) {
 			this.wonOrLose = wonOrLose;

@@ -181,8 +181,7 @@ public class ClientView {
 		
 		//for (int k = 0; k < ANZAHL_GEGNER; k++) {
 			
-			for (int l = 0; l < 8; l++) {
-				System.out.println("TESTEFIRSTFORSCHLEIFE EBCOUNTER" +l);				
+			for (int l = 0; l < 8; l++) {		
 				Label ebCounter = new Label("0");
 				enemyBCarray[l] = ebCounter;
 			}
@@ -340,8 +339,8 @@ public class ClientView {
 			
 			OpponentView ov = new OpponentView();
 			for(int j = 0; j < 8; j++) {
-				//	ov.lAr[j].setText(""+model.opponentPlayers.get(i).hand.get(j));
-					ov.lAr[j].setText("DU HS");
+					//ov.lAr[j].setText(""+model.opponentPlayers.get(i).hand.get(j));
+					ov.lAr[j].textProperty().bind(model.opponentPlayers.get(i).hand.get(j).asString());
 				}
 			opponentArrayList.add(ov);
 			enemyArea.getChildren().add(ov);
@@ -385,9 +384,15 @@ public class ClientView {
 				
 		//PlayerArea / LeftArea
 		for (int x = 0; x < ANZAHL_GEGNER; x++) { //-1 da nur Gegner Links @@@
-			Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x).name.getValue());
-			Label lc = new Label("Coins: 100");
-			Label lm = new Label("Meeples: 5");
+			Label lp = new Label();
+			//Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x).name.getValue());
+			lp.textProperty().bind(model.opponentPlayers.get(x).name);
+			Label lc = new Label();
+			//Label lc = new Label("Coins: " + model.opponentPlayers.get(x).coins);
+			lc.textProperty().bind(model.opponentPlayers.get(x).coins.asString());
+			Label lm = new Label();
+			//Label lm = new Label("Meeples: " + model.opponentPlayers.get(x).coins);
+			lm.textProperty().bind(model.opponentPlayers.get(x).meeples.asString());
 			Region spacerP = new Region();
 			
 			VBox.setVgrow(spacerP, Priority.ALWAYS);
