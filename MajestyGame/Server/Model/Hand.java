@@ -70,44 +70,45 @@ public class Hand {
         	Witch.add(cardWitch);
         	int witchSize = hand[2]+1; 
         	hand[2] = witchSize;
-        	if(Lazarett.size()>0) {
-        //	int s = hand[7];      	//!!!!!!!!!!!!!!!!!!!!!! Falls im Spiel Lazarett -1, mit diesem Code probieren und unten int s löschen
-        	int s = Lazarett.size();
-        	Card c = Lazarett.get(s-1);
-        //	System.out.println(c.cardName + c.cardID + "HIIIIER");
-        	if(s>0) {
-        	this.hand[7] = 	hand[7]-1;
-        	Lazarett.remove(Lazarett.size()-1);
-        	int id = c.getCardID();
-        	if(id == 0) {
-        		Farmer.add(cardFarmer);
-        	this.hand[0] = 	hand[0]+1;
-        	}
-        	if(id == 1) {
-        		Brewer.add(cardBrewer);
-        	this.hand[1] = 	hand[1]+1;
-        	}
-        	if(id == 2) {
-        		Witch.add(cardWitch);
-        	this.hand[2] = 	hand[2]+1;
-        	}
-        	if(id == 3) {
-        		Defense.add(cardDefense);
-        	this.hand[3] = 	hand[3]+1;
-        	}
-        	if(id == 4) {
-        		Soldier.add(cardSoldier);
-        	this.hand[4] = 	hand[4]+1;
-        	}
-        	if(id == 5) {
-        		Witch.add(cardWitch);
-        	this.hand[5] = 	hand[5]+1;
-        	}
-        	if(id == 6) {
-        		Queen.add(cardQueen);
-        	this.hand[6] = 	hand[6]+1;
-        	}
-        	}
+        	if(hand[7]>0) {
+        		healing();
+//        //	int s = hand[2];      	//!!!!!!!!!!!!!!!!!!!!!! Falls im Spiel Lazarett -1, mit diesem Code probieren und unten int s löschen
+//        	int s = Lazarett.size();
+//        	Card c = Lazarett.get(s-1);
+//        //	System.out.println(c.cardName + c.cardID + "HIIIIER");
+//        	if(s>0) {
+//        	this.hand[7] = 	hand[7]-1;
+//        	Lazarett.remove(Lazarett.size()-1);
+//        	int id = c.getCardID();
+//        	if(id == 0) {
+//        		Farmer.add(cardFarmer);
+//        	this.hand[0] = 	hand[0]+1;
+//        	}
+//        	if(id == 1) {
+//        		Brewer.add(cardBrewer);
+//        	this.hand[1] = 	hand[1]+1;
+//        	}
+//        	if(id == 2) {
+//        		Witch.add(cardWitch);
+//        	this.hand[2] = 	hand[2]+1;
+//        	}
+//        	if(id == 3) {
+//        		Defense.add(cardDefense);
+//        	this.hand[3] = 	hand[3]+1;
+//        	}
+//        	if(id == 4) {
+//        		Soldier.add(cardSoldier);
+//        	this.hand[4] = 	hand[4]+1;
+//        	}
+//        	if(id == 5) {
+//        		Witch.add(cardWitch);
+//        	this.hand[5] = 	hand[5]+1;
+//        	}
+//        	if(id == 6) {
+//        		Queen.add(cardQueen);
+//        	this.hand[6] = 	hand[6]+1;
+//        	}
+//        	}
         	}	
      
         	break;
@@ -277,6 +278,50 @@ public class Hand {
 			}
 			
 		}
+		
+		public void healing() {
+			
+        	int s = hand[7];      	//!!!!!!!!!!!!!!!!!!!!!! Falls im Spiel Lazarett -1, mit diesem Code probieren und unten int s löschen
+//        	int s = Lazarett.size();
+        	Card c = Lazarett.get(s-1);
+//        //	System.out.println(c.cardName + c.cardID + "HIIIIER");
+        	this.hand[7] = 	hand[7]-1;
+        	Lazarett.remove(Lazarett.size()-1);
+        	int id = c.getCardID();
+        	if(id == 0) {
+        		Farmer.add(cardFarmer);
+        	this.hand[0] = 	hand[0]+1;
+        	}
+        	if(id == 1) {
+        		Brewer.add(cardBrewer);
+        	this.hand[1] = 	hand[1]+1;
+        	}
+        	if(id == 2) {
+        		Witch.add(cardWitch);
+        	this.hand[2] = 	hand[2]+1;
+        	}
+        	if(id == 3) {
+        		Defense.add(cardDefense);
+        	this.hand[3] = 	hand[3]+1;
+        	}
+        	if(id == 4) {
+        		Soldier.add(cardSoldier);
+        	this.hand[4] = 	hand[4]+1;
+        	}
+        	if(id == 5) {
+        		Witch.add(cardWitch);
+        	this.hand[5] = 	hand[5]+1;
+        	}
+        	if(id == 6) {
+        		Queen.add(cardQueen);
+        	this.hand[6] = 	hand[6]+1;
+        	}
+        	
+	}
+
+
+	
+
 		
 	
 	
