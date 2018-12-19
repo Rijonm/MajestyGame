@@ -106,13 +106,7 @@ public class ClientController {
 		view.registrierenBB.setOnAction(new EventHandler<ActionEvent> (){
 					
 			public void handle(ActionEvent event) {
-						
-
-				//model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
-				
-				//DB 
-
-						
+				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());						
 				view.primaryStage.setScene(view.setThirdScene());
 				view.start();		
 			}
@@ -141,7 +135,7 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				model.sendChatMessage("rijon", view.chatInput.getText());
-				view.chatContent.setText(view.chatInput.getText());	
+				view.chatContent.setText(view.chatInput.getText());
 				System.out.println(view.chatInput.getText());
 			}
 		});

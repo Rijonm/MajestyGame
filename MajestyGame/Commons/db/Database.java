@@ -159,7 +159,7 @@ public class Database implements Api {
 	}
 
 	/**
-	 * Falls die Datenbank-Verbindung nicht initialisiert oder geschlossen wurde, wird diese initialisiert und anschliessend zurï¿½ckgegeben.
+	 * Falls die Datenbank-Verbindung nicht initialisiert oder geschlossen wurde, wird diese initialisiert und anschliessend Zurückgegeben.
 	 * 
 	 * @return Verbindung fï¿½r Datenbank Interaktionen
 	 * @throws InstantiationException

@@ -60,7 +60,7 @@ public class ClientView {
 	public VBox registrierenArea;
 	public TextField userNameRegister, userPasswordRegister;
 	public Button registrierenBB = new Button("Registrieren");
-	public Button backFirstSceneB = new Button("Zurï¿½ck");
+	public Button backFirstSceneB = new Button("Zurück");
 	
 	//gamestartScene
 	public Scene thirdScene; 
@@ -133,7 +133,7 @@ public class ClientView {
 	private VBox rulesBox;
 	public Label rulesLabel;
 		
-	public Button backToGameScene = new Button("Zurï¿½ck");
+	public Button backToGameScene = new Button("Zurück");
 
 	
 	//PopUp for SplitCards 
@@ -453,7 +453,8 @@ public class ClientView {
 		VBox chatArea = new VBox();
 		Label chatTitle = new Label("Chat");
 		chatTitle.getStyleClass().add("chatTitle");
-		chatContent = new TextField("Yusuf: Hello World");
+		chatContent = new TextField("");
+		chatContent.setEditable(false);
 		Region spacerC = new Region();
 		spacerC.getStyleClass().add("chatSpacer");
 		chatContent.getStyleClass().add("chatContent");		
