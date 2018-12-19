@@ -172,6 +172,32 @@ public class Game  {
 		}
 		
 	}
+	//@ Mert Emek
+	// Bei Spielende die Punkte für unterschiedliche Personen
+	public void varietyCard() {
+		int farmer=0, brewer=0, witch=0, defense=0, soldier=0, queen=0, host = 0, variety;
+		for(Client c : model.clients) {
+			if(c.getHand().hand[0]>0)
+				farmer = 1;
+			if(c.getHand().hand[1]>0)
+				brewer = 1;
+			if(c.getHand().hand[2]>0)
+				witch = 1;
+			if(c.getHand().hand[3]>0)
+				defense = 1;
+			if(c.getHand().hand[4]>0)
+				soldier = 1;
+			if(c.getHand().hand[5]>0)
+				host = 1;
+			if(c.getHand().hand[6]>0)
+				queen = 1;
+			variety = farmer+brewer+witch+defense+soldier+queen+host;
+			c.getHand().coins = c.getHand().coins+(variety*variety);
+		}
+		
+	
+	}
+	
 	public void evaluateLazarett() {
 		for(Client c : model.clients) {
 			int minusPoints = 0;
