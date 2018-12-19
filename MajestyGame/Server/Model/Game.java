@@ -3,7 +3,11 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import CommonClasses.FirstSixCardsMessage;
@@ -178,24 +182,98 @@ public class Game  {
 
 	
 	public void evaluate() {
-		
-	for(int i = 0; i<players;i++) {
-		for(Client o : model.clients) {
-			
+	
+	//Farmer evaluation -------------------
+	ArrayList<Integer> farmerPoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		farmerPoints.add(c.getHand().hand[0]);
+	}
+	int farmerMax = Collections.max(farmerPoints);
+	
+	for(Client c : model.clients) {
+		if(c.getHand().hand[0] == farmerMax) {
+			c.getHand().coins = c.getHand().coins + 10;
 		}
 	}
-	for(Client c : model.clients) { //Schauet zuerst alle Clients
-		if(c.isInGame()) { //..die im Spiel sind...
-			for(Client o : model.clients) { 
-				if(c.isInGame() && !(c.getId()==o.getId())) { //..und vergleicht sie mit den Gegnern...
-					
-				}
-			}
-			
+	
+	//Brewer evaluation -------------------
+	ArrayList<Integer> brewerPoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		farmerPoints.add(c.getHand().hand[1]);
+	}
+	int brewerMax = Collections.max(brewerPoints);
+		
+	for(Client c : model.clients) {
+		if(c.getHand().hand[1] == brewerMax) {
+			c.getHand().coins = c.getHand().coins + 11;
 		}
-		for(int i = 0; i<=7; i++) {
-		c.getHand().getHandSize(i);
-		}	
+	}
+		
+	//Witch evaluation -------------------
+	ArrayList<Integer> witchPoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		witchPoints.add(c.getHand().hand[2]);
+		}
+	int witchMax = Collections.max(witchPoints);
+		
+	for(Client c : model.clients) {
+		if(c.getHand().hand[2] == witchMax) {
+			c.getHand().coins = c.getHand().coins + 12;
+		}
+	}
+		
+	//Defense evaluation -------------------
+	ArrayList<Integer> defensePoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		defensePoints.add(c.getHand().hand[3]);
+		}
+	int defenseMax = Collections.max(defensePoints);
+		
+	for(Client c : model.clients) {
+		if(c.getHand().hand[3] == defenseMax) {
+			c.getHand().coins = c.getHand().coins + 13;
+		}
+	}
+		
+	//Soldier evaluation -------------------
+	ArrayList<Integer> soldierPoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		soldierPoints.add(c.getHand().hand[4]);
+	}
+	int soldierMax = Collections.max(soldierPoints);
+		
+	for(Client c : model.clients) {
+		if(c.getHand().hand[4] == soldierMax) {
+			c.getHand().coins = c.getHand().coins + 14;
+		}
+	}
+		
+	//Host evaluation -------------------
+	ArrayList<Integer> hostPoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		hostPoints.add(c.getHand().hand[5]);
+	}
+	int hostMax = Collections.max(hostPoints);
+		
+	for(Client c : model.clients) {
+		if(c.getHand().hand[5] == hostMax) {
+			c.getHand().coins = c.getHand().coins + 15;
+		}
+	}
+		
+	//Queen evaluation -------------------
+	ArrayList<Integer> queenPoints = new ArrayList<Integer>();
+	for(Client c : model.clients) {
+		queenPoints.add(c.getHand().hand[6]);
+	}
+	int queenMax = Collections.max(queenPoints);
+		
+	for(Client c : model.clients) {
+		if(c.getHand().hand[6] == queenMax) {
+			c.getHand().coins = c.getHand().coins + 16;
+		}
+	}
+	
 	// 0 Farmer 10 Coins
 	// 1 Brewer 11 Coins
 	// 2 Witch 12 Coins
@@ -212,6 +290,4 @@ public class Game  {
 		// Hands der Clients vergleichen und winner definieren
 		// Client winner uf 1 setzte 
 	}
-	
-}
 }
