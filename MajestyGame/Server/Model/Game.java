@@ -164,8 +164,16 @@ public class Game  {
 		//EVALUATION NACH 12 RUNDEN
 		if(round == 12) {
 			//evaluate();
+			//evaluateLazarett()
 		}
 		
+	}
+	public void evaluateLazarett() {
+		for(Client c : model.clients) {
+			int minusPoints = 0;
+			minusPoints = c.getHand().getHandSize(7);
+			c.getHand().coins = c.getHand().coins - minusPoints;
+		}
 	}
 
 	
@@ -191,5 +199,6 @@ public class Game  {
 		// Hands der Clients vergleichen und winner definieren
 		// Client winner uf 1 setzte 
 	}
+	
 }
 }
