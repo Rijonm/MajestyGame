@@ -220,6 +220,7 @@ public class Game  {
 	
 	}
 	//@ Mert Emek
+	// Pro Karte im Lazarett -1
 	public void evaluateLazarett() {
 		for(Client c : model.clients) {
 			int minusPoints = 0;
@@ -229,6 +230,20 @@ public class Game  {
 	}
 
 	//@ Rijon & Mert
+//	Hier geht ihr jedes Gebäude
+//	von links nach rechts durch.
+//	Auf jedem Gebäude findest du
+//	rechts unten eine Münze, die
+//	angibt, wie viele Münzen du
+//	jeweils erhalten kannst. Dabei
+//	wird geprüft, welcher Spieler die
+//	meisten Personen unter diesem
+//	Gebäude liegen hat. Dieser erhält
+//	die angegebenen Münzen.
+//	Sollte es passieren, dass mehrere
+//	Spieler gleich viele Personen an
+//	einem Gebäude liegen haben, so
+//	bekommen alle die volle Anzahl an Münzen.
 	public void evaluate() {
 	
 	//Farmer evaluation -------------------
