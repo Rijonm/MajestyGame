@@ -166,11 +166,11 @@ public class Hand {
 	        	
 	        case 2:
 	        	if(hand[0]>0)
-	        		defense = hand[3];
+	        		defense = hand[0];
 	        	if(hand[1]>0)
-	        		soldier = hand[3];
+	        		soldier = hand[1];
 	        	if(hand[2]>0)
-	        		host = hand[3];
+	        		host = hand[2];
 	        	disCoins = (farmer+brewer+witch)*2;
 	        	break;
 	        	
