@@ -414,6 +414,7 @@ public class ClientView {
 			Label m = meeplesDeck[i];
 			m.setMinHeight(25);
 			Button b = buttons[i];
+			b.setDisable(true);
 			b.setMinHeight(324);
 			personBox.getChildren().addAll(b, m);
 			personDeck.getChildren().add(personBox);

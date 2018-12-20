@@ -191,6 +191,8 @@ public class ClientModel {
 	protected void receivedPlayerStatesMessage(Message msg) {
 		PlayerStatesMessage psm = (PlayerStatesMessage) msg;
 		int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
+		System.out.println(psm.getId() + "MEINEIDA");
+		System.out.println(this.id + "MEINEID");
 		if (psm.getId() == this.id) {
 			System.out.print(psm.getId() + " : ICH : ");
 			myHand.setAll(intHand);
@@ -199,7 +201,6 @@ public class ClientModel {
 			System.out.println(Arrays.toString(psm.getHand()));
 		} else {
 			for (Opponent o : opponentPlayers) {
-				if (o.getId().getValue() == psm.getId()) {
 					// o.hand.clear();
 					// o.hand.addAll(intHand);
 					o.h0.set(intHand[0]);
@@ -213,7 +214,7 @@ public class ClientModel {
 					System.out.println(o.hand + "Hand of opponent");
 					o.coins.set(psm.getCoins());
 					o.meeples.set(psm.getMeeples());
-				}
+				
 			}
 			System.out.print(psm.getId() + " : ER : ");
 			System.out.println(Arrays.toString(psm.getHand()));
