@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import CommonClasses.ChatMessage;
 import CommonClasses.FirstSixCardsMessage;
@@ -61,6 +62,7 @@ public class ClientModel {
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
 	public SimpleStringProperty highscoreList = new SimpleStringProperty();
+	public SimpleStringProperty turnUsername = new SimpleStringProperty();
 	public SimpleIntegerProperty turn = new SimpleIntegerProperty();
 	public SimpleIntegerProperty round = new SimpleIntegerProperty();
 	public SimpleIntegerProperty playedCards = new SimpleIntegerProperty();
@@ -343,6 +345,7 @@ public class ClientModel {
 	
 	private void receivedFooterMessage(Message msg) {
 		FooterMessage fm = (FooterMessage) msg;
+		turnUsername.set(fm.getTurnUsername());
 		turn.set(fm.getTurnId());
 		round.set(fm.getRound());
 		playedCards.set(fm.getPlayedCards());
@@ -351,6 +354,8 @@ public class ClientModel {
 		}else {
 			myTurn.set(false);
 		}
+		System.out.println(myTurn + "-----------");
+		System.out.print(fm.getTurnUsername() + "turnUsername");
 		System.out.print(fm.getTurnId() + "turn");
 		System.out.print(fm.getRound() + "round");
 		System.out.print(fm.getPlayedCards() + "playedCards");

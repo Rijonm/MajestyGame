@@ -15,8 +15,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import javafx.scene.control.Label;
 
 public class ClientController {
 
@@ -1554,13 +1556,26 @@ public class ClientController {
 		model.myTurn.addListener((observable, oldValue, newValue) ->{
 			if(newValue.booleanValue()==true) {
 				for(int i = 0; i< view.buttons.length; i++)
-				view.buttons[i].setDisable(true);
+				view.buttons[i].setDisable(false);
 			}
 			if(newValue.booleanValue()==false) {
 				for(int i = 0; i< view.buttons.length; i++)
-					view.buttons[i].setDisable(false);
+					view.buttons[i].setDisable(true);
 			}
 		});
+		
+		model.meeples.addListener((ListChangeListener<Integer>) c -> {
+			Platform.runLater(() -> {
+				int i = 0;
+				for (Label l : view.meeplesDeck) {
+					l.setText(Integer.toString(c.getList().get(i)));
+					l.setTextFill(Color.web("#0076a3"));
+					i++;
+				}
+			});
+			
+		});
 	}
+		
 
 }

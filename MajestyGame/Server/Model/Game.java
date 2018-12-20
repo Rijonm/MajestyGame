@@ -28,6 +28,7 @@ public class Game  {
 	private int round = 0;
 	private int playedCards = 0;
 	private int turn;
+	private String turnUsername;
 	private int turnIndex = 0;
 	private ServerModel model;
 	
@@ -43,7 +44,11 @@ public class Game  {
 		}
 		
 		turn = playersId.get(0); // Spieler der spiel iniitiert beginnt mit Zug.
-		
+		for(int i = 0; i<model.clients.size();i++) {
+			if(model.clients.get(i).getId() == turn) {
+				turnUsername = model.clients.get(i).getUsername();
+				}
+			}
 		for(Client c : model.clients) { // Sendet jedem Spieler die informartionen jedes Spielers/Gegeners
 			if(c.isInGame()== true) {
 				for(Client o : model.clients) {
@@ -59,14 +64,14 @@ public class Game  {
 		
 		deckA = new DeckA();
 		sendFirstSixCards(deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards()); // Setzt die ersten 6 Karten und gibt dem ersten Spieler die Möglichkeit das Spiel zu beginnen.
-		
-		FooterMessage footerMessage = new FooterMessage(turn, playedCards, round);
+		FooterMessage footerMessage = new FooterMessage(turnUsername, turn, playedCards, round);
 		model.broatcastToPlayerInGame(footerMessage);
 	}
 	
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f) {
 		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f);
 		model.broatcastToPlayerInGame(fscm);
+		
 	}
 	/*
 	 * Wenn die Position eintrifft, dann solle in der players Liste geschaut werden, welcher Spieler den entsprechenden Zug gemacht hat.
@@ -134,8 +139,12 @@ public class Game  {
 		};
 		turnIndex++;
 		turn = playersId.get(turnIndex);
-		
-		FooterMessage footerMessage = new FooterMessage(turn, playedCards, round);
+		for(int i = 0; i<model.clients.size();i++) {
+		if(model.clients.get(i).getId() == turn) {
+			turnUsername = model.clients.get(i).getUsername();
+			}
+		}
+		FooterMessage footerMessage = new FooterMessage(turnUsername, turn, playedCards, round);
 		model.broatcastToPlayerInGame(footerMessage);
 		
 		//UPDATE HAND AND COINS OF PLAYERS		
@@ -172,7 +181,7 @@ public class Game  {
 			
 			
 		
-		//SEND UPDATED INFORMATIONS from the Client which made the move to all Clients
+		//SEND UPDATED INFORMATIONS from the Client which shows the move to all Clients
 		for(Client c : model.clients) {
 			int idc = c.getId();
 			Integer[] playerHandArray = c.getHand().hand;
@@ -186,7 +195,9 @@ public class Game  {
 		//DECK AND MEEPLES HANDLING  
 		deckA.playerMove(pos);
 		Integer[] openCardsArray = deckA.openCards.toArray(new Integer[deckA.openCards.size()]);
-		InformationFromServerMessage ifsm = new InformationFromServerMessage(openCardsArray, meeples);
+		Integer[] openMeeples = meeples.clone();
+		System.out.println(Arrays.toString(meeples) + "Meeples bevor gsendet werden");
+		InformationFromServerMessage ifsm = new InformationFromServerMessage(openCardsArray, openMeeples);
 		model.broatcastToPlayerInGame(ifsm);
 		
 		//EVALUATION NACH 12 RUNDEN

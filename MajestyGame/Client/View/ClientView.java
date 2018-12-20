@@ -100,6 +100,10 @@ public class ClientView {
 //	public Button b6 = new Button("b6");
 	public VBox centerVbox, leftPlace, leftVbox, leftMainBox, rightVbox;
 	
+	public Label roundCounter;
+	public Label cardCounter;
+	public Label usernameTurn;
+	
 	
 	//enemyDeck
 	public int ANZAHL_GEGNER = 0;
@@ -375,13 +379,13 @@ public class ClientView {
 		Region spacerMain = new Region();
 		Label lblMainTitle = new Label("My empire:");
 		Label lblMainName = new Label();
-		lblMainName.textProperty().bind(model.opponentPlayers.get(0).name);
+		lblMainName.textProperty().bind(model.myName);
 		lblMainName.getStyleClass().add("playerAreaLbl");
 		Label lblMainCoin = new Label();
-		lblMainCoin.textProperty().bind(model.opponentPlayers.get(0).coins.asString());
+		lblMainCoin.textProperty().bind(model.myCoins.asString());
 		lblMainCoin.getStyleClass().add("playerAreaLbl");
 		Label lblMainMeeples = new Label();
-		lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
+		lblMainMeeples.textProperty().bind(model.myMeeples.asString());
 		lblMainMeeples.getStyleClass().add("playerAreaLbl");
 		
 		VBox.setVgrow(spacerMain, Priority.ALWAYS);
@@ -429,10 +433,13 @@ public class ClientView {
 		
 		//BottomArea
 		HBox bottomArea = new HBox();
-		Label roundCounter = new Label("Gespielte Runden: ");
-		Label cardCounter = new Label("Gespielte Karten: ");
-		Label timeCounter = new Label("Gespielte Zeit: ");
-		bottomArea.getChildren().addAll(roundCounter, cardCounter, timeCounter);
+		roundCounter = new Label("Gespielte Runden: ");
+		roundCounter.textProperty().bind(model.round.asString());
+		cardCounter = new Label("Gespielte Karten: ");
+		cardCounter.textProperty().bind(model.playedCards.asString());
+		usernameTurn = new Label("An der Reihe: ");
+		usernameTurn.textProperty().bind(model.turnUsername);
+		bottomArea.getChildren().addAll(roundCounter, cardCounter, usernameTurn);
 		bottomArea.setId("bottomArea");
 		
 		
