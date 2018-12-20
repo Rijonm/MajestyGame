@@ -83,13 +83,14 @@
 	 -fx-font-size: 18pt;
 	 -fx-font-weight: bold;
 }
-.enemyBuildingsImg{
-	-fx-min-width: 170;
-	-fx-max-width: 170;
+#enemyBuildingsImg{
+	-fx-min-width: 92;
+	-fx-max-width: 92;
 	/*-fx-padding-top: 123;*/
 	-fx-text-fill: transparent;
-	-fx-background-size: cover;
-	-fx-background-image: url(/images/enemyBuildingDeck.png);	
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
+	-fx-background-image: url(/images/enemyBuildingDeck.jpg);	
 }
 #enemyCounterArea {
 	-fx-text-fill: #000000;
@@ -102,8 +103,11 @@
     -fx-border-width: 3;
 	-fx-border-color: #50654f;	
 }
- #leftVbox{
+ #leftVbox, .leftMainBox{
  	-fx-padding: 40;	
+ }
+ .leftMainBox{
+ 	
  }
 .spacerEB{
 	-fx-padding: 50;

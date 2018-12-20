@@ -27,10 +27,12 @@ public class OpponentView extends HBox{
 	public OpponentView() {
 		super();
 		this.buildingsLbl.setId("enemyBuildingsImg");
-		
+		this.buildingsLbl.setMinHeight(240);
 		
 		for(int i = 0; i < 8; i++) {
 			lAr[i] = new Label();
+			lAr[i].setMinHeight(30);
+			lAr[i].getStyleClass().add("ebCounter");
 			enemyBs.getChildren().add(lAr[i]);
 		}
 		//enemyBs.getChildren().addAll(cB1, cB2, cB3, cB4, cB5, cB6, cB7, cB8);

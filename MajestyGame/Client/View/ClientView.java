@@ -97,7 +97,7 @@ public class ClientView {
 //	public Button b4 = new Button("b4");
 //	public Button b5 = new Button("b5");
 //	public Button b6 = new Button("b6");
-	public VBox centerVbox, leftVbox, rightVbox;
+	public VBox centerVbox, leftPlace, leftVbox, leftMainBox, rightVbox;
 	
 	
 	//enemyDeck
@@ -318,14 +318,20 @@ public class ClientView {
 		
 		centerVbox = new VBox();
 		leftVbox = new VBox();
+		leftPlace = new VBox();
+		leftMainBox = new VBox();
+		leftMainBox.getStyleClass().add("leftMainBox");
+		leftMainBox.setAlignment(Pos.BOTTOM_CENTER);
 		leftVbox.setId("leftVbox");
 		rightVbox= new VBox();
 		
-//*********************************EnemyDeck***********************************//
 		
 		//EnemyDeck		
-		
 		for(int i = 0; i < ANZAHL_GEGNER; i++) {
+			VBox enemyPlace = new VBox();
+			
+			Label lp = new Label();
+			lp.textProperty().bind(model.opponentPlayers.get(i).name);
 			
 			OpponentView ov = new OpponentView();
 			for(int j = 0; j < 8; j++) {
@@ -333,55 +339,22 @@ public class ClientView {
 					ov.lAr[j].textProperty().bind(model.opponentPlayers.get(i).hand.get(j).asString());
 				}
 			opponentArrayList.add(ov);
-			enemyArea.getChildren().add(ov);
-			
+			enemyPlace.getChildren().addAll(lp, ov);
+			enemyArea.getChildren().add(enemyPlace);
+			enemyArea.setAlignment(Pos.CENTER);
 		}
-		
-		
-		
 
-		//for (int j = 0; j < ANZAHL_GEGNER; j++) {
-		//	System.out.println(ANZAHL_GEGNER);
-		
-			//VBox enemyCounterArea = new VBox();
-		//	ov.setId("enemyCounterArea");
-			//Label enemyDeckImg = new Label();
-			//enemyDeckImg.getStyleClass().add("enemyBuildingsImg");
-			//enemyDeckImg.setMinHeight(296);
-			
-			//while (j < (ANZAHL_GEGNER-1)) {
-			//	Region spacerEB = new Region();
-			//	spacerEB.getStyleClass().add("spacerEB");		
-			//}
 				
-			// for (int h = 0; h < 8; h++) {
-			//	System.out.println("TESTEEEEE");
-			//	Label ebCounter = enemyBCarray[h];
-				//ebCounter.setMinHeight(37);
-				//ebCounter.getStyleClass().add("ebCounter");
-				
-				//enemyCounterArea.getChildren().add(ebCounter);
-			//}	
-			
-		//	enemyArea.getChildren().addAll(enemyCounterArea, spacerEB);
-		//}
-		//enemyArea.setAlignment(Pos.CENTER);
-		//enemyArea.getStyleClass().add("enemyArea");
-		
-//*********************************EnemyDeck***********************************//
-								
-				
-				
-		//PlayerArea / LeftArea
-		for (int x = 0; x < ANZAHL_GEGNER; x++) { //-1 da nur Gegner Links @@@
+		// LeftArea
+			//EnemyDetails
+
+		for (int x = 0; x < ANZAHL_GEGNER; x++) { 
+			Label lblEnemyTitle = new Label("Your enemy "+ (x+1) +": ");
 			Label lp = new Label();
-			//Label lp = new Label("Player: Benutzer"+model.opponentPlayers.get(x).name.getValue());
 			lp.textProperty().bind(model.opponentPlayers.get(x).name);
 			Label lc = new Label();
-			//Label lc = new Label("Coins: " + model.opponentPlayers.get(x).coins);
 			lc.textProperty().bind(model.opponentPlayers.get(x).coins.asString());
 			Label lm = new Label();
-			//Label lm = new Label("Meeples: " + model.opponentPlayers.get(x).coins);
 			lm.textProperty().bind(model.opponentPlayers.get(x).meeples.asString());
 			Region spacerP = new Region();
 			
@@ -392,9 +365,27 @@ public class ClientView {
 			lc.getStyleClass().add("playerAreaLbl");
 			lm.getStyleClass().add("playerAreaLbl");
 			
-			leftVbox.getChildren().addAll(lp, lc, lm, spacerP);
+			leftVbox.getChildren().addAll(lblEnemyTitle, lp, lc, lm, spacerP);
 			leftVbox.getStyleClass().add("playerNameArea");
 		}
+			//MainDetails
+		Region spacerMain = new Region();
+		Label lblMainTitle = new Label("My empire:");
+		Label lblMainName = new Label();
+		lblMainName.textProperty().bind(model.opponentPlayers.get(0).name);
+		lblMainName.getStyleClass().add("playerAreaLbl");
+		Label lblMainCoin = new Label();
+		lblMainCoin.textProperty().bind(model.opponentPlayers.get(0).coins.asString());
+		lblMainCoin.getStyleClass().add("playerAreaLbl");
+		Label lblMainMeeples = new Label();
+		lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
+		lblMainMeeples.getStyleClass().add("playerAreaLbl");
+		
+		VBox.setVgrow(spacerMain, Priority.ALWAYS);
+		leftMainBox.getStyleClass().add("playerNameArea");
+		leftMainBox.getChildren().addAll(spacerMain, lblMainTitle, lblMainName, lblMainCoin, lblMainMeeples);
+		leftPlace.getChildren().addAll(leftVbox, leftMainBox);
+		
 		
 			
 		//DeckArea
@@ -419,8 +410,6 @@ public class ClientView {
 		for (int i = 0; i < 8; i++) {
 			
 			buildingCounter = buildingAry[i];			
-//			Label counter = new Label(rString);
-			
 			buildingCounter.setAlignment(Pos.CENTER);
 			buildingCounter.getStyleClass().add("counterLabel");
 			//Region spacerC = new Region();
@@ -457,7 +446,8 @@ public class ClientView {
 		centerVbox.setAlignment(Pos.CENTER);
 
 		centerVbox.getChildren().addAll(enemyArea, personDeck, buildingsImage, buildingsCounters);
-		gameArea.setLeft(leftVbox);
+		gameArea.setLeft(leftPlace);
+		//gameArea.setLeft(leftVbox);
 		gameArea.setCenter(centerVbox);
 		gameArea.setRight(chatArea);
 		gameArea.setBottom(bottomArea);
