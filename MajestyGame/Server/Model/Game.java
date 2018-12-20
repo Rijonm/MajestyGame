@@ -213,15 +213,19 @@ public class Game  {
 	//@ Mert Emek
 	public void coinsBrewerDistributeAll() {
 		for(Client c : model.clients) {
-			if(c.getHand().hand[0] > 0)
+			if(c.getHand().hand[0] > 0) {
 				c.getHand().coins = c.getHand().coins +2;
+				System.out.println("ID= "+c.getId()+" c.getHand().hand[0]= "+c.getHand().hand[1]+" Coins= "+c.getHand().coins);
+			}
 		}
 	}
 	//@ Mert Emek
 	public void coinsTavernDistributeAll() {
 		for(Client c : model.clients) {
-			if(c.getHand().hand[1] > 0)
-				c.getHand().coins = c.getHand().coins +2;
+			if(c.getHand().hand[1] > 0) {
+				c.getHand().coins = c.getHand().coins +3;
+				System.out.println("ID= "+c.getId()+" c.getHand().hand[1]= "+c.getHand().hand[1]+" Coins= "+c.getHand().coins);
+			}	
 		}
 	}	
 	
@@ -245,7 +249,9 @@ public class Game  {
 			if(c.getHand().hand[6]>0)
 				queen = 1;
 			variety = farmer+brewer+witch+defense+soldier+queen+host;
+			System.out.println("ID= "+c.getId()+" Anzahl verschiedene Karten= "+(variety));
 			c.getHand().coins = c.getHand().coins+(variety*variety);
+			
 		}
 		
 	
