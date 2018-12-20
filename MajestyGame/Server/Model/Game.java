@@ -90,23 +90,45 @@ public class Game  {
 			}
 		}
 		
+		
+		
 		switch(pos) {
 		case 0:
 			meeples[0] = 0;
+			
 			break;
 		case 1:
 			meeples[0] = meeples[0] + 1;
+			for(Client c : model.clients) { 
+				if(c.getId()== id) {	 
+					c.getHand().meeples = c.getHand().meeples - 1;
+					c.getHand().actuallMeeples();
+				}
+			}
 			meeples[1] = 0;
+			
 			break;
 		case 2:
 			meeples[0] = meeples[0] + 1;
 			meeples[1] = meeples[1] + 1;
+			for(Client c : model.clients) { 
+				if(c.getId()== id) {	 
+					c.getHand().meeples = c.getHand().meeples - 2;
+					c.getHand().actuallMeeples();
+				}
+			}
 			meeples[2] = 0;
 			break;
 		case 3:
 			meeples[0] = meeples[0] + 1;
 			meeples[1] = meeples[1] + 1;
 			meeples[2] = meeples[2] + 1;
+			for(Client c : model.clients) { 
+				if(c.getId()== id) {	 
+					c.getHand().meeples = c.getHand().meeples - 3;
+					c.getHand().actuallMeeples();
+				}
+			}
 			meeples[3] = 0;
 			break;
 		case 4:
@@ -114,6 +136,12 @@ public class Game  {
 			meeples[1] = meeples[1] + 1;
 			meeples[2] = meeples[2] + 1;
 			meeples[3] = meeples[3] + 1;
+			for(Client c : model.clients) { 
+				if(c.getId()== id) {	 
+					c.getHand().meeples = c.getHand().meeples - 4;
+					c.getHand().actuallMeeples();
+				}
+			}
 			meeples[4] = 0;
 			break;
 		case 5:
@@ -122,6 +150,12 @@ public class Game  {
 			meeples[2] = meeples[2] + 1;
 			meeples[3] = meeples[3] + 1;
 			meeples[4] = meeples[4] + 1;
+			for(Client c : model.clients) { 
+				if(c.getId()== id) {	 
+					c.getHand().meeples = c.getHand().meeples - 5;
+					c.getHand().actuallMeeples();
+				}
+			}
 			meeples[2] = 0;
 			break;
 			
@@ -183,6 +217,7 @@ public class Game  {
 			
 			
 		
+		
 		//SEND UPDATED INFORMATIONS from the Client which shows the move to all Clients
 		for(Client c : model.clients) {
 			int idc = c.getId();
@@ -211,6 +246,8 @@ public class Game  {
 		}
 		
 	}
+	
+	
 	
 	//@ Mert Emek
 	public void coinsBrewerDistributeAll() {
