@@ -89,6 +89,7 @@ public class ClientView {
 	public PlayerArea playerArea;
 	public BottomArea bottomArea;
 	public Button[] buttons = new Button[6];
+	public Label[] meeplesDeck = new Label[6];
 	public Label buildingCounter;
 	//public Label ebCounter;
 //	public Button b1 = new Button("b1");
@@ -159,6 +160,8 @@ public class ClientView {
 		for (int i = 0; i < 6; i++) {
 //			Random r1 = new Random();
 //			int rn = r1.nextInt(6);
+			Label m = new Label("Meeple");
+			meeplesDeck[i] = m;
 			
 			Button b = new Button("b"+i);
 			buttons[i] = b;
@@ -321,7 +324,7 @@ public class ClientView {
 		leftPlace = new VBox();
 		leftMainBox = new VBox();
 		leftMainBox.getStyleClass().add("leftMainBox");
-		leftMainBox.setAlignment(Pos.BOTTOM_CENTER);
+		leftMainBox.setAlignment(Pos.BOTTOM_LEFT);
 		leftVbox.setId("leftVbox");
 		rightVbox= new VBox();
 		
@@ -390,14 +393,19 @@ public class ClientView {
 			
 		//DeckArea
 		HBox personDeck = new HBox();
-		
 		for (int i = 0; i < 6; i++) {
+			VBox personBox = new VBox();
+			Label m = meeplesDeck[i];
+			m.setMinHeight(25);
 			Button b = buttons[i];
 			b.setMinHeight(324);
-			personDeck.getChildren().add(b);
+			personBox.getChildren().addAll(b, m);
+			personDeck.getChildren().add(personBox);
 		}
-		personDeck.setAlignment(Pos.CENTER);
-		personDeck.getStyleClass().add("personDeck");
+		
+		
+		//personDeck.setAlignment(Pos.CENTER);
+		//personDeck.getStyleClass().add("personDeck");
 		
 		
 		//BuildingArea

@@ -106,9 +106,6 @@
  #leftVbox, .leftMainBox{
  	-fx-padding: 40;	
  }
- .leftMainBox{
- 	
- }
 .spacerEB{
 	-fx-padding: 50;
 	-fx-min-width: 120;
