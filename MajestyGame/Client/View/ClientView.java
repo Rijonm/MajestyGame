@@ -392,12 +392,9 @@ public class ClientView {
 		lblMainCoin.getStyleClass().add("playerAreaLbl");
 		
 		Label lblMainMeeples = new Label();
-<<<<<<< HEAD
 		lblMainMeeples.textProperty().bind(model.myMeeples.asString());
-=======
 		Label lblMainMeeplesCard = new Label("m");
 		lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
->>>>>>> branch 'master' of https://github.com/Rijonm/MajestyGame.git
 		lblMainMeeples.getStyleClass().add("playerAreaLbl");
 		System.out.println("meeplesCard-"+lblMainMeeples.getText());
 		lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-"+lblMainMeeples.getText());
