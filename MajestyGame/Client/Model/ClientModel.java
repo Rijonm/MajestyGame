@@ -49,7 +49,7 @@ import javafx.collections.ObservableList;
  */
 public class ClientModel {
 
-	private int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich
+	public int id; // Wird gesetzt, nachdem sich der Client erfolgreich eingeloggt hat. Entsprich
 					// der id in der DB.
 	public SimpleStringProperty myName = new SimpleStringProperty();
 	public SimpleIntegerProperty myCoins = new SimpleIntegerProperty();
@@ -83,7 +83,22 @@ public class ClientModel {
 	public ObservableList<Integer> meeples = FXCollections.observableArrayList();
 
 	public ClientModel() {
-
+		this.h0.set(0);
+		this.h1.set(0);
+		this.h2.set(0);
+		this.h3.set(0);
+		this.h4.set(0);
+		this.h5.set(0);
+		this.h6.set(0);
+		this.h7.set(0);
+		myHand.add(h0);
+		myHand.add(h1);
+		myHand.add(h2);
+		myHand.add(h3);
+		myHand.add(h4);
+		myHand.add(h5);
+		myHand.add(h6);
+		myHand.add(h7);
 	}
 
 	public void connect(String ip, int port) throws UnknownHostException, IOException {

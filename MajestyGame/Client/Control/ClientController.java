@@ -5,6 +5,7 @@ import java.net.ConnectException;
 import java.net.UnknownHostException;
 
 import Model.ClientModel;
+import Model.ClientModel.Opponent;
 import View.ClientView;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -28,6 +29,7 @@ public class ClientController {
 	public ClientController(ClientModel model, ClientView view) {
 		this.model = model;
 		this.view = view;
+		
 
 		view.connectB.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -203,19 +205,10 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				System.out.println("b0");
-				// view.buildingCounter.setText(Integer.toString(model.deck.get(1)));
 				int getIdOfButton = model.deck.get(0);
-
-				String contentLabel = view.buildingCounter.getText();
-				int labelContent = Integer.parseInt(contentLabel);
 
 				if (getIdOfButton <= 6) {
 					model.sendPlayerMoveMessage(0, getIdOfButton);
-
-					//view.buildingAry[model.deck.get(0)].setText("FEHLT"); // in setText kommt
-																										// Array-Nachricht
-																										// vom Server
-																										// rein
 				} else {
 					System.out.println("Split Card");
 					view.popUpStage();
@@ -232,12 +225,8 @@ public class ClientController {
 							model.sendPlayerMoveMessage(0, 1);
 							view.popUpStage.close();
 						});
-
-						// view.buildingAry[2].setText("FEHLT");
-
 						break;
 					case 8:
-						// view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton0");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 0);
@@ -251,7 +240,6 @@ public class ClientController {
 						});
 						break;
 					case 9:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 1);
@@ -265,7 +253,6 @@ public class ClientController {
 						});
 						break;
 					case 10:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 1);
@@ -279,7 +266,6 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 2);
@@ -293,7 +279,6 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 2);
@@ -307,7 +292,6 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 2);
@@ -321,7 +305,6 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 3);
@@ -335,7 +318,6 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 3);
@@ -349,7 +331,6 @@ public class ClientController {
 						});
 						break;
 					case 16:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 3);
@@ -363,7 +344,6 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 4);
@@ -377,7 +357,6 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 5);
@@ -406,18 +385,10 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				int getIdOfButton = model.deck.get(1);
 				System.out.println("b1");
-				
-
-
-				String contentLabel = view.buildingCounter.getText();
-				int labelContent = Integer.parseInt(contentLabel);
 
 				if (model.deck.get(1) <= 6) {
 					model.sendPlayerMoveMessage(1, getIdOfButton);
 
-					view.buildingAry[getIdOfButton].setText("FEHLT"); // in setText kommt
-																									// Array-Nachricht
-																									// vom Server rein
 				} else {
 
 					System.out.println("Split Card");
@@ -437,15 +408,8 @@ public class ClientController {
 							view.popUpStage.close();
 						});
 
-						view.buildingAry[2].setText("FEHLT");
-
-						// Popup mit 2 Buttons
-						//
-						// ....return getChoose
-						// model.sendPlayerMoveMessage(0, 2);
 						break;
 					case 8:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton0");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 0);
@@ -459,7 +423,6 @@ public class ClientController {
 						});
 						break;
 					case 9:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 1);
@@ -473,8 +436,6 @@ public class ClientController {
 						});
 						break;
 					case 10:
-
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 1);
@@ -488,7 +449,6 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 2);
@@ -502,7 +462,6 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 2);
@@ -516,7 +475,6 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 2);
@@ -530,7 +488,6 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 3);
@@ -544,7 +501,6 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 3);
@@ -558,7 +514,6 @@ public class ClientController {
 						});
 						break;
 					case 16:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 3);
@@ -572,7 +527,6 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 4);
@@ -586,7 +540,6 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(1, 5);
@@ -614,18 +567,9 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				int getIdOfButton = model.deck.get(2);
 
-				String contentLabel = view.buildingCounter.getText();
-				int labelContent = Integer.parseInt(contentLabel);
-
 				System.out.println("b2");
 				if (getIdOfButton <= 6) {
-					view.buildingAry[getIdOfButton].setText("FEHLT"); // in setText kommt
-																									// Array-Nachricht
-																									// vom Server rein
-
 					model.sendPlayerMoveMessage(2, getIdOfButton);
-					//test yusuf
-					//view.lblMainMeeplesCard.getStyleClass().add("meepleCard-" + view.lblMainMeeples.getText());
 				} else {
 					System.out.println("Split Card");
 					view.popUpStage();
@@ -644,15 +588,8 @@ public class ClientController {
 							view.popUpStage.close();
 						});
 
-						view.buildingAry[2].setText("FEHLT");
-
-						// Popup mit 2 Buttons
-						//
-						// ....return getChoose
-						// model.sendPlayerMoveMessage(0, 2);
 						break;
 					case 8:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton0");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 0);
@@ -666,7 +603,6 @@ public class ClientController {
 						});
 						break;
 					case 9:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 1);
@@ -680,7 +616,6 @@ public class ClientController {
 						});
 						break;
 					case 10:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 1);
@@ -694,7 +629,6 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 2);
@@ -708,7 +642,6 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 2);
@@ -722,7 +655,7 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						view.buildingAry[2].setText("FEHLT");
+						
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 2);
@@ -736,7 +669,7 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						view.buildingAry[2].setText("FEHLT");
+						
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 3);
@@ -750,7 +683,6 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 3);
@@ -764,7 +696,7 @@ public class ClientController {
 						});
 						break;
 					case 16:
-						view.buildingAry[2].setText("FEHLT");
+					
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 3);
@@ -778,7 +710,7 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						view.buildingAry[2].setText("FEHLT");
+			
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 4);
@@ -792,7 +724,7 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						view.buildingAry[2].setText("FEHLT");
+					
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(2, 5);
@@ -820,18 +752,13 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				int getIdOfButton = model.deck.get(3);
 
-				String contentLabel = view.buildingCounter.getText();
-				int labelContent = Integer.parseInt(contentLabel);
+
 
 				System.out.println("b3");
 				
 				
 				if (getIdOfButton <= 6) {
-					view.buildingAry[getIdOfButton].setText("FEHLT"); // in setText kommt
-																									// Array-Nachricht
-																									// vom Server rein
 					model.sendPlayerMoveMessage(3, getIdOfButton);
-					//view.lblMainMeeplesCard.getStyleClass().add("meepleCard-" + view.lblMainMeeples.getText());   //test yusuf
 				} else {
 					System.out.println("Split Card");
 					view.popUpStage();
@@ -849,16 +776,8 @@ public class ClientController {
 							model.sendPlayerMoveMessage(3, 1);
 							view.popUpStage.close();
 						});
-
-						view.buildingAry[2].setText("FEHLT");
-
-						// Popup mit 2 Buttons
-						//
-						// ....return getChoose
-						// model.sendPlayerMoveMessage(0, 2);
 						break;
 					case 8:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton0");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 0);
@@ -872,7 +791,6 @@ public class ClientController {
 						});
 						break;
 					case 9:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 1);
@@ -887,7 +805,6 @@ public class ClientController {
 						break;
 					case 10:
 
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 1);
@@ -901,7 +818,6 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 2);
@@ -915,7 +831,6 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 2);
@@ -929,7 +844,6 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 2);
@@ -943,7 +857,6 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 3);
@@ -957,7 +870,6 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 3);
@@ -971,7 +883,6 @@ public class ClientController {
 						});
 						break;
 					case 16:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 3);
@@ -985,7 +896,6 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 4);
@@ -999,7 +909,6 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(3, 5);
@@ -1027,21 +936,13 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				int getIdOfButton = model.deck.get(4);
 
-				String contentLabel = view.buildingCounter.getText();
-				int labelContent = Integer.parseInt(contentLabel);
+
 
 				System.out.println("b4");
-				model.sendPlayerMoveMessage(4, 4);
-				
-				//test yusuf
-				//view.lblMainMeeplesCard.getStyleClass().add("meepleCard-" + view.lblMainMeeples.getText());
-				if (getIdOfButton <= 6) {
-					view.buildingAry[getIdOfButton].setText("FEHLT"); // in setText kommt
-																									// Array-Nachricht
-																									// vom Server rein
-																									// TEST
 
-					model.sendPlayerMoveMessage(3, getIdOfButton);
+				
+				if (getIdOfButton <= 6) {
+					model.sendPlayerMoveMessage(4, getIdOfButton);
 				} else {
 
 					System.out.println("Split Card");
@@ -1060,12 +961,9 @@ public class ClientController {
 							model.sendPlayerMoveMessage(4, 1);
 							view.popUpStage.close();
 						});
-
-						view.buildingAry[2].setText("FEHLT");
-
 						break;
 					case 8:
-						view.buildingAry[2].setText("FEHLT");
+
 						view.pb1.getStyleClass().add("gameButton0");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 0);
@@ -1079,7 +977,7 @@ public class ClientController {
 						});
 						break;
 					case 9:
-						view.buildingAry[2].setText("FEHLT");
+
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 1);
@@ -1093,8 +991,6 @@ public class ClientController {
 						});
 						break;
 					case 10:
-
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 1);
@@ -1108,7 +1004,6 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 2);
@@ -1122,7 +1017,6 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 2);
@@ -1136,7 +1030,6 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 2);
@@ -1150,7 +1043,6 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 3);
@@ -1164,7 +1056,6 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 3);
@@ -1179,7 +1070,7 @@ public class ClientController {
 
 						break;
 					case 16:
-						// view.buildingAry[2].setText(Integer.toString(labelContent+1));
+
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 3);
@@ -1194,7 +1085,6 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 4);
@@ -1208,7 +1098,6 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(4, 5);
@@ -1236,21 +1125,9 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				int getIdOfButton = model.deck.get(5);
 
-				String contentLabel = view.buildingCounter.getText();
-				int labelContent = Integer.parseInt(contentLabel);
-
 				System.out.println("b5");
-				model.sendPlayerMoveMessage(5, getIdOfButton); // pos, cardID
 
-				//test
-				//view.lblMainMeeplesCard.getStyleClass().add("meepleCard-" + view.lblMainMeeples.getText());
-				
 				if (getIdOfButton <= 6) {
-					view.buildingAry[model.deck.get(5)].setText("FEHLT"); // in setText kommt
-																										// Array-Nachricht
-																										// vom Server
-																										// rein
-
 					model.sendPlayerMoveMessage(5, getIdOfButton); // pos, cardID
 				} else {
 
@@ -1271,10 +1148,8 @@ public class ClientController {
 							view.popUpStage.close();
 						});
 
-						view.buildingAry[2].setText("FEHLT");
 						break;
 					case 8:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton0");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 0);
@@ -1288,7 +1163,6 @@ public class ClientController {
 						});
 						break;
 					case 9:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 1);
@@ -1302,8 +1176,6 @@ public class ClientController {
 						});
 						break;
 					case 10:
-
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 1);
@@ -1317,7 +1189,6 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 2);
@@ -1331,7 +1202,6 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 2);
@@ -1345,7 +1215,6 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 2);
@@ -1359,7 +1228,6 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 3);
@@ -1373,7 +1241,6 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 3);
@@ -1388,7 +1255,6 @@ public class ClientController {
 						});
 						break;
 					case 16:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 3);
@@ -1402,7 +1268,6 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 4);
@@ -1416,7 +1281,6 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(5, 5);
@@ -1508,6 +1372,7 @@ public class ClientController {
 		 * @author Rijon
 		 */
 		model.deck.addListener((ListChangeListener<Integer>) c -> {
+			
 			if (!view.primaryStage.getScene().equals(view.fifthScene)) { // setzt nur das erste mal die Fünfte Scene
 				view.ANZAHL_GEGNER = model.opponentPlayers.size();
 				view.primaryStage.setScene(view.setFifthScene());
@@ -1523,12 +1388,14 @@ public class ClientController {
 
 					i++;
 				}
+			
 			});
 
-			// 2)Set new Cards
-			// for(int i = 0; i<= buttons.length; i++) {
-			// buttons[i].setText("" + model.getFirstSixCards().get(i));
-			// }
+			for(int a = 0 ; a < model.opponentPlayers.size(); a++) {
+				int b = model.opponentPlayers.get(a).meeples.intValue();
+				view.lblMainMeeplesCardArrayList.get(a).getStyleClass().clear();
+				view.lblMainMeeplesCardArrayList.get(a).getStyleClass().addAll("meeplesCard", "meeplesCard-"+ b);
+				};
 
 		});
 
@@ -1563,7 +1430,7 @@ public class ClientController {
 				int i = 0;
 				for (Label l : view.meeplesDeck) {
 					l.setText(Integer.toString(c.getList().get(i)));
-					l.setTextFill(Color.web("#0076a3"));
+					l.setTextFill(Color.web("#FFFFFF"));
 					i++;
 				}
 			});

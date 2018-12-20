@@ -103,6 +103,8 @@ public class ClientView {
 	public Label roundCounter;
 	public Label cardCounter;
 	public Label usernameTurn;
+	public ArrayList<Label> lblMainMeeplesCardArrayList = new ArrayList<>();
+	
 	
 	
 	//enemyDeck
@@ -364,10 +366,10 @@ public class ClientView {
 			Label lm = new Label();
 			lm.textProperty().bind(model.opponentPlayers.get(x).meeples.asString());
 			
-			Label lblMainMeeplesCard = new Label("J");
-			lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-4");
+			Label lblMainMeeplesCard = new Label();
+			lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-"+ model.opponentPlayers.get(x).meeples.asString());
 			lblMainMeeplesCard.setMinHeight(128);
-			
+			lblMainMeeplesCardArrayList.add(lblMainMeeplesCard);
 			Region spacerP = new Region();
 			
 			VBox.setVgrow(spacerP, Priority.ALWAYS);
@@ -439,7 +441,7 @@ public class ClientView {
 			buildingCounter = buildingAry[i];			
 			buildingCounter.setAlignment(Pos.CENTER);
 			buildingCounter.getStyleClass().add("counterLabel");
-			//buildingCounter.textProperty().bind(model.myHand.get(i).asString());
+			buildingCounter.textProperty().bind(model.myHand.get(i).asString());
 			//Region spacerC = new Region();
 			//spacerC.getStyleClass().add("spacerBuildings");
 			buildingCounter.getStyleClass().add("coinCounter");
