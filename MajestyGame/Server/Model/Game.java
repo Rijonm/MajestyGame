@@ -102,7 +102,7 @@ public class Game  {
 			for(Client c : model.clients) { 
 				if(c.getId()== id) {	 
 					c.getHand().meeples = c.getHand().meeples - 1;
-					c.getHand().actuallMeeples();
+					
 				}
 			}
 			meeples[1] = 0;
@@ -114,7 +114,6 @@ public class Game  {
 			for(Client c : model.clients) { 
 				if(c.getId()== id) {	 
 					c.getHand().meeples = c.getHand().meeples - 2;
-					c.getHand().actuallMeeples();
 				}
 			}
 			meeples[2] = 0;
@@ -126,7 +125,6 @@ public class Game  {
 			for(Client c : model.clients) { 
 				if(c.getId()== id) {	 
 					c.getHand().meeples = c.getHand().meeples - 3;
-					c.getHand().actuallMeeples();
 				}
 			}
 			meeples[3] = 0;
@@ -139,7 +137,6 @@ public class Game  {
 			for(Client c : model.clients) { 
 				if(c.getId()== id) {	 
 					c.getHand().meeples = c.getHand().meeples - 4;
-					c.getHand().actuallMeeples();
 				}
 			}
 			meeples[4] = 0;
@@ -153,7 +150,6 @@ public class Game  {
 			for(Client c : model.clients) { 
 				if(c.getId()== id) {	 
 					c.getHand().meeples = c.getHand().meeples - 5;
-					c.getHand().actuallMeeples();
 				}
 			}
 			meeples[2] = 0;
