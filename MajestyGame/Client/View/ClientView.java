@@ -359,6 +359,11 @@ public class ClientView {
 			lc.textProperty().bind(model.opponentPlayers.get(x).coins.asString());
 			Label lm = new Label();
 			lm.textProperty().bind(model.opponentPlayers.get(x).meeples.asString());
+			
+			Label lblMainMeeplesCard = new Label("J");
+			lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-4");
+			lblMainMeeplesCard.setMinHeight(128);
+			
 			Region spacerP = new Region();
 			
 			VBox.setVgrow(spacerP, Priority.ALWAYS);
@@ -368,7 +373,7 @@ public class ClientView {
 			lc.getStyleClass().add("playerAreaLbl");
 			lm.getStyleClass().add("playerAreaLbl");
 			
-			leftVbox.getChildren().addAll(lblEnemyTitle, lp, lc, lm, spacerP);
+			leftVbox.getChildren().addAll(lblEnemyTitle, lp, lc, lm, lblMainMeeplesCard, spacerP);
 			leftVbox.getStyleClass().add("playerNameArea");
 		}
 			//MainDetails
@@ -377,16 +382,22 @@ public class ClientView {
 		Label lblMainName = new Label();
 		lblMainName.textProperty().bind(model.opponentPlayers.get(0).name);
 		lblMainName.getStyleClass().add("playerAreaLbl");
+		
 		Label lblMainCoin = new Label();
 		lblMainCoin.textProperty().bind(model.opponentPlayers.get(0).coins.asString());
 		lblMainCoin.getStyleClass().add("playerAreaLbl");
+		
 		Label lblMainMeeples = new Label();
+		Label lblMainMeeplesCard = new Label("m");
 		lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
 		lblMainMeeples.getStyleClass().add("playerAreaLbl");
+		System.out.println("meeplesCard-"+lblMainMeeples.getText());
+		lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-"+lblMainMeeples.getText());
+		lblMainMeeplesCard.setMinHeight(128);
 		
 		VBox.setVgrow(spacerMain, Priority.ALWAYS);
 		leftMainBox.getStyleClass().add("playerNameArea");
-		leftMainBox.getChildren().addAll(spacerMain, lblMainTitle, lblMainName, lblMainCoin, lblMainMeeples);
+		leftMainBox.getChildren().addAll(spacerMain, lblMainTitle, lblMainName, lblMainCoin, lblMainMeeples, lblMainMeeplesCard);
 		leftPlace.getChildren().addAll(leftVbox, leftMainBox);
 		
 		
@@ -402,6 +413,7 @@ public class ClientView {
 			personBox.getChildren().addAll(b, m);
 			personDeck.getChildren().add(personBox);
 		}
+		personDeck.setAlignment(Pos.CENTER);
 		
 		
 		//personDeck.setAlignment(Pos.CENTER);
@@ -454,6 +466,8 @@ public class ClientView {
 		centerVbox.setAlignment(Pos.CENTER);
 
 		centerVbox.getChildren().addAll(enemyArea, personDeck, buildingsImage, buildingsCounters);
+		
+		BorderPane.setAlignment(leftPlace, Pos.CENTER);
 		gameArea.setLeft(leftPlace);
 		//gameArea.setLeft(leftVbox);
 		gameArea.setCenter(centerVbox);

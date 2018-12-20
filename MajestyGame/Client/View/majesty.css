@@ -92,6 +92,32 @@
 	-fx-background-size: cover, auto;
 	-fx-background-image: url(/images/enemyBuildingDeck.jpg);	
 }
+.meeplesCard{
+	-fx-min-width: 200;
+	-fx-max-width: 200;
+	/*-fx-padding-top: 123;*/
+	-fx-text-fill: transparent;	
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover, auto;
+}
+.meeplesCard{
+	-fx-background-image: url(/images/meepleCard.jpg);	
+}
+.meeplesCard-1{
+	-fx-background-image: url(/images/meepleCard-1.jpg);	
+}
+.meeplesCard-2{
+	-fx-background-image: url(/images/meepleCard-2.jpg);	
+}
+.meeplesCard-3{
+	-fx-background-image: url(/images/meepleCard-3.jpg);	
+}
+.meeplesCard-4{
+	-fx-background-image: url(/images/meepleCard-4.jpg);	
+}
+.meeplesCard-5{
+	-fx-background-image: url(/images/meepleCard-5.jpg);	
+}
 #enemyCounterArea {
 	-fx-text-fill: #000000;
     -fx-border-width: 3;
