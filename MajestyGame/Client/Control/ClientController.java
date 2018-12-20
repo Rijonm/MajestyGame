@@ -1550,6 +1550,17 @@ public class ClientController {
             Platform.exit();
             System.exit(0);
 		});
+		
+		model.myTurn.addListener((observable, oldValue, newValue) ->{
+			if(newValue.booleanValue()==true) {
+				for(int i = 0; i< view.buttons.length; i++)
+				view.buttons[i].setDisable(true);
+			}
+			if(newValue.booleanValue()==false) {
+				for(int i = 0; i< view.buttons.length; i++)
+					view.buttons[i].setDisable(false);
+			}
+		});
 	}
 
 }

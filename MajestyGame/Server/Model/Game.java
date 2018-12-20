@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import CommonClasses.FirstSixCardsMessage;
+import CommonClasses.FooterMessage;
 import CommonClasses.InformationFromServerMessage;
 import CommonClasses.OpponentPlayerMessage;
 import CommonClasses.PlayerStatesMessage;
@@ -20,12 +21,14 @@ import jdk.nashorn.internal.objects.annotations.Where;
 
 public class Game  {
 	
-	int players = 0;
-	ArrayList<Integer> playersId = new ArrayList<Integer>(); // Hier sind die ID's der Spieler  die im Spiel sind zu finden
-	int playedCards = 0;
+	private int players = 0;
+	private ArrayList<Integer> playersId = new ArrayList<Integer>(); // Hier sind die ID's der Spieler  die im Spiel sind zu finden
 	private DeckA deckA;
 	private Integer[] meeples = new Integer[6];
-	int round = 0;
+	private int round = 0;
+	private int playedCards = 0;
+	private int turn;
+	private int turnIndex = 0;
 	private ServerModel model;
 	
 	public Game(ServerModel model) {
@@ -38,6 +41,8 @@ public class Game  {
 				players++;
 			}
 		}
+		
+		turn = playersId.get(0); // Spieler der spiel iniitiert beginnt mit Zug.
 		
 		for(Client c : model.clients) { // Sendet jedem Spieler die informartionen jedes Spielers/Gegeners
 			if(c.isInGame()== true) {
@@ -53,11 +58,14 @@ public class Game  {
 		}
 		
 		deckA = new DeckA();
-		sendFirstSixCards(deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), playersId.get(0)); // Setzt die ersten 6 Karten und gibt dem einten Spieler die Möglichkeit das Spiel zu beginnen.
+		sendFirstSixCards(deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards()); // Setzt die ersten 6 Karten und gibt dem ersten Spieler die Möglichkeit das Spiel zu beginnen.
+		
+		FooterMessage footerMessage = new FooterMessage(turn, playedCards, round);
+		model.broatcastToPlayerInGame(footerMessage);
 	}
 	
-	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f, int turn) {
-		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f, turn);
+	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f) {
+		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f);
 		model.broatcastToPlayerInGame(fscm);
 	}
 	/*
@@ -119,7 +127,17 @@ public class Game  {
 			int a = playedCards/players;
 			round = a;
 		}
-		System.out.println(cardID + " IDDDD");
+		
+		
+		if(playersId.size() == turnIndex+1) {
+			turnIndex = -1;
+		};
+		turnIndex++;
+		turn = playersId.get(turnIndex);
+		
+		FooterMessage footerMessage = new FooterMessage(turn, playedCards, round);
+		model.broatcastToPlayerInGame(footerMessage);
+		
 		//UPDATE HAND AND COINS OF PLAYERS		
 		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
@@ -264,7 +282,7 @@ public class Game  {
 	//Brewer evaluation -------------------
 	ArrayList<Integer> brewerPoints = new ArrayList<Integer>();
 	for(Client c : model.clients) {
-		farmerPoints.add(c.getHand().hand[1]);
+		brewerPoints.add(c.getHand().hand[1]);
 	}
 	int brewerMax = Collections.max(brewerPoints);
 		

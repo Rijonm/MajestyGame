@@ -13,6 +13,7 @@ import java.util.List;
 
 import CommonClasses.ChatMessage;
 import CommonClasses.FirstSixCardsMessage;
+import CommonClasses.FooterMessage;
 import CommonClasses.GameStartMessage;
 import CommonClasses.GetHighscoresMessage;
 import CommonClasses.HighscoreListMessage;
@@ -30,6 +31,7 @@ import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserRegisterMessage;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
@@ -59,6 +61,10 @@ public class ClientModel {
 	private SimpleStringProperty loginSuccessString = new SimpleStringProperty();
 	public SimpleStringProperty newestMessage = new SimpleStringProperty();
 	public SimpleStringProperty highscoreList = new SimpleStringProperty();
+	public SimpleIntegerProperty turn = new SimpleIntegerProperty();
+	public SimpleIntegerProperty round = new SimpleIntegerProperty();
+	public SimpleIntegerProperty playedCards = new SimpleIntegerProperty();
+	public SimpleBooleanProperty myTurn = new SimpleBooleanProperty();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
 	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name,
 																							// coins, meeples, hand,
@@ -146,6 +152,12 @@ public class ClientModel {
 							});
 						}
 						
+						if (msg.getMessageType() == MessageType.FooterMessage) {
+							Platform.runLater(() -> {
+								receivedFooterMessage(msg);
+							});
+						}
+						
 						
 					}
 				} catch (SocketException e) {
@@ -154,6 +166,7 @@ public class ClientModel {
 					e.printStackTrace();
 				}
 			}
+
 
 		};
 		Thread t = new Thread(r);
@@ -326,6 +339,21 @@ public class ClientModel {
 			list.append(i+1 + ": " + player.getUsername() + " -> " + player.getHighscore() + "\r\n");
 		}
 		highscoreList.set(list.toString());
+	}
+	
+	private void receivedFooterMessage(Message msg) {
+		FooterMessage fm = (FooterMessage) msg;
+		turn.set(fm.getTurnId());
+		round.set(fm.getRound());
+		playedCards.set(fm.getPlayedCards());
+		if(fm.getTurnId()==this.id) {
+			myTurn.set(true);
+		}else {
+			myTurn.set(false);
+		}
+		System.out.print(fm.getTurnId() + "turn");
+		System.out.print(fm.getRound() + "round");
+		System.out.print(fm.getPlayedCards() + "playedCards");
 	}
 	
 	

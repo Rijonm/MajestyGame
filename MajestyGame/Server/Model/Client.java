@@ -123,9 +123,7 @@ public class Client {
 						// logout of other player
 						if (msg.getMessageType() == MessageType.OtherPlayerLoggedOutMessage) {
 							otherPlayerLoggedOutMessage = (OtherPlayerLoggedOutMessage) msg;
-							Platform.runLater(() -> {
 								sendOtherPlayerLoggedOut(otherPlayerLoggedOutMessage);
-							});
 						}
 						// highscores requested
 						if (msg.getMessageType() == MessageType.GetHighScoresMessage) {
