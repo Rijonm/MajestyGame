@@ -152,7 +152,7 @@ public class Hand {
 	// Verteilt die Coins bei gezogener Karte
 		public  int distributeCoinsCardA(int cardID) {
 			int handSize = getHandSize(cardID);
-			int disCoins = 0; // coins which will distribute 
+			int disCoins = 0, farmer = 0, brewer = 0, witch = 0, defense = 0, soldier = 0, host=0; // coins which will distribute 
 			int disMeeples;
 			switch (cardID) {
 	        case 0:
@@ -165,27 +165,23 @@ public class Hand {
 	        	break;
 	        	
 	        case 2:
-	        	if(hand[0]==1 && hand[1]==1 && hand[2]==1) {
-	        		disCoins = 2;
-	        	}
-	        	if(hand[0]==2 && hand[1]==2 && hand[2]==2) {
-	        		disCoins = 4;
-	        	}
-	        	if(hand[0]==3 && hand[1]==3 && hand[2]==3) {
-	        		disCoins = 6;
-	        	}
+	        	if(hand[0]>0)
+	        		defense = hand[3];
+	        	if(hand[1]>0)
+	        		soldier = hand[3];
+	        	if(hand[2]>0)
+	        		host = hand[3];
+	        	disCoins = (farmer+brewer+witch)*2;
 	        	break;
 	        	
 	        case 3:
-	        	if(hand[3]==1 && hand[4]==1 && hand[5]==1) {
-	        		disCoins = 2;
-	        	}
-	        	if(hand[3]==2 && hand[4]==2 && hand[5]==2) {
-	        		disCoins = 4;
-	        	}
-	        	if(hand[3]==3 && hand[4]==3 && hand[5]==3) {
-	        		disCoins = 6;
-	        	}
+	        	if(hand[3]>0)
+	        		defense = hand[3];
+	        	if(hand[4]>0)
+	        		soldier = hand[3];
+	        	if(hand[5]>0)
+	        		host = hand[3];
+	        	disCoins = (defense+soldier+host)*2;
 	        	break;
 	        	
 	        case 4:
