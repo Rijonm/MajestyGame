@@ -384,6 +384,7 @@ public class ClientView {
 		Region spacerMain = new Region();
 		Label lblMainTitle = new Label("My empire:");
 		Label lblMainName = new Label();
+		lblMainName.setText("xz");
 		lblMainName.textProperty().bind(model.myName);
 		lblMainName.getStyleClass().add("playerAreaLbl");
 		
@@ -394,7 +395,7 @@ public class ClientView {
 		Label lblMainMeeples = new Label();
 		lblMainMeeples.textProperty().bind(model.myMeeples.asString());
 		Label lblMainMeeplesCard = new Label("m");
-		lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
+		//lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
 		lblMainMeeples.getStyleClass().add("playerAreaLbl");
 		System.out.println("meeplesCard-"+lblMainMeeples.getText());
 		lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-"+lblMainMeeples.getText());
@@ -438,6 +439,7 @@ public class ClientView {
 			buildingCounter = buildingAry[i];			
 			buildingCounter.setAlignment(Pos.CENTER);
 			buildingCounter.getStyleClass().add("counterLabel");
+			//buildingCounter.textProperty().bind(model.myHand.get(i).asString());
 			//Region spacerC = new Region();
 			//spacerC.getStyleClass().add("spacerBuildings");
 			buildingCounter.getStyleClass().add("coinCounter");

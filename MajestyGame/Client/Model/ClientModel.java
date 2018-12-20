@@ -54,7 +54,6 @@ public class ClientModel {
 	public SimpleStringProperty myName = new SimpleStringProperty();
 	public SimpleIntegerProperty myCoins = new SimpleIntegerProperty();
 	public SimpleIntegerProperty myMeeples = new SimpleIntegerProperty();
-	public ObservableIntegerArray myHand = FXCollections.observableIntegerArray();
 	public Socket socket;
 	public ObjectInputStream oips;
 	public ObjectOutputStream oops;
@@ -67,6 +66,15 @@ public class ClientModel {
 	public SimpleIntegerProperty round = new SimpleIntegerProperty();
 	public SimpleIntegerProperty playedCards = new SimpleIntegerProperty();
 	public SimpleBooleanProperty myTurn = new SimpleBooleanProperty();
+	public SimpleIntegerProperty h0 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h1 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h2 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h3 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h4 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h5 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h6 = new SimpleIntegerProperty();
+	public SimpleIntegerProperty h7 = new SimpleIntegerProperty();
+	public ObservableList<SimpleIntegerProperty> myHand = FXCollections.observableArrayList();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
 	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name,
 																							// coins, meeples, hand,
@@ -191,16 +199,25 @@ public class ClientModel {
 	protected void receivedPlayerStatesMessage(Message msg) {
 		PlayerStatesMessage psm = (PlayerStatesMessage) msg;
 		int[] intHand = Arrays.stream(psm.getHand()).mapToInt(Integer::intValue).toArray();
-		System.out.println(psm.getId() + "MEINEIDA");
-		System.out.println(this.id + "MEINEID");
 		if (psm.getId() == this.id) {
 			System.out.print(psm.getId() + " : ICH : ");
-			myHand.setAll(intHand);
+			this.h0.set(intHand[0]);
+			this.h1.set(intHand[1]);
+			this.h2.set(intHand[2]);
+			this.h3.set(intHand[3]);
+			this.h4.set(intHand[4]);
+			this.h5.set(intHand[5]);
+			this.h6.set(intHand[6]);
+			this.h7.set(intHand[7]);
+			this.myHand.addAll(h0, h1, h2, h3, h4, h5, h6, h7);
 			myCoins.set(psm.getCoins());
 			myMeeples.set(psm.getMeeples());
 			System.out.println(Arrays.toString(psm.getHand()));
+			System.out.println(psm.meeples);
+			System.out.println(psm.coins);
 		} else {
 			for (Opponent o : opponentPlayers) {
+				if(o.getId().getValue() == psm.getId()) {
 					// o.hand.clear();
 					// o.hand.addAll(intHand);
 					o.h0.set(intHand[0]);
@@ -214,10 +231,12 @@ public class ClientModel {
 					System.out.println(o.hand + "Hand of opponent");
 					o.coins.set(psm.getCoins());
 					o.meeples.set(psm.getMeeples());
-				
+				}
 			}
 			System.out.print(psm.getId() + " : ER : ");
 			System.out.println(Arrays.toString(psm.getHand()));
+			System.out.println(psm.meeples);
+			System.out.println(psm.coins);
 		}
 
 	}
@@ -230,7 +249,6 @@ public class ClientModel {
 		deck.addAll(deckOpen);
 		meeples.clear();
 		meeples.addAll(meeplesOpen);
-		System.out.println(Arrays.toString(meeplesOpen.toArray()) + " MEEEPLES UNTER DECK");
 	}
 
 	/*
@@ -252,8 +270,7 @@ public class ClientModel {
 		if (opm.getId() != this.id) { // Da server immer die ganze Spieler Array durchgeht und allen sendet, muss
 										// analysiert werden ob es sich dabei um die eigene ID handelt, falls nicht dann
 										// als Oppenent einfügen.
-			Opponent opponent = new Opponent(opm.getId(), opm.getUsername(), opm.getHand(), opm.getMeeples(),
-					opm.getCoins());
+			Opponent opponent = new Opponent(opm.getId(), opm.getUsername(), opm.getHand(), opm.getMeeples(), opm.getCoins());
 			opponentPlayers.add(opponent);
 		}
 
@@ -356,10 +373,10 @@ public class ClientModel {
 			myTurn.set(false);
 		}
 		System.out.println(myTurn + "-----------");
-		System.out.print(fm.getTurnUsername() + "turnUsername");
-		System.out.print(fm.getTurnId() + "turn");
-		System.out.print(fm.getRound() + "round");
-		System.out.print(fm.getPlayedCards() + "playedCards");
+		System.out.println(fm.getTurnUsername() + "turnUsername");
+		System.out.println(fm.getTurnId() + "turn");
+		System.out.println(fm.getRound() + "round");
+		System.out.println(fm.getPlayedCards() + "playedCards");
 	}
 	
 	

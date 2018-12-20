@@ -35,7 +35,7 @@ public class ClientController {
 
 				// model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				try {
-					model.connect("172.20.10.3", 1111);
+					model.connect("localhost", 1111);
 					view.primaryStage.setScene(view.setFirstScene());
 					view.primaryStage.setFullScreen(false); /// muss true gesetzt werden
 					// primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); //User
@@ -212,7 +212,7 @@ public class ClientController {
 				if (getIdOfButton <= 6) {
 					model.sendPlayerMoveMessage(0, getIdOfButton);
 
-					view.buildingAry[model.deck.get(0)].setText("FEHLT"); // in setText kommt
+					//view.buildingAry[model.deck.get(0)].setText("FEHLT"); // in setText kommt
 																										// Array-Nachricht
 																										// vom Server
 																										// rein
@@ -265,7 +265,7 @@ public class ClientController {
 						});
 						break;
 					case 10:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton1");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 1);
@@ -279,7 +279,7 @@ public class ClientController {
 						});
 						break;
 					case 11:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 2);
@@ -293,7 +293,7 @@ public class ClientController {
 						});
 						break;
 					case 12:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 2);
@@ -307,7 +307,7 @@ public class ClientController {
 						});
 						break;
 					case 13:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton2");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 2);
@@ -321,7 +321,7 @@ public class ClientController {
 						});
 						break;
 					case 14:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 3);
@@ -335,7 +335,7 @@ public class ClientController {
 						});
 						break;
 					case 15:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 3);
@@ -349,7 +349,7 @@ public class ClientController {
 						});
 						break;
 					case 16:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton3");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 3);
@@ -363,7 +363,7 @@ public class ClientController {
 						});
 						break;
 					case 17:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton4");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 4);
@@ -377,7 +377,7 @@ public class ClientController {
 						});
 						break;
 					case 18:
-						view.buildingAry[2].setText("FEHLT");
+						//view.buildingAry[2].setText("FEHLT");
 						view.pb1.getStyleClass().add("gameButton5");
 						view.pb1.setOnAction(e -> {
 							model.sendPlayerMoveMessage(0, 5);
@@ -1456,7 +1456,7 @@ public class ClientController {
 			}
 			// REGISTER SUCCESS
 			if (c.toString().contains("SUCCESS")) {
-
+				
 			}
 			// PLAYER ALLREADY EXIST
 			if (c.toString().contains("EXIST")) {
@@ -1487,6 +1487,7 @@ public class ClientController {
 			}
 			// LOGIN SUCCESS
 			if (c.toString().contains("SUCCESS")) {
+				model.myName.set(view.userNameLogin.getText());
 				view.primaryStage.setScene(view.setThirdScene());
 				view.start();
 			}

@@ -66,6 +66,8 @@ public class Game  {
 		sendFirstSixCards(deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards(), deckA.getFirstSixCards()); // Setzt die ersten 6 Karten und gibt dem ersten Spieler die Möglichkeit das Spiel zu beginnen.
 		FooterMessage footerMessage = new FooterMessage(turnUsername, turn, playedCards, round);
 		model.broatcastToPlayerInGame(footerMessage);
+		
+		
 	}
 	
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f) {
@@ -187,7 +189,7 @@ public class Game  {
 			Integer[] playerHandArray = c.getHand().hand;
 			int coins = c.getHand().coins;
 			int meeples = c.getHand().meeples;
-			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, coins, meeples);
+			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, meeples, coins);
 			System.out.println(Arrays.toString(playerHandArray));
 			model.broatcastToPlayerInGame(psm);
 		}
