@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -114,7 +116,7 @@ public class ClientView {
 	public HBox enemyArea = new HBox();
 	
 	//ChatArea
-	public TextField chatContent;
+	public TextArea chatContent;
 	public 	TextField chatInput = new TextField();
 	public Button sendButton = new Button("senden");
 	public Label chatinhalt;
@@ -474,8 +476,15 @@ public class ClientView {
 		VBox chatArea = new VBox();
 		Label chatTitle = new Label("Chat");
 		chatTitle.getStyleClass().add("chatTitle");
-		chatContent = new TextField("");
+		chatContent = new TextArea();
+		ScrollPane chatScroll = new ScrollPane();
+		chatScroll.setFitToWidth(true);
+		chatScroll.setFitToHeight(true);
+		chatScroll.setContent(chatContent);
 		chatContent.setEditable(false);
+		chatContent.setMinHeight(400.00);
+		chatContent.setMaxWidth(290.00);
+		
 		Region spacerC = new Region();
 		spacerC.getStyleClass().add("chatSpacer");
 		chatContent.getStyleClass().add("chatContent");		
