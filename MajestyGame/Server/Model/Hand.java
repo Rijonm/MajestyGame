@@ -104,7 +104,7 @@ public class Hand {
         	 
 		}
 		coins = coins + distributeCoinsCardA(cardID);
-		actuallMeeples();
+		//actuallMeeples();
 	}
 	
 	// Aktuele Handgroesse eines Gebaude 
