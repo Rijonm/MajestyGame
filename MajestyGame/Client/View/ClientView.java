@@ -61,17 +61,17 @@ public class ClientView {
 	public VBox centerStart;
 	public BorderPane spielStartenArea;
 	public ListView<String> lobby;
-	public Button spielstartenB = new Button("Starten");
-	public Button einstellungenB = new Button("Einstellungen");
+	public Button spielstartenB = new Button("Go");
+	public Button einstellungenB = new Button("Settings");
 	public Button highscoreB = new Button("Highscore");
-	public Button spielanleitungB = new Button("Spielanleitung");
+	public Button spielanleitungB = new Button("Rules");
 	public Button logoutB = new Button("Logout");
 	
 	//einstellungenScene
 	public Scene fourthScene; 
-	public Label languageLabel = new Label("Sprache: ");
-	public Label backgroundMusicLabel = new Label("Hintergrundmusik: ");
-	public Label backgroundImageLabel = new Label("Hintergrundbild: ");
+	//public Label languageLabel = new Label("Sprache: ");
+	//public Label backgroundMusicLabel = new Label("Hintergrundmusik: ");
+	//public Label backgroundImageLabel = new Label("Hintergrundbild: ");
 	public Button setupSaveB = new Button("save");
 	
 	public Button enButton = new Button("EN");
@@ -129,7 +129,7 @@ public class ClientView {
 	//ChatArea
 	public TextArea chatContent;
 	public 	TextField chatInput = new TextField();
-	public Button sendButton = new Button("senden");
+	public Button sendButton = new Button("Send");
 	public Label chatinhalt;
 	
 	
@@ -293,13 +293,19 @@ public class ClientView {
 	 * 
 	 * @Author Yusuf
 	 */
-	public Scene setThirdScene() {
+	public Scene setThirdScene(int langInteger) {
 		
 		spielStartenArea = new BorderPane();
 		centerStart = new VBox();
 		centerStart.setAlignment(Pos.CENTER);
 		optionenBox = new HBox();
 		spielStartenArea.setAlignment(centerStart, Pos.CENTER);
+		
+		if(langInteger==1) {
+			spielstartenB.setText("Start");
+			einstellungenB.setText("Einstellungen");
+			spielanleitungB.setText("Spielanleitung");
+		}
 		
 		
 		lobby = new ListView<>(model.getLobbyPlayers());
@@ -325,7 +331,7 @@ public class ClientView {
 		 * 
 		 * @Author Yusuf
 		 */
-	public Scene setFourthScene() {
+	public Scene setFourthScene(int langInteger) {
 		
 		VBox einstellungenArea = new VBox();
 		HBox backGroundBox = new HBox();
@@ -333,15 +339,33 @@ public class ClientView {
 		HBox langBox = new HBox();
 		HBox musicBox = new HBox();
 		
+		Label languageLabel = new Label("Language: ");
+		if(langInteger==1) {
+			languageLabel.setText("Sprache: ");
+		}
+		Label backgroundMusicLabel = new Label("Background-Sound: ");
+		if(langInteger==1) {
+			languageLabel.setText("Hintergrundmusik: ");
+		}
+		Label backgroundImageLabel = new Label("Background-Image: ");
+		if(langInteger==1) {
+			backgroundImageLabel.setText("Hintergrundbild: ");
+		}
+		
 		musicOnButton.getStyleClass().add("setupButtons");
 		musicOffButton.getStyleClass().add("setupButtons");
-		
+		if(langInteger==1) {
+			musicOnButton.setText("AN");
+			musicOffButton.setText("AUS");
+		}
 		bgButton1.getStyleClass().add("bgButton1");
 		bgButton2.getStyleClass().add("bgButton2");
 		bgButton3.getStyleClass().add("bgButton3");
 		
 		setupSaveB.getStyleClass().add("setUpButtons");
-		
+		if(langInteger==1) {
+			setupSaveB.setText("speichern");
+		}
 		
 		langBox.getChildren().addAll(languageLabel,enButton, deButton);
 		backGroundBox.getChildren().addAll( backgroundImageLabel,bgButton1,bgButton2,bgButton3);
@@ -439,7 +463,7 @@ public class ClientView {
 			lblMainTitle.setText("Mein Königreich: ");
 		}
 		Label lblMainName = new Label();
-		lblMainName.setText("xz");
+		//lblMainName.setText("");
 		lblMainName.textProperty().bind(model.myName);
 		lblMainName.getStyleClass().add("playerAreaLbl");
 		
@@ -504,13 +528,22 @@ public class ClientView {
 		
 		//BottomArea
 		HBox bottomArea = new HBox();
-		Label roundCounterTitle = new Label("Gespielte Runden: ");
+		Label roundCounterTitle = new Label("Played rounds: ");
+		if(langInteger==1) {
+			roundCounterTitle.setText("Gespielte Runden: ");
+		}
 		roundCounter = new Label();
 		roundCounter.textProperty().bind(model.round.asString());
-		Label cardCounterTitle = new Label(" Gespielte Karten: ");
+		Label cardCounterTitle = new Label(" Played cards: ");
+		if(langInteger==1) {
+			cardCounterTitle.setText(" Gespielte Karten: ");
+		}
 		cardCounter = new Label();
 		cardCounter.textProperty().bind(model.playedCards.asString());
-		Label usernameTurnTitle = new Label(" An der Reihe: ");
+		Label usernameTurnTitle = new Label(" Whos turn: ");
+		if(langInteger==1) {
+			usernameTurnTitle.setText(" An der Reihe: ");
+		}
 		usernameTurn = new Label();
 		usernameTurn.textProperty().bind(model.turnUsername);
 		bottomArea.getChildren().addAll(roundCounterTitle, roundCounter, cardCounterTitle, cardCounter, usernameTurnTitle, usernameTurn);
@@ -537,7 +570,9 @@ public class ClientView {
 		chatArea.getChildren().addAll(chatTitle, chatContent, spacerC, chatInput, sendButton);
 		chatInput.getStyleClass().add("chatInputTextField");
 		sendButton.getStyleClass().add("sendButton");
-		
+		if(langInteger==1) {
+			sendButton.setText("Senden");
+		}
 
 		centerVbox.setAlignment(Pos.CENTER);
 
@@ -562,7 +597,7 @@ public class ClientView {
 	 * @author ozanf
 	 * 
 	 */
-	public Stage popUpStage() {
+	public Stage popUpStage(int langInteger) {
 		popUpStage = new Stage();
 		
 		popUpBox = new HBox();
@@ -584,6 +619,9 @@ public class ClientView {
 		popUpStage.setResizable(false);
 		popUpStage.getIcons().add(new Image("images/majestyIcon.png"));
 		popUpStage.setTitle("Split Card - Choose one!");
+		if(langInteger==1) {
+			popUpStage.setTitle("Split Card - Waehle eine!");
+		}
 		popUpStage.show();
 		return popUpStage;
 		
@@ -592,12 +630,15 @@ public class ClientView {
 	}
 	
 	//Zu wenig Meeples Scene
-	public Stage notEnoughMeeples() {
+	public Stage notEnoughMeeples(int langInteger) {
 		notEnoughMeeplesStage = new Stage();
 		
 		VBox notEnoughMBox = new VBox();
 		
 		Label notEnoughMLbl = new Label("You don't have enough Meeples!");
+		if(langInteger==1) {
+			notEnoughMLbl.setText("Du hast nicht genuegend Meeples!s");
+		}
 		notEnoughMBox.getStyleClass().add("notEnoughMBox");
 		notEnoughMBox.setAlignment(Pos.CENTER);
 
@@ -611,17 +652,23 @@ public class ClientView {
 		notEnoughMeeplesStage.setResizable(false);
 		notEnoughMeeplesStage.getIcons().add(new Image("images/majestyIcon.png"));
 		notEnoughMeeplesStage.setTitle("Error!");
+		if(langInteger==1) {
+			notEnoughMeeplesStage.setTitle("Fehler!");
+		}
 		notEnoughMeeplesStage.show();
 		return notEnoughMeeplesStage;
 				
 	}
 	
 	//Winner Scene
-	public Stage winnerStage(List<String> winners) {
+	public Stage winnerStage(List<String> winners, int langInteger) {
 		winnerStage = new Stage();
 		winnerBox = new VBox();
 
 		Label staticW = new Label("Winner is: ");
+		if(langInteger==1) {
+			staticW.setText("Der Gewinner ist: ");
+		}
 		ArrayList<String> w = (ArrayList<String>)winners;
 		for(int i = 0; i < winners.size(); i++) {
 			winnerLabel = new Label(w.get(i));
@@ -636,6 +683,9 @@ public class ClientView {
 		
 		winnerStage.getIcons().add(new Image("images/majestyIcon.png"));
 		winnerStage.setTitle("Congratulation!");
+		if(langInteger==1) {
+			winnerStage.setTitle("Gratulation!");
+		}
 		winnerStage.setScene(winnerScene);
 		winnerStage.show();
 		return winnerStage;
@@ -654,7 +704,7 @@ public class ClientView {
 		highscoreListLabel = new Label("placeholder");
 		highscoreArea.setCenter(highscoreListLabel);
 		highscoreArea.setBottom(backToGameScene);
-		
+			
 		sixthScene = new Scene(highscoreArea);
 		sixthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		return sixthScene;

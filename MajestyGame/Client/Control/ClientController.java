@@ -72,7 +72,7 @@ public class ClientController {
 
 				// Message.send(model.socket, loginMessage);
 
-				view.primaryStage.setScene(view.setThirdScene());
+				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
 				view.primaryStage.setFullScreen(false);
 				// primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); //User
 				// Information Text after going fullscreen
@@ -115,7 +115,7 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
-				view.primaryStage.setScene(view.setThirdScene());
+				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
 				view.start();
 			}
 		});
@@ -148,7 +148,7 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 
-				view.primaryStage.setScene(view.setFourthScene());
+				view.primaryStage.setScene(view.setFourthScene(view.langInteger));
 
 			}
 		});
@@ -202,7 +202,7 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 
-				view.primaryStage.setScene(view.setThirdScene());
+				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
 
 			}
 		});
@@ -238,7 +238,7 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 
-				view.primaryStage.setScene(view.setThirdScene());
+				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
 
 			}
 		});
@@ -258,7 +258,7 @@ public class ClientController {
 					model.sendPlayerMoveMessage(0, getIdOfButton);
 				} else {
 					System.out.println("Split Card");
-					view.popUpStage();
+					view.popUpStage(view.langInteger);
 					view.getCardIndexOnButtonOfSplitCard(0, getIdOfButton);
 
 				}
@@ -279,7 +279,7 @@ public class ClientController {
 					} else {
 	
 						System.out.println("Split Card");
-						view.popUpStage();
+						view.popUpStage(view.langInteger);
 						view.getCardIndexOnButtonOfSplitCard(1, getIdOfButton);
 	
 					}
@@ -287,7 +287,7 @@ public class ClientController {
 				}else {
 					// @TODO Yusuf Popup zu wenig meeples
 
-					view.notEnoughMeeples().show();
+					view.notEnoughMeeples(view.langInteger).show();
 				}
 			}
 		});
@@ -303,14 +303,14 @@ public class ClientController {
 						model.sendPlayerMoveMessage(2, getIdOfButton);
 					} else {
 						System.out.println("Split Card");
-						view.popUpStage();
+						view.popUpStage(view.langInteger);
 						view.getCardIndexOnButtonOfSplitCard(2, getIdOfButton);
 	
 					}
 				}else {
 					// @TODO Popup
 
-					view.notEnoughMeeples().show();
+					view.notEnoughMeeples(view.langInteger).show();
 				}
 
 			}
@@ -328,14 +328,14 @@ public class ClientController {
 						model.sendPlayerMoveMessage(3, getIdOfButton);
 					} else {
 						System.out.println("Split Card");
-						view.popUpStage();
+						view.popUpStage(view.langInteger);
 	
 						view.getCardIndexOnButtonOfSplitCard(3, getIdOfButton);
 	
 					}
 				} else {
 					//TODO Yusuf Meldung
-					view.notEnoughMeeples().show();
+					view.notEnoughMeeples(view.langInteger).show();
 				}
 
 			}
@@ -354,13 +354,13 @@ public class ClientController {
 					} else {
 	
 						System.out.println("Split Card");
-						view.popUpStage();
+						view.popUpStage(view.langInteger);
 						view.getCardIndexOnButtonOfSplitCard(4, getIdOfButton);
 		
 					}
 				} else {
 						//TODO Yusuf
-					view.notEnoughMeeples().show();
+					view.notEnoughMeeples(view.langInteger).show();
 				}
 			}
 		});
@@ -378,7 +378,7 @@ public class ClientController {
 					} else {
 	
 						System.out.println("Split Card");
-						view.popUpStage();
+						view.popUpStage(view.langInteger);
 	
 						view.getCardIndexOnButtonOfSplitCard(5, getIdOfButton);
 						
@@ -386,7 +386,7 @@ public class ClientController {
 					}
 				} else {
 					//TODO Yusuf
-					view.notEnoughMeeples().show();
+					view.notEnoughMeeples(view.langInteger).show();
 				}
 
 			}
@@ -448,7 +448,7 @@ public class ClientController {
 			// LOGIN SUCCESS
 			if (c.toString().contains("SUCCESS")) {
 				model.myName.set(view.userNameLogin.getText());
-				view.primaryStage.setScene(view.setThirdScene());
+				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
 				view.start();
 			}
 		});
@@ -539,7 +539,7 @@ public class ClientController {
 		});
 		
 		model.winners.addListener((ListChangeListener<String>) c -> {
-			view.winnerStage(model.winnerList);
+			view.winnerStage(model.winnerList, view.langInteger);
 
 		});
 		
