@@ -156,6 +156,18 @@
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/inside2.jpg);		
 }
+.bg1Button{
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside.jpg);		
+}
+.bg2Button{
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside1.jpg);		
+}
+.bg3Button{
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside3.jpg);		
+}
 .personDeck{
 	-fx-padding: 20 0;
 }
