@@ -81,6 +81,7 @@ public class ClientModel {
 	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name,
 																							// coins, meeples, hand,
 																							// wonOrLose
+	public ArrayList<String> winnerList = new ArrayList<>();
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	public ObservableList<Integer> meeples = FXCollections.observableArrayList();
 
@@ -211,14 +212,10 @@ public class ClientModel {
 	
 	private void receivedWinnerMessage(Message msg) {
 		WinnerMessage wm = (WinnerMessage) msg;
+		winnerList = (ArrayList<String>) wm.getPlayers();
 		ArrayList<String> winners = (ArrayList<String>) wm.getPlayers();
-		for(String s : winners) {
-			if(s == myName.getValue()) {
-				winners.add(s);
-			}else {
-				System.out.println("looser");
-			}
-		}
+		System.out.println("WINNER: " + winnerList);
+		this.winners.setAll(winnerList);
 		
 	}
 	

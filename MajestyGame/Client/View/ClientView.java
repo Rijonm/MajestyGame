@@ -2,6 +2,7 @@ package View;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Model.ClientModel;
 import javafx.geometry.Pos;
@@ -104,6 +105,7 @@ public class ClientView {
 	public Label cardCounter;
 	public Label usernameTurn;
 	public ArrayList<Label> lblMainMeeplesCardArrayList = new ArrayList<>();
+	public Label lblMainMeeplesCard;
 	
 	
 	
@@ -143,6 +145,13 @@ public class ClientView {
 	public Scene popUpScene;
 	public VBox popUpBox;
 	public Button pb1, pb2;
+	
+	
+	//Winner Stage
+	public Stage winnerStage;
+	public Scene winnerScene;
+	public VBox winnerBox;
+	public Label winnerLabel;
 	
 	//connectScene
 	/**
@@ -396,7 +405,7 @@ public class ClientView {
 		
 		Label lblMainMeeples = new Label();
 		lblMainMeeples.textProperty().bind(model.myMeeples.asString());
-		Label lblMainMeeplesCard = new Label("m");
+		lblMainMeeplesCard = new Label();
 		//lblMainMeeples.textProperty().bind(model.opponentPlayers.get(0).meeples.asString());
 		lblMainMeeples.getStyleClass().add("playerAreaLbl");
 		System.out.println("meeplesCard-"+lblMainMeeples.getText());
@@ -515,6 +524,26 @@ public class ClientView {
 		
 	}
 	
+	
+	//Winner Scene
+	public Stage winnerStage(List<String> winners) {
+		winnerStage = new Stage();
+		winnerBox = new VBox();
+
+		Label staticW = new Label("Winner is: ");
+		ArrayList<String> w = (ArrayList<String>)winners;
+		for(int i = 0; i < winners.size(); i++) {
+			
+			winnerLabel = new Label(w.get(i));
+		}
+		
+		winnerBox.getChildren().addAll(staticW, winnerLabel);
+		winnerScene = new Scene(winnerBox,100,100);
+		winnerScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		winnerStage.setScene(winnerScene);
+		winnerStage.show();
+		return winnerStage;
+	}
 	
 	
 	//einstellungenScene

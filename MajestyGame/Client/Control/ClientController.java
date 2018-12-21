@@ -1395,7 +1395,9 @@ public class ClientController {
 				int b = model.opponentPlayers.get(a).meeples.intValue();
 				view.lblMainMeeplesCardArrayList.get(a).getStyleClass().clear();
 				view.lblMainMeeplesCardArrayList.get(a).getStyleClass().addAll("meeplesCard", "meeplesCard-"+ b);
-				};
+			};
+			view.lblMainMeeplesCard.getStyleClass().clear();
+			view.lblMainMeeplesCard.getStyleClass().addAll("meeplesCard", "meeplesCard-"+ model.myMeeples.getValue());
 
 		});
 
@@ -1438,10 +1440,8 @@ public class ClientController {
 		});
 		
 		model.winners.addListener((ListChangeListener<String>) c -> {
-			for(String s : model.winners) {
-				
-			}
-			
+			view.winnerStage(model.winnerList);
+
 		});
 	}
 		
