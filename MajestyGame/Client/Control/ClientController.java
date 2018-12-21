@@ -173,7 +173,7 @@ public class ClientController {
 		view.logoutB.setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
-
+				model.sendLogoutMessage();
 				view.primaryStage.setScene(view.firstScene);
 			}
 		});

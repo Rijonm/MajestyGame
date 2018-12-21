@@ -30,6 +30,7 @@ import CommonClasses.PlayerMoveMessage;
 import CommonClasses.PlayerStatesMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
+import CommonClasses.UserLogout;
 import CommonClasses.UserRegisterMessage;
 import CommonClasses.WinnerMessage;
 import javafx.application.Platform;
@@ -481,6 +482,11 @@ public class ClientModel {
 	}
 
 	public void sendLogoutMessage() {
+		// send effective logout for database logout
+		Message userLogout = new UserLogout(this.id);
+		send(userLogout);
+		
+		// notify other players that player has logged out (for checking if it was opponent player or not)
 		Message logoutMessage = new OtherPlayerLoggedOutMessage(this.id);
 		send(logoutMessage);
 	}
