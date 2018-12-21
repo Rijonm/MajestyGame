@@ -421,6 +421,17 @@ public class Game  {
 				winners.add(c.getUsername());
 			}
 		}
+		for(Client c : model.clients) {
+			int idc = c.getId();
+			Integer[] playerHandArray = c.getHand().hand;
+			int coins = c.getHand().coins;
+			int meeples = c.getHand().meeples;
+			model.db.setHighscore(idc, coins);
+			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, meeples, coins);
+			System.out.println(Arrays.toString(playerHandArray));
+			model.broatcastToPlayerInGame(psm);
+		}
+		
 		model.broatcastToPlayerInGame(wm);
 	
 	

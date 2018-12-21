@@ -175,7 +175,7 @@ public class ClientView {
 		for (int i = 0; i < 6; i++) {
 //			Random r1 = new Random();
 //			int rn = r1.nextInt(6);
-			Label m = new Label("Meeple");
+			Label m = new Label();
 			meeplesDeck[i] = m;
 			
 			Button b = new Button("b"+i);
@@ -451,10 +451,12 @@ public class ClientView {
 		for (int i = 0; i < 6; i++) {
 			VBox personBox = new VBox();
 			Label m = meeplesDeck[i];
+			//m.getStyleClass().add("meeplesCounter");
+			System.out.println("MEEPLES COUNTER"+i);
 			m.setMinHeight(25);
 			Button b = buttons[i];
 			b.setDisable(true);
-			b.setMinHeight(324);
+			b.setMinHeight(243);
 			personBox.getChildren().addAll(b, m);
 			personDeck.getChildren().add(personBox);
 		}
@@ -550,14 +552,14 @@ public class ClientView {
 		pb1 = new Button();
 		pb2 = new Button();
 		
-		pb1.setMinHeight(324);
-		pb2.setMinHeight(324);
+		pb1.setMinHeight(243);
+		pb2.setMinHeight(243);
 		pb1.getStyleClass().addAll("splitCard", "splitCard1");
 		pb2.getStyleClass().addAll("splitCard", "splitCard2");
 		
-		
+		popUpBox.getStyleClass().add("popUpBox");
 		popUpBox.getChildren().addAll(pb1, pb2);
-		popUpScene = new Scene(popUpBox,400,324);
+		popUpScene = new Scene(popUpBox,300,243);
 		popUpScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		popUpStage.setScene(popUpScene);
