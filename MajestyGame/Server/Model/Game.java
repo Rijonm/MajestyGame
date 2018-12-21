@@ -153,7 +153,7 @@ public class Game  {
 					c.getHand().meeples = c.getHand().meeples - 5;
 				}
 			}
-			meeples[2] = 0;
+			meeples[5] = 0;
 			break;
 			
 		}
