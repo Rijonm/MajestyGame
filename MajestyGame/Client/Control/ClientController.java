@@ -14,6 +14,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -471,7 +472,16 @@ public class ClientController {
 				int i = 0;
 				for (Label l : view.meeplesDeck) {
 					l.setText(Integer.toString(c.getList().get(i)));
-					l.setTextFill(Color.web("#FFFFFF"));
+					//l.setTextFill(Color.web("#FFFFFF"));
+					if(c.getList().get(i)!=0) {
+						
+						l.getStyleClass().add("meeplesCounter");
+					} 
+					if(c.getList().get(i)==0) {
+						
+						l.getStyleClass().clear();
+					} 
+					l.setAlignment(Pos.CENTER);
 					i++;
 				}
 			});
