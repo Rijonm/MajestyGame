@@ -202,6 +202,7 @@ public class Hand {
 	        	break;  	
 		}
 			return disCoins;
+			
 		}
 		
 		// falls ein Spieler angegriffen wird, die 1. von Links ins Lazarett abgelegt, falls 1. 0 sein sollte, wird 

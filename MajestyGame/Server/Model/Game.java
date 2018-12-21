@@ -157,7 +157,6 @@ public class Game  {
 			break;
 			
 		}
-		System.out.println(Arrays.toString(meeples) + "MEEPLES SERVER");
 		
 		//RUNDE
 		playedCards++;
@@ -184,7 +183,6 @@ public class Game  {
 		for (Client p : model.clients){ //handelt die Hand des Clients, der gespielt hat.
 			if(p.getId()==id) {
 				p.getHand().playerChoose(cardID); //übergibt die id der gewählten Karte beim jeweiligen spieler
-				System.out.println(Arrays.toString(p.getHand().hand) + " HAAAND");
 			}
 		}
 		
@@ -222,7 +220,6 @@ public class Game  {
 			int coins = c.getHand().coins;
 			int meeples = c.getHand().meeples;
 			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, meeples, coins);
-			System.out.println(Arrays.toString(playerHandArray));
 			model.broatcastToPlayerInGame(psm);
 		}
 		
@@ -230,7 +227,6 @@ public class Game  {
 		deckA.playerMove(pos);
 		Integer[] openCardsArray = deckA.openCards.toArray(new Integer[deckA.openCards.size()]);
 		Integer[] openMeeples = meeples.clone();
-		System.out.println(Arrays.toString(meeples) + "Meeples bevor gsendet werden");
 		InformationFromServerMessage ifsm = new InformationFromServerMessage(openCardsArray, openMeeples);
 		model.broatcastToPlayerInGame(ifsm);
 		
@@ -428,7 +424,6 @@ public class Game  {
 			int meeples = c.getHand().meeples;
 			model.db.setHighscore(idc, coins);
 			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, meeples, coins);
-			System.out.println(Arrays.toString(playerHandArray));
 			model.broatcastToPlayerInGame(psm);
 		}
 		
