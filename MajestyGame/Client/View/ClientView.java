@@ -70,23 +70,16 @@ public class ClientView {
 	
 	//einstellungenScene
 	public Scene fourthScene; 
-	//public Label languageLabel = new Label("Sprache: ");
-	//public Label backgroundMusicLabel = new Label("Hintergrundmusik: ");
-	//public Label backgroundImageLabel = new Label("Hintergrundbild: ");
 	public Button setupSaveB = new Button("save");
 	
 	public Button enButton = new Button("EN");
 	public Button deButton = new Button("DE");
 	
-	public Button bgButton1 = new Button();
-	public Button bgButton2 = new Button();
-	public Button bgButton3 = new Button();
+	public Button bgButton1 = new Button("1");
+	public Button bgButton2 = new Button("2");
+	public Button bgButton3 = new Button("3");
 	
-	public Button musicOnButton = new Button("ON");
-	public Button musicOffButton = new Button("OFF");
 	public int langInteger = 0;  //default EN
-	
-	
 	
 	//gameScene
 	public Scene fifthScene; 
@@ -102,13 +95,7 @@ public class ClientView {
 	public Button[] buttons = new Button[6];
 	public Label[] meeplesDeck = new Label[6];
 	public Label buildingCounter;
-	//public Label ebCounter;
-//	public Button b1 = new Button("b1");
-//	public Button b2 = new Button("b2");
-//	public Button b3 = new Button("b3");
-//	public Button b4 = new Button("b4");
-//	public Button b5 = new Button("b5");
-//	public Button b6 = new Button("b6");
+
 	public VBox centerVbox, leftPlace, leftVbox, leftMainBox, rightVbox;
 	
 	public Label roundCounter;
@@ -116,8 +103,6 @@ public class ClientView {
 	public Label usernameTurn;
 	public ArrayList<Label> lblMainMeeplesCardArrayList = new ArrayList<>();
 	public Label lblMainMeeplesCard;
-	
-	
 	
 	//enemyDeck
 	public int ANZAHL_GEGNER = 0;
@@ -129,20 +114,18 @@ public class ClientView {
 	public Button sendButton = new Button("Send");
 	public Label chatinhalt;
 	
-	
 	//highscoreScene
 	public Scene sixthScene;
 	public BorderPane highscoreArea;
 	public Label highscoreListLabel;
 
-	
 	//spielanleitungScene
 	public Scene seventhScene;
 	public BorderPane rulesArea;
 	private VBox rulesBox;
 	public Label rulesLabel;
 		
-	public Button backToGameScene = new Button("Zurück");
+	public Button backToGameScene = new Button("Back");
 
 	
 	//PopUp for SplitCards 
@@ -150,17 +133,14 @@ public class ClientView {
 	 * @author ozanf
 	 * 
 	 */
-	
 	public Stage popUpStage;
 	public Scene popUpScene;
 	public HBox popUpBox;
 	public Button pb1, pb2;
 	
-	
 	//Not Enough Meeples Stage
 	public Stage notEnoughMeeplesStage;
 	public Button closeNotEnoughM = new Button("OK");
-	
 	
 	//Winner Stage
 	public Stage winnerStage;
@@ -343,6 +323,7 @@ public class ClientView {
 	public Scene setFourthScene(int langInteger) {
 		
 		VBox einstellungenArea = new VBox();
+		einstellungenArea.setId("einstellungenArea");
 		HBox backGroundBox = new HBox();
 		
 		HBox langBox = new HBox();
@@ -354,29 +335,15 @@ public class ClientView {
 		}else {
 			languageLabel.setText("Language: ");
 		}
-		Label backgroundMusicLabel = new Label("Sound: ");
-		if(langInteger==1) {
-			backgroundMusicLabel.setText("Musik: ");
-		}else {
-			backgroundMusicLabel.setText("Sound: ");
-		}
+
 		Label backgroundImageLabel = new Label("Background-Image: ");
 		if(langInteger==1) {
 			backgroundImageLabel.setText("Hintergrundbild: ");
 		}else {
-			backgroundImageLabel.setText("background-Image: ");
+			backgroundImageLabel.setText("Background-Image: ");
 		}
 		
-		musicOnButton.getStyleClass().add("setupButtons");
-		musicOffButton.getStyleClass().add("setupButtons");
-		if(langInteger==1) {
-			musicOnButton.setText("AN");
-			musicOffButton.setText("AUS");
-		}else {
-			musicOnButton.setText("ON");
-			musicOffButton.setText("OFF");
-		}
-		bgButton1.getStyleClass().add("bgButton1");
+		bgButton1.getStyleClass().addAll("selectedBUTTON", "bgButton1");
 		bgButton1.setMinHeight(62);
 		bgButton2.getStyleClass().add("bgButton2");
 		bgButton2.setMinHeight(62);
@@ -391,7 +358,6 @@ public class ClientView {
 		
 		langBox.getChildren().addAll(languageLabel,enButton, deButton);
 		backGroundBox.getChildren().addAll( backgroundImageLabel,bgButton1,bgButton2,bgButton3);
-		musicBox.getChildren().addAll(backgroundMusicLabel,musicOnButton, musicOffButton);
 		
 		
 		einstellungenArea.getChildren().addAll(langBox,backGroundBox, musicBox,setupSaveB);
@@ -778,6 +744,12 @@ public class ClientView {
 		highscoreListLabel = new Label("placeholder");
 		highscoreArea.setCenter(highscoreListLabel);
 		highscoreArea.setBottom(backToGameScene);
+		
+		if(langInteger==1) {
+			backToGameScene.setText("Zurück");
+		} else {
+			backToGameScene.setText("Back");
+		}
 			
 		sixthScene = new Scene(highscoreArea);
 		sixthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
@@ -963,13 +935,35 @@ public class ClientView {
 	 * 
 	 * @Author Yusuf
 	 */
-	public Scene setSeventhScene() {
+	public Scene setSeventhScene(int langInteger) {
 		
 		rulesArea = new BorderPane();
 		rulesBox = new VBox();
+		rulesBox.setId("rulesBox");
 		rulesLabel  = new Label("Rules");
+		TextArea rulesTextArea = new TextArea();
+		rulesTextArea.setText("Let's just briefly summarize what you need to do at Majesty's:\r\n" + 
+				"1. you must always take one of the people on display and connect it to the corresponding building of your\r\n" + 
+				"of the kingdom.\r\n" + 
+				"2nd This person may trigger a special action, and always brings you a few coins.\r\n" + 
+				"3. do the whole thing in turn until each player has 12 people in his kingdom.\r\n" + 
+				"4. you go through the final score piece by piece.\r\n" + 
+				"5. the winner may put on a crown.\r\n" + 
+				"\r\n" + 
+				"Translated with www.DeepL.com/Translator");
+		if(langInteger==1) {
+			rulesLabel.setText("Regeln: ");
+			rulesTextArea.setText(
+				"Fassen wir noch einmal kurz zusammen, was du bei Majesty machen musst:\r\n" + 
+				"1. Du musst immer eine der ausliegenden Personen nehmen und an das zugehörige Gebäude deines\r\n" + 
+				"Königreichs legen.\r\n" + 
+				"2. Diese Person löst eventuell eine Sonderaktion aus, und bringt dir immer ein paar Münzen.\r\n" + 
+				"3. Das Ganze macht ihr reihum so lange bis jeder Spieler 12 Personen in seinem Königreich liegen hat.\r\n" + 
+				"4. Ihr geht die Schlusswertung Stück für Stück durch.\r\n" + 
+				"5. Der Gewinner darf sich eine Krone aufsetzen.");
+		}
 		
-		rulesBox.getChildren().add(rulesLabel);
+		rulesBox.getChildren().addAll(rulesLabel, rulesTextArea);
 
 		rulesArea.setCenter(rulesBox);
 		rulesArea.setBottom(backToGameScene);

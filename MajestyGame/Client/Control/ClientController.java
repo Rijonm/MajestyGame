@@ -72,7 +72,7 @@ public class ClientController {
 
 				// Message.send(model.socket, loginMessage);
 
-				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
+				//view.primaryStage.setScene(view.setThirdScene(view.langInteger));
 				view.primaryStage.setFullScreen(false);
 				// primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); //User
 				// Information Text after going fullscreen
@@ -89,10 +89,6 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 
 				view.primaryStage.setScene(view.setSecondScene());
-				view.primaryStage.setFullScreen(false);
-				// primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); //User
-				// Information Text after going fullscreen
-				view.primaryStage.setResizable(false);
 				view.primaryStage.getIcons().add(new Image("images/majestyIcon.png"));
 				view.primaryStage.setTitle("Majesty Group");
 				view.start();
@@ -158,8 +154,13 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				view.gameArea = new BorderPane();
 				view.gameArea.getStyleClass().clear();
+				view.bgButton2.getStyleClass().clear();
+				view.bgButton3.getStyleClass().clear();
+				
+				view.bgButton2.getStyleClass().addAll("button", "bgButton2");
+				view.bgButton3.getStyleClass().addAll("button", "bgButton3");
+				view.bgButton1.getStyleClass().add("selectedBUTTON");
 				view.backGround = "gameArea";
-				System.out.println("hhh");
 				
 			}
 		});
@@ -169,8 +170,13 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				view.gameArea = new BorderPane();
 				view.gameArea.getStyleClass().clear();
+				view.bgButton3.getStyleClass().clear();
+				view.bgButton1.getStyleClass().clear();
+				
+				view.bgButton1.getStyleClass().addAll("button", "bgButton1");
+				view.bgButton3.getStyleClass().addAll("button", "bgButton3");
+				view.bgButton2.getStyleClass().add("selectedBUTTON");
 				view.backGround = "gameArea2";
-				System.out.println("lll");
 				
 			}
 		});
@@ -180,9 +186,13 @@ public class ClientController {
 			public void handle(ActionEvent event) {
 				view.gameArea = new BorderPane();
 				view.gameArea.getStyleClass().clear();
+				view.bgButton2.getStyleClass().clear();
+				view.bgButton1.getStyleClass().clear();
+				view.bgButton2.getStyleClass().addAll("button", "bgButton2");
+				view.bgButton1.getStyleClass().addAll("button", "bgButton1");
+				view.bgButton3.getStyleClass().add("selectedBUTTON");
 				view.backGround = "gameArea3"; 
-				view.gameArea.getStyleClass().add(view.backGround);
-				System.out.println("kkk" + view.backGround);
+				//view.gameArea.getStyleClass().add(view.backGround);
 				
 			}
 		});
@@ -190,11 +200,20 @@ public class ClientController {
 		view.deButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				view.langInteger = 1;
+				view.deButton.getStyleClass().clear();
+				view.enButton.getStyleClass().clear();
+				view.enButton.getStyleClass().add("button");
+				view.deButton.getStyleClass().addAll("button", "selectedBUTTON");				
 			}
 		});
 		view.enButton.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				view.langInteger = 0;
+				view.enButton.getStyleClass().clear();
+				view.deButton.getStyleClass().clear();
+				view.deButton.getStyleClass().add("button");
+				view.enButton.getStyleClass().addAll("button", "selectedBUTTON");
+				
 			}
 		});
 
@@ -213,7 +232,6 @@ public class ClientController {
 
 				model.sendGetHighscoresMessage();
 				view.primaryStage.setScene(view.setSixthScene());
-
 			}
 		});
 
@@ -229,7 +247,7 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 
-				view.primaryStage.setScene(view.setSeventhScene());
+				view.primaryStage.setScene(view.setSeventhScene(view.langInteger));
 
 			}
 		});

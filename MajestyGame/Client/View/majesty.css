@@ -260,6 +260,12 @@
 .bd1{
 	-fx-background-image: url(/images/bdC1.jpg);		
 }
+#einstellungenArea{
+	-fx-padding: 20;
+}
+#rulesArea{
+	-fx-padding: 20;
+}
 .notEnoughMBox{
 	-fx-padding:10;
 	-fx-background-size: cover;
@@ -271,11 +277,27 @@
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/inside.jpg);		
 }
+.bg1Button:hover{
+	-fx-border-width: 2;
+	-fx-border-color: red;
+}
+.bg2Button:hover{
+	-fx-border-width: 2;
+	-fx-border-color: red;
+}
+.bg3Button:hover{
+	-fx-border-width: 2;
+	-fx-border-color: red;
+}
 .bg2Button{
 	-fx-min-width: 100;
 	-fx-max-width: 100;
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/inside2.jpg);		
+}
+.selectedBUTTON{
+	-fx-border-color: red;
+    -fx-border-width: 5;
 }
 .bg3Button{
 	-fx-min-width: 100;
