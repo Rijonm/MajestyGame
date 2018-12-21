@@ -481,7 +481,6 @@ public class ClientController {
 						
 						l.getStyleClass().clear();
 					} 
-					l.setAlignment(Pos.CENTER);
 					i++;
 				}
 			});
