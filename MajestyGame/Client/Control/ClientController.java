@@ -201,7 +201,7 @@ public class ClientController {
 		// @author Yusuf Or & Ozan Firat
 
 		view.buttons[0].setOnAction(new EventHandler<ActionEvent>() {
-
+			
 			public void handle(ActionEvent event) {
 				System.out.println("b0");
 				int getIdOfButton = model.deck.get(0);
@@ -219,8 +219,9 @@ public class ClientController {
 		});
 
 		view.buttons[1].setOnAction(new EventHandler<ActionEvent>() {
-
+			
 			public void handle(ActionEvent event) {
+				if(model.myMeeples.getValue()>0) {
 				int getIdOfButton = model.deck.get(1);
 				System.out.println("b1");
 
@@ -235,12 +236,16 @@ public class ClientController {
 
 				}
 
+			}else {
+				// @TODO Yusuf Popup zu wenig meeples
+			}
 			}
 		});
 
 		view.buttons[2].setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
+				if(model.myMeeples.getValue()>1) {
 				int getIdOfButton = model.deck.get(2);
 
 				System.out.println("b2");
@@ -252,6 +257,9 @@ public class ClientController {
 					view.getCardIndexOnButtonOfSplitCard(2, getIdOfButton);
 
 				}
+			}else {
+				// @TODO Popup
+			}
 
 			}
 		});
@@ -259,6 +267,7 @@ public class ClientController {
 		view.buttons[3].setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
+				if(model.myMeeples.getValue()>2) {
 				int getIdOfButton = model.deck.get(3);
 
 				System.out.println("b3");				
@@ -272,13 +281,17 @@ public class ClientController {
 					view.getCardIndexOnButtonOfSplitCard(3, getIdOfButton);
 
 				}
+				} else {
+					//TODO Yusuf Meldung
+				}
 
 			}
 		});
 
 		view.buttons[4].setOnAction(new EventHandler<ActionEvent>() {
-
+			
 			public void handle(ActionEvent event) {
+				if(model.myMeeples.getValue()>3) {
 				int getIdOfButton = model.deck.get(4);
 
 
@@ -297,13 +310,16 @@ public class ClientController {
 
 
 				}
-
+				}else {
+					//TODO Yusuf
+				}
 			}
 		});
 
 		view.buttons[5].setOnAction(new EventHandler<ActionEvent>() {
 
 			public void handle(ActionEvent event) {
+				if(model.myMeeples.getValue()>4) {
 				int getIdOfButton = model.deck.get(5);
 
 				System.out.println("b5");
@@ -318,6 +334,9 @@ public class ClientController {
 					view.getCardIndexOnButtonOfSplitCard(5, getIdOfButton);
 					
 
+				}
+				}else {
+					//TODO Yusuf
 				}
 
 			}
