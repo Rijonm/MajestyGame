@@ -144,6 +144,14 @@ public class Hand {
         	this.coins = coins +7;
         	this.meeples = meeples-7;
         	break;
+        case 13:
+        	this.coins = coins +8;
+        	this.meeples = meeples-8;
+        	break;
+        case 14:
+        	this.coins = coins +9;
+        	this.meeples = meeples-9;
+        	break;
         default:
 		meeples = meeples;
 	}
