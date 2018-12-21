@@ -69,8 +69,6 @@ public class ClientView {
 	
 	//einstellungenScene
 	public Scene fourthScene; 
-	public BorderPane einstellungenArea;
-	private VBox setupBox;
 	public Label languageLabel = new Label("Sprache: ");
 	public Label backgroundMusicLabel = new Label("Hintergrundmusik: ");
 	public Label backgroundImageLabel = new Label("Hintergrundbild: ");
@@ -311,12 +309,39 @@ public class ClientView {
 		 */
 	public Scene setFourthScene() {
 		
-		einstellungenArea = new BorderPane();
-		setupBox = new VBox();
+		VBox einstellungenArea = new VBox();
+		HBox backGroundBox = new HBox();
+		
+		HBox langBox = new HBox();
+		HBox musicBox = new HBox();
+		
+		Button enButton = new Button("EN");
+		Button deButton = new Button("DE");
+		
+		Button bgButton1 = new Button();
+		Button bgButton2 = new Button();
+		Button bgButton3 = new Button();
+		
+		Button musicOnButton = new Button("ON");
+		Button musicOffButton = new Button("OFF");
 		
 		
-		setupBox.getChildren().addAll(languageLabel, backgroundMusicLabel, backgroundImageLabel, setupSaveB);
-		einstellungenArea.setCenter(setupBox);
+		musicOnButton.getStyleClass().add("setupButtons");
+		musicOffButton.getStyleClass().add("setupButtons");
+		
+		bgButton1.getStyleClass().add("bgButton1");
+		bgButton2.getStyleClass().add("bgButton2");
+		bgButton3.getStyleClass().add("bgButton3");
+		
+		setupSaveB.getStyleClass().add("setUpButtons");
+		
+		
+		langBox.getChildren().addAll(languageLabel,enButton, deButton);
+		backGroundBox.getChildren().addAll( backgroundImageLabel,bgButton1,bgButton2,bgButton3);
+		musicBox.getChildren().addAll(backgroundMusicLabel,musicOnButton, musicOffButton);
+		
+		
+		einstellungenArea.getChildren().addAll(langBox,backGroundBox, musicBox,setupSaveB);
 		
 		fourthScene = new Scene(einstellungenArea);
 		fourthScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
