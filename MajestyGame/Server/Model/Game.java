@@ -429,6 +429,7 @@ public class Game  {
 			Integer[] playerHandArray = c.getHand().hand;
 			int coins = c.getHand().coins;
 			int meeples = c.getHand().meeples;
+			model.db.setHighscore(idc, coins);
 			PlayerStatesMessage psm = new PlayerStatesMessage(idc, playerHandArray, meeples, coins);
 			System.out.println(Arrays.toString(playerHandArray));
 			model.broatcastToPlayerInGame(psm);
