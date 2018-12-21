@@ -383,8 +383,12 @@ public class ClientView {
 					//ov.lAr[j].setText(""+model.opponentPlayers.get(i).hand.get(j));
 					ov.lAr[j].textProperty().bind(model.opponentPlayers.get(i).hand.get(j).asString());
 				}
+			Region spacerB = new Region();
+			
+			VBox.setVgrow(spacerB, Priority.ALWAYS);
+			spacerB.setMinHeight(20);
 			opponentArrayList.add(ov);
-			enemyPlace.getChildren().addAll(lp, ov);
+			enemyPlace.getChildren().addAll(lp, ov, spacerB);
 			enemyArea.getChildren().add(enemyPlace);
 			enemyArea.setAlignment(Pos.CENTER);
 		}
@@ -451,9 +455,7 @@ public class ClientView {
 		for (int i = 0; i < 6; i++) {
 			VBox personBox = new VBox();
 			Label m = meeplesDeck[i];
-			//m.getStyleClass().add("meeplesCounter");
-			System.out.println("MEEPLES COUNTER"+i);
-			m.setMinHeight(25);
+			m.setMinHeight(20);
 			Button b = buttons[i];
 			b.setDisable(true);
 			b.setMinHeight(243);
@@ -582,12 +584,13 @@ public class ClientView {
 		Label staticW = new Label("Winner is: ");
 		ArrayList<String> w = (ArrayList<String>)winners;
 		for(int i = 0; i < winners.size(); i++) {
-			
 			winnerLabel = new Label(w.get(i));
+			winnerLabel.getStyleClass().add("winnerLabel");
 		}
 		
 		winnerBox.getChildren().addAll(staticW, winnerLabel);
-		winnerScene = new Scene(winnerBox,100,100);
+		winnerBox.getStyleClass().add("winnerBox");
+		winnerScene = new Scene(winnerBox,300,200);
 		winnerScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		winnerStage.getIcons().add(new Image("images/majestyIcon.png"));
