@@ -170,6 +170,7 @@ public class ClientView {
 	public Scene winnerScene;
 	public VBox winnerBox;
 	public Label winnerLabel;
+	public Button buttonBackToStart = new Button("back");
 	
 	//connectScene
 	/**
@@ -674,7 +675,9 @@ public class ClientView {
 			winnerLabel = new Label(w.get(i));
 			winnerLabel.getStyleClass().add("winnerLabel");
 		}
-		
+		if(langInteger==1) {
+			buttonBackToStart.setText("zurueck");
+		}
 		winnerBox.getChildren().addAll(staticW, winnerLabel);
 		winnerBox.getStyleClass().add("winnerBox");
 		winnerBox.setAlignment(Pos.CENTER);

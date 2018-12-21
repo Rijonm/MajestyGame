@@ -398,6 +398,12 @@ public class ClientController {
 			}
 			
 		});
+		view.buttonBackToStart.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
+			}
+			
+		});
 
 		// -------------------------
 		/**
