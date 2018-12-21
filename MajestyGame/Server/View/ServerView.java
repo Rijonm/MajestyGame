@@ -9,6 +9,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
+//@ Rijon
 public class ServerView {
 	
 	public Stage primaryStage;
@@ -53,7 +55,7 @@ public class ServerView {
 		
 	}
 	
-	
+	//@author Rijon
 	public Scene setServerScene() {
 		
 		serverPane = new BorderPane();

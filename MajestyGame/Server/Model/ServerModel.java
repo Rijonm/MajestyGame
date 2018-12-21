@@ -14,6 +14,8 @@ import javafx.collections.ObservableList;
  * Server wird gestartet.
  * @author Rijon
  */
+
+
 public class ServerModel {
 
 	public ServerSocket serverSocket;

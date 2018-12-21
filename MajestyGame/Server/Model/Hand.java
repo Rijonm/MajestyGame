@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-//@ Mert Emek
+//@author Mert Emek
 
 public class Hand {
 	
@@ -11,7 +11,7 @@ public class Hand {
 	public int coins;
 	public int meeples = 5; //!
 	
-	
+	//@author Mert Emek
 	Card cardBrewer = new CardBrewer();
 	Card cardDefense = new CardDefense();
 	Card cardFarmer = new CardFarmer();
@@ -20,7 +20,7 @@ public class Hand {
 	Card cardWitch = new CardWitch();
 	Card cardTavern = new CardTavern();
 	
-	
+	//@author Mert Emek
 	// Gebaude Karten
 	public static ArrayList<Card> Brewer = new ArrayList <>();
 	public static ArrayList<Card> Defense = new ArrayList <>();
@@ -38,6 +38,7 @@ public class Hand {
 		coins = 0;
 	}
 	
+	//@author Mert Emek
 	// Mit dieser Methode erhaelt mann die Karten anzahl im Hand
 	public int[] getPlayerCards() {
 	handSize[0] = Farmer.size();
@@ -52,7 +53,7 @@ public class Hand {
 	}
 	
 	
-	
+	//@author Mert Emek
 	// Diese Methode wird ausgeführt, wenn der Spieler auf ein Button im Deck klickt
 	public void playerChoose(int cardID) {
 		int i = cardID;
@@ -106,12 +107,13 @@ public class Hand {
 		coins = coins + distributeCoinsCardA(cardID);
 		actuallMeeples();
 	}
-	
+	//@author Mert Emek
 	// Aktuele Handgroesse eines Gebaude 
 	public int getHandSize(int cardID) {
 		int actuallHandSize = hand[cardID];
 		return actuallHandSize;
 	}
+	//@author Mert Emek
 	// falls der Spieler mehr als Meeples hat, setzt es zurueck auf 5 meeples und verteilt dementsprechen Coins
 	// 1 Meeple = 1 Coin
 	public void actuallMeeples() {
@@ -157,6 +159,7 @@ public class Hand {
 	}
 		this.meeples = meeples;
 	}
+	//@author Mert Emek
 	// Verteilt die Coins bei gezogener Karte
 		public  int distributeCoinsCardA(int cardID) {
 			int handSize = getHandSize(cardID);
@@ -205,6 +208,7 @@ public class Hand {
 			
 		}
 		
+		//@author Mert Emek
 		// falls ein Spieler angegriffen wird, die 1. von Links ins Lazarett abgelegt, falls 1. 0 sein sollte, wird 
 		// 2. in Lazarett abgelegt usw.
 		public void setToLazarett(int Ordinal) {
@@ -239,8 +243,8 @@ public class Hand {
 	        	break;   
 			}
 		}
-		
-// Falls Hexe gezogen und Karte im Lazarett vorhanden wird die Karte vom Lazarett zurpck zur Gebäudekarte gelegt		
+		//@author Mert Emek
+		// Falls Hexe gezogen und Karte im Lazarett vorhanden wird die Karte vom Lazarett zurpck zur Gebäudekarte gelegt		
 		public void healingLazarett() {
         	int s = hand[7];      	// Lazarett Handgrösse
         	Card c = Lazarett.get(s-1); // Lazarett die letzte Karte die abgelegt ist in Cards einfügen

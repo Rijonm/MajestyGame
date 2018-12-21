@@ -28,7 +28,7 @@ import java.util.Random;
 
 
 
-//@ Mert Emek
+//@author Mert Emek
 
 public class DeckA {
 	
@@ -57,12 +57,13 @@ public class DeckA {
 		cards[cardID] = cards[cardID]-1; //Nachdem Karte gewählt wird, wird 1 Karte abgezogen.
 		return cardID;
 	}
+	//@author Mert Emek
 	//openCards muss jedesmal bei einem SpielerZug entsprechend angepasst werden
 	public void playerMove(int pos) {
 		openCards.remove(pos); //Löscht gezogene Karte aus openCards
 		openCards.add(getCard()); // Fügt eine neue Karte ein.
 	}
-	
+	//@author Mert Emek
 	public int getFirstSixCards() {
 		int card = getCard();
 		openCards.add(card);

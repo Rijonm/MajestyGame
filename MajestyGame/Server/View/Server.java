@@ -5,6 +5,7 @@ import Model.ServerModel;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+//@ Rijon
 public class Server extends Application{
 	
 	ServerModel model;

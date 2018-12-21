@@ -19,7 +19,7 @@ import CommonClasses.WinnerMessage;
 import javafx.collections.ObservableList;
 import jdk.nashorn.internal.objects.annotations.Where;
 
-
+//@author Rijon
 public class Game  {
 	
 	private int players = 0;
@@ -70,7 +70,7 @@ public class Game  {
 		
 		
 	}
-	
+	//@author Rijon
 	public void sendFirstSixCards(int a, int b, int c, int d, int e, int f) {
 		FirstSixCardsMessage fscm= new FirstSixCardsMessage(a, b, c, d, e, f);
 		model.broatcastToPlayerInGame(fscm);
@@ -80,6 +80,7 @@ public class Game  {
 	 * Wenn die Position eintrifft, dann solle in der players Liste geschaut werden, welcher Spieler den entsprechenden Zug gemacht hat.
 	 * 
 	 */
+	//@author Rijon
 	public void receivedPosFromClient(int pos, int cardID, int id) {
 		
 		if(meeples[pos] > 0) { //Schaut zuerst wieviele meeples sich unter der angelickten Karte befinden, falls über 0...
@@ -242,7 +243,7 @@ public class Game  {
 	
 	
 	
-	//@ Mert Emek
+	//@author Mert Emek
 	public void coinsBrewerDistributeAll() { // Falls Brewer gezogen, Mir und Gegner Coins verteilen
 		for(Client c : model.clients) {
 			if(c.getHand().hand[0] > 0) {
@@ -285,7 +286,7 @@ public class Game  {
 		
 	
 	}
-	//@ Mert Emek
+	//@author Mert Emek
 	// Pro Karte im Lazarett -1
 	public void evaluateLazarett() {
 		for(Client c : model.clients) {
@@ -295,7 +296,7 @@ public class Game  {
 		}
 	}
 
-	//@ Rijon & Mert
+	//@author Rijon & Mert
 //	Hier geht ihr jedes Gebäude
 //	von links nach rechts durch.
 //	Auf jedem Gebäude findest du

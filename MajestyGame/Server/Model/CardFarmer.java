@@ -1,5 +1,6 @@
 package Model;
 
+//@author Mert Emek
 public class CardFarmer extends Card{
 
 	public CardFarmer() { // CardID, Name

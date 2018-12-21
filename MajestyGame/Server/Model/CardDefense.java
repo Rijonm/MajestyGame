@@ -1,5 +1,7 @@
 package Model;
 
+//@author Mert Emek
+
 public class CardDefense extends Card{
 
 	public CardDefense() {

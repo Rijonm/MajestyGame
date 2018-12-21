@@ -149,6 +149,7 @@ public class Client {
 	 * User wird in der DB registriert und gibt einen Status mithilfe der
 	 * RegisterSuccessMessage zurück.
 	 */
+	//@author Rijon
 	protected RegisterSuccessMessage registerRequest(UserRegisterMessage message) {
 		return model.db.register(message);
 	}
@@ -156,6 +157,7 @@ public class Client {
 	/**
 	 * Dem Client wird ein RegisterSuccessMessage zugesendet.
 	 */
+	//@author Rijon
 	public void registerResponse(RegisterSuccessMessage message) {
 		send(message);
 	}
@@ -166,6 +168,7 @@ public class Client {
 	 * @param message
 	 * @return
 	 */
+	// @author Rijon
 	protected LoginSuccessMessage loginRequest(UserLoginMessage message) {
 		return model.db.login(message);
 	}
@@ -176,6 +179,7 @@ public class Client {
 	 * @author Rijon
 	 * @param message
 	 */
+	//@author Rijon
 	public void loginResponse(LoginSuccessMessage message) {
 		send(message);
 		if (message.getState() == LoginSuccessMessage.State.SUCCESS) {
@@ -193,65 +197,66 @@ public class Client {
 	 * 
 	 * @author Rijon
 	 */
+	//@author Rijon
 	public void sendLoggedInPlayers() {
 		LoggedInPlayers message = model.db.getLoggedInPlayers();
 		model.broadcast(message);
 	}
-
+	//@author Rijon
 	public void sendPlayerLoggedOut(int playerId) {
 		PlayerMessage message = model.db.getPlayer(playerId);
 		model.broadcast(message);
 	}
-
+	//@author Rijon
 	public void sendOtherPlayerLoggedOut(OtherPlayerLoggedOutMessage msg) {
 		model.broadcast(msg);
 	}
-
+	//@author Rijon
 	public void sendHighscoreListMessage(HighscoreListMessage msg) {
 		System.out.println("server/client sendHighscoreListMessage");
 		send(msg);
 	}
-
+	//@author Rijon
 	public ServerModel getModel() {
 		return this.model;
 	}
-
+	//@author Rijon
 	public Socket getSocket() {
 		return this.socket;
 	}
-
+	//@author Rijon
 	public boolean isOnline() {
 		return isOnline;
 	}
-
+	//@author Rijon
 	public boolean isInGame() {
 		return isInGame;
 	}
-
+	//@author Rijon
 	public void setIsOnline(boolean b) {
 		isOnline = b;
 	}
-
+	//@author Rijon
 	public void setIsInGame(boolean b) {
 		isInGame = b;
 	}
-
+	//@author Rijon
 	public int getId() {
 		return id;
 	}
-
+	//@author Rijon
 	public String getUsername() {
 		return username;
 	}
-
+	//@author Rijon
 	public Hand getHand() {
 		return hand;
 	}
-
+	//@author Rijon
 	public int getMeeples() {
 		return meeples;
 	}
-
+	//@author Rijon
 	public void send(Message message) {
 		try {
 			if (!socket.isClosed()) {
@@ -265,13 +270,13 @@ public class Client {
 		}
 
 	}
-
+	//@author Rijon
 	public Message receive() throws IOException, ClassNotFoundException, SocketException {
 		Message message = (Message) oips.readObject();
 		return message;
 
 	}
-
+	//@author Rijon
 	public void stop() {
 		try {
 			socket.close();

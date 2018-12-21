@@ -1,5 +1,7 @@
 package Model;
 
+//@author Mert Emek
+
 public class CardTavern extends Card{
 
 	public CardTavern() { // CardID, Name

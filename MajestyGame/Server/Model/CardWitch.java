@@ -1,6 +1,6 @@
 package Model;
 
-//@author Mert
+//@author Mert Emek
 
 public class CardWitch extends Card{
 

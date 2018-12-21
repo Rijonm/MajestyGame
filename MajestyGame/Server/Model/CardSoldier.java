@@ -1,5 +1,6 @@
 package Model;
 
+//@author Mert Emek
 public class CardSoldier extends Card{
 
 	public CardSoldier() { // CardID, Name

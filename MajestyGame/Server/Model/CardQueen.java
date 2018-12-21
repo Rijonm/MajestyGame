@@ -1,5 +1,6 @@
 package Model;
 
+//@author Mert Emek
 public class CardQueen extends Card{
 
 	public CardQueen() { // CardID, Name
