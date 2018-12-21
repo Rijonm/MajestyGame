@@ -171,10 +171,16 @@
 .personDeck{
 	-fx-padding: 20 0;
 }
+.meeplesCounter{
+	-fx-min-width: 30;
+	-fx-max-width: 30;
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/meeple.png);			
+}
 .gameButtons{
 	-fx-border-color: #50654f;
-	-fx-min-width: 200;
-	-fx-max-width: 200;
+	-fx-min-width: 150;
+	-fx-max-width: 150;
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;	
 }
@@ -240,10 +246,13 @@
 }
 .splitCard{
 	-fx-border-color: #50654f;	
-	-fx-min-width: 200;
-	-fx-max-width: 200;
+	-fx-min-width: 150;
+	-fx-max-width: 150;
 	-fx-text-fill: transparent;
 	-fx-background-size: cover;
+}
+.popUpBox{
+	-fx-padding: 5;
 }
 .splitCard:hover{
 	-fx-border-color: red;	
