@@ -92,16 +92,12 @@ public class ClientView {
 	public String backGround = "gameArea";
 	public BorderPane gameArea;
 	public OpponentView opponentView;
-	public DeckArea deckArea;
-	public BuildingsArea buildingsArea;
+
 	public Label[] buildingAry = new Label[8];
 	public Label[] enemyBCarray = new Label[8];
 	
 	public ArrayList<OpponentView> opponentArrayList = new ArrayList<>();
 	
-	public ChatArea chatArea;
-	public PlayerArea playerArea;
-	public BottomArea bottomArea;
 	public Button[] buttons = new Button[6];
 	public Label[] meeplesDeck = new Label[6];
 	public Label buildingCounter;
