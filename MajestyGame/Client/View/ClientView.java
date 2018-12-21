@@ -504,13 +504,16 @@ public class ClientView {
 		
 		//BottomArea
 		HBox bottomArea = new HBox();
-		roundCounter = new Label("Gespielte Runden: ");
+		Label roundCounterTitle = new Label("Gespielte Runden: ");
+		roundCounter = new Label();
 		roundCounter.textProperty().bind(model.round.asString());
-		cardCounter = new Label("Gespielte Karten: ");
+		Label cardCounterTitle = new Label(" Gespielte Karten: ");
+		cardCounter = new Label();
 		cardCounter.textProperty().bind(model.playedCards.asString());
-		usernameTurn = new Label("An der Reihe: ");
+		Label usernameTurnTitle = new Label(" An der Reihe: ");
+		usernameTurn = new Label();
 		usernameTurn.textProperty().bind(model.turnUsername);
-		bottomArea.getChildren().addAll(roundCounter, cardCounter, usernameTurn);
+		bottomArea.getChildren().addAll(roundCounterTitle, roundCounter, cardCounterTitle, cardCounter, usernameTurnTitle, usernameTurn);
 		bottomArea.setId("bottomArea");
 		
 		
