@@ -17,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
@@ -138,7 +139,8 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				model.sendChatMessage(model.myName.getValue(), model.myName.getValue() + ": " + view.chatInput.getText());
-				System.out.println(model.myName.getValue() + " said : " + view.chatInput.getText());
+				view.chatInput.setText("");
+				//System.out.println(model.myName.getValue() + " said : " + view.chatInput.getText());
 			}
 		});
 
@@ -148,6 +150,51 @@ public class ClientController {
 
 				view.primaryStage.setScene(view.setFourthScene());
 
+			}
+		});
+		
+		view.bgButton1.setOnAction(new EventHandler<ActionEvent>() {
+			
+			public void handle(ActionEvent event) {
+				view.gameArea = new BorderPane();
+				view.gameArea.getStyleClass().clear();
+				view.backGround = "gameArea";
+				System.out.println("hhh");
+				
+			}
+		});
+		
+		view.bgButton2.setOnAction(new EventHandler<ActionEvent>() {
+			
+			public void handle(ActionEvent event) {
+				view.gameArea = new BorderPane();
+				view.gameArea.getStyleClass().clear();
+				view.backGround = "gameArea2";
+				System.out.println("lll");
+				
+			}
+		});
+
+		view.bgButton3.setOnAction(new EventHandler<ActionEvent>() {
+	
+			public void handle(ActionEvent event) {
+				view.gameArea = new BorderPane();
+				view.gameArea.getStyleClass().clear();
+				view.backGround = "gameArea3"; 
+				view.gameArea.getStyleClass().add(view.backGround);
+				System.out.println("kkk" + view.backGround);
+				
+			}
+		});
+		//Language
+		view.deButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				view.langInteger = 1;
+			}
+		});
+		view.enButton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				view.langInteger = 0;
 			}
 		});
 
@@ -424,7 +471,7 @@ public class ClientController {
 			
 			if (!view.primaryStage.getScene().equals(view.fifthScene)) { // setzt nur das erste mal die Fünfte Scene
 				view.ANZAHL_GEGNER = model.opponentPlayers.size();
-				view.primaryStage.setScene(view.setFifthScene());
+				view.primaryStage.setScene(view.setFifthScene(view.backGround, view.langInteger));
 				view.primaryStage.setFullScreen(false);
 			}
 			Platform.runLater(() -> {

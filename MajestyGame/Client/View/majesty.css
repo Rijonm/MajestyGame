@@ -154,15 +154,27 @@
 }
 .gameArea{
 	-fx-background-size: cover;
-	-fx-background-image: url(/images/inside2.jpg);		
+	-fx-background-image: url(/images/inside.jpg);		
 }
+
+.gameArea2{
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside2.jpg);
+	}
+	
+	
+.gameArea3{
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside3.jpg);		
+}
+	
 .bg1Button{
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/inside.jpg);		
 }
 .bg2Button{
 	-fx-background-size: cover;
-	-fx-background-image: url(/images/inside1.jpg);		
+	-fx-background-image: url(/images/inside2.jpg);		
 }
 .bg3Button{
 	-fx-background-size: cover;
@@ -270,7 +282,8 @@
 	-fx-padding:10;
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/chatBackground.png);
-	-fx-border-color: transparent;		
+	-fx-background-color: transparent;	
+	-fx-highlight-fill: transparent;	
 }
 .winnerBox{
 	-fx-background-size: cover;

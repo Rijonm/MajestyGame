@@ -74,9 +74,22 @@ public class ClientView {
 	public Label backgroundImageLabel = new Label("Hintergrundbild: ");
 	public Button setupSaveB = new Button("save");
 	
+	public Button enButton = new Button("EN");
+	public Button deButton = new Button("DE");
+	
+	public Button bgButton1 = new Button();
+	public Button bgButton2 = new Button();
+	public Button bgButton3 = new Button();
+	
+	public Button musicOnButton = new Button("ON");
+	public Button musicOffButton = new Button("OFF");
+	public int langInteger = 0;  //default EN
+	
+	
+	
 	//gameScene
 	public Scene fifthScene; 
-	
+	public String backGround = "gameArea";
 	public BorderPane gameArea;
 	public OpponentView opponentView;
 	public DeckArea deckArea;
@@ -320,17 +333,6 @@ public class ClientView {
 		HBox langBox = new HBox();
 		HBox musicBox = new HBox();
 		
-		Button enButton = new Button("EN");
-		Button deButton = new Button("DE");
-		
-		Button bgButton1 = new Button();
-		Button bgButton2 = new Button();
-		Button bgButton3 = new Button();
-		
-		Button musicOnButton = new Button("ON");
-		Button musicOffButton = new Button("OFF");
-		
-		
 		musicOnButton.getStyleClass().add("setupButtons");
 		musicOffButton.getStyleClass().add("setupButtons");
 		
@@ -361,10 +363,10 @@ public class ClientView {
 		 * 
 		 * @Author Yusuf Or
 		 */
-	public Scene setFifthScene() {
+	public Scene setFifthScene(String backGround, int langInteger) {
 		
 		gameArea = new BorderPane();
-		gameArea.getStyleClass().add("gameArea");
+		gameArea.getStyleClass().add(backGround);
 		
 		centerVbox = new VBox();
 		leftVbox = new VBox();
@@ -404,6 +406,9 @@ public class ClientView {
 
 		for (int x = 0; x < ANZAHL_GEGNER; x++) { 
 			Label lblEnemyTitle = new Label("Your enemy "+ (x+1) +": ");
+			if(langInteger==1) {
+				lblEnemyTitle.setText("Dein Feind " + (x+1) +": ");
+			} 
 			Label lp = new Label();
 			lp.textProperty().bind(model.opponentPlayers.get(x).name);
 			Label lc = new Label();
@@ -429,7 +434,10 @@ public class ClientView {
 		}
 			//MainDetails
 		Region spacerMain = new Region();
-		Label lblMainTitle = new Label("My empire:");
+		Label lblMainTitle = new Label("My empire: ");
+		if(langInteger==1) {
+			lblMainTitle.setText("Mein Königreich: ");
+		}
 		Label lblMainName = new Label();
 		lblMainName.setText("xz");
 		lblMainName.textProperty().bind(model.myName);
