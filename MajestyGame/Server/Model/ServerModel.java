@@ -10,17 +10,18 @@ import CommonClasses.Message;
 import db.Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/*
+ * Server wird gestartet.
+ * @author Rijon
+ */
 public class ServerModel {
 
 	public ServerSocket serverSocket;
 	public Socket socket;
 	protected ObservableList<Client> clients = FXCollections.observableArrayList();
-	// private volatile boolean stop = false;
 	public Database db;
 	private final Logger logger = Logger.getLogger("");
 	private Game game;
-	// private Message actionToPerform;
 
 	public ServerModel() {
 		db = new Database();
@@ -66,7 +67,11 @@ public class ServerModel {
 			e.printStackTrace();
 		}
 	}
-
+	/*
+	 * Schickt eine Message an alle Spieler die Online sind.
+	 * 
+	 * @author Rijon
+	 */
 	public void broadcast(Message outMsg) {
 		logger.info("Broadcasting message to players online");
 		for (Client c : clients) {

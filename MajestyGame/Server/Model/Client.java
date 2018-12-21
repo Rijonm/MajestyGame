@@ -24,11 +24,11 @@ import CommonClasses.UserRegisterMessage;
 import javafx.application.Platform;
 
 /**
- * Wenn ein neuer Client gestartet wird und der sich mit dem Server Connected
- * wird ein neuer Client-Objekt instanziiert.
+ * Wenn ein neuer Client gestartet wird und der sich mit dem Server connected
+ * wird ein neues Client-Objekt instanziiert.
  *
- * Diese Klasse handelt alle eingehenden Messages und sendet die Antwort an dem
- * entsprechenden Client.
+ * Diese Klasse handelt alle eingehenden Messages und sendet die Antwort an den
+ * entsprechenden Clients.
  *
  * @author Rijon
  *
@@ -51,17 +51,14 @@ public class Client {
 	private int id;
 	private String username;
 	private String password;
-	private int highscore; // noch nicht definiert
 	private boolean isOnline; // wird auf true gesetzt, falls der Login erfolgreich war
 	private boolean isInGame; // wird auf true gesetzt, bei allen spielern in der Lobby(max 4), nachdem der
 								// einte Spieler auf SpielStarten klickt
 	private Hand hand = new Hand();; // Jeder Player hat eine Hand, die beim Spielstart erzeugt wird. Startwerte
 										// 0,0,0,0,0,0,0,0
 
-	private int coins = 0;
 	private int meeples = 5;
 
-	private int points;
 
 	public Client(ServerModel model, Socket socket) {
 		this.model = model;
@@ -70,7 +67,6 @@ public class Client {
 			oops = new ObjectOutputStream(socket.getOutputStream());
 			oips = new ObjectInputStream(socket.getInputStream());
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -175,8 +171,7 @@ public class Client {
 	}
 
 	/**
-	 * Sendet Login-Antwort an Client. Speichert ID, falls Anmeldung erfolgreich war
-	 * und fügt Spieler in die ObservableList PlayerOnline.
+	 * Sendet Login-Antwort an Client. Speichert ID, falls Anmeldung erfolgreich war.
 	 * 
 	 * @author Rijon
 	 * @param message
@@ -187,7 +182,6 @@ public class Client {
 			id = message.getId();
 			username = loginMessage.getUsername();
 			isOnline = true;
-			// model.playeronline.add(new PlayerOnline(model, socket, id, username));
 			sendLoggedInPlayers();
 		}
 
@@ -267,7 +261,6 @@ public class Client {
 				System.out.println("socket: " + socket.toString() + " is closed");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

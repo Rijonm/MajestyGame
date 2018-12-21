@@ -496,6 +496,10 @@ public class ClientController {
 
 		});
 		
+		model.logoutPlayer.addListener( (o, old, newVal) -> {
+			System.out.println(newVal); //newVal ist ein String @ Yusuf
+
+		});
 	}
 		
 

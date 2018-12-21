@@ -76,12 +76,11 @@ public class ClientModel {
 	public SimpleIntegerProperty h5 = new SimpleIntegerProperty();
 	public SimpleIntegerProperty h6 = new SimpleIntegerProperty();
 	public SimpleIntegerProperty h7 = new SimpleIntegerProperty();
+	public SimpleStringProperty logoutPlayer = new SimpleStringProperty();
 	public ObservableList<String> winners = FXCollections.observableArrayList(); 
 	public ObservableList<SimpleIntegerProperty> myHand = FXCollections.observableArrayList();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
-	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name,
-																							// coins, meeples, hand,
-																							// wonOrLose
+	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name, coins, meeples, hand, wonOrLose
 	public ArrayList<String> winnerList = new ArrayList<>();
 	public ObservableList<Integer> deck = FXCollections.observableArrayList();
 	public ObservableList<Integer> meeples = FXCollections.observableArrayList();
@@ -374,6 +373,12 @@ public class ClientModel {
 	protected void receivedOtherPlayerLoggedOut(Message msg) {
 		OtherPlayerLoggedOutMessage oplo = (OtherPlayerLoggedOutMessage) msg;
 		System.out.println("Player with id " + oplo.getPlayerId() + " logged out");
+			
+			for(Opponent o : opponentPlayers) {
+				if(o.getId().get()==oplo.getPlayerId()) {
+					logoutPlayer.set(o.getName().get());
+				}
+			}
 		// TODO rijon: check if opponent is player of logged out message "oplo.getPlayerId();"
 		// TODO rijon: end game if the player which logged out is opponent
 	}
