@@ -223,23 +223,25 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				if(model.myMeeples.getValue()>0) {
-				int getIdOfButton = model.deck.get(1);
-				System.out.println("b1");
+					int getIdOfButton = model.deck.get(1);
+					System.out.println("b1");
+	
+					if (model.deck.get(1) <= 6) {
+						model.sendPlayerMoveMessage(1, getIdOfButton);
+	
+					} else {
+	
+						System.out.println("Split Card");
+						view.popUpStage();
+						view.getCardIndexOnButtonOfSplitCard(1, getIdOfButton);
+	
+					}
+	
+				}else {
+					// @TODO Yusuf Popup zu wenig meeples
 
-				if (model.deck.get(1) <= 6) {
-					model.sendPlayerMoveMessage(1, getIdOfButton);
-
-				} else {
-
-					System.out.println("Split Card");
-					view.popUpStage();
-					view.getCardIndexOnButtonOfSplitCard(1, getIdOfButton);
-
+					view.notEnoughMeeples().show();
 				}
-
-			}else {
-				// @TODO Yusuf Popup zu wenig meeples
-			}
 			}
 		});
 
@@ -247,20 +249,22 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				if(model.myMeeples.getValue()>1) {
-				int getIdOfButton = model.deck.get(2);
+					int getIdOfButton = model.deck.get(2);
+	
+					System.out.println("b2");
+					if (getIdOfButton <= 6) {
+						model.sendPlayerMoveMessage(2, getIdOfButton);
+					} else {
+						System.out.println("Split Card");
+						view.popUpStage();
+						view.getCardIndexOnButtonOfSplitCard(2, getIdOfButton);
+	
+					}
+				}else {
+					// @TODO Popup
 
-				System.out.println("b2");
-				if (getIdOfButton <= 6) {
-					model.sendPlayerMoveMessage(2, getIdOfButton);
-				} else {
-					System.out.println("Split Card");
-					view.popUpStage();
-					view.getCardIndexOnButtonOfSplitCard(2, getIdOfButton);
-
+					view.notEnoughMeeples().show();
 				}
-			}else {
-				// @TODO Popup
-			}
 
 			}
 		});
@@ -269,21 +273,22 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				if(model.myMeeples.getValue()>2) {
-				int getIdOfButton = model.deck.get(3);
-
-				System.out.println("b3");				
-				
-				if (getIdOfButton <= 6) {
-					model.sendPlayerMoveMessage(3, getIdOfButton);
-				} else {
-					System.out.println("Split Card");
-					view.popUpStage();
-
-					view.getCardIndexOnButtonOfSplitCard(3, getIdOfButton);
-
-				}
+					int getIdOfButton = model.deck.get(3);
+	
+					System.out.println("b3");				
+					
+					if (getIdOfButton <= 6) {
+						model.sendPlayerMoveMessage(3, getIdOfButton);
+					} else {
+						System.out.println("Split Card");
+						view.popUpStage();
+	
+						view.getCardIndexOnButtonOfSplitCard(3, getIdOfButton);
+	
+					}
 				} else {
 					//TODO Yusuf Meldung
+					view.notEnoughMeeples().show();
 				}
 
 			}
@@ -293,26 +298,22 @@ public class ClientController {
 			
 			public void handle(ActionEvent event) {
 				if(model.myMeeples.getValue()>3) {
-				int getIdOfButton = model.deck.get(4);
-
-
-
-				System.out.println("b4");
-
-				
-				if (getIdOfButton <= 6) {
-					model.sendPlayerMoveMessage(4, getIdOfButton);
+					int getIdOfButton = model.deck.get(4);
+	
+					System.out.println("b4");
+						
+					if (getIdOfButton <= 6) {
+						model.sendPlayerMoveMessage(4, getIdOfButton);
+					} else {
+	
+						System.out.println("Split Card");
+						view.popUpStage();
+						view.getCardIndexOnButtonOfSplitCard(4, getIdOfButton);
+		
+					}
 				} else {
-
-					System.out.println("Split Card");
-					view.popUpStage();
-
-					view.getCardIndexOnButtonOfSplitCard(4, getIdOfButton);
-
-
-				}
-				}else {
-					//TODO Yusuf
+						//TODO Yusuf
+					view.notEnoughMeeples().show();
 				}
 			}
 		});
@@ -321,26 +322,34 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				if(model.myMeeples.getValue()>4) {
-				int getIdOfButton = model.deck.get(5);
-
-				System.out.println("b5");
-
-				if (getIdOfButton <= 6) {
-					model.sendPlayerMoveMessage(5, getIdOfButton); // pos, cardID
+					int getIdOfButton = model.deck.get(5);
+	
+					System.out.println("b5");
+	
+					if (getIdOfButton <= 6) {
+						model.sendPlayerMoveMessage(5, getIdOfButton); // pos, cardID
+					} else {
+	
+						System.out.println("Split Card");
+						view.popUpStage();
+	
+						view.getCardIndexOnButtonOfSplitCard(5, getIdOfButton);
+						
+	
+					}
 				} else {
-
-					System.out.println("Split Card");
-					view.popUpStage();
-
-					view.getCardIndexOnButtonOfSplitCard(5, getIdOfButton);
-					
-
-				}
-				}else {
 					//TODO Yusuf
+					view.notEnoughMeeples().show();
 				}
 
 			}
+		});
+		view.closeNotEnoughM.setOnAction(new EventHandler<ActionEvent>() {
+			
+			public void handle(ActionEvent event) {
+				view.notEnoughMeeplesStage.close();
+			}
+			
 		});
 
 		// -------------------------
@@ -423,9 +432,6 @@ public class ClientController {
 				for (Button b : view.buttons) {
 					b.getStyleClass().clear();
 					b.getStyleClass().addAll("gameButton" + c.getList().get(i), "gameButtons");
-					// b.getStyleClass().removeAll("gameButton"+model.deck.get(i) ,"gameButtons");
-					// b.getStyleClass().addAll("gameButton"+model.deck.get(i) ,"gameButtons");
-
 					i++;
 				}
 			
@@ -474,11 +480,9 @@ public class ClientController {
 					l.setText(Integer.toString(c.getList().get(i)));
 					//l.setTextFill(Color.web("#FFFFFF"));
 					if(c.getList().get(i)!=0) {
-						
 						l.getStyleClass().add("meeplesCounter");
 					} 
 					if(c.getList().get(i)==0) {
-						
 						l.getStyleClass().clear();
 					} 
 					i++;

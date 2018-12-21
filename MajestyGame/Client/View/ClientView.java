@@ -147,6 +147,11 @@ public class ClientView {
 	public Button pb1, pb2;
 	
 	
+	//Not Enough Meeples Stage
+	public Stage notEnoughMeeplesStage;
+	public Button closeNotEnoughM = new Button("OK");
+	
+	
 	//Winner Stage
 	public Stage winnerStage;
 	public Scene winnerScene;
@@ -561,7 +566,7 @@ public class ClientView {
 		
 		popUpBox.getStyleClass().add("popUpBox");
 		popUpBox.getChildren().addAll(pb1, pb2);
-		popUpScene = new Scene(popUpBox,300,243);
+		popUpScene = new Scene(popUpBox,310,253);
 		popUpScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		popUpStage.setScene(popUpScene);
@@ -575,6 +580,30 @@ public class ClientView {
 		
 	}
 	
+	//Zu wenig Meeples Scene
+	public Stage notEnoughMeeples() {
+		notEnoughMeeplesStage = new Stage();
+		
+		VBox notEnoughMBox = new VBox();
+		
+		Label notEnoughMLbl = new Label("You don't have enough Meeples!");
+		notEnoughMBox.getStyleClass().add("notEnoughMBox");
+		notEnoughMBox.setAlignment(Pos.CENTER);
+
+
+		notEnoughMBox.getChildren().addAll(notEnoughMLbl, closeNotEnoughM);
+		Scene notEnoughMeeplesScene = new Scene(notEnoughMBox,300,200);
+		
+		notEnoughMeeplesScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		
+		notEnoughMeeplesStage.setScene(notEnoughMeeplesScene);
+		notEnoughMeeplesStage.setResizable(false);
+		notEnoughMeeplesStage.getIcons().add(new Image("images/majestyIcon.png"));
+		notEnoughMeeplesStage.setTitle("Error!");
+		notEnoughMeeplesStage.show();
+		return notEnoughMeeplesStage;
+				
+	}
 	
 	//Winner Scene
 	public Stage winnerStage(List<String> winners) {
@@ -590,7 +619,8 @@ public class ClientView {
 		
 		winnerBox.getChildren().addAll(staticW, winnerLabel);
 		winnerBox.getStyleClass().add("winnerBox");
-		winnerScene = new Scene(winnerBox,310,210);
+		winnerBox.setAlignment(Pos.CENTER);
+		winnerScene = new Scene(winnerBox,300,200);
 		winnerScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		winnerStage.getIcons().add(new Image("images/majestyIcon.png"));
@@ -785,12 +815,11 @@ public class ClientView {
 	
 				break;
 			}
-
-		
-		
-		
 		return cardIndexOfSplitCard;
 	}
+	
+	
+
 	
 	
 	//spielanleitungScene

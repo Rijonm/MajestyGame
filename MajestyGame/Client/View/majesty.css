@@ -258,9 +258,19 @@
 .splitCard:hover{
 	-fx-border-color: red;	
 }
-
 .bd1{
 	-fx-background-image: url(/images/bdC1.jpg);		
+}
+.notEnoughMBox{
+	-fx-padding:10;
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/winnerBackground.png);		
+}
+.chatContent{
+	-fx-padding:10;
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/chatBackground.png);
+	-fx-border-color: transparent;		
 }
 .winnerBox{
 	-fx-background-size: cover;
