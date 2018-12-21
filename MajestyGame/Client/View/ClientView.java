@@ -674,7 +674,7 @@ public class ClientView {
 		if(langInteger==1) {
 			buttonBackToStart.setText("zurueck");
 		}
-		winnerBox.getChildren().addAll(staticW, winnerLabel);
+		winnerBox.getChildren().addAll(staticW, winnerLabel, buttonBackToStart);
 		winnerBox.getStyleClass().add("winnerBox");
 		winnerBox.setAlignment(Pos.CENTER);
 		winnerScene = new Scene(winnerBox,300,200);
