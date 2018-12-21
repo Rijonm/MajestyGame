@@ -155,16 +155,15 @@ public class Hand {
 			int disCoins = 0, farmer = 0, brewer = 0, witch = 0, defense = 0, soldier = 0, host=0; // coins which will distribute 
 			int disMeeples;
 			switch (cardID) {
-	        case 0:
+	        case 0: // Farmer 2 Coins pro Hand
 	        	disCoins = handSize*2;
 	        	break;
-	        case 1:
+	        case 1: // Brewer 2 Coins pro Hand + Meeples pro Hand
 	        	disCoins = handSize*2;
 	        	disMeeples = handSize;
 	        	meeples = meeples+disMeeples;
 	        	break;
-	        	
-	        case 2:
+	        case 2: // Witch pro Farmer+Brewer+Witch * 2
 	        	if(hand[0]>0)
 	        		farmer = hand[0];
 	        	if(hand[1]>0)
@@ -173,8 +172,7 @@ public class Hand {
 	        		witch = hand[2];
 	        	disCoins = (farmer+brewer+witch)*2;
 	        	break;
-	        	
-	        case 3:
+	        case 3: // Defense pro Defense+Soldier+Host * 2 Coins
 	        	if(hand[3]>0)
 	        		defense = hand[3];
 	        	if(hand[4]>0)
@@ -183,15 +181,13 @@ public class Hand {
 	        		host = hand[3];
 	        	disCoins = (defense+soldier+host)*2;
 	        	break;
-	        	
-	        case 4:
+	        case 4: // Soldier pro Hand 3 Coins
 	        	disCoins = handSize*3;
 	        	break;
-	        case 5:
+	        case 5: // Host pro Hand 4 Coins
 	        	disCoins = handSize*4;
 	        	break;
-	        	
-	        case 6:
+	        case 6: // Queen pro Hand 5 Coins + Hand * 1 Meeple
 	        	disCoins = handSize*5;
 	        	disMeeples = handSize;
 	        	meeples = meeples+disMeeples;
@@ -204,31 +200,31 @@ public class Hand {
 		// 2. in Lazarett abgelegt usw.
 		public void setToLazarett(int Ordinal) {
 			switch (Ordinal) {
-	        case 0:
+	        case 0: // Farmer add to Lazarett
 	        	Lazarett.add(cardFarmer);
 	        this.hand[7] = 	hand[7]+1;
 	        	break;
-	        case 1:
+	        case 1: // Brewer add to Lazarett
 	        	Lazarett.add(cardBrewer);
 	        this.hand[7] = 	hand[7]+1;
 	        	break;
-	        case 2:
+	        case 2: // Witch add to Lazarett
 	        	Lazarett.add(cardWitch);
 	        	this.hand[7] = 	hand[7]+1;
 	        	break;
-	        case 3:
+	        case 3: // Defense add to Lazarett
 	        	Lazarett.add(cardDefense);
 	        	this.hand[7] = 	hand[7]+1;
 	        	break;
-	        case 4:
+	        case 4: // Soldier add to Lazarett
 	        	Lazarett.add(cardSoldier);
 	        	this.hand[7] = 	hand[7]+1;
 	        	break;
-	        case 5:
+	        case 5: // Host add to Lazarett
 	        	Lazarett.add(cardTavern);
 	        	this.hand[7] = 	hand[7]+1;
 	        	break;
-	        case 6:
+	        case 6: // Queen add to Lazarett
 	        	Lazarett.add(cardQueen);
 	        	this.hand[7] = 	hand[7]+1;
 	        	break;   
@@ -237,14 +233,12 @@ public class Hand {
 		
 // Falls Hexe gezogen und Karte im Lazarett vorhanden wird die Karte vom Lazarett zurpck zur Gebäudekarte gelegt		
 		public void healingLazarett() {
-        	int s = hand[7];      	//!!!!!!!!!!!!!!!!!!!!!! Falls im Spiel Lazarett -1, mit diesem Code probieren und unten int s löschen
-//        	int s = Lazarett.size();
-        	Card c = Lazarett.get(s-1);
-//        //	System.out.println(c.cardName + c.cardID + "HIIIIER");
-        	this.hand[7] = 	hand[7]-1;
-        	Lazarett.remove(Lazarett.size()-1);
+        	int s = hand[7];      	// Lazarett Handgrösse
+        	Card c = Lazarett.get(s-1); // Lazarett die letzte Karte die abgelegt ist in Cards einfügen
+        	this.hand[7] = 	hand[7]-1;  // Lazarett Handgrösse aktualisieren
+        	Lazarett.remove(Lazarett.size()-1); //Lazarett ArrayList Card löschen
         	int id = c.getCardID();
-        	if(id == 0) {
+        	if(id == 0) { // Hier wird die letzte Karte im Lazarett in die Gebäudekarte zurück gelegt
         		Farmer.add(cardFarmer);
         	this.hand[0] = 	hand[0]+1;
         	}

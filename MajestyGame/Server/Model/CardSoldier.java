@@ -2,7 +2,7 @@ package Model;
 
 public class CardSoldier extends Card{
 
-	public CardSoldier() {
+	public CardSoldier() { // CardID, Name
 		super(4, "Knight");
 		// TODO Auto-generated constructor stub
 	}

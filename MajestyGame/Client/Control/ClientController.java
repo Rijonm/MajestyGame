@@ -37,7 +37,7 @@ public class ClientController {
 
 				// model.connect(view.ip.getText(), Integer.parseInt(view.port.getText()));
 				try {
-					model.connect("localhost", 1111);
+					model.connect("172.20.10.3", 1111);
 					view.primaryStage.setScene(view.setFirstScene());
 					view.primaryStage.setFullScreen(false); /// muss true gesetzt werden
 					// primaryStage.setFullScreenExitHint("Sie koennen mit ESC schliessen"); //User

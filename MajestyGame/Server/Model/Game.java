@@ -247,20 +247,18 @@ public class Game  {
 	
 	
 	//@ Mert Emek
-	public void coinsBrewerDistributeAll() {
+	public void coinsBrewerDistributeAll() { // Falls Brewer gezogen, Mir und Gegner Coins verteilen
 		for(Client c : model.clients) {
 			if(c.getHand().hand[0] > 0) {
 				c.getHand().coins = c.getHand().coins +2;
-				System.out.println("ID= "+c.getId()+" c.getHand().hand[0]= "+c.getHand().hand[1]+" Coins= "+c.getHand().coins);
 			}
 		}
 	}
 	//@ Mert Emek
-	public void coinsTavernDistributeAll() {
+	public void coinsTavernDistributeAll() { // Falls Host gezogen, Mir und Gegner Coins verteilen
 		for(Client c : model.clients) {
 			if(c.getHand().hand[1] > 0) {
 				c.getHand().coins = c.getHand().coins +3;
-				System.out.println("ID= "+c.getId()+" c.getHand().hand[1]= "+c.getHand().hand[1]+" Coins= "+c.getHand().coins);
 			}	
 		}
 	}	
@@ -285,7 +283,6 @@ public class Game  {
 			if(c.getHand().hand[6]>0)
 				queen = 1;
 			variety = farmer+brewer+witch+defense+soldier+queen+host;
-			System.out.println("ID= "+c.getId()+" Anzahl verschiedene Karten= "+(variety));
 			c.getHand().coins = c.getHand().coins+(variety*variety);
 			
 		}
@@ -427,22 +424,5 @@ public class Game  {
 		model.broatcastToPlayerInGame(wm);
 	
 	
-	
-	
-	// 0 Farmer 10 Coins
-	// 1 Brewer 11 Coins
-	// 2 Witch 12 Coins
-	// 3 Defense 13 Coins
-	// 4 Soldier 14 Coins
-	// 5 Tavern 15 Coins
-	// 6 Queen 16 Coins
-	// 7 Lazarett pro Karte -1 Coins
-	
-	
-		// for(Client c : model.client)
-		// for(c.)
-		// for(Client c : model.client)
-		// Hands der Clients vergleichen und winner definieren
-		// Client winner uf 1 setzte 
 	}
 }
