@@ -145,7 +145,7 @@ public class ClientView {
 	
 	public Stage popUpStage;
 	public Scene popUpScene;
-	public VBox popUpBox;
+	public HBox popUpBox;
 	public Button pb1, pb2;
 	
 	
@@ -519,13 +519,26 @@ public class ClientView {
 	 */
 	public Stage popUpStage() {
 		popUpStage = new Stage();
-		popUpBox = new VBox();
-		pb1 = new Button("1");
-		pb2 = new Button("2");
+		
+		popUpBox = new HBox();
+		
+		pb1 = new Button();
+		pb2 = new Button();
+		
+		pb1.setMinHeight(324);
+		pb2.setMinHeight(324);
+		pb1.getStyleClass().addAll("splitCard", "splitCard1");
+		pb2.getStyleClass().addAll("splitCard", "splitCard2");
+		
+		
 		popUpBox.getChildren().addAll(pb1, pb2);
-		popUpScene = new Scene(popUpBox,100,100);
+		popUpScene = new Scene(popUpBox,400,324);
 		popUpScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		
 		popUpStage.setScene(popUpScene);
+		popUpStage.setResizable(false);
+		popUpStage.getIcons().add(new Image("images/majestyIcon.png"));
+		popUpStage.setTitle("Split Card - Choose one!");
 		popUpStage.show();
 		return popUpStage;
 		
@@ -549,6 +562,9 @@ public class ClientView {
 		winnerBox.getChildren().addAll(staticW, winnerLabel);
 		winnerScene = new Scene(winnerBox,100,100);
 		winnerScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		
+		winnerStage.getIcons().add(new Image("images/majestyIcon.png"));
+		winnerStage.setTitle("Congratulation!");
 		winnerStage.setScene(winnerScene);
 		winnerStage.show();
 		return winnerStage;

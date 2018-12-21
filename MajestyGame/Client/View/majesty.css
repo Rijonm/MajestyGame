@@ -149,15 +149,8 @@
 	-fx-border-width: 3;
 	-fx-border-color: #50654f;
 }
-
 .buildingsCounters{
 	-fx-padding-left: 15;
-}
-.gameButtons{
-	-fx-min-width: 200;
-	-fx-max-width: 200;
-	-fx-text-fill: transparent;
-	-fx-background-size: cover;
 }
 .gameArea{
 	-fx-background-size: cover;
@@ -167,13 +160,14 @@
 	-fx-padding: 20 0;
 }
 .gameButtons{
-	-fx-border-color: #50654f;	
+	-fx-border-color: #50654f;
+	-fx-min-width: 200;
+	-fx-max-width: 200;
+	-fx-text-fill: transparent;
+	-fx-background-size: cover;	
 }
 .gameButtons:hover{
 	-fx-border-color: red;	
-}
-.gameButton0:hover{
-	-fx-border-color: green !important;	
 }
 .gameButton0{
 	-fx-background-image: url(/images/characterCard_Farmer.jpg);	
@@ -232,7 +226,16 @@
 .gameButton18{
 	-fx-background-image: url(/images/YellowViolet.jpg);		
 }
-
+.splitCard{
+	-fx-border-color: #50654f;	
+	-fx-min-width: 200;
+	-fx-max-width: 200;
+	-fx-text-fill: transparent;
+	-fx-background-size: cover;
+}
+.splitCard:hover{
+	-fx-border-color: red;	
+}
 .bd1{
 	-fx-background-image: url(/images/bdC1.jpg);		
 }
