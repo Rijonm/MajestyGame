@@ -590,7 +590,7 @@ public class ClientView {
 		
 		winnerBox.getChildren().addAll(staticW, winnerLabel);
 		winnerBox.getStyleClass().add("winnerBox");
-		winnerScene = new Scene(winnerBox,300,200);
+		winnerScene = new Scene(winnerBox,310,210);
 		winnerScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
 		
 		winnerStage.getIcons().add(new Image("images/majestyIcon.png"));
