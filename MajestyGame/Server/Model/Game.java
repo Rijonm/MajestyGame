@@ -86,7 +86,7 @@ public class Game  {
 			for(Client c : model.clients) { 
 				if(c.getId()== id) {	 //...dann sucht er denn spieler der den Zug ausgeführt hat
 					c.getHand().meeples = c.getHand().meeples + meeples[pos];// ...und fügt die Meeples in seiner "Hand" ein, die sich unter der Karte befinden.
-					c.getHand().actuallMeeples();
+					//c.getHand().actuallMeeples();
 				}
 			}
 		}

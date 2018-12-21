@@ -317,26 +317,11 @@ public class ClientModel {
 	 * @author Rijon
 	 */
 	protected void receivedLoggedInPlayersMessage(Message msg) {
-		// Leert lobbyPlayers um die Liste zu aktualisieren
-		// if(!lobbyPlayers.isEmpty())
-		// for(Player c : lobbyPlayers) {
-		// lobbyPlayers.remove(c);
-		// }
 		LoggedInPlayers lip = (LoggedInPlayers) msg;
 		lobbyPlayers.clear();
-		// lobbyPlayers.addAll(lip.getPlayers());
-		// if(!lobbyPlayers.isEmpty())
-		// for(Player c : lobbyPlayers) {
-		// lobbyPlayers.remove(c);
-		// }
 		for (Player p : lip.getPlayers()) {
 			lobbyPlayers.add(p.getUsername());
 		}
-		// lobbyPlayers.addAll(lip.getPlayers());
-		// for(Player c : lip.getPlayers()) {
-		// lobbyPlayers.add(c);
-		// System.out.println(c.getUsername());
-		// }
 
 	}
 
@@ -563,7 +548,6 @@ public class ClientModel {
 			this.id.set(id);
 			this.name.set(name);
 			this.meeples.set(meeples);
-			// int[] intHand = Arrays.stream(hand).mapToInt(Integer::intValue).toArray();
 			h0.set(hand[0]);
 			h1.set(hand[1]);
 			h2.set(hand[2]);
@@ -573,8 +557,7 @@ public class ClientModel {
 			h6.set(hand[6]);
 			h7.set(hand[7]);
 			this.hand.addAll(h0, h1, h2, h3, h4, h5, h6, h7);
-			// this.hand.setAll(intHand);
-			this.coins.setValue(coins); // Nicht sicher ob set oder setValue
+			this.coins.setValue(coins);
 		}
 
 		public SimpleIntegerProperty getId() {
@@ -593,9 +576,6 @@ public class ClientModel {
 			return meeples;
 		}
 
-		// public ObservableIntegerArray getHand() {
-		// return hand;
-		// }
 
 		public SimpleStringProperty getWonOrLose() {
 			return wonOrLose;
@@ -617,9 +597,6 @@ public class ClientModel {
 			this.meeples = meeples;
 		}
 
-		// public void setHand(ObservableIntegerArray hand) {
-		// this.hand = hand;
-		// }
 
 		public void setWonOrLose(SimpleStringProperty wonOrLose) {
 			this.wonOrLose = wonOrLose;
