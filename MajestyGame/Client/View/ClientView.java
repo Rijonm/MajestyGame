@@ -564,6 +564,180 @@ public class ClientView {
 		return sixthScene;
 	}
 	
+	public int getCardIndexOnButtonOfSplitCard(int buttonIndex, int cardIndex) {
+		int cardIndexOfSplitCard = 0;
+		
+		switch (cardIndex) {
+			case 7:
+				pb1.getStyleClass().add("gameButton0");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 0);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton1");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 1);
+					
+					popUpStage.close();
+				});
+				break;
+			case 8:
+				pb1.getStyleClass().add("gameButton0");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 0);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton4");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 4);
+					popUpStage.close();
+				});
+				break;
+			case 9:
+				pb1.getStyleClass().add("gameButton2");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 2);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton1");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 1);
+					popUpStage.close();
+				});
+				break;
+			case 10:
+				pb1.getStyleClass().add("gameButton4");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 4);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton1");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 1);
+					popUpStage.close();
+				});
+				break;
+			case 11:
+				pb1.getStyleClass().add("gameButton2");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 2);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton3");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 3);
+					popUpStage.close();
+				});
+				break;
+			case 12:
+				pb1.getStyleClass().add("gameButton2");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 2);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton5");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 5);
+					popUpStage.close();
+				});
+				break;
+			case 13:
+				pb1.getStyleClass().add("gameButton6");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 6);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton2");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 2);
+					popUpStage.close();
+				});
+				break;
+			case 14:
+				pb1.getStyleClass().add("gameButton4");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 4);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton3");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 3);
+					popUpStage.close();
+				});
+				break;
+			case 15:
+				pb1.getStyleClass().add("gameButton5");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 5);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton3");
+				pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 3);
+					popUpStage.close();
+				});
+				break;
+			case 16:
+				pb1.getStyleClass().add("gameButton6");
+				pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 6);
+					popUpStage.close();
+				});
+	
+				pb2.getStyleClass().add("gameButton3");
+				 pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 3);
+					popUpStage.close();
+				});
+				break;
+			case 17:
+				 pb1.getStyleClass().add("gameButton4");
+				 pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 4);
+					popUpStage.close();
+				});
+	
+				 pb2.getStyleClass().add("gameButton5");
+				 pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 5);
+					popUpStage.close();
+				});
+				break;
+			case 18:
+				 pb1.getStyleClass().add("gameButton6");
+				 pb1.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 6);
+					popUpStage.close();
+				});
+	
+				 pb2.getStyleClass().add("gameButton5");
+				 pb2.setOnAction(e -> {
+					model.sendPlayerMoveMessage(buttonIndex, 5);
+					popUpStage.close();
+				});
+				break;
+			default:
+				System.out.println("FAILURE CARD INDEX NOD FOUND!");
+	
+				break;
+			}
+
+		
+		
+		
+		return cardIndexOfSplitCard;
+	}
+	
+	
 	//spielanleitungScene
 	/**
 	 * setSeventhScene represents the rules scene
