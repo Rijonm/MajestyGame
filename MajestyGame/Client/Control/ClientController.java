@@ -111,8 +111,8 @@ public class ClientController {
 
 			public void handle(ActionEvent event) {
 				model.sendUserRegisterMessage(view.userNameRegister.getText(), view.userPasswordRegister.getText());
-				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
-				view.start();
+//				view.primaryStage.setScene(view.setThirdScene(view.langInteger));
+//				view.start();
 			}
 		});
 		// --------------------------
@@ -433,18 +433,18 @@ public class ClientController {
 		// TODO
 		model.getRegisterSuccess().addListener(c -> {
 			System.out.println(c);
-			view.registrierenBB.setText(c.toString());
+			
 			// COULD NOT CONNECT
 			if (c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
-
+				view.registrierenBB.setText("Fail");
 			}
 			// REGISTER SUCCESS
 			if (c.toString().contains("SUCCESS")) {
-				
+				view.registrierenBB.setText("Success");
 			}
 			// PLAYER ALLREADY EXIST
 			if (c.toString().contains("EXIST")) {
-
+				view.registrierenBB.setText("User exist");
 			}
 		});
 
