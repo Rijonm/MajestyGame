@@ -6,5 +6,5 @@ public enum MessageType {
 	GameStartMessage, FirstSixCardsMessage, PlayerMoveMessage, InformationFromServerMessage,
 	EvaluateGameMessage, ChatMessage, LogoutMessage, LoggedInPlayers, PlayersMessage,
 	PlayerMessage, OpponentPlayerMessage, PlayerStatesMessage, OtherPlayerLoggedOutMessage,
-	GetHighScoresMessage, HighscoreListMessage, FooterMessage;
+	GetHighScoresMessage, HighscoreListMessage, FooterMessage, WinnerMessage;
 }

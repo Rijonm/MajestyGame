@@ -15,6 +15,7 @@ import CommonClasses.FooterMessage;
 import CommonClasses.InformationFromServerMessage;
 import CommonClasses.OpponentPlayerMessage;
 import CommonClasses.PlayerStatesMessage;
+import CommonClasses.WinnerMessage;
 import javafx.collections.ObservableList;
 import jdk.nashorn.internal.objects.annotations.Where;
 
@@ -408,6 +409,25 @@ public class Game  {
 			c.getHand().coins = c.getHand().coins + 16;
 		}
 	}
+	
+	//END evaluation -------------------
+		ArrayList<String> winners = new ArrayList<>();
+		WinnerMessage wm = new WinnerMessage(winners);
+		ArrayList<Integer> winnerPoints = new ArrayList<Integer>();
+		for(Client c : model.clients) {
+			winnerPoints.add(c.getHand().coins);
+		}
+		int coinMax = Collections.max(winnerPoints);
+			
+		for(Client c : model.clients) {
+			if(c.getHand().coins == coinMax) {
+				winners.add(c.getUsername());
+			}
+		}
+		model.broatcastToPlayerInGame(wm);
+	
+	
+	
 	
 	// 0 Farmer 10 Coins
 	// 1 Brewer 11 Coins

@@ -31,6 +31,7 @@ import CommonClasses.PlayerStatesMessage;
 import CommonClasses.RegisterSuccessMessage;
 import CommonClasses.UserLoginMessage;
 import CommonClasses.UserRegisterMessage;
+import CommonClasses.WinnerMessage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -74,6 +75,7 @@ public class ClientModel {
 	public SimpleIntegerProperty h5 = new SimpleIntegerProperty();
 	public SimpleIntegerProperty h6 = new SimpleIntegerProperty();
 	public SimpleIntegerProperty h7 = new SimpleIntegerProperty();
+	public ObservableList<String> winners = FXCollections.observableArrayList(); 
 	public ObservableList<SimpleIntegerProperty> myHand = FXCollections.observableArrayList();
 	private ObservableList<String> lobbyPlayers = FXCollections.observableArrayList();
 	public ObservableList<Opponent> opponentPlayers = FXCollections.observableArrayList(); // Opponents: id, name,
@@ -183,6 +185,12 @@ public class ClientModel {
 							});
 						}
 						
+						if(msg.getMessageType() == MessageType.WinnerMessage) {
+							Platform.runLater(() -> {
+								receivedWinnerMessage(msg);
+							});
+						}
+						
 						
 					}
 				} catch (SocketException e) {
@@ -200,6 +208,20 @@ public class ClientModel {
 	}
 
 	// RECEIVEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE Start-------------
+	
+	private void receivedWinnerMessage(Message msg) {
+		WinnerMessage wm = (WinnerMessage) msg;
+		ArrayList<String> winners = (ArrayList<String>) wm.getPlayers();
+		for(String s : winners) {
+			if(s == myName.getValue()) {
+				winners.add(s);
+			}else {
+				System.out.println("looser");
+			}
+		}
+		
+	}
+	
 	protected void receivedChatMessage(Message msg) {
 		ChatMessage cm = (ChatMessage) msg;
 		newestMessage.set(cm.getMessage());

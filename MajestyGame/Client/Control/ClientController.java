@@ -1436,6 +1436,13 @@ public class ClientController {
 			});
 			
 		});
+		
+		model.winners.addListener((ListChangeListener<String>) c -> {
+			for(String s : model.winners) {
+				
+			}
+			
+		});
 	}
 		
 
