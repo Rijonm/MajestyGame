@@ -426,6 +426,9 @@ public class ClientView {
 			Label lp = new Label();
 			lp.textProperty().bind(model.opponentPlayers.get(x).name);
 			Label lc = new Label();
+			Label lcTitle = new Label("Coins: ");
+			HBox lcBox = new HBox();
+			lcBox.getChildren().addAll(lcTitle, lc);
 			lc.textProperty().bind(model.opponentPlayers.get(x).coins.asString());
 			Label lm = new Label();
 			lm.textProperty().bind(model.opponentPlayers.get(x).meeples.asString());
@@ -443,7 +446,7 @@ public class ClientView {
 			lc.getStyleClass().add("playerAreaLbl");
 			lm.getStyleClass().add("playerAreaLbl");
 			
-			leftVbox.getChildren().addAll(lblEnemyTitle, lp, lc, lm, lblMainMeeplesCard, spacerP);
+			leftVbox.getChildren().addAll(lblEnemyTitle, lp, lcBox, lm, lblMainMeeplesCard, spacerP);
 			leftVbox.getStyleClass().add("playerNameArea");
 		}
 			//MainDetails
@@ -459,9 +462,13 @@ public class ClientView {
 		lblMainName.textProperty().bind(model.myName);
 		lblMainName.getStyleClass().add("playerAreaLbl");
 		
+		HBox lblMainCoinsTextBox = new HBox();
 		Label lblMainCoin = new Label();
+		Label lblMainCoinTitle = new Label("Coins: ");
+		
 		lblMainCoin.textProperty().bind(model.myCoins.asString());
 		lblMainCoin.getStyleClass().add("playerAreaLbl");
+		lblMainCoinsTextBox.getChildren().addAll(lblMainCoinTitle, lblMainCoin);
 		
 		Label lblMainMeeples = new Label();
 		lblMainMeeples.textProperty().bind(model.myMeeples.asString());
@@ -474,7 +481,7 @@ public class ClientView {
 		
 		VBox.setVgrow(spacerMain, Priority.ALWAYS);
 		leftMainBox.getStyleClass().add("playerNameArea");
-		leftMainBox.getChildren().addAll(spacerMain, lblMainTitle, lblMainName, lblMainCoin, lblMainMeeples, lblMainMeeplesCard);
+		leftMainBox.getChildren().addAll(spacerMain, lblMainTitle, lblMainName, lblMainCoinsTextBox, lblMainMeeples, lblMainMeeplesCard);
 		leftPlace.getChildren().addAll(leftVbox, leftMainBox);
 		
 		
