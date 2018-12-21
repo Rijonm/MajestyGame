@@ -441,14 +441,17 @@ public class ClientController {
 
 			// COULD NOT CONNECT
 			if (c.toString().contains("COULD_NOT_CONNECT") || c.toString().equals("StringProperty [value: ]")) {
+				view.statusMessageLabel.setText("CONNECTION ERROR!!!");
 
 			}
 			// WRONG LOGIN
 			if (c.toString().contains("WRONG")) {
+				view.statusMessageLabel.setText("WRONG LOGIN!!!");
 
 			}
 			// WRONG LOGIN
 			if (c.toString().contains("FAILURE")) {
+				view.statusMessageLabel.setText("LOGIN FAILURE!!!");
 
 			}
 			// LOGIN SUCCESS
@@ -551,6 +554,8 @@ public class ClientController {
 		
 		model.logoutPlayer.addListener( (o, old, newVal) -> {
 			System.out.println(newVal); //newVal ist ein String @ Yusuf
+			view.opponentLogoutName.setText(newVal);
+			view.opponentLogoutStage(view.langInteger).show();
 
 		});
 	}

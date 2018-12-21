@@ -167,19 +167,6 @@
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/inside3.jpg);		
 }
-	
-.bg1Button{
-	-fx-background-size: cover;
-	-fx-background-image: url(/images/inside.jpg);		
-}
-.bg2Button{
-	-fx-background-size: cover;
-	-fx-background-image: url(/images/inside2.jpg);		
-}
-.bg3Button{
-	-fx-background-size: cover;
-	-fx-background-image: url(/images/inside3.jpg);		
-}
 .personDeck{
 	-fx-padding: 20 0;
 }
@@ -277,6 +264,24 @@
 	-fx-padding:10;
 	-fx-background-size: cover;
 	-fx-background-image: url(/images/winnerBackground.png);		
+}
+.bg1Button{
+	-fx-min-width: 100;
+	-fx-max-width: 100;
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside.jpg);		
+}
+.bg2Button{
+	-fx-min-width: 100;
+	-fx-max-width: 100;
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside2.jpg);		
+}
+.bg3Button{
+	-fx-min-width: 100;
+	-fx-max-width: 100;
+	-fx-background-size: cover;
+	-fx-background-image: url(/images/inside3.jpg);		
 }
 .chatContent{
 	-fx-padding:10;

@@ -45,6 +45,7 @@ public class ClientView {
 	public TextField userNameLogin, userpasswordLogin;
 	public Button loginB = new Button ("Login");
 	public Button registrierenB = new Button ("Registrieren");
+	public Label statusMessageLabel = new Label("");
 
 	
 	
@@ -168,6 +169,11 @@ public class ClientView {
 	public Label winnerLabel;
 	public Button buttonBackToStart = new Button("back");
 	
+	//opponentLogoutStage
+	public Stage opponentLogoutStage;
+	public Scene opponentLogoutScene;
+	public Label opponentLogoutName = new Label("");
+	
 	//connectScene
 	/**
 	 * Represents the connection to the server scene
@@ -250,7 +256,9 @@ public class ClientView {
 		userNameLogin  = new TextField("username");
 		userpasswordLogin = new TextField("password");
 		
-		loginArea.getChildren().addAll(majestyLogoView, userNameLogin, userpasswordLogin, loginB, registrierenB);
+		statusMessageLabel.getStyleClass().add("statusMessageLabel");
+		
+		loginArea.getChildren().addAll(majestyLogoView, userNameLogin, userpasswordLogin, statusMessageLabel, loginB, registrierenB);
 		loginPane.setCenter(loginArea);
 		registrierenB.getStyleClass().add("registerButton");
 		
@@ -369,9 +377,11 @@ public class ClientView {
 			musicOffButton.setText("OFF");
 		}
 		bgButton1.getStyleClass().add("bgButton1");
+		bgButton1.setMinHeight(62);
 		bgButton2.getStyleClass().add("bgButton2");
+		bgButton2.setMinHeight(62);
 		bgButton3.getStyleClass().add("bgButton3");
-		
+		bgButton3.setMinHeight(62);
 		setupSaveB.getStyleClass().add("setUpButtons");
 		if(langInteger==1) {
 			setupSaveB.setText("Speichern");
@@ -644,15 +654,12 @@ public class ClientView {
 		popUpStage.getIcons().add(new Image("images/majestyIcon.png"));
 		popUpStage.setTitle("Split Card - Choose one!");
 		if(langInteger==1) {
-			popUpStage.setTitle("Split Card - Waehle eine!");
+			popUpStage.setTitle("Split Card - Wähle eine!");
 		}else {
 			popUpStage.setTitle("Split Card - Choose one!");
 		}
 		popUpStage.show();
 		return popUpStage;
-		
-		
-		
 	}
 	
 	//Zu wenig Meeples Scene
@@ -663,7 +670,7 @@ public class ClientView {
 		
 		Label notEnoughMLbl = new Label("You don't have enough Meeples!");
 		if(langInteger==1) {
-			notEnoughMLbl.setText("Du hast nicht genuegend Meeples!s");
+			notEnoughMLbl.setText("Du hast nicht genügend Meepless!");
 		}else {
 			notEnoughMLbl.setText("You don't have enough Meeples!");
 		}
@@ -728,7 +735,36 @@ public class ClientView {
 		winnerStage.show();
 		return winnerStage;
 	}
-	
+	//Winner Scene
+	public Stage opponentLogoutStage(int langInteger) {
+		opponentLogoutStage = new Stage();
+		VBox opponentLogoutBox = new VBox();
+
+		Label opponentLogoutLabelTitle = new Label("Opponent has logged out: " );
+		if(langInteger==1) {
+			opponentLogoutLabelTitle.setText("Gegner hat sich ausgeloggt: ");
+		}else {
+			opponentLogoutLabelTitle.setText("Opponent has logged out: ");
+		}
+
+
+		opponentLogoutBox.getChildren().addAll(opponentLogoutLabelTitle, opponentLogoutName, buttonBackToStart);
+		opponentLogoutBox.getStyleClass().add("winnerBox");
+		opponentLogoutBox.setAlignment(Pos.CENTER);
+		opponentLogoutScene = new Scene(opponentLogoutBox,300,200);
+		opponentLogoutScene.getStylesheets().add(getClass().getResource("majesty.css").toExternalForm());
+		
+		opponentLogoutStage.getIcons().add(new Image("images/majestyIcon.png"));
+		opponentLogoutStage.setTitle("Logout Alert!");
+		if(langInteger==1) {
+			opponentLogoutStage.setTitle("Logout Meldung!");
+		}else {
+			opponentLogoutStage.setTitle("Logout Alert!");
+		}
+		opponentLogoutStage.setScene(opponentLogoutScene);
+		opponentLogoutStage.show();
+		return opponentLogoutStage;
+	}
 	
 	//einstellungenScene
 	/**
