@@ -102,6 +102,7 @@ public class ClientModel {
 		myHand.add(h5);
 		myHand.add(h6);
 		myHand.add(h7);
+		myMeeples.set(5);
 	}
 
 	public void connect(String ip, int port) throws UnknownHostException, IOException {
